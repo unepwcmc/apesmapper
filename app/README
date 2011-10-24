@@ -1,0 +1,26 @@
+A boilerplate web project I use to start my custom projects.
+
+Components:
+html5boilderplate (html5boilerplate.com)
+Compass (compass-style.org)
+Google App Engine hosting (code.google.com/appengine)
+
+
+Install (assuming you have html5boilderplate and Compass gems installed):
+git clone https://bstaats@github.com/bstaats/MyBoilerplate.git <MyNewProject>
+
+Dependencies for html5boilderplate build script:
+
+Using http://mxcl.github.com/homebrew/
+brew install libjpeg optipng
+
+Using http://www.macports.org/
+port install jpeg optipng
+
+Rename project in:
+app.yml
+
+
+Build (from http://html5boilerplate.com/docs/#Build-script):
+cd build
+ant
