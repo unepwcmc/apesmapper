@@ -81,19 +81,23 @@
 
   <!-- app -->
   <script src="js/app.js"></script>
+  <script src="js/modules/log.js"></script>
   <script src="js/modules/bus.js"></script>
+  <script src="js/modules/work.js"></script>
 
   <!-- backbone components -->
   <script src="js/views/draw_tool.js"></script>
   <script src="js/views/projector.js"></script>
   <script src="js/views/map.js"></script>
 
+
   <!-- main -->
   <script src="js/carbon.js"></script>
 
   <!-- end scripts-->
   <script>
-      $(function() {
+      $(document).ready(function() {
+      //$(function() {
           App(function(app) {
               var carbon = new app.Carbon();
               carbon.run();

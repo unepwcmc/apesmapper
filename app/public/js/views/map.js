@@ -121,16 +121,6 @@ var MapView = Backbone.View.extend({
         }
     },
 
-    tile_info: function(info) {
-        var nfo = this.$('.tiles_info');
-        if(info.length > 0) {
-            nfo.animate({ bottom: 0});
-            nfo.find('span').html(info);
-        } else {
-            nfo.animate({bottom: -171});
-        }
-    },
-
     // called when map is ready
     // its a helper method to avoid calling getProjection whiout map loaded
     ready: function() {
