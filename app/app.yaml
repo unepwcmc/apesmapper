@@ -12,6 +12,10 @@ threadsafe: true
 
 default_expiration: "30d"
 
+libraries:
+- name: webob
+  version: latest
+
 skip_files:
 - ^(.*/)?app\.yaml
 - ^(.*/)?app\.yml
@@ -218,4 +222,4 @@ handlers:
 #   expiration: "15m"
 #
 - url: /.*
-  script: gae.py
+  script: gae.app

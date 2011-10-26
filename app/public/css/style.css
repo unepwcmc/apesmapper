@@ -379,6 +379,22 @@ input:invalid, textarea:invalid {
   margin-top: -7px;
 }
 
+/* line 2, ../../css_src/partials/_panel.scss */
+#panel {
+  position: absolute;
+  background-color: #FFF;
+  padding: 20px;
+  right: 0;
+}
+/* line 8, ../../css_src/partials/_panel.scss */
+#panel p {
+  margin: 5px 0;
+}
+/* line 11, ../../css_src/partials/_panel.scss */
+#panel h2, #panel h1 {
+  margin: 10px 0;
+}
+
 @media print {
   /* line 10, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_media.scss */
   * {

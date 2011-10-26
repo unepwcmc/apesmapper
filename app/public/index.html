@@ -41,6 +41,8 @@
     </header>
 
     <div id="main" role="main">
+
+
         <div class="map_container" id="main_map">
             <div class="map"></div>
             <!-- zoom-control -->
@@ -60,11 +62,28 @@
             </div>
             <div class="tiles_info"><span></span></div>
         </div>
+
+        <div id="panel">
+            <ul>
+            </ul>
+            <a id="add_report" href='#'>add report</a>
+        </div>
     </div>
 
     <footer>
     </footer>
   </div> <!--! end of #container -->
+
+  <!-- templates -->
+   <script type="text/template" id="report-tmpl">
+        <h1>User polygon</h1>
+        <p>polygon <a href="#">edit</a>·<a href='#'>remove</a></p>
+        <h2>carbon<span>587,988</span></h2>
+        <p>polygons: <%= polygons.length %></p>
+        <p>Mexico <span>123,456</span><p>
+        <p>User<span>123,456</span><p>
+        <h2>protected areas<span>38</span></h2>
+   </script>¬
 
   <!-- JavaScript at the bottom for fast page loading -->
 
@@ -78,30 +97,45 @@
   <script src="js/libs/underscore-min.js"></script>
   <script src="js/libs/class.js"></script>
   <script src="js/libs/backbone-min.js"></script>
+  <script src="js/libs/backbone-localstorage.js"></script>
 
   <!-- app -->
   <script src="js/app.js"></script>
   <script src="js/modules/log.js"></script>
   <script src="js/modules/bus.js"></script>
   <script src="js/modules/work.js"></script>
+  <script src="js/modules/panel.js"></script>
 
   <!-- backbone components -->
   <script src="js/views/draw_tool.js"></script>
   <script src="js/views/projector.js"></script>
   <script src="js/views/map.js"></script>
+  <script src="js/views/report.js"></script>
 
 
   <!-- main -->
   <script src="js/carbon.js"></script>
 
+
   <!-- end scripts-->
   <script>
+      function init() {
+          _.templatesettings = {
+                interpolate : /\{\{(.+?)\}\}/g
+          };
+          setTimeout(function() {
+              App(function(app) {
+                  var carbon = new app.Carbon();
+                  carbon.run();
+                  //debug
+                  window.carbon = carbon;
+              });
+          }, 100);
+      }
       $(document).ready(function() {
       //$(function() {
-          App(function(app) {
-              var carbon = new app.Carbon();
-              carbon.run();
-          });
+            init();
+
       });
   </script>
 

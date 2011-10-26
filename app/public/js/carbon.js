@@ -13,7 +13,9 @@ App.modules.Carbon = function(app) {
         "w/:work/:state": "work"   // #work/state
       },
 
-      work: function() { }
+      work: function() { 
+        app.Log.log("route: work");
+      }
 
     });
 
@@ -22,12 +24,17 @@ App.modules.Carbon = function(app) {
 
         init: function() {
             _.bindAll(this, 'on_route');
+            // set a common syntax for templates
+            _.templatesettings = {
+                interpolate : /\{\{(.+?)\}\}/g
+            };
         },
 
         run: function() {
             this.bus = new app.Bus();
             this.map = new app.Map(this.bus);
             this.work = new app.Work(this.bus);
+            this.panel = new app.Panel(this.bus);
 
             // init routing
             this.router = new Router();
@@ -35,6 +42,7 @@ App.modules.Carbon = function(app) {
 
             // ready, luanch
             Backbone.history.start();
+            //this.router.navigate('w/work_test');
         },
 
         on_route: function(work_id) {

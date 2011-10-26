@@ -23,7 +23,6 @@ App.modules.Bus = function(app) {
             _(events).each(function(v, k) {
                 var fn = obj[v];
                 if(typeof fn === "function") { 
-                    _.bindAll(obj, v);
                     self.on(k, fn);
                 } else {
                     app.Log.log("error finding: ", v);
