@@ -32,6 +32,7 @@ var Tabs = Backbone.View.extend({
 
     initialize: function() {
         this.tab_el = this.$("ul");
+        this.tab_count = 0;
     },
 
     add_report: function(cid, data) {
@@ -39,11 +40,12 @@ var Tabs = Backbone.View.extend({
         if(data.total) {
             this.tab_el.append("<li><a class='tab' href='#" + cid + "'>total</a></li>");
         } else {
-            var li = $("<li><a class='tab' href='#" + cid + "'>#1</a></li>");
-            this.tab_el.prepend(li);
+            this.tab_count++;
+            var li = $("<li><a class='tab' href='#" + cid + "'>#"+this.tab_count+"</a></li>");
+            li.insertBefore(this.$('#add_report').parent());
             el = li;
         }
-        
+
         if(el) {
             this.set_enabled($(el));
         }
