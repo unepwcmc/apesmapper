@@ -395,6 +395,31 @@ input:invalid, textarea:invalid {
   margin: 10px 0;
 }
 
+/* line 3, ../../css_src/partials/_start_banner.scss */
+#start_banner {
+  position: absolute;
+  height: 300px;
+  width: 100%;
+  top: 50%;
+  margin-top: -150px;
+  background-color: white;
+  text-align: center;
+}
+/* line 13, ../../css_src/partials/_start_banner.scss */
+#start_banner .inner {
+  width: 800px;
+  margin: 40px auto;
+  text-align: left;
+}
+/* line 17, ../../css_src/partials/_start_banner.scss */
+#start_banner .inner .help {
+  width: 400px;
+}
+/* line 22, ../../css_src/partials/_start_banner.scss */
+#start_banner button {
+  float: right;
+}
+
 @media print {
   /* line 10, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_media.scss */
   * {

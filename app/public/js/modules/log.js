@@ -14,6 +14,10 @@ App.modules.Log = function(app) {
 
         log: function() {
             console.log.apply(console, arguments);
+        },
+
+        debug: function() {
+            console.log.apply(console, arguments);
         }
     };
 };

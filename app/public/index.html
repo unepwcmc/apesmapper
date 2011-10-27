@@ -42,7 +42,6 @@
 
     <div id="main" role="main">
 
-
         <div class="map_container" id="main_map">
             <div class="map"></div>
             <!-- zoom-control -->
@@ -67,6 +66,17 @@
             <ul>
             </ul>
             <a id="add_report" href='#'>add report</a>
+        </div>
+
+        <div id="start_banner">
+            <div class="inner">
+                <div class="help">
+                    <h1>welcome to the carbon calculator tool</h1>
+                    <p>Draw a polygon over the area you're interested to get results of the operation in realtime</p>
+                    <p>After that you will be able to create up to 3 polygons and compare the results of the analysis on one polygon to each other</p>
+                    <button id="create_work">create a polygon</button>
+                </div> <!-- help -->
+            </div> <!-- inner -->
         </div>
     </div>
 
@@ -102,9 +112,11 @@
   <!-- app -->
   <script src="js/app.js"></script>
   <script src="js/modules/log.js"></script>
+  <script src="js/modules/config.js"></script>
   <script src="js/modules/bus.js"></script>
   <script src="js/modules/work.js"></script>
   <script src="js/modules/panel.js"></script>
+  <script src="js/modules/start_banner.js"></script>
 
   <!-- backbone components -->
   <script src="js/views/draw_tool.js"></script>
@@ -120,9 +132,7 @@
   <!-- end scripts-->
   <script>
       function init() {
-          _.templatesettings = {
-                interpolate : /\{\{(.+?)\}\}/g
-          };
+          // use timeout trick to avoid jquery catch the exceptions thrown
           setTimeout(function() {
               App(function(app) {
                   var carbon = new app.Carbon();

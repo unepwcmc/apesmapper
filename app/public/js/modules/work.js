@@ -28,6 +28,7 @@ App.modules.Data = function(app) {
 
     var WorkModel = Backbone.Collection.extend({
 
+        API_URL: app.config.API_URL,
         model: Report,
 
         initialize: function() {
@@ -42,7 +43,18 @@ App.modules.Data = function(app) {
         },
 
         url: function() {
-            return '/RAMBO/' + this.id;
+            return this.API_URL + '/' + this.id;
+        },
+
+        create: function(success, fail) {
+            /*$.ajax({
+                url: this.API_URL,
+                type: 'POST'})
+            .done(function(data) {
+             })
+            .fail(fail);*/
+            // dummy
+            success(S4());
         },
 
         // create empty report
@@ -81,14 +93,15 @@ App.modules.Data = function(app) {
 
         init: function(bus) {
             var self = this;
-            _.bindAll(this, 'on_polygon', 'on_work', 'on_new_report','add_report');
+            _.bindAll(this, 'on_polygon', 'on_work', 'on_new_report','add_report', 'on_create_work');
             this.bus = bus;
             this.work = new WorkModel();
             this.active_report_id = -1;
             this.bus.link(this, {
                 'polygon': 'on_polygon',
                 'work': 'on_work',
-                'model:add_report': 'add_report'
+                'model:add_report': 'add_report',
+                'model:create_work': 'on_create_work'
             });
 
             this.work.bind('add', this.on_new_report);
@@ -122,6 +135,16 @@ App.modules.Data = function(app) {
             this.active_report(r.cid);
         },
 
+        on_create_work: function() {
+            var self = this;
+            this.work.create(function(id) {
+                self.bus.emit("app:route_to", "w/" + id);
+            }, function() {
+                app.Log.error("failed creating work id");
+            });
+
+        },
+
         add_report: function() {
             this.work.new_report();
         },
@@ -133,7 +156,7 @@ App.modules.Data = function(app) {
             this.active_report_id = rid;
             this.bus.emit('show_report', rid);
         },
- 
+
         select_report: function() {
         }
     });

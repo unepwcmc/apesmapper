@@ -31,22 +31,36 @@ App.modules.Carbon = function(app) {
         },
 
         run: function() {
+            _.bindAll(this, 'on_route_to');
             this.bus = new app.Bus();
             this.map = new app.Map(this.bus);
             this.work = new app.Work(this.bus);
             this.panel = new app.Panel(this.bus);
+            this.banner = new app.StartBanner(this.bus);
 
             // init routing
             this.router = new Router();
             this.router.bind('route:work', this.on_route);
 
+            this.bus.on('app:route_to', this.on_route_to);
+
+            if(location.hash === '') {
+                this.banner.show();
+            }
             // ready, luanch
             Backbone.history.start();
             //this.router.navigate('w/work_test');
         },
 
         on_route: function(work_id) {
+            this.banner.hide();
+            app.Log.debug("route: work => ", work_id);
             this.bus.emit('work', work_id);
+        },
+
+        on_route_to: function(route) {
+            app.Log.debug("route => ", route);
+            this.router.navigate(route, true);
         }
 
     });
