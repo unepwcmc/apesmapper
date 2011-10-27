@@ -2,14 +2,50 @@
 #panel {
     position: absolute;
     background-color: #FFF;
-    padding: 20px;
+    padding: 0;
     right: 0;
+    height: 100%;
+    width: 300px;
 
     p {
         margin: 5px 0;
     }
     h2, h1 {
         margin: 10px 0 ;
+    }
+
+    #tabs {
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            li {
+                float: left;
+                border-right: 1px solid #BBB;
+                border-bottom: 1px solid #BBB;
+                margin: 0;
+                padding: 20px 10px;
+                &.total {
+                    width: 100%;
+                }
+                &.enabled{
+                    border-bottom-width: 0;
+                    font-weight: bold;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                }
+            }
+        }
+    }
+    #tab_content {
+        margin: 0;
+        clear: both;
+        border: 1px solid #BBB;
+        border-top-width: 0;
+        list-style: none;
+        li {
+            display:none;
+        }
     }
 
 }

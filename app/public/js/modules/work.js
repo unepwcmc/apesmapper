@@ -54,12 +54,16 @@ App.modules.Data = function(app) {
              })
             .fail(fail);*/
             // dummy
-            success(S4());
+            success(S4() + S4());
+            // default thing
+            this.new_report();
+            this.new_report({total: true});
         },
 
         // create empty report
-        new_report: function() {
+        new_report: function(defaults) {
             var r = new Report();
+            r.set(defaults);
             this.add(r);
             r.save();
             //this.save();
@@ -93,7 +97,7 @@ App.modules.Data = function(app) {
 
         init: function(bus) {
             var self = this;
-            _.bindAll(this, 'on_polygon', 'on_work', 'on_new_report','add_report', 'on_create_work');
+            _.bindAll(this, 'on_polygon', 'on_work', 'on_new_report','add_report', 'on_create_work', 'active_report');
             this.bus = bus;
             this.work = new WorkModel();
             this.active_report_id = -1;
@@ -101,7 +105,8 @@ App.modules.Data = function(app) {
                 'polygon': 'on_polygon',
                 'work': 'on_work',
                 'model:add_report': 'add_report',
-                'model:create_work': 'on_create_work'
+                'model:create_work': 'on_create_work',
+                'model:active_report': 'active_report'
             });
 
             this.work.bind('add', this.on_new_report);
@@ -127,7 +132,7 @@ App.modules.Data = function(app) {
             app.Log.log("on work: ", work_id);
             this.work.set_work_id(work_id);
             this.work.fetch();
-            //this.reset({ });
+            //TODO: does not exists
         },
 
         on_new_report: function(r) {
@@ -154,7 +159,7 @@ App.modules.Data = function(app) {
 
         active_report: function(rid) {
             this.active_report_id = rid;
-            this.bus.emit('show_report', rid);
+            this.bus.emit('view:show_report', rid);
         },
 
         select_report: function() {

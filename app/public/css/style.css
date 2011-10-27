@@ -383,16 +383,55 @@ input:invalid, textarea:invalid {
 #panel {
   position: absolute;
   background-color: #FFF;
-  padding: 20px;
+  padding: 0;
   right: 0;
+  height: 100%;
+  width: 300px;
 }
-/* line 8, ../../css_src/partials/_panel.scss */
+/* line 10, ../../css_src/partials/_panel.scss */
 #panel p {
   margin: 5px 0;
 }
-/* line 11, ../../css_src/partials/_panel.scss */
+/* line 13, ../../css_src/partials/_panel.scss */
 #panel h2, #panel h1 {
   margin: 10px 0;
+}
+/* line 18, ../../css_src/partials/_panel.scss */
+#panel #tabs ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+/* line 22, ../../css_src/partials/_panel.scss */
+#panel #tabs ul li {
+  float: left;
+  border-right: 1px solid #BBB;
+  border-bottom: 1px solid #BBB;
+  margin: 0;
+  padding: 20px 10px;
+}
+/* line 28, ../../css_src/partials/_panel.scss */
+#panel #tabs ul li.total {
+  width: 100%;
+}
+/* line 31, ../../css_src/partials/_panel.scss */
+#panel #tabs ul li.enabled {
+  border-bottom-width: 0;
+  font-weight: bold;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+/* line 40, ../../css_src/partials/_panel.scss */
+#panel #tab_content {
+  margin: 0;
+  clear: both;
+  border: 1px solid #BBB;
+  border-top-width: 0;
+  list-style: none;
+}
+/* line 46, ../../css_src/partials/_panel.scss */
+#panel #tab_content li {
+  display: none;
 }
 
 /* line 3, ../../css_src/partials/_start_banner.scss */
