@@ -47,7 +47,7 @@ var PolygonDrawTool = Backbone.View.extend({
           //strokeColor: "#DC143C",
           strokeColor: "#FFF",
           strokeOpacity: 1.0,
-          fillOpacity: 0.0,
+          fillOpacity: 0.4,
           strokeWeight: 1,
           map: this.map
         });
@@ -60,20 +60,25 @@ var PolygonDrawTool = Backbone.View.extend({
         });
 
         google.maps.event.addListener(this.polygon, "click", function(e) {
-            self.trigger('polygon_click', this.getPath(), e.latLng);
+            self.trigger('polygon_click', this, this.getPath(), e.latLng);
         });
 
     },
 
-    edit_polygon: function(polygon) {
+    edit_polygon: function(paths) {
         var self = this;
-        var paths = polygon.paths();
         self.reset();
+
+        var poly_paths = _.map(paths, function(path) {
+            return _.map(path, function(p) {
+                return new google.maps.LatLng(p[0], p[1]);
+            });
+        });
 
         _.each(paths, function(path, path_index) {
             _.each(path, function(p, i) {
                 var marker = new google.maps.Marker({position:
-                    p,
+                    new google.maps.LatLng(p[0], p[1]),
                     map: self.map,
                     icon: self.image,
                     draggable: true,
@@ -84,16 +89,14 @@ var PolygonDrawTool = Backbone.View.extend({
                 marker.index = i;
                 self.markers.push(marker);
                 google.maps.event.addListener(marker, "dragstart", function(e) {
-                    self.polyline.setPaths(paths);
+                    self.polyline.setPaths(poly_paths);
                     self.polyline.setMap(self.map);
                 });
                 google.maps.event.addListener(marker, "drag", function(e) {
                     self.polyline.getPath(this.path_index).setAt(this.index, e.latLng);
                 });
                 google.maps.event.addListener(marker, "dragend", function(e) {
-                    polygon.update_pos(this.path_index,
-                        this.index, [e.latLng.lat(), e.latLng.lng()]);
-                    polygon.save();
+                    paths[this.path_index][this.index] = [e.latLng.lat(), e.latLng.lng()];
                 });
 
             });

@@ -13,7 +13,7 @@ App.modules.Carbon = function(app) {
         "w/:work/:state": "work"   // #work/state
       },
 
-      work: function() { 
+      work: function() {
         app.Log.log("route: work");
       }
 
@@ -75,12 +75,42 @@ App.modules.Carbon = function(app) {
 App.modules.Map = function(app) {
     app.Map = Class.extend({
         init: function(bus) {
+            _.bindAll(this, 'show_report');
             this.map = new MapView({el: $('.map_container')});
             this.polygon_edit = new PolygonDrawEditTool({mapview: this.map});
             this.polygon_edit.editing_state(true);
+            this.polygons = [];
+
+            bus.link(this, {
+                'view:show_report': 'show_report',
+                'view:update_report': 'show_report'
+            });
 
             //bindings
             bus.attach(this.polygon_edit, 'polygon');
+
+        },
+
+        // render polygons
+        show_report: function(rid, data) {
+            var self = this;
+            // clean
+            _(self.polygons).each(function(p) {
+                p.remove();
+            });
+
+            // recreate
+            _(data.polygons).each(function(paths) {
+                var p = new PolygonView({
+                    mapview: self.map,
+                    paths: paths
+                });
+                p.bind('click', function(p) {
+                    self.polygon_edit.editing_state(false);
+                    self.polygon_edit.edit_polygon([p.paths]);
+                });
+                self.polygons.push(p.render());
+            });
         }
     });
 };
