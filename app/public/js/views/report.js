@@ -38,7 +38,9 @@ var Tabs = Backbone.View.extend({
     add_report: function(cid, data) {
         var el = null;
         if(data.total) {
-            this.tab_el.append("<li><a class='tab' href='#" + cid + "'>total</a></li>");
+            var li = $("<li><a class='tab' href='#" + cid + "'>total</a></li>");
+            this.tab_el.append(li);
+            el = li;
         } else {
             this.tab_count++;
             var li = $("<li><a class='tab' href='#" + cid + "'>#"+this.tab_count+"</a></li>");

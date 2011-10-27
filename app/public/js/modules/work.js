@@ -5,14 +5,20 @@ App.modules.Data = function(app) {
 
     var Report = Backbone.Model.extend({
 
-        defaults: {
-            "polygons": []
+        defaults: function() {
+            return {
+                "polygons": new Array()
+            };
         },
 
         initialize: function() {
         },
 
         add_polygon: function(path) {
+            if(this.get('total')) {
+                app.Log.error("can't add polygons to total");
+                return;
+            }
             this.get('polygons').push(path);
             // activate the signal machinery
             this.trigger('change:polygons', this);
