@@ -1,25 +1,27 @@
 
 
 #start_banner {
-    $height: 300px;
-    position: absolute;
-    height: $height;
-    width: 100%;
-    top: 50%;
-    margin-top: -$height/2;
-    background-color: white;
-    text-align: center;
+  $height: 300px;
+  position: absolute;
+  height: $height;
+  width: 100%;
+  top: 50%;
+  margin-top: -$height/2;
+  background-color: white;
+  text-align: center;
 
-    .inner {
-       width: 800px;
-       margin: 40px auto;
-       text-align: left;
-       .help {
-           width: 400px;
-       }
+  .inner {
+    width: 800px;
+    margin: 40px auto;
+    text-align: left;
+    .help {
+      width: 400px;
     }
 
-    button {
-        float: right;
-    }
+  }
+
+  button {
+    float: right;
+  }
+
 }
