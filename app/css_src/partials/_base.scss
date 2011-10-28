@@ -32,3 +32,19 @@ $selected-background-color: #ff5E99;  // bg-color for selected text
 
 $list-left-margin: 2em;  // left margin for ul an ol
 
+
+
+
+/* Carbon tool mixins */
+
+// Text shadow
+@mixin text-shadow($c) {
+		filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=270, Strength=1);
+	text-shadow:0 1px 0 $c;
+}
+
+// Sprite background
+@mixin background($lr,$tb,$r) {
+	background:url('/img/sprite.png') $lr $tb $r;
+}
+

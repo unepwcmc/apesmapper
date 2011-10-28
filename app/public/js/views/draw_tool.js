@@ -21,10 +21,9 @@ var PolygonDrawTool = Backbone.View.extend({
 
     editing_state: function(editing) {
         this.reset();
+        this.mapview.unbind('click', this.add_vertex);
         if(editing) {
             this.mapview.bind('click', this.add_vertex);
-        } else {
-            this.mapview.unbind('click', this.add_vertex);
         }
     },
 
@@ -102,8 +101,8 @@ var PolygonDrawTool = Backbone.View.extend({
 
         _.each(paths, function(path, path_index) {
             _.each(path, function(p, i) {
-                var marker = new google.maps.Marker({position:
-                    new google.maps.LatLng(p[0], p[1]),
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(p[0], p[1]),
                     map: self.map,
                     icon: self.image,
                     draggable: true,
@@ -152,7 +151,7 @@ var PolygonDrawTool = Backbone.View.extend({
             google.maps.event.addListener(marker, "click", function() {
                 self.create_polygon(self.vertex);
                 self.reset();
-            });
+            })
         }
     },
 

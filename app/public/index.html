@@ -1,7 +1,6 @@
 <!doctype html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
-<!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if lt IE 8 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
@@ -38,6 +37,16 @@
 
   <div id="container">
     <header>
+      <div class="left">
+        <h1>CARBON CALCULATOR</h1>
+        <p>powered by the Convention on Biological Diversity</p>
+      </div>
+      <div class="right">
+        <ul>
+          <li><a class="no_bkg" href="#about">ABOUT</a></li>
+          <li><a href="#share"><span><strong>SHARE</strong> THIS REPORT</span></a></li>
+        </ul>
+      </div>
     </header>
 
     <div id="main" role="main">
@@ -82,9 +91,9 @@
             <div class="inner">
                 <div class="help">
                     <h1>welcome to the carbon calculator tool</h1>
-                    <p>Draw a polygon over the area you're interested to get results of the operation in realtime</p>
-                    <p>After that you will be able to create up to 3 polygons and compare the results of the analysis on one polygon to each other</p>
-                    <button id="create_work">create a polygon</button>
+                    <p><strong>Draw a polygon over the area you're interested</strong> to get results of the operation in real-time.</p>
+                    <p class="margin">After that you will be able to create up to 3 polygons and compare the results of the analysis on one polygon to each other.</p>
+                    <button id="create_work"><span>create a polygon</span></button>
                 </div> <!-- help -->
             </div> <!-- inner -->
         </div>
@@ -94,10 +103,13 @@
     </footer>
   </div> <!--! end of #container -->
 
-   <!-- templates -->
-   <script type="text/template" id="report-tmpl">
-        <h1>User polygon</h1>
-        <p>polygon <a href="#">edit</a>·<a href='#'>remove</a></p>
+  <!-- templates -->
+  <script type="text/template" id="report-tmpl">
+		<div class="tools">
+			<p>polygon <a href="#">edit</a>·<a href='#'>remove</a></p>
+		</div>
+   
+        
         <h2>carbon<span>587,988</span></h2>
         <p>polygons: <%= polygons.length %></p>
         <p>Mexico <span>123,456</span><p>
@@ -132,6 +144,7 @@
   <script src="js/modules/log.js"></script>
   <script src="js/modules/config.js"></script>
   <script src="js/modules/bus.js"></script>
+  <script src="js/modules/map.js"></script>
   <script src="js/modules/work.js"></script>
   <script src="js/modules/panel.js"></script>
   <script src="js/modules/start_banner.js"></script>
