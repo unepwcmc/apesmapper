@@ -4,13 +4,18 @@ var Report = Backbone.View.extend({
     tagName:  "li",
 
     template: _.template($('#report-tmpl').html()),
+    template_no_content: _.template($('#report-tmpl-no-content').html()),
 
     initialize: function() {
         _.bindAll(this, 'show', 'hide');
     },
 
     render: function(data) {
-        $(this.el).html(this.template(data));
+        if(data.polygons.length !== 0) {
+            $(this.el).html(this.template(data));
+        } else {
+            $(this.el).html(this.template_no_content(data));
+        }
         return this;
     },
 

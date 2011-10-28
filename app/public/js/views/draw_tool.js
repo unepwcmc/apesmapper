@@ -135,6 +135,7 @@ var PolygonDrawTool = Backbone.View.extend({
     create_polygon: function(vertex) {
         var v = _.map(vertex, function(p) { return [p.lat(), p.lng()]; });
         this.trigger('polygon', {paths: [v]});
+        this.reset();
     }
 
 
