@@ -81,6 +81,35 @@
     display: none;
   }
 
+  .layers {
+    position: absolute;
+    top: 20px;
+    right: 375px;
+    padding: 5px 0px;
+    border: 1px solid #EEE;
+    background: #FFF;
+    text-align: right;
+    ul {
+      width: 150px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      text-align: left;
+      li {
+        border-bottom: 1px solid #CCC;
+        padding: 3px 0px;
+      }
+    }
+
+    &:hover .show{
+      display: block;
+    }
+    .show{
+      display: none;
+    }
+
+  }
+
 }
 
 
