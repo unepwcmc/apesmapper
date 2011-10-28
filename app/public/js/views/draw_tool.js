@@ -9,6 +9,7 @@ var PolygonDrawTool = Backbone.View.extend({
         _.bindAll(this, 'add_vertex', 'create_polygon', 'reset', 'editing_state', '_add_vertex', 'edit_polygon');
         this.mapview = this.options.mapview;
         this.map = this.mapview.map;
+        this.listeners = [];
         this.reset();
 
         this.image = new google.maps.MarkerImage('/img/sprite.png',
@@ -19,10 +20,10 @@ var PolygonDrawTool = Backbone.View.extend({
     },
 
     editing_state: function(editing) {
+        this.reset();
         if(editing) {
             this.mapview.bind('click', this.add_vertex);
         } else {
-            this.reset();
             this.mapview.unbind('click', this.add_vertex);
         }
     },
@@ -30,6 +31,10 @@ var PolygonDrawTool = Backbone.View.extend({
     reset: function() {
         var self = this;
         if(this.polyline !== undefined) {
+            _(this.listeners).each(function(listener) {
+                google.maps.event.removeListener(listener);
+            });
+            this.listeners = [];
             this.polyline.setMap(null);
             delete this.polyline;
             this.polygon.setMap(null);
@@ -59,9 +64,26 @@ var PolygonDrawTool = Backbone.View.extend({
           map: this.map
         });
 
-        google.maps.event.addListener(this.polygon, "click", function(e) {
-            self.trigger('polygon_click', this, this.getPath(), e.latLng);
-        });
+        this.listeners.push(
+            google.maps.event.addListener(this.polygon, "click", function(e) {
+                self.trigger('polygon_click', this, this.getPath(), e.latLng);
+            })
+        );
+        this.listeners.push(
+            google.maps.event.addListener(this.polyline, "mouseover", function(e) {
+                self.trigger('mouseover', this, e);
+            })
+        );
+        this.listeners.push(
+            google.maps.event.addListener(this.polyline, "mouseout", function(e) {
+                self.trigger('mouseout', this, e);
+            })
+        );
+        this.listeners.push(
+            google.maps.event.addListener(this.polyline, "mousemove", function(e) {
+                self.trigger('mousemove', this, e);
+            })
+        );
 
     },
 
@@ -74,6 +96,9 @@ var PolygonDrawTool = Backbone.View.extend({
                 return new google.maps.LatLng(p[0], p[1]);
             });
         });
+
+        self.polyline.setPaths(poly_paths);
+        self.polyline.setMap(self.map);
 
         _.each(paths, function(path, path_index) {
             _.each(path, function(p, i) {
@@ -89,8 +114,7 @@ var PolygonDrawTool = Backbone.View.extend({
                 marker.index = i;
                 self.markers.push(marker);
                 google.maps.event.addListener(marker, "dragstart", function(e) {
-                    self.polyline.setPaths(poly_paths);
-                    self.polyline.setMap(self.map);
+                    self.trigger('dragstart');
                 });
                 google.maps.event.addListener(marker, "drag", function(e) {
                     self.polyline.getPath(this.path_index).setAt(this.index, e.latLng);
@@ -135,7 +159,6 @@ var PolygonDrawTool = Backbone.View.extend({
     create_polygon: function(vertex) {
         var v = _.map(vertex, function(p) { return [p.lat(), p.lng()]; });
         this.trigger('polygon', {paths: [v]});
-        this.reset();
     }
 
 

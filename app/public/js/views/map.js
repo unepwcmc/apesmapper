@@ -24,6 +24,7 @@ var MapView = Backbone.View.extend({
 
     initialize: function() {
         _.bindAll(this, 'center_changed', 'ready', 'click', 'set_center', 'zoom_changed', 'zoom_in', 'zoom_out', 'adjustSize', 'set_zoom_silence', 'set_center_silence');
+       var self = this;
        this.map_layers = {};
        // hide controls until map is ready
        this.hide_controls();
@@ -31,6 +32,7 @@ var MapView = Backbone.View.extend({
        google.maps.event.addListener(this.map, 'center_changed', this.center_changed);
        google.maps.event.addListener(this.map, 'zoom_changed', this.zoom_changed);
        google.maps.event.addListener(this.map, 'click', this.click);
+       google.maps.event.addListener(this.map, 'mousemove', function(e) { self.trigger('mousemove', e);});
        this.projector = new Projector(this.map);
        this.projector.draw = this.ready;
        this.signals_on = true;

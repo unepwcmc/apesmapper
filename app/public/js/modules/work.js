@@ -14,6 +14,20 @@ App.modules.Data = function(app) {
         initialize: function() {
         },
 
+        update_polygon: function(index, path) {
+            this.get('polygons')[index] = path;
+            this.trigger('change:polygons', this);
+            this.trigger('change', this);
+            this.save();
+        },
+
+        remove_polygon: function(index) {
+            this.get('polygons').splice(index, 1);
+            this.trigger('change:polygons', this);
+            this.trigger('change', this);
+            this.save();
+        },
+
         add_polygon: function(path) {
             if(this.get('total')) {
                 app.Log.error("can't add polygons to total");
@@ -28,6 +42,11 @@ App.modules.Data = function(app) {
 
         fetch: function() {
             // get data using polygons
+        },
+
+        toJSON: function() {
+            //TODO: optimize this using a real shallow copy
+            return JSON.parse(JSON.stringify(this.attributes));
         }
 
     });
@@ -103,7 +122,7 @@ App.modules.Data = function(app) {
 
         init: function(bus) {
             var self = this;
-            _.bindAll(this, 'on_polygon', 'on_work', 'on_new_report','add_report', 'on_create_work', 'active_report');
+            _.bindAll(this, 'on_polygon', 'on_work', 'on_new_report','add_report', 'on_create_work', 'active_report', 'on_remove_polygon', 'on_update_polygon');
             this.bus = bus;
             this.work = new WorkModel();
             this.active_report_id = -1;
@@ -112,7 +131,9 @@ App.modules.Data = function(app) {
                 'work': 'on_work',
                 'model:add_report': 'add_report',
                 'model:create_work': 'on_create_work',
-                'model:active_report': 'active_report'
+                'model:active_report': 'active_report',
+                'model:remove_polygon': 'on_remove_polygon',
+                'model:update_polygon': 'on_update_polygon'
             });
 
             this.work.bind('add', this.on_new_report);
@@ -128,10 +149,28 @@ App.modules.Data = function(app) {
             });
         },
 
+        on_remove_polygon: function(rid, index) {
+            var r = this.work.getByCid(rid);
+            if(r) {
+                r.remove_polygon(index);
+            } else {
+                app.Log.error("can't get report: ", rid);
+            }
+        },
+
+        on_update_polygon: function(rid, index, new_path) {
+            var r = this.work.getByCid(rid);
+            if(r) {
+                r.update_polygon(index, new_path);
+            } else {
+                app.Log.error("can't get report: ", rid);
+            }
+        },
+
         on_polygon: function(polygon) {
             // append polygon to current report
             var r = this.work.getByCid(this.active_report_id);
-            r.add_polygon(polygon.path);
+            r.add_polygon(polygon.paths[0]);
         },
 
         on_work: function(work_id) {
