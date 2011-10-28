@@ -9,7 +9,7 @@
   border-left:1px solid #CCCCCC;
 	
   #tabs {
-  display:none
+  	display:inline-block;
     ul {
       list-style: none;
       padding: 0;
@@ -106,9 +106,29 @@
 	  	}
 	  	
 	  	a.finish {
+		  	float:left;
+		  	width:auto;
+		  	height:30px;
+		  	margin:2px 0 0 2px;
+		  	padding:0 0 0 12px;
+		  	@include background(-2px,-453px,no-repeat);
+		  	font:bold 13px "WhitneyBold";
+		  	color:white;
+		  	@include background(0,-790px,no-repeat);
+		  	@include text-shadow(#3C7D7D);
+		  	text-decoration:none;
 		  	
-		  	span {}
+		  	span {
+			  	float:left;
+			  	width:auto;
+			  	height:14px;
+			  	padding:8px 12px 8px 0;
+			  	@include background(right,-820px,no-repeat);
+		  	}
+		  	
+		  	&:hover {text-decoration:underline;}
 	  	}
+	  	
   	}
   	
   	// no content
@@ -264,8 +284,8 @@
 					  	text-align:center;
 				  	}
 				  	
-				  	&.last {border:none}
-			  		&:last-child {border:none}
+				  	&.last {border:none; width:78px;}
+			  		&:last-child {border:none; width:78px;}
 			  	}
 		  	}
 	  	} // ul
