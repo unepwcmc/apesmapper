@@ -498,52 +498,261 @@ header div ul li a.no_bkg span {
   padding: 0;
   right: 0;
   height: 100%;
-  width: 300px;
-}
-/* line 10, ../../css_src/partials/_panel.scss */
-#panel p {
-  margin: 5px 0;
+  width: 352px;
+  border-left: 1px solid #CCCCCC;
 }
 /* line 13, ../../css_src/partials/_panel.scss */
-#panel h2, #panel h1 {
-  margin: 10px 0;
-}
-/* line 18, ../../css_src/partials/_panel.scss */
-#panel #tabs ul {
+#panel #tabs display:none
+ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-/* line 22, ../../css_src/partials/_panel.scss */
-#panel #tabs ul li {
+/* line 17, ../../css_src/partials/_panel.scss */
+#panel #tabs display:none
+ul li {
   float: left;
   border-right: 1px solid #BBB;
   border-bottom: 1px solid #BBB;
   margin: 0;
   padding: 20px 10px;
 }
-/* line 28, ../../css_src/partials/_panel.scss */
-#panel #tabs ul li.total {
+/* line 23, ../../css_src/partials/_panel.scss */
+#panel #tabs display:none
+ul li.total {
   width: 100%;
 }
-/* line 31, ../../css_src/partials/_panel.scss */
-#panel #tabs ul li.enabled {
+/* line 26, ../../css_src/partials/_panel.scss */
+#panel #tabs display:none
+ul li.enabled {
   border-bottom-width: 0;
   font-weight: bold;
   padding-left: 20px;
   padding-right: 20px;
 }
-/* line 43, ../../css_src/partials/_panel.scss */
+/* line 39, ../../css_src/partials/_panel.scss */
+#panel p {
+  margin: 5px 0;
+}
+/* line 42, ../../css_src/partials/_panel.scss */
+#panel h2, #panel h1 {
+  margin: 10px 0;
+}
+/* line 47, ../../css_src/partials/_panel.scss */
 #panel #tab_content {
+  display: block;
+  width: 312px;
+  height: 100%;
+  padding: 20px;
   margin: 0;
-  clear: both;
-  border: 1px solid #BBB;
-  border-top-width: 0;
   list-style: none;
 }
-/* line 49, ../../css_src/partials/_panel.scss */
-#panel #tab_content li {
-  display: none;
+/* line 56, ../../css_src/partials/_panel.scss */
+#panel #tab_content div.tools {
+  width: 100%;
+  height: 34px;
+  background: url("/img/sprite.png") 0 -474px no-repeat;
+}
+/* line 61, ../../css_src/partials/_panel.scss */
+#panel #tab_content div.tools a.edit {
+  float: left;
+  padding: 10px;
+  font: normal 13px "Helvetica Neue",Arial;
+  color: #666666;
+  text-decoration: none;
+}
+/* line 67, ../../css_src/partials/_panel.scss */
+#panel #tab_content div.tools a.edit:hover {
+  color: #333333;
+  text-decoration: underline;
+}
+/* line 70, ../../css_src/partials/_panel.scss */
+#panel #tab_content div.tools a.remove {
+  float: right;
+  width: 18px;
+  height: 21px;
+  margin: 7px 10px 0 0;
+  text-indent: -9999px;
+  font-size: 0;
+  line-height: 0;
+  background: url("/img/sprite.png") 0 -453px no-repeat;
+}
+/* line 83, ../../css_src/partials/_panel.scss */
+#panel #tab_content div.no_content {
+  width: 312px;
+  margin: 0;
+}
+/* line 87, ../../css_src/partials/_panel.scss */
+#panel #tab_content div.no_content div.inner {
+  width: 292px;
+  padding: 10px;
+  background: url("/img/sprite.png") 0 -508px no-repeat;
+}
+/* line 92, ../../css_src/partials/_panel.scss */
+#panel #tab_content div.no_content div.inner span.title {
+  display: inline-block;
+  width: 100%;
+  padding: 0 0 2px 0;
+  border-bottom: 2px solid #666666;
+}
+/* line 98, ../../css_src/partials/_panel.scss */
+#panel #tab_content div.no_content div.inner span.title h2 {
+  float: left;
+  width: auto;
+  padding: 0;
+  margin: 0;
+  font: normal 13px "Helvetica Neue",Arial;
+  color: #666666;
+}
+/* line 107, ../../css_src/partials/_panel.scss */
+#panel #tab_content div.no_content div.inner span.title a.remove {
+  float: right;
+  width: 18px;
+  height: 21px;
+  margin: 0;
+  padding: 0;
+  text-indent: -9999px;
+  font-size: 0;
+  line-height: 0;
+  background: url("/img/sprite.png") 0 -454px no-repeat;
+}
+/* line 120, ../../css_src/partials/_panel.scss */
+#panel #tab_content div.no_content div.inner p {
+  color: #666666;
+}
+/* line 120, ../../css_src/partials/_panel.scss */
+#panel #tab_content div.no_content div.inner p.margin {
+  margin: 20px 0 0 0;
+}
+/* line 123, ../../css_src/partials/_panel.scss */
+#panel #tab_content div.no_content span.end {
+  width: 312px;
+  height: 5px;
+  background: url("/img/sprite.png") 0 -785px no-repeat;
+}
+/* line 132, ../../css_src/partials/_panel.scss */
+#panel #tab_content div.block {
+  width: 100%;
+  margin: 15px 0 0 0;
+}
+/* line 136, ../../css_src/partials/_panel.scss */
+#panel #tab_content div.block span.title {
+  float: left;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-bottom: 2px solid #666666;
+}
+/* line 143, ../../css_src/partials/_panel.scss */
+#panel #tab_content div.block span.title h2 {
+  float: left;
+  padding: 0;
+  margin: 27px 0 0 0;
+  font: bold 11px "WhitneyBold","Myriad Pro";
+  color: #333333;
+}
+/* line 151, ../../css_src/partials/_panel.scss */
+#panel #tab_content div.block span.title p {
+  float: right;
+  padding: 0;
+  margin: 0;
+  font: bold 39px "Helvetica Neue",Arial;
+  color: #333333;
+}
+/* line 158, ../../css_src/partials/_panel.scss */
+#panel #tab_content div.block span.title p small {
+  font-size: 13px;
+  padding: 0 0 0 5px;
+}
+/* line 165, ../../css_src/partials/_panel.scss */
+#panel #tab_content div.block ul {
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+/* line 171, ../../css_src/partials/_panel.scss */
+#panel #tab_content div.block ul li {
+  float: left;
+  width: 100%;
+  padding: 7px 0;
+  border-bottom: 1px solid #CCCCCC;
+}
+/* line 177, ../../css_src/partials/_panel.scss */
+#panel #tab_content div.block ul li h5 {
+  float: left;
+  margin: 0;
+  padding: 0;
+  font: normal 13px "Helvetica Neue",Arial;
+  color: #666666;
+}
+/* line 185, ../../css_src/partials/_panel.scss */
+#panel #tab_content div.block ul li p {
+  float: right;
+  margin: 0;
+  padding: 0;
+  font: normal 13px "Helvetica Neue",Arial;
+  color: #666666;
+  line-height: 13px;
+}
+/* line 193, ../../css_src/partials/_panel.scss */
+#panel #tab_content div.block ul li p.ok {
+  padding: 0 15px 0 0;
+  background: url("/img/sprite.png") no-repeat right -384px;
+}
+/* line 194, ../../css_src/partials/_panel.scss */
+#panel #tab_content div.block ul li p.ko {
+  padding: 0 15px 0 0;
+  background: url("/img/sprite.png") no-repeat right -397px;
+}
+/* line 197, ../../css_src/partials/_panel.scss */
+#panel #tab_content div.block ul li.last {
+  border: none;
+}
+/* line 198, ../../css_src/partials/_panel.scss */
+#panel #tab_content div.block ul li:last-child {
+  border: none;
+}
+/* line 203, ../../css_src/partials/_panel.scss */
+#panel #tab_content div.block ul.inline li {
+  width: 77px;
+  height: 80px;
+  padding: 0;
+  border: none;
+  border-right: 1px solid #E5E5E5;
+}
+/* line 210, ../../css_src/partials/_panel.scss */
+#panel #tab_content div.block ul.inline li h5 {
+  float: left;
+  width: 100%;
+  height: 10px;
+  margin: 0;
+  padding: 8px 0 9px;
+  font: normal 10px "Helvetica Neue",Arial;
+  color: #666666;
+  text-align: center;
+  background: #EDEDED;
+  border-bottom: 1px solid #CCCCCC;
+}
+/* line 223, ../../css_src/partials/_panel.scss */
+#panel #tab_content div.block ul.inline li p {
+  float: right;
+  width: 100%;
+  margin: 0;
+  padding: 17px 0 0 0;
+  font: bold 21px "Helvetica Neue",Arial;
+  color: #666666;
+  line-height: 21px;
+  letter-spacing: -1px;
+  text-align: center;
+}
+/* line 235, ../../css_src/partials/_panel.scss */
+#panel #tab_content div.block ul.inline li.last {
+  border: none;
+}
+/* line 236, ../../css_src/partials/_panel.scss */
+#panel #tab_content div.block ul.inline li:last-child {
+  border: none;
 }
 
 /* Golden ratio scale from http://modularscale.com/scale/?px1=12&px2=48&ra1=1.618&ra2=0
