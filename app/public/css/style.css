@@ -1,5 +1,6 @@
 /* Golden ratio scale from http://modularscale.com/scale/?px1=12&px2=48&ra1=1.618&ra2=0
 ---------------------------------------- */
+/* Carbon tool mixins */
 /* line 14, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_reset.scss */
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -255,37 +256,40 @@ nav ul, nav li {
   clear: both;
 }
 
-/* line 8, ../../css_src/partials/_page.scss */
+/* Golden ratio scale from http://modularscale.com/scale/?px1=12&px2=48&ra1=1.618&ra2=0
+---------------------------------------- */
+/* Carbon tool mixins */
+/* line 9, ../../css_src/partials/_page.scss */
 body, select, input, textarea {
   color: #444444;
 }
 
-/* line 15, ../../css_src/partials/_page.scss */
+/* line 16, ../../css_src/partials/_page.scss */
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
 }
 
-/* line 21, ../../css_src/partials/_page.scss */
+/* line 22, ../../css_src/partials/_page.scss */
 a, a:active, a:visited {
   color: #607890;
 }
 
-/* line 22, ../../css_src/partials/_page.scss */
+/* line 23, ../../css_src/partials/_page.scss */
 a:hover {
   color: #003366;
 }
 
-/* line 24, ../../css_src/partials/_page.scss */
+/* line 25, ../../css_src/partials/_page.scss */
 strong, th {
   font-weight: bold;
 }
 
-/* line 28, ../../css_src/partials/_page.scss */
+/* line 29, ../../css_src/partials/_page.scss */
 small {
   font-size: 85%;
 }
 
-/* line 37, ../../css_src/partials/_page.scss */
+/* line 38, ../../css_src/partials/_page.scss */
 input:invalid, textarea:invalid {
   -moz-border-radius: 1px;
   -webkit-border-radius: 1px;
@@ -299,10 +303,118 @@ input:invalid, textarea:invalid {
   box-shadow: 0 0 5px 0 red;
 }
 
-/* line 42, ../../css_src/partials/_page.scss */
+/* line 43, ../../css_src/partials/_page.scss */
 .no-boxshadow input:invalid,
 .no-boxshadow textarea:invalid {
   background-color: #f0dddd;
+}
+
+@font-face {
+  font-family: 'WhitneyBookRegular';
+  src: url("/fonts/whitney-book-webfont.eot");
+  src: url("/fonts/whitney-book-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/whitney-book-webfont.woff") format("woff"), url("/fonts/whitney-book-webfont.ttf") format("truetype"), url("/fonts/whitney-book-webfont.svg#WhitneyBookRegular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'WhitneyBold';
+  src: url("/fonts/whitney-bold-webfont.eot");
+  src: url("/fonts/whitney-bold-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/whitney-bold-webfont.woff") format("woff"), url("/fonts/whitney-bold-webfont.ttf") format("truetype"), url("/fonts/whitney-bold-webfont.svg#WhitneyBold") format("svg");
+  font-weight: bold;
+  font-style: bold;
+}
+
+/* line 80, ../../css_src/partials/_page.scss */
+div.left {
+  float: left;
+}
+
+/* line 81, ../../css_src/partials/_page.scss */
+div.right {
+  float: right;
+}
+
+/* line 84, ../../css_src/partials/_page.scss */
+header {
+  position: relative;
+  width: 100%;
+  height: 73px;
+  background: #333333;
+}
+/* line 90, ../../css_src/partials/_page.scss */
+header div {
+  padding: 20px;
+}
+/* line 93, ../../css_src/partials/_page.scss */
+header div h1 {
+  font: bold 13px "WhitneyBold","Myriad Pro";
+  filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=270, Strength=1);
+  text-shadow: 0 1px 0 black;
+  color: #FFFFFF;
+}
+/* line 97, ../../css_src/partials/_page.scss */
+header div h1:hover {
+  cursor: default;
+}
+/* line 100, ../../css_src/partials/_page.scss */
+header div p {
+  font: normal 13px "WhitneyBookRegular","Myriad Pro";
+  filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=270, Strength=1);
+  text-shadow: 0 1px 0 black;
+  color: white;
+}
+/* line 106, ../../css_src/partials/_page.scss */
+header div ul {
+  float: right;
+  width: auto;
+}
+/* line 110, ../../css_src/partials/_page.scss */
+header div ul li {
+  display: inline-block;
+  vertical-align: top;
+  zoom: 1;
+  width: auto;
+}
+/* line 116, ../../css_src/partials/_page.scss */
+header div ul li a {
+  float: left;
+  height: 28px;
+  padding: 0 0 0 12px;
+  background: url("/img/sprite.png") 0 0 no-repeat;
+  font: normal 13px "WhitneyBookRegular","Myriad Pro";
+  filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=270, Strength=1);
+  text-shadow: 0 1px 0 black;
+  color: white;
+  text-decoration: none;
+}
+/* line 126, ../../css_src/partials/_page.scss */
+header div ul li a:hover {
+  text-decoration: underline;
+  color: white;
+}
+/* line 131, ../../css_src/partials/_page.scss */
+header div ul li a span {
+  float: left;
+  width: auto;
+  height: 14px;
+  padding: 6px 12px 8px 0;
+  margin: 0;
+  background: url("/img/sprite.png") right -28px no-repeat;
+  line-height: 13px;
+}
+/* line 138, ../../css_src/partials/_page.scss */
+header div ul li a span strong {
+  font: bold 13px "WhitneyBold";
+}
+/* line 142, ../../css_src/partials/_page.scss */
+header div ul li a.no_bkg {
+  margin: 6px 12px 0 0;
+  background: none;
+}
+/* line 145, ../../css_src/partials/_page.scss */
+header div ul li a.no_bkg span {
+  background: none;
 }
 
 /* line 2, ../../css_src/partials/_map.scss */
@@ -434,27 +546,82 @@ input:invalid, textarea:invalid {
   display: none;
 }
 
+/* Golden ratio scale from http://modularscale.com/scale/?px1=12&px2=48&ra1=1.618&ra2=0
+---------------------------------------- */
+/* Carbon tool mixins */
 /* line 3, ../../css_src/partials/_start_banner.scss */
 #start_banner {
   position: absolute;
-  height: 300px;
-  width: 100%;
   top: 50%;
-  margin-top: -150px;
-  background-color: white;
+  left: 0;
+  height: 324px;
+  width: 100%;
+  margin-top: -162px;
+  background: white;
   text-align: center;
+  border-bottom: 1px solid #CCCCCC;
+  border-top: 1px solid #CCCCCC;
 }
-/* line 13, ../../css_src/partials/_start_banner.scss */
+/* line 16, ../../css_src/partials/_start_banner.scss */
 #start_banner .inner {
-  width: 800px;
-  margin: 40px auto;
+  width: 765px;
+  height: 324px;
+  margin: 0 auto;
   text-align: left;
-}
-/* line 17, ../../css_src/partials/_start_banner.scss */
-#start_banner .inner .help {
-  width: 400px;
+  background: url("/img/sprite.png") right -56px no-repeat;
 }
 /* line 23, ../../css_src/partials/_start_banner.scss */
+#start_banner .inner .help {
+  width: 385px;
+  padding: 58px 0 0 0;
+}
+/* line 27, ../../css_src/partials/_start_banner.scss */
+#start_banner .inner .help h1 {
+  display: block;
+  width: 100%;
+  padding: 0 0 10px 0;
+  border-bottom: 2px solid #666666;
+  text-transform: uppercase;
+  font: bold 11px "WhitneyBold","Myriad Pro";
+  color: #333333;
+}
+/* line 37, ../../css_src/partials/_start_banner.scss */
+#start_banner .inner .help p {
+  margin: 12px 0 0 0;
+  font: normal 15px "Helvetica Neue",Arial;
+  color: #333333;
+}
+/* line 41, ../../css_src/partials/_start_banner.scss */
+#start_banner .inner .help p.margin {
+  margin: 20px 0 0 0;
+}
+/* line 44, ../../css_src/partials/_start_banner.scss */
+#start_banner .inner .help button {
+  float: right;
+  width: auto;
+  height: 47px;
+  margin: 23px 0 0 0;
+  padding: 0 0 0 21px;
+  border: none;
+  background: url("/img/sprite.png") left -380px no-repeat;
+  font: bold 15px "WhitneyBold","Myriad Pro";
+  color: #333333;
+}
+/* line 55, ../../css_src/partials/_start_banner.scss */
+#start_banner .inner .help button span {
+  float: right;
+  height: 15px;
+  padding: 17px 21px 19px 0;
+  background: url("/img/sprite.png") right -427px no-repeat;
+  line-height: 15px;
+  text-transform: uppercase;
+}
+/* line 65, ../../css_src/partials/_start_banner.scss */
+#start_banner .inner .help button:hover span {
+  color: black;
+  text-decoration: underline;
+}
+/* line 71, ../../css_src/partials/_start_banner.scss */
 #start_banner button {
   float: right;
 }
