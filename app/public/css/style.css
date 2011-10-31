@@ -1273,104 +1273,171 @@ body.out {
   background: white;
 }
 /* line 5, ../../css_src/partials/_layout.scss */
-body.out div#layout {
+body.out section.results {
+  display: inline-block;
+  width: 100%;
+  margin: 80px 0 0 0;
+  background: url("/img/pattern.jpg") repeat 0 0;
+}
+/* line 11, ../../css_src/partials/_layout.scss */
+body.out section.results div.inner {
+  width: 920px;
+  margin: 0 auto;
+  padding: 38px 0;
+}
+/* line 16, ../../css_src/partials/_layout.scss */
+body.out section.results div.inner h3 {
+  padding: 0 0 20px 0;
+  font: bold 27px "WhitneyBold","Myriad Pro";
+  color: #333333;
+}
+/* line 22, ../../css_src/partials/_layout.scss */
+body.out section.results div.inner table {
+  width: 920px;
+}
+/* line 25, ../../css_src/partials/_layout.scss */
+body.out section.results div.inner table div {
+  width: 440px;
+  padding: 0 0 40px;
+}
+/* line 27, ../../css_src/partials/_layout.scss */
+body.out section.results div.inner table h6 {
+  width: 100%;
+  font: bold 13px "WhitneyBold","Myriad Pro";
+  color: #333333;
+  padding: 0 0 5px;
+  border-bottom: 2px solid #323232;
+}
+/* line 35, ../../css_src/partials/_layout.scss */
+body.out section.results div.inner table p {
+  margin: 7px 0 0 0;
+  padding: 0 0 15px 0;
+  font: normal 13px "Helvetica",Arial;
+  color: #666666;
+}
+/* line 42, ../../css_src/partials/_layout.scss */
+body.out section.results div.inner table a {
+  float: left;
+  width: auto;
+  height: 26px;
+  padding: 0 0 0 4px;
+  margin: 0 4px 0 0;
+  background: url("/img/sprite.png") no-repeat 0 -1337px;
+  font: bold 11px "WhitneyBold","Myriad Pro";
+  color: #66CCCC;
+  text-decoration: none;
+}
+/* line 53, ../../css_src/partials/_layout.scss */
+body.out section.results div.inner table a span {
+  float: left;
+  width: auto;
+  height: 11px;
+  padding: 7px 8px 8px 4px;
+  background: url("/img/sprite.png") no-repeat right -1337px;
+}
+/* line 61, ../../css_src/partials/_layout.scss */
+body.out section.results div.inner table a:hover {
+  color: #3A7676;
+}
+/* line 67, ../../css_src/partials/_layout.scss */
+body.out div.layout {
   width: 920px;
   margin: 0 auto;
 }
-/* line 9, ../../css_src/partials/_layout.scss */
-body.out div#layout header {
+/* line 71, ../../css_src/partials/_layout.scss */
+body.out div.layout header {
   padding: 35px 0 45px;
   border-bottom: 2px solid #323232;
 }
-/* line 13, ../../css_src/partials/_layout.scss */
-body.out div#layout header h1 {
+/* line 75, ../../css_src/partials/_layout.scss */
+body.out div.layout header h1 {
   float: left;
 }
-/* line 15, ../../css_src/partials/_layout.scss */
-body.out div#layout header h1 a {
+/* line 77, ../../css_src/partials/_layout.scss */
+body.out div.layout header h1 a {
   font: bold 13px "WhitneyBold","Myriad Pro";
   color: #333333;
   text-decoration: none;
 }
-/* line 19, ../../css_src/partials/_layout.scss */
-body.out div#layout header h1 a:hover {
+/* line 81, ../../css_src/partials/_layout.scss */
+body.out div.layout header h1 a:hover {
   color: black;
 }
-/* line 23, ../../css_src/partials/_layout.scss */
-body.out div#layout header ul {
+/* line 85, ../../css_src/partials/_layout.scss */
+body.out div.layout header ul {
   float: right;
   width: auto;
 }
-/* line 27, ../../css_src/partials/_layout.scss */
-body.out div#layout header ul li {
+/* line 89, ../../css_src/partials/_layout.scss */
+body.out div.layout header ul li {
   display: inline-block;
   vertical-align: top;
   zoom: 1;
   width: auto;
   margin: 0 0 0 20px;
 }
-/* line 34, ../../css_src/partials/_layout.scss */
-body.out div#layout header ul li a {
+/* line 96, ../../css_src/partials/_layout.scss */
+body.out div.layout header ul li a {
   font: bold 13px "WhitneyBold","Myriad Pro";
   color: #333333;
   text-decoration: none;
 }
-/* line 38, ../../css_src/partials/_layout.scss */
-body.out div#layout header ul li a:hover {
+/* line 100, ../../css_src/partials/_layout.scss */
+body.out div.layout header ul li a:hover {
   color: #66CCCC;
 }
-/* line 41, ../../css_src/partials/_layout.scss */
-body.out div#layout header ul li.selected a {
+/* line 103, ../../css_src/partials/_layout.scss */
+body.out div.layout header ul li.selected a {
   color: #66CCCC;
 }
-/* line 41, ../../css_src/partials/_layout.scss */
-body.out div#layout header ul li.selected a:hover {
+/* line 103, ../../css_src/partials/_layout.scss */
+body.out div.layout header ul li.selected a:hover {
   cursor: default;
 }
-/* line 46, ../../css_src/partials/_layout.scss */
-body.out div#layout h2 {
+/* line 108, ../../css_src/partials/_layout.scss */
+body.out div.layout h2 {
   margin: 45px 0 0 0;
   font: bold 47px "WhitneyBold","Myriad Pro";
   color: #333333;
   line-height: 47px;
 }
-/* line 53, ../../css_src/partials/_layout.scss */
-body.out div#layout p.subtitle {
+/* line 115, ../../css_src/partials/_layout.scss */
+body.out div.layout p.subtitle {
   padding: 10px 0 0 0;
   font: normal 17px "Helvetica",Arial;
   color: #999999;
 }
-/* line 59, ../../css_src/partials/_layout.scss */
-body.out div#layout article.data_sources {
+/* line 121, ../../css_src/partials/_layout.scss */
+body.out div.layout article.data_sources {
   margin: 50px 0 0 0;
 }
-/* line 62, ../../css_src/partials/_layout.scss */
-body.out div#layout article.data_sources h4 {
+/* line 124, ../../css_src/partials/_layout.scss */
+body.out div.layout article.data_sources h4 {
   font: bold 27px "WhitneyBold","Myriad Pro";
   color: #333333;
 }
-/* line 67, ../../css_src/partials/_layout.scss */
-body.out div#layout article.data_sources h6 {
+/* line 129, ../../css_src/partials/_layout.scss */
+body.out div.layout article.data_sources h6 {
   padding: 20px 0 5px 0;
   font: bold 13px "WhitneyBold","Myriad Pro";
   color: #333333;
   border-bottom: 2px solid #333333;
 }
-/* line 74, ../../css_src/partials/_layout.scss */
-body.out div#layout article.data_sources ul {
+/* line 136, ../../css_src/partials/_layout.scss */
+body.out div.layout article.data_sources ul {
   list-style-image: url("/img/icons/list.png");
   width: 100%;
   margin: 0;
   padding: 5px 0 0 0;
 }
-/* line 80, ../../css_src/partials/_layout.scss */
-body.out div#layout article.data_sources ul li {
+/* line 142, ../../css_src/partials/_layout.scss */
+body.out div.layout article.data_sources ul li {
   padding: 5px 0;
   font: normal 15px "Helvetica",Arial;
   color: #666666;
 }
-/* line 88, ../../css_src/partials/_layout.scss */
-body.out div#layout section.start {
+/* line 150, ../../css_src/partials/_layout.scss */
+body.out div.layout section.start {
   position: relative;
   width: 918px;
   height: 402px;
@@ -1382,8 +1449,8 @@ body.out div#layout section.start {
   box-shadow: 0 0 4px 3px rgba(0, 0, 0, 0.08);
   filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='15', MakeShadow='true', ShadowOpacity='0.40');
 }
-/* line 98, ../../css_src/partials/_layout.scss */
-body.out div#layout section.start div.mamufas {
+/* line 160, ../../css_src/partials/_layout.scss */
+body.out div.layout section.start div.mamufas {
   position: absolute;
   display: none;
   top: 0;
@@ -1392,8 +1459,8 @@ body.out div#layout section.start div.mamufas {
   height: 402px;
   background: url("/img/mamufas.png") no-repeat 0 0;
 }
-/* line 107, ../../css_src/partials/_layout.scss */
-body.out div#layout section.start div.mamufas a {
+/* line 169, ../../css_src/partials/_layout.scss */
+body.out div.layout section.start div.mamufas a {
   position: absolute;
   width: 316px;
   height: 78px;
@@ -1403,16 +1470,16 @@ body.out div#layout section.start div.mamufas a {
   text-decoration: none;
   background: url("/img/sprite.png") no-repeat 0 -1181px;
 }
-/* line 116, ../../css_src/partials/_layout.scss */
-body.out div#layout section.start div.mamufas a:hover {
+/* line 178, ../../css_src/partials/_layout.scss */
+body.out div.layout section.start div.mamufas a:hover {
   background-position: 0 -1259px;
 }
-/* line 116, ../../css_src/partials/_layout.scss */
-body.out div#layout section.start div.mamufas a:hover small {
+/* line 178, ../../css_src/partials/_layout.scss */
+body.out div.layout section.start div.mamufas a:hover small {
   color: white;
 }
-/* line 118, ../../css_src/partials/_layout.scss */
-body.out div#layout section.start div.mamufas a span {
+/* line 180, ../../css_src/partials/_layout.scss */
+body.out div.layout section.start div.mamufas a span {
   display: block;
   width: 225px;
   padding: 22px 0 0 15px;
@@ -1423,90 +1490,117 @@ body.out div#layout section.start div.mamufas a span {
   text-shadow: 0 1px 0 #3c7d7d;
   line-height: 17px;
 }
-/* line 128, ../../css_src/partials/_layout.scss */
-body.out div#layout section.start div.mamufas a span small {
+/* line 190, ../../css_src/partials/_layout.scss */
+body.out div.layout section.start div.mamufas a span small {
   padding: 0;
   font: normal 13px "Helvetica",Arial;
   text-shadow: none;
   color: #549A9A;
 }
-/* line 139, ../../css_src/partials/_layout.scss */
-body.out div#layout section.start:hover div.mamufas {
+/* line 201, ../../css_src/partials/_layout.scss */
+body.out div.layout section.start:hover div.mamufas {
   display: block;
 }
-/* line 143, ../../css_src/partials/_layout.scss */
-body.out div#layout section.two_columns {
+/* line 205, ../../css_src/partials/_layout.scss */
+body.out div.layout section.two_columns {
   width: 100%;
   margin: 50px 0 0 0;
   display: inline-block;
 }
-/* line 148, ../../css_src/partials/_layout.scss */
-body.out div#layout section.two_columns div.left {
+/* line 210, ../../css_src/partials/_layout.scss */
+body.out div.layout section.two_columns div.left {
   width: 550px;
 }
-/* line 149, ../../css_src/partials/_layout.scss */
-body.out div#layout section.two_columns div.right {
+/* line 211, ../../css_src/partials/_layout.scss */
+body.out div.layout section.two_columns div.right {
   width: 333px;
 }
-/* line 151, ../../css_src/partials/_layout.scss */
-body.out div#layout section.two_columns h4 {
+/* line 213, ../../css_src/partials/_layout.scss */
+body.out div.layout section.two_columns h4 {
   padding: 0 0 5px 0;
   font: bold 13px "WhitneyBold","Myriad Pro";
   color: #333333;
   border-bottom: 2px solid #333333;
 }
-/* line 158, ../../css_src/partials/_layout.scss */
-body.out div#layout section.two_columns p {
+/* line 220, ../../css_src/partials/_layout.scss */
+body.out div.layout section.two_columns p {
   padding: 12px 0;
   font: normal 17px "Helvetica",Arial;
   color: #666666;
 }
-/* line 163, ../../css_src/partials/_layout.scss */
-body.out div#layout section.two_columns p strong {
+/* line 225, ../../css_src/partials/_layout.scss */
+body.out div.layout section.two_columns p strong {
   font-weight: normal;
   color: #333333;
 }
-/* line 168, ../../css_src/partials/_layout.scss */
-body.out div#layout section.two_columns p.orange {
+/* line 230, ../../css_src/partials/_layout.scss */
+body.out div.layout section.two_columns p.orange {
   font-style: italic;
   color: #FBB986;
 }
-/* line 174, ../../css_src/partials/_layout.scss */
-body.out div#layout section.two_columns ul {
+/* line 236, ../../css_src/partials/_layout.scss */
+body.out div.layout section.two_columns ul {
   list-style-image: url("/img/icons/list_green.png");
   width: 100%;
   margin: 6px 0 0 0;
 }
-/* line 179, ../../css_src/partials/_layout.scss */
-body.out div#layout section.two_columns ul li {
+/* line 241, ../../css_src/partials/_layout.scss */
+body.out div.layout section.two_columns ul li {
   padding: 7px 0;
   font: normal 15px "Helvetica",Arial;
   color: #666666;
 }
-/* line 187, ../../css_src/partials/_layout.scss */
-body.out div#layout footer {
+/* line 249, ../../css_src/partials/_layout.scss */
+body.out div.layout section.video {
+  width: 920px;
+  margin: 50px 0 0 0;
+}
+/* line 252, ../../css_src/partials/_layout.scss */
+body.out div.layout section.video div.left {
+  width: 441px;
+}
+/* line 253, ../../css_src/partials/_layout.scss */
+body.out div.layout section.video div.right {
+  width: 441px;
+  padding: 50px 0 0 0;
+}
+/* line 255, ../../css_src/partials/_layout.scss */
+body.out div.layout section.video h3 {
+  font: bold 27px "WhitneyBold","Myriad Pro";
+  color: #333333;
+  padding: 0 0 5px 0;
+}
+/* line 261, ../../css_src/partials/_layout.scss */
+body.out div.layout section.video p {
+  padding: 10px 0;
+  font: normal 15px "Helvetica",Arial;
+  line-height: 20px;
+  color: #666666;
+}
+/* line 269, ../../css_src/partials/_layout.scss */
+body.out div.layout footer {
   display: inline-block;
   width: 100%;
   margin: 80px 0 0 0;
   padding: 0 0 30px 0;
 }
-/* line 193, ../../css_src/partials/_layout.scss */
-body.out div#layout footer div {
+/* line 275, ../../css_src/partials/_layout.scss */
+body.out div.layout footer div {
   border-top: 2px solid #CCCCCC;
 }
-/* line 197, ../../css_src/partials/_layout.scss */
-body.out div#layout footer div.left {
+/* line 279, ../../css_src/partials/_layout.scss */
+body.out div.layout footer div.left {
   width: 550px;
   padding: 10px 0 0 0;
 }
-/* line 201, ../../css_src/partials/_layout.scss */
-body.out div#layout footer div.left ul {
+/* line 283, ../../css_src/partials/_layout.scss */
+body.out div.layout footer div.left ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-/* line 206, ../../css_src/partials/_layout.scss */
-body.out div#layout footer div.left ul li {
+/* line 288, ../../css_src/partials/_layout.scss */
+body.out div.layout footer div.left ul li {
   display: inline-block;
   vertical-align: top;
   zoom: 1;
@@ -1514,57 +1608,57 @@ body.out div#layout footer div.left ul li {
   margin: 0 27px 0 0;
   padding: 0;
 }
-/* line 214, ../../css_src/partials/_layout.scss */
-body.out div#layout footer div.left ul li a {
+/* line 296, ../../css_src/partials/_layout.scss */
+body.out div.layout footer div.left ul li a {
   display: inline-block;
   text-indent: -9999px;
   line-height: 0;
   font-size: 0;
 }
-/* line 220, ../../css_src/partials/_layout.scss */
-body.out div#layout footer div.left ul li a.cbd {
+/* line 302, ../../css_src/partials/_layout.scss */
+body.out div.layout footer div.left ul li a.cbd {
   width: 145px;
   height: 48px;
   background: url("/img/sprite.png") no-repeat 0 -1126px;
 }
-/* line 221, ../../css_src/partials/_layout.scss */
-body.out div#layout footer div.left ul li a.lifeweb {
+/* line 303, ../../css_src/partials/_layout.scss */
+body.out div.layout footer div.left ul li a.lifeweb {
   width: 121px;
   height: 48px;
   background: url("/img/sprite.png") no-repeat -150px -1127px;
 }
-/* line 222, ../../css_src/partials/_layout.scss */
-body.out div#layout footer div.left ul li a.unep-wcmc {
+/* line 304, ../../css_src/partials/_layout.scss */
+body.out div.layout footer div.left ul li a.unep-wcmc {
   width: 96px;
   height: 49px;
   background: url("/img/sprite.png") no-repeat -375px -1123px;
 }
-/* line 223, ../../css_src/partials/_layout.scss */
-body.out div#layout footer div.left ul li a.vizzuality {
+/* line 305, ../../css_src/partials/_layout.scss */
+body.out div.layout footer div.left ul li a.vizzuality {
   width: 89px;
   height: 47px;
   background: url("/img/sprite.png") no-repeat -280px -1126px;
 }
-/* line 228, ../../css_src/partials/_layout.scss */
-body.out div#layout footer div.left ul li.last {
+/* line 310, ../../css_src/partials/_layout.scss */
+body.out div.layout footer div.left ul li.last {
   margin: 0;
 }
-/* line 233, ../../css_src/partials/_layout.scss */
-body.out div#layout footer div.right {
+/* line 315, ../../css_src/partials/_layout.scss */
+body.out div.layout footer div.right {
   width: 333px;
   padding: 30px 0 0 0;
 }
-/* line 236, ../../css_src/partials/_layout.scss */
-body.out div#layout footer div.right p {
+/* line 318, ../../css_src/partials/_layout.scss */
+body.out div.layout footer div.right p {
   font: normal 15px "Helvetica",Arial;
   color: #B2B2B2;
 }
-/* line 239, ../../css_src/partials/_layout.scss */
-body.out div#layout footer div.right p a {
+/* line 321, ../../css_src/partials/_layout.scss */
+body.out div.layout footer div.right p a {
   color: #7F7F7F;
   text-decoration: none;
 }
-/* line 239, ../../css_src/partials/_layout.scss */
-body.out div#layout footer div.right p a:hover {
+/* line 321, ../../css_src/partials/_layout.scss */
+body.out div.layout footer div.right p a:hover {
   text-decoration: underline;
 }
