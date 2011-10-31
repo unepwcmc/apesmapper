@@ -1,4 +1,18 @@
 
+/*
+//=======================================
+// map layer
+//
+//  a map layer is defined by its name and its source
+//=======================================
+var Layer = Class.extend({
+
+    init: function() {
+    }
+
+});
+*/
+
 // google maps map
 var MapView = Backbone.View.extend({
     mapOptions: {

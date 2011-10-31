@@ -1,9 +1,13 @@
 
 var Layer = Backbone.View.extend({
 
-    template: _.template('<li class="sortable"><%= name %></li>'),
+    template: _.template('<%= name %>'),
 
     tagName: 'li',
+
+    events: {
+      'click': 'toggle'
+    },
 
     initialize: function(layer) {
         this.layer = layer;
@@ -12,8 +16,12 @@ var Layer = Backbone.View.extend({
     render: function() {
         $(this.el).html(
             this.template(this.layer)
-        );
+        ).addClass('sortable').attr('id', this.layer.name);
         return this;
+    },
+
+    toggle: function() {
+        this.trigger();
     }
 
 });
@@ -28,7 +36,7 @@ var LayerEditor = Backbone.View.extend({
     initialize: function() {
         var self = this;
         this.layers = this.options.layers;
-        this.views = [];
+        this.views = {};
         this.render();
     },
 
@@ -46,7 +54,7 @@ var LayerEditor = Backbone.View.extend({
         el.html('');
         _(this.layers.slice(0, howmany)).each(function(layer) {
             var v = new Layer(layer);
-            self.views.push(v);
+            self.views[layer.name] = v;
             el.append(v.render().el);
         });
         el.sortable({
@@ -69,6 +77,8 @@ var LayerEditor = Backbone.View.extend({
     },
 
     sortLayers: function() {
+        this.$('li').each(function(el) {
+        });
     }
 
 });

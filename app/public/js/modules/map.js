@@ -147,7 +147,7 @@ App.modules.Map = function(app) {
             this.polygon_edit.editing_state(true);
         },
 
-        end_edit_polygon: function(p) {
+        end_edit_polygon: function() {
             this.finish_editing();
             var p = this.editing_poly;
             app.Log.debug("changing polygon", p.report, p.polygon_id);
