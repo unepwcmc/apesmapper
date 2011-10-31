@@ -80,24 +80,24 @@
     width:99px;
     height:11px;
     padding:21px 20px 33px 20px;
-		
-		@include background(-325px,-478px,no-repeat);
-		
-		a {
-			display:inline-block;
-			vertical-align:top;
-			zoom:1;
-			width:42px;
-			font:bold 11px "","Myriad Pro";
-			color:#66CCCC;
-			text-decoration:none;
-			text-align:center;
-			text-transform:uppercase;
-			line-height:11px;
-			
-			&#delete {width:50px; color:#FF9933;}
-			&:hover {text-decoration:underline}
-		}
+
+    @include background(-325px,-478px,no-repeat);
+
+    a {
+      display:inline-block;
+      vertical-align:top;
+      zoom:1;
+      width:42px;
+      font:bold 11px "","Myriad Pro";
+      color:#66CCCC;
+      text-decoration:none;
+      text-align:center;
+      text-transform:uppercase;
+      line-height:11px;
+
+      &#delete {width:50px; color:#FF9933;}
+      &:hover {text-decoration:underline}
+    }
   }
 
   .layers {
