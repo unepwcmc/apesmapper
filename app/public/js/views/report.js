@@ -53,6 +53,11 @@ var Tabs = Backbone.View.extend({
             el = li;
         }
 
+        // remove add if is needed
+        if(this.tab_count == 3) {
+            this.tab_el.find('#add_tab').remove();
+        }
+
         if(el) {
             this.set_enabled($(el));
         }
@@ -60,7 +65,8 @@ var Tabs = Backbone.View.extend({
 
     clear: function() {
         this.tab_el.html('');
-        this.tab_el.append("<li><a id='add_report' href='#add_report'>+</a></li>");
+        this.tab_el.append("<li id='add_tab'><a id='add_report' href='#add_report'>+</a></li>");
+        this.tab_count = 0;
     },
 
     click_activate: function(e) {
@@ -73,13 +79,13 @@ var Tabs = Backbone.View.extend({
         this.$('li').removeClass('enabled').removeAttr('style');
         $(el).addClass('enabled');
         if ($(el).hasClass('total')) {
-	        var li_w = 0;
-	        this.tab_el.find('li').each(function(i,li){li_w += $(li).width()});
-	        var width = this.tab_el.width() - li_w + 46;
-	        $(el).find('span.stats').width(width);
+            var li_w = 0;
+            this.tab_el.find('li').each(function(i,li){li_w += $(li).width()});
+            var width = this.tab_el.width() - li_w + 46;
+            $(el).find('span.stats').width(width);
         } else {
-	        var width = $(el).find('span.stats').width();
-        	$(el).width(width+38);
+            var width = $(el).find('span.stats').width();
+            $(el).width(width+38);
         }
     }
 });
