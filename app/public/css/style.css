@@ -256,6 +256,22 @@ nav ul, nav li {
   clear: both;
 }
 
+@font-face {
+  font-family: 'WhitneyBookRegular';
+  src: url("/fonts/whitney-book-webfont.eot");
+  src: url("/fonts/whitney-book-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/whitney-book-webfont.woff") format("woff"), url("/fonts/whitney-book-webfont.ttf") format("truetype"), url("/fonts/whitney-book-webfont.svg#WhitneyBookRegular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'WhitneyBold';
+  src: url("/fonts/whitney-bold-webfont.eot");
+  src: url("/fonts/whitney-bold-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/whitney-bold-webfont.woff") format("woff"), url("/fonts/whitney-bold-webfont.ttf") format("truetype"), url("/fonts/whitney-bold-webfont.svg#WhitneyBold") format("svg");
+  font-weight: bold;
+  font-style: bold;
+}
+
 /* Golden ratio scale from http://modularscale.com/scale/?px1=12&px2=48&ra1=1.618&ra2=0
 ---------------------------------------- */
 /* Carbon tool mixins */
@@ -308,75 +324,49 @@ input:invalid, textarea:invalid {
   background-color: #f0dddd;
 }
 
-@font-face {
-  font-family: 'WhitneyBookRegular';
-  src: url("/fonts/whitney-book-webfont.eot");
-  src: url("/fonts/whitney-book-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/whitney-book-webfont.woff") format("woff"), url("/fonts/whitney-book-webfont.ttf") format("truetype"), url("/fonts/whitney-book-webfont.svg#WhitneyBookRegular") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'WhitneyBold';
-  src: url("/fonts/whitney-bold-webfont.eot");
-  src: url("/fonts/whitney-bold-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/whitney-bold-webfont.woff") format("woff"), url("/fonts/whitney-bold-webfont.ttf") format("truetype"), url("/fonts/whitney-bold-webfont.svg#WhitneyBold") format("svg");
-  font-weight: bold;
-  font-style: bold;
-}
-
-/* line 80, ../../css_src/partials/_page.scss */
-div.left {
-  float: left;
-}
-
-/* line 81, ../../css_src/partials/_page.scss */
-div.right {
-  float: right;
-}
-
-/* line 84, ../../css_src/partials/_page.scss */
-header {
+/* line 54, ../../css_src/partials/_page.scss */
+body.tool header {
   position: relative;
   width: 100%;
   height: 73px;
   background: #333333;
 }
-/* line 90, ../../css_src/partials/_page.scss */
-header div {
+/* line 60, ../../css_src/partials/_page.scss */
+body.tool header div {
   padding: 20px;
 }
-/* line 93, ../../css_src/partials/_page.scss */
-header div h1 {
+/* line 63, ../../css_src/partials/_page.scss */
+body.tool header div h1 {
   font: bold 13px "WhitneyBold","Myriad Pro";
   filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=270, Strength=1);
   text-shadow: 0 1px 0 black;
   color: #FFFFFF;
 }
-/* line 97, ../../css_src/partials/_page.scss */
-header div h1:hover {
+/* line 67, ../../css_src/partials/_page.scss */
+body.tool header div h1:hover {
   cursor: default;
 }
-/* line 100, ../../css_src/partials/_page.scss */
-header div p {
+/* line 70, ../../css_src/partials/_page.scss */
+body.tool header div p {
   font: normal 13px "WhitneyBookRegular","Myriad Pro";
   filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=270, Strength=1);
   text-shadow: 0 1px 0 black;
   color: white;
 }
-/* line 106, ../../css_src/partials/_page.scss */
-header div ul {
+/* line 76, ../../css_src/partials/_page.scss */
+body.tool header div ul {
   float: right;
   width: auto;
 }
-/* line 110, ../../css_src/partials/_page.scss */
-header div ul li {
+/* line 80, ../../css_src/partials/_page.scss */
+body.tool header div ul li {
   display: inline-block;
   vertical-align: top;
   zoom: 1;
   width: auto;
 }
-/* line 116, ../../css_src/partials/_page.scss */
-header div ul li a {
+/* line 86, ../../css_src/partials/_page.scss */
+body.tool header div ul li a {
   float: left;
   height: 28px;
   padding: 0 0 0 12px;
@@ -387,13 +377,13 @@ header div ul li a {
   color: white;
   text-decoration: none;
 }
-/* line 126, ../../css_src/partials/_page.scss */
-header div ul li a:hover {
+/* line 96, ../../css_src/partials/_page.scss */
+body.tool header div ul li a:hover {
   text-decoration: underline;
   color: white;
 }
-/* line 131, ../../css_src/partials/_page.scss */
-header div ul li a span {
+/* line 101, ../../css_src/partials/_page.scss */
+body.tool header div ul li a span {
   float: left;
   width: auto;
   height: 14px;
@@ -402,18 +392,28 @@ header div ul li a span {
   background: url("/img/sprite.png") right -28px no-repeat;
   line-height: 13px;
 }
-/* line 138, ../../css_src/partials/_page.scss */
-header div ul li a span strong {
+/* line 108, ../../css_src/partials/_page.scss */
+body.tool header div ul li a span strong {
   font: bold 13px "WhitneyBold";
 }
-/* line 142, ../../css_src/partials/_page.scss */
-header div ul li a.no_bkg {
+/* line 112, ../../css_src/partials/_page.scss */
+body.tool header div ul li a.no_bkg {
   margin: 6px 12px 0 0;
   background: none;
 }
-/* line 145, ../../css_src/partials/_page.scss */
-header div ul li a.no_bkg span {
+/* line 115, ../../css_src/partials/_page.scss */
+body.tool header div ul li a.no_bkg span {
   background: none;
+}
+
+/* line 124, ../../css_src/partials/_page.scss */
+div.left {
+  float: left;
+}
+
+/* line 125, ../../css_src/partials/_page.scss */
+div.right {
+  float: right;
 }
 
 /* line 2, ../../css_src/partials/_map.scss */
@@ -527,31 +527,77 @@ header div ul li a.no_bkg span {
   position: absolute;
   top: 20px;
   right: 375px;
-  padding: 5px 0px;
-  border: 1px solid #EEE;
-  background: #FFF;
-  text-align: right;
+  width: 224px;
+  z-index: 10;
 }
-/* line 111, ../../css_src/partials/_map.scss */
-.map_container .layers ul {
-  width: 150px;
+/* line 110, ../../css_src/partials/_map.scss */
+.map_container .layers a.view {
+  float: right;
+  display: block;
+  width: auto;
+  height: 33px;
+  padding: 0 0 0 15px;
+  background: url("/img/sprite.png") no-repeat 0 -1035px;
+  text-decoration: none;
+}
+/* line 119, ../../css_src/partials/_map.scss */
+.map_container .layers a.view span {
+  float: left;
+  height: 13px;
   margin: 0;
-  padding: 0;
+  padding: 11px 32px 9px 5px;
+  font: normal 13px "WhitneyBookRegular","Myriad Pro";
+  color: #333333;
+  background: url("/img/sprite.png") no-repeat right -1035px;
+  text-indent: 0px;
+  text-decoration: none;
+}
+/* line 130, ../../css_src/partials/_map.scss */
+.map_container .layers a.view span strong {
+  font: bold 13px "WhitneyBold","Myriad Pro";
+}
+/* line 136, ../../css_src/partials/_map.scss */
+.map_container .layers div.show {
+  position: absolute;
+  top: 21px;
+  right: 0;
+  display: block;
+  width: 224px;
+  z-index: -1;
+}
+/* line 144, ../../css_src/partials/_map.scss */
+.map_container .layers div.show span.top {
+  float: right;
+  width: 100%;
+  height: 12px;
+  background: url("/img/sprite.png") no-repeat right -1211px;
+}
+/* line 151, ../../css_src/partials/_map.scss */
+.map_container .layers div.show ul {
+  float: right;
+  width: 214px;
+  padding: 0 5px;
   list-style: none;
   text-align: left;
+  background: url("/img/sprite.png") no-repeat right bottom;
 }
-/* line 117, ../../css_src/partials/_map.scss */
-.map_container .layers ul li {
+/* line 159, ../../css_src/partials/_map.scss */
+.map_container .layers div.show ul li {
+  border: none;
   border-bottom: 1px solid #CCC;
   padding: 3px 0px;
 }
-/* line 123, ../../css_src/partials/_map.scss */
+/* line 175, ../../css_src/partials/_map.scss */
+.map_container .layers:hover a.view {
+  background-position: left -1072px;
+}
+/* line 178, ../../css_src/partials/_map.scss */
+.map_container .layers:hover a.view span {
+  background-position: right -1072px;
+}
+/* line 183, ../../css_src/partials/_map.scss */
 .map_container .layers:hover .show {
   display: block;
-}
-/* line 126, ../../css_src/partials/_map.scss */
-.map_container .layers .show {
-  display: none;
 }
 
 /* line 2, ../../css_src/partials/_panel.scss */
@@ -1221,4 +1267,304 @@ header div ul li a.no_bkg span {
   h2, h3 {
     page-break-after: avoid;
   }
+}
+/* line 2, ../../css_src/partials/_layout.scss */
+body.out {
+  background: white;
+}
+/* line 5, ../../css_src/partials/_layout.scss */
+body.out div#layout {
+  width: 920px;
+  margin: 0 auto;
+}
+/* line 9, ../../css_src/partials/_layout.scss */
+body.out div#layout header {
+  padding: 35px 0 45px;
+  border-bottom: 2px solid #323232;
+}
+/* line 13, ../../css_src/partials/_layout.scss */
+body.out div#layout header h1 {
+  float: left;
+}
+/* line 15, ../../css_src/partials/_layout.scss */
+body.out div#layout header h1 a {
+  font: bold 13px "WhitneyBold","Myriad Pro";
+  color: #333333;
+  text-decoration: none;
+}
+/* line 19, ../../css_src/partials/_layout.scss */
+body.out div#layout header h1 a:hover {
+  color: black;
+}
+/* line 23, ../../css_src/partials/_layout.scss */
+body.out div#layout header ul {
+  float: right;
+  width: auto;
+}
+/* line 27, ../../css_src/partials/_layout.scss */
+body.out div#layout header ul li {
+  display: inline-block;
+  vertical-align: top;
+  zoom: 1;
+  width: auto;
+  margin: 0 0 0 20px;
+}
+/* line 34, ../../css_src/partials/_layout.scss */
+body.out div#layout header ul li a {
+  font: bold 13px "WhitneyBold","Myriad Pro";
+  color: #333333;
+  text-decoration: none;
+}
+/* line 38, ../../css_src/partials/_layout.scss */
+body.out div#layout header ul li a:hover {
+  color: #66CCCC;
+}
+/* line 41, ../../css_src/partials/_layout.scss */
+body.out div#layout header ul li.selected a {
+  color: #66CCCC;
+}
+/* line 41, ../../css_src/partials/_layout.scss */
+body.out div#layout header ul li.selected a:hover {
+  cursor: default;
+}
+/* line 46, ../../css_src/partials/_layout.scss */
+body.out div#layout h2 {
+  margin: 45px 0 0 0;
+  font: bold 47px "WhitneyBold","Myriad Pro";
+  color: #333333;
+  line-height: 47px;
+}
+/* line 53, ../../css_src/partials/_layout.scss */
+body.out div#layout p.subtitle {
+  padding: 10px 0 0 0;
+  font: normal 17px "Helvetica",Arial;
+  color: #999999;
+}
+/* line 59, ../../css_src/partials/_layout.scss */
+body.out div#layout article.data_sources {
+  margin: 50px 0 0 0;
+}
+/* line 62, ../../css_src/partials/_layout.scss */
+body.out div#layout article.data_sources h4 {
+  font: bold 27px "WhitneyBold","Myriad Pro";
+  color: #333333;
+}
+/* line 67, ../../css_src/partials/_layout.scss */
+body.out div#layout article.data_sources h6 {
+  padding: 20px 0 5px 0;
+  font: bold 13px "WhitneyBold","Myriad Pro";
+  color: #333333;
+  border-bottom: 2px solid #333333;
+}
+/* line 74, ../../css_src/partials/_layout.scss */
+body.out div#layout article.data_sources ul {
+  list-style-image: url("/img/icons/list.png");
+  width: 100%;
+  margin: 0;
+  padding: 5px 0 0 0;
+}
+/* line 80, ../../css_src/partials/_layout.scss */
+body.out div#layout article.data_sources ul li {
+  padding: 5px 0;
+  font: normal 15px "Helvetica",Arial;
+  color: #666666;
+}
+/* line 88, ../../css_src/partials/_layout.scss */
+body.out div#layout section.start {
+  position: relative;
+  width: 918px;
+  height: 402px;
+  margin: 45px 0 0 0;
+  border: 1px solid #CCCCCC;
+  background: url("/img/start.jpg") no-repeat 0 0;
+  -moz-box-shadow: 0 0 4px 3px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 0 0 4px 3px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 4px 3px rgba(0, 0, 0, 0.08);
+  filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='15', MakeShadow='true', ShadowOpacity='0.40');
+}
+/* line 98, ../../css_src/partials/_layout.scss */
+body.out div#layout section.start div.mamufas {
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 918px;
+  height: 402px;
+  background: url("/img/mamufas.png") no-repeat 0 0;
+}
+/* line 107, ../../css_src/partials/_layout.scss */
+body.out div#layout section.start div.mamufas a {
+  position: absolute;
+  width: 316px;
+  height: 78px;
+  top: 50%;
+  left: 50%;
+  margin: -39px 0 0 -158px;
+  text-decoration: none;
+  background: url("/img/sprite.png") no-repeat 0 -1181px;
+}
+/* line 116, ../../css_src/partials/_layout.scss */
+body.out div#layout section.start div.mamufas a:hover {
+  background-position: 0 -1259px;
+}
+/* line 116, ../../css_src/partials/_layout.scss */
+body.out div#layout section.start div.mamufas a:hover small {
+  color: white;
+}
+/* line 118, ../../css_src/partials/_layout.scss */
+body.out div#layout section.start div.mamufas a span {
+  display: block;
+  width: 225px;
+  padding: 22px 0 0 15px;
+  font: bold 21px "WhitneyBold";
+  color: #FFFFFF;
+  text-align: center;
+  filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=270, Strength=1);
+  text-shadow: 0 1px 0 #3c7d7d;
+  line-height: 17px;
+}
+/* line 128, ../../css_src/partials/_layout.scss */
+body.out div#layout section.start div.mamufas a span small {
+  padding: 0;
+  font: normal 13px "Helvetica",Arial;
+  text-shadow: none;
+  color: #549A9A;
+}
+/* line 139, ../../css_src/partials/_layout.scss */
+body.out div#layout section.start:hover div.mamufas {
+  display: block;
+}
+/* line 143, ../../css_src/partials/_layout.scss */
+body.out div#layout section.two_columns {
+  width: 100%;
+  margin: 50px 0 0 0;
+  display: inline-block;
+}
+/* line 148, ../../css_src/partials/_layout.scss */
+body.out div#layout section.two_columns div.left {
+  width: 550px;
+}
+/* line 149, ../../css_src/partials/_layout.scss */
+body.out div#layout section.two_columns div.right {
+  width: 333px;
+}
+/* line 151, ../../css_src/partials/_layout.scss */
+body.out div#layout section.two_columns h4 {
+  padding: 0 0 5px 0;
+  font: bold 13px "WhitneyBold","Myriad Pro";
+  color: #333333;
+  border-bottom: 2px solid #333333;
+}
+/* line 158, ../../css_src/partials/_layout.scss */
+body.out div#layout section.two_columns p {
+  padding: 12px 0;
+  font: normal 17px "Helvetica",Arial;
+  color: #666666;
+}
+/* line 163, ../../css_src/partials/_layout.scss */
+body.out div#layout section.two_columns p strong {
+  font-weight: normal;
+  color: #333333;
+}
+/* line 168, ../../css_src/partials/_layout.scss */
+body.out div#layout section.two_columns p.orange {
+  font-style: italic;
+  color: #FBB986;
+}
+/* line 174, ../../css_src/partials/_layout.scss */
+body.out div#layout section.two_columns ul {
+  list-style-image: url("/img/icons/list_green.png");
+  width: 100%;
+  margin: 6px 0 0 0;
+}
+/* line 179, ../../css_src/partials/_layout.scss */
+body.out div#layout section.two_columns ul li {
+  padding: 7px 0;
+  font: normal 15px "Helvetica",Arial;
+  color: #666666;
+}
+/* line 187, ../../css_src/partials/_layout.scss */
+body.out div#layout footer {
+  display: inline-block;
+  width: 100%;
+  margin: 80px 0 0 0;
+  padding: 0 0 30px 0;
+}
+/* line 193, ../../css_src/partials/_layout.scss */
+body.out div#layout footer div {
+  border-top: 2px solid #CCCCCC;
+}
+/* line 197, ../../css_src/partials/_layout.scss */
+body.out div#layout footer div.left {
+  width: 550px;
+  padding: 10px 0 0 0;
+}
+/* line 201, ../../css_src/partials/_layout.scss */
+body.out div#layout footer div.left ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* line 206, ../../css_src/partials/_layout.scss */
+body.out div#layout footer div.left ul li {
+  display: inline-block;
+  vertical-align: top;
+  zoom: 1;
+  width: auto;
+  margin: 0 27px 0 0;
+  padding: 0;
+}
+/* line 214, ../../css_src/partials/_layout.scss */
+body.out div#layout footer div.left ul li a {
+  display: inline-block;
+  text-indent: -9999px;
+  line-height: 0;
+  font-size: 0;
+}
+/* line 220, ../../css_src/partials/_layout.scss */
+body.out div#layout footer div.left ul li a.cbd {
+  width: 145px;
+  height: 48px;
+  background: url("/img/sprite.png") no-repeat 0 -1126px;
+}
+/* line 221, ../../css_src/partials/_layout.scss */
+body.out div#layout footer div.left ul li a.lifeweb {
+  width: 121px;
+  height: 48px;
+  background: url("/img/sprite.png") no-repeat -150px -1127px;
+}
+/* line 222, ../../css_src/partials/_layout.scss */
+body.out div#layout footer div.left ul li a.unep-wcmc {
+  width: 96px;
+  height: 49px;
+  background: url("/img/sprite.png") no-repeat -375px -1123px;
+}
+/* line 223, ../../css_src/partials/_layout.scss */
+body.out div#layout footer div.left ul li a.vizzuality {
+  width: 89px;
+  height: 47px;
+  background: url("/img/sprite.png") no-repeat -280px -1126px;
+}
+/* line 228, ../../css_src/partials/_layout.scss */
+body.out div#layout footer div.left ul li.last {
+  margin: 0;
+}
+/* line 233, ../../css_src/partials/_layout.scss */
+body.out div#layout footer div.right {
+  width: 333px;
+  padding: 30px 0 0 0;
+}
+/* line 236, ../../css_src/partials/_layout.scss */
+body.out div#layout footer div.right p {
+  font: normal 15px "Helvetica",Arial;
+  color: #B2B2B2;
+}
+/* line 239, ../../css_src/partials/_layout.scss */
+body.out div#layout footer div.right p a {
+  color: #7F7F7F;
+  text-decoration: none;
+}
+/* line 239, ../../css_src/partials/_layout.scss */
+body.out div#layout footer div.right p a:hover {
+  text-decoration: underline;
 }
