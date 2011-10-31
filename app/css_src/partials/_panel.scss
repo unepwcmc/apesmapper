@@ -180,7 +180,6 @@
   	}
   	
   	// content
-  	
   	div.block {
 	  	width:100%;
 	  	margin:15px 0 0 0;
@@ -232,6 +231,48 @@
 				  	padding:0;
 						font:normal 13px "Helvetica Neue",Arial;
 				  	color:#666666;
+				  	
+				  	&.stats {
+				  		max-width:45px;
+				  		width:45px;
+				  		min-width:45px;
+				  		text-overflow:ellipsis; 
+							overflow:hidden;
+							white-space:nowrap;
+				  	}
+			  	}
+			  	
+			  	div.stats_bar {
+			  		position:relative;
+				  	float:left;
+				  	max-width:230px;
+				  	width:50px;  /*remove when it is ready*/
+				  	height:8px;
+				  	padding:0 0 0 3px;
+				  	margin:4px 0 0 0;
+				  	@include background(no-repeat,0,-904px);
+				  	
+				  	span.r_bar {
+				  		float:left;
+					  	width:100%;
+					  	height:100%;
+					  	@include background(no-repeat,right,-904px);
+				  	}
+				  	
+				  	&.inner {
+					  	position:absolute;
+					  	top:2px;
+					  	left:2px;
+					  	width:20px; /*remove when it is ready*/
+					  	margin:0;
+					  	height:4px;					  	
+					  	background-position:0 -868px;
+					  	
+					  	span.r_bar {
+						  	height:4px;
+								background-position:right -868px;
+					  	}
+				  	}
 			  	}
 			  	
 			  	p {
@@ -249,6 +290,13 @@
 			  	&.last {border:none}
 			  	&:last-child {border:none}
 		  	}
+		  	
+		  	&.tooltip {
+		  		li:hover {
+			  		background-color:#EDEDED;
+			  		cursor:pointer;
+		  		}
+	  		}
 		  	
 		  	
 		  	&.inline {
@@ -288,11 +336,41 @@
 			  		&:last-child {border:none; width:78px;}
 			  	}
 		  	}
+		  	
+		  	&.down {
+			  	ul {
+				  	float:left;
+				  	width:100%;
+				  	margin:7px 0 0 0;
+				  	
+				  	li {
+				  		padding:3px 0;
+				  		border:none;
+				  		&.hst div.stats_bar {background-position:0 -872px; span.r_bar {background-position:right -872px;}}
+				  		&.h div.stats_bar {background-position:0 -880px; span.r_bar {background-position:right -880px;}}
+				  		&.m div.stats_bar {background-position:0 -888px; span.r_bar {background-position:right -888px;}}
+				  		&.l div.stats_bar {background-position:0 -896px; span.r_bar {background-position:right -896px;}}
+				  	}
+				  	
+				  	h6 {
+					  	float:left;
+					  	width:45px!important;
+					  	font:normal 11px "Helvetica Neue",Arial;
+					  	color:#999999
+				  	}
+				  	
+				  	div.stats_bar {margin:2px 0 0 0}
+				  	
+			  	}
+		  	}
 	  	} // ul
+	  	
+
 	  	
   	}
 		
-		// stats
+		
+		
   }
 
 }
