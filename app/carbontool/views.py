@@ -16,6 +16,7 @@ from models import Work
 BASE_ID = 123456
 @csrf_exempt
 def work(request, work_hash=None):
+
     status = 200
     work = None
     if work_hash:
@@ -28,22 +29,25 @@ def work(request, work_hash=None):
     if request.method == "POST":
         w = Work()
         w.put();
-        data = {'id': base62.from_decimal(BASE_ID + w.unique_id())}
+        data = json.dumps({'id': base62.from_decimal(BASE_ID + w.unique_id())})
 
+    # update
     elif request.method == "PUT":
         if work:
             work.json = request.raw_post_data
             work.put()
             data = request.raw_post_data
         pass
+    # remove
     elif request.method == "DELETE":
         work.delete();
         status = 204
-        data = {}
+        data = ''
         pass
+    # get
     else:
         data = work.json
         pass
 
-    return HttpResponse(json.dumps(data), status=status, mimetype='application/json')
+    return HttpResponse(data, status=status, mimetype='application/json')
 

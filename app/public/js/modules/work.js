@@ -11,7 +11,12 @@ App.modules.Data = function(app) {
             };
         },
 
+
         initialize: function() {
+        },
+
+        save: function() {
+            return this.collection.save();
         },
 
         update_polygon: function(index, path) {
@@ -64,34 +69,47 @@ App.modules.Data = function(app) {
 
         set_work_id: function(id) {
             this.work_id = id;
-            this.localStorage = new Store(this.work_id);
+            if(app.config.LOCAL_STORAGE) {
+                this.localStorage = new Store(this.work_id);
+            }
         },
 
         url: function() {
-            return this.API_URL + '/' + this.id;
+            return this.API_URL + '/' + this.work_id;
         },
 
         create: function(success, fail) {
-            /*$.ajax({
-                url: this.API_URL,
-                type: 'POST'})
-            .done(function(data) {
-             })
-            .fail(fail);*/
-            // dummy
-            success(S4() + S4());
-            // default thing
-            this.new_report();
-            this.new_report({total: true});
+            var self = this;
+            function _done(data) {
+                // default data
+                self.set_work_id(data.id);
+                self.new_report();
+                self.new_report({total: true});
+                self.save({
+                    success: function() {
+                        success(data.id);
+                    }
+                });
+            }
+            if(!app.config.LOCAL_STORAGE) {
+                $.ajax({
+                    url: this.API_URL,
+                    type: 'POST'})
+                .done(_done)
+                .fail(fail);
+            } else {
+                // simulte some lag
+                setTimeout(function() {
+                    _done({id: S4() + S4()});
+                }, 500);
+            }
         },
 
         // create empty report
-        new_report: function(defaults) {
+        new_report: function(defaults, options) {
             var r = new Report();
             r.set(defaults);
             this.add(r);
-            r.save();
-            //this.save();
             return r.cid;
         },
 
@@ -109,11 +127,15 @@ App.modules.Data = function(app) {
             this.remove(r);
             r.unbind('change', this.on_report_change);
             r.remove();
-            //this.save();
+            this.save();
         },
 
         on_report_change: function(r) {
             this.trigger('report_change', r);
+        },
+
+        save: function(options) {
+            Backbone.sync('update', this, options);
         }
 
     });
@@ -197,6 +219,7 @@ App.modules.Data = function(app) {
 
         add_report: function() {
             this.work.new_report();
+            this.work.save();
         },
 
         update_report: function() {
