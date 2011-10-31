@@ -43,7 +43,7 @@ var LayerEditor = Backbone.View.extend({
         howmany = howmany || 3;
         var self = this;
         var el = this.$('.dropdown');
-        el.html('');
+        el.find('li').each(function(i,el){$(el).remove()});
         _(this.layers.slice(0, howmany)).each(function(layer) {
             var v = new Layer(layer);
             self.views.push(v);

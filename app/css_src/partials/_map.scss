@@ -104,27 +104,85 @@
     position: absolute;
     top: 20px;
     right: 375px;
-    padding: 5px 0px;
-    border: 1px solid #EEE;
-    background: #FFF;
-    text-align: right;
-    ul {
-      width: 150px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      text-align: left;
-      li {
-        border-bottom: 1px solid #CCC;
-        padding: 3px 0px;
-      }
+    width:224px;
+    z-index:10;
+    
+    a.view {
+	    float:right;
+	    display:block;
+	    width:auto;
+	    height:33px;
+	    padding:0 0 0 15px;
+	    @include background(no-repeat,0,-1035px);
+	    text-decoration:none;
+	    
+	    span {
+	    	float:left;
+		    height:13px;
+		    margin:0;
+		    padding:11px 32px 9px 5px;
+		    font:normal 13px "WhitneyBookRegular","Myriad Pro";
+		    color:#333333;
+		    @include background(no-repeat,right,-1035px);
+		    text-indent:0px;
+		    text-decoration:none;
+		    
+		    strong {
+		     font:bold 13px "WhitneyBold","Myriad Pro";
+		    }
+	    }
+    }
+    
+    div.show {
+	    position:absolute;
+	    top:21px;
+	    right:0;
+      display: block;
+      width:224px;
+      z-index:-1;
+			
+			span.top {
+				float:right;
+				width:100%;
+				height:12px;
+				@include background(no-repeat,right,-1211px);
+			}
+	
+			ul {
+				float:right;
+	      width: 214px;
+	      padding: 0 5px;
+	      list-style: none;
+	      text-align: left;
+	      @include background(no-repeat,right,bottom);
+	      
+	      li {
+	      	border:none;
+	        border-bottom: 1px solid #CCC;
+	        padding: 3px 0px;
+	      }
+	    }  
+	    
     }
 
-    &:hover .show{
-      display: block;
-    }
-    .show{
-      display: none;
+    
+
+
+    
+    
+    &:hover {
+    
+    	a.view {
+	    	background-position:left -1072px;
+	    	
+	    	span {
+		    	background-position:right -1072px;
+	    	}
+    	}
+    	
+    	.show {
+      	display: block;
+    	}
     }
 
   }
