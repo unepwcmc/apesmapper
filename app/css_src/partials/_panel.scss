@@ -6,33 +6,124 @@
   right: 0;
   height: 100%;
   width: 352px;
-  border-left:1px solid #CCCCCC;
+  border-left:1px solid #BBB;
 	
   #tabs {
   	display:inline-block;
+  	width:100%;
+
     ul {
+    	width:100%;
+    	height:49px;
+    	border-top:1px solid black;
+    	border-bottom:1px solid #BBB;
       list-style: none;
       padding: 0;
       margin: 0;
+      background-color:#EDEDED;
+      
       li {
+      	position:relative;
         float: left;
+        height:100%;
+        width:57px;
+        margin:0;
+        padding:0;
+        
         border-right: 1px solid #BBB;
-        border-bottom: 1px solid #BBB;
-        margin: 0;
-        padding: 20px 10px;
+
+        
+        a {
+        	display:block;
+        	width:100%;
+        	height:15px;
+        	padding:17px 0;
+	        font:bold 15px "WhitneyBold","Myriad Pro";
+	        color:#666666;
+	        text-decoration:none;
+					text-transform:uppercase;	        
+					text-align:center;
+					background-color:#EDEDED;
+					
+					&.add, &#add_report {
+						height:100%;
+						padding:0;
+		        @include background(no-repeat,15px,-912px);
+		        background-color:#EDEDED;
+		        text-indent:-9999px;
+		        font-size:0;
+		        line-height:0;
+		        
+		        &:hover {background-position:15px -952px}
+	        }
+					
+	        &:hover {color:black}
+        }
+        
+        span.stats {
+	        position:absolute;
+	        display:none;
+	        bottom:-1px;
+	        left:-1px;
+	        width:auto;
+	        min-width:91px;
+	        max-height:64px;
+	        height:64px;
+	        padding:0 0 0 20px;
+	        background:white;
+	        border-bottom:0;
+					z-index:5;
+					@include horizontal-double-box-shadow(3px,-1px,2px,0,rgba(0,0,0,0.05));
+					filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='15', MakeShadow='true', ShadowOpacity='0.40');
+					@include background(no-repeat,-61px,-923px);
+					
+					span.stats_inner {
+						float:left;
+						width:100%;
+						padding:20px 20px 12px 0;
+						@include background(no-repeat,right,-923px);
+					}
+					
+					h5 {
+						margin:0;
+						font:bold 15px "WhitneyBold","Myriad Pro";
+						color:#333333;
+					}
+					
+					p {
+						width:auto;
+						margin:0;
+						padding:2px 0 0 0;
+						font:normal 13px "Helvetica Neue",Arial;
+						color:#666666;
+					}
+
+        }
+        
         &.total {
-          width: 100%;
+					width:auto;
+					border:none;
+
+          a {width:auto; padding:17px 20px}
+          
+          span.stats {
+	          span.stats_inner {background-position:-221px -923px}
+          }
         }
+        
         &.enabled {
-          border-bottom-width: 0;
-          font-weight: bold;
-          padding-left: 20px;
-          padding-right: 20px;
+          
+          
+          span.stats {
+	          display:block;
+          }
         }
+        
+
 
       }
 
-    }
+    } // ul
 
   }	
 	
@@ -180,7 +271,6 @@
   	}
   	
   	// content
-  	
   	div.block {
 	  	width:100%;
 	  	margin:15px 0 0 0;
@@ -232,6 +322,48 @@
 				  	padding:0;
 						font:normal 13px "Helvetica Neue",Arial;
 				  	color:#666666;
+				  	
+				  	&.stats {
+				  		max-width:45px;
+				  		width:45px;
+				  		min-width:45px;
+				  		text-overflow:ellipsis; 
+							overflow:hidden;
+							white-space:nowrap;
+				  	}
+			  	}
+			  	
+			  	div.stats_bar {
+			  		position:relative;
+				  	float:left;
+				  	max-width:230px;
+				  	width:50px;  /*remove when it is ready*/
+				  	height:8px;
+				  	padding:0 0 0 3px;
+				  	margin:4px 0 0 0;
+				  	@include background(no-repeat,0,-904px);
+				  	
+				  	span.r_bar {
+				  		float:left;
+					  	width:100%;
+					  	height:100%;
+					  	@include background(no-repeat,right,-904px);
+				  	}
+				  	
+				  	&.inner {
+					  	position:absolute;
+					  	top:2px;
+					  	left:2px;
+					  	width:20px; /*remove when it is ready*/
+					  	margin:0;
+					  	height:4px;					  	
+					  	background-position:0 -868px;
+					  	
+					  	span.r_bar {
+						  	height:4px;
+								background-position:right -868px;
+					  	}
+				  	}
 			  	}
 			  	
 			  	p {
@@ -249,6 +381,13 @@
 			  	&.last {border:none}
 			  	&:last-child {border:none}
 		  	}
+		  	
+		  	&.tooltip {
+		  		li:hover {
+			  		background-color:#EDEDED;
+			  		cursor:pointer;
+		  		}
+	  		}
 		  	
 		  	
 		  	&.inline {
@@ -288,11 +427,41 @@
 			  		&:last-child {border:none; width:78px;}
 			  	}
 		  	}
+		  	
+		  	&.down {
+			  	ul {
+				  	float:left;
+				  	width:100%;
+				  	margin:7px 0 0 0;
+				  	
+				  	li {
+				  		padding:3px 0;
+				  		border:none;
+				  		&.hst div.stats_bar {background-position:0 -872px; span.r_bar {background-position:right -872px;}}
+				  		&.h div.stats_bar {background-position:0 -880px; span.r_bar {background-position:right -880px;}}
+				  		&.m div.stats_bar {background-position:0 -888px; span.r_bar {background-position:right -888px;}}
+				  		&.l div.stats_bar {background-position:0 -896px; span.r_bar {background-position:right -896px;}}
+				  	}
+				  	
+				  	h6 {
+					  	float:left;
+					  	width:45px!important;
+					  	font:normal 11px "Helvetica Neue",Arial;
+					  	color:#999999
+				  	}
+				  	
+				  	div.stats_bar {margin:2px 0 0 0}
+				  	
+			  	}
+		  	}
 	  	} // ul
+	  	
+
 	  	
   	}
 		
-		// stats
+		
+		
   }
 
 }

@@ -12,6 +12,7 @@
   text-align: center;
   border-bottom:1px solid #CCCCCC;
   border-top:1px solid #CCCCCC;
+  @include vertical-double-box-shadow(0,-10px,10px,0,rgba(0,0,0,0.1));
 
   .inner {
     width: 765px;

@@ -43,12 +43,12 @@ var Tabs = Backbone.View.extend({
     add_report: function(cid, data) {
         var el = null;
         if(data.total) {
-            var li = $("<li><a class='tab' href='#" + cid + "'>total</a></li>");
+            var li = $("<li class='total'><a class='tab' href='#" + cid + "'>total</a><span class='stats'><span class='stats_inner'><h5>TOTAL</h5><p>25,221.1km in total</p></span></span></li>");
             this.tab_el.append(li);
             el = li;
         } else {
             this.tab_count++;
-            var li = $("<li><a class='tab' href='#" + cid + "'>#"+this.tab_count+"</a></li>");
+            var li = $("<li><a class='tab' href='#" + cid + "'>#"+this.tab_count+"</a><span class='stats'><span class='stats_inner'><h5>AOI #"+this.tab_count+"</h5><p>25,221.1km</p></span></span></li>");
             li.insertBefore(this.$('#add_report').parent());
             el = li;
         }
@@ -70,8 +70,17 @@ var Tabs = Backbone.View.extend({
     },
     
     set_enabled: function(el) {
-        this.$('li').removeClass('enabled');
+        this.$('li').removeClass('enabled').removeAttr('style');
         $(el).addClass('enabled');
+        if ($(el).hasClass('total')) {
+	        var li_w = 0;
+	        this.tab_el.find('li').each(function(i,li){li_w += $(li).width()});
+	        var width = this.tab_el.width() - li_w + 46;
+	        $(el).find('span.stats').width(width);
+        } else {
+	        var width = $(el).find('span.stats').width();
+        	$(el).width(width+38);
+        }
     }
 });
 
