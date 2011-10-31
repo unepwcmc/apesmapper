@@ -8,7 +8,9 @@ from django.views.generic.simple import redirect_to, direct_to_template
 
 urlpatterns = patterns('',
     # Example:
-    (r'^$', direct_to_template, {'template':'index.html'}),
+    (r'^$', direct_to_template, {'template':'home.html'}),
+    (r'^about$', direct_to_template, {'template':'about.html'}),
+    (r'^tool$', direct_to_template, {'template':'index.html'}),
     (r'^api/v0/', include('carbontool.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
