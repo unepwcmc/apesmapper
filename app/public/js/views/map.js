@@ -39,7 +39,8 @@ var MapView = Backbone.View.extend({
     initialize: function() {
         _.bindAll(this, 'center_changed', 'ready', 'click', 'set_center', 'zoom_changed', 'zoom_in', 'zoom_out', 'adjustSize', 'set_zoom_silence', 'set_center_silence');
        var self = this;
-       this.map_layers = {};
+       this.layers = {};
+       this.layers_order = [];
        // hide controls until map is ready
        this.hide_controls();
        this.map = new google.maps.Map(this.$('.map')[0], this.mapOptions);
@@ -143,6 +144,57 @@ var MapView = Backbone.View.extend({
             this.projector.draw = function(){};
             this.show_controls();
             this.trigger('ready');
+    },
+
+    // add a new tiled layer
+    add_layer: function(name, layer_info) {
+          layer = new google.maps.ImageMapType({
+              getTileUrl: function(tile, zoom) {
+                var y = tile.y;
+                var tileRange = 1 << zoom;
+                if (y < 0 || y  >= tileRange) {
+                  return null;
+                }
+                var x = tile.x;
+                if (x < 0 || x >= tileRange) {
+                  x = (x % tileRange + tileRange) % tileRange;
+                }
+                return this.urlPattern.replace("{X}",x).replace("{Y}",y).replace("{Z}",zoom);
+              },
+              tileSize: new google.maps.Size(256, 256),
+              opacity: 1.0,
+              isPng: true,
+              urlPattern:layer_info.url
+         });
+         this.layers[name] = {
+            layer: layer,
+            name: name
+         };
+         this.layers_order.push(name);
+         this.reorder_layers();
+    },
+
+    enable_layer: function(name, enable) {
+        this.layers[name].enabled = enable;
+        this.reorder_layers();
+    },
+
+    reorder_layers: function(names) {
+        var self = this;
+        var idx = 0;
+        this.layers_order = names || this.layers_order;
+        self.map.overlayMapTypes.clear();
+        _(this.layers_order).each(function(name) {
+            var layer = self.layers[name];
+            if(layer.enabled) {
+                self.map.overlayMapTypes.setAt(idx, layer.layer);
+            }
+            idx++;
+        });
+    },
+
+    remove_layer: function(name) {
+        //TODO
     }
 
 });

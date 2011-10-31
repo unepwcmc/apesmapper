@@ -71,20 +71,14 @@ App.modules.Map = function(app) {
 
     app.Map = Class.extend({
         init: function(bus) {
-            _.bindAll(this, 'show_report', 'start_edit_polygon', 'end_edit_polygon', 'remove_polygon', 'disable_editing', 'enable_editing');
+            _.bindAll(this, 'show_report', 'start_edit_polygon', 'end_edit_polygon', 'remove_polygon', 'disable_editing', 'enable_editing', 'enable_layer', 'reoder_layers');
+            var self = this;
             this.map = new MapView({el: $('.map_container')});
             this.popup = new Popup({mapview: this.map});
             this.layer_editor = new LayerEditor({
                 el: $('.layers'),
-                layers: [
-                    {name: 'test1'},
-                    {name: 'test2'},
-                    {name: 'test3'},
-                    {name: 'test4'},
-                    {name: 'test5'},
-                    {name: 'test6'},
-                    {name: 'test7'}
-                ]
+                bus: bus,
+                layers: app.config.MAP_LAYERS
             });
             this.polygon_edit = new PolygonDrawTool({mapview: this.map});
             this.editing(false);
@@ -98,7 +92,9 @@ App.modules.Map = function(app) {
                 'view:update_report': 'show_report',
                 'polygon': 'disable_editing',
                 'map:edit_mode': 'enable_editing',
-                'map:no_edit_mode': 'disable_editing'
+                'map:no_edit_mode': 'disable_editing',
+                'map:enable_layer': 'enable_layer',
+                'map:reorder_layers':'reorder_layers'
             });
 
             //bindings
@@ -106,6 +102,20 @@ App.modules.Map = function(app) {
             this.popup.bind('edit', this.end_edit_polygon);
             this.popup.bind('remove', this.remove_polygon);
 
+            // add layers to the map
+            _(app.config.MAP_LAYERS).each(function(layer) {
+                self.map.add_layer(layer.name, layer);
+                self.map.enable_layer(layer.name, true);
+            });
+
+        },
+
+        enable_layer: function(name, enable) {
+            this.map.enable_layer(name, enable);
+        },
+
+        reoder_layers: function(new_order) {
+            this.map.reoder_layers(new_order);
         },
 
         editing: function(b) {

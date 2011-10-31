@@ -10,7 +10,8 @@ var Layer = Backbone.View.extend({
     },
 
     initialize: function(layer) {
-        this.layer = layer;
+        this.layer = this.options.layer;
+        this.bus = this.options.bus;
     },
 
     render: function() {
@@ -21,7 +22,7 @@ var Layer = Backbone.View.extend({
     },
 
     toggle: function() {
-        this.trigger();
+        this.bus.emit('map:enable_layer', this.layer.name, false);
     }
 
 });
@@ -36,6 +37,7 @@ var LayerEditor = Backbone.View.extend({
     initialize: function() {
         var self = this;
         this.layers = this.options.layers;
+        this.bus = this.options.bus;
         this.views = {};
         this.render();
     },
@@ -53,7 +55,10 @@ var LayerEditor = Backbone.View.extend({
         var el = this.$('.dropdown');
         el.find('li').each(function(i,el){$(el).remove()});
         _(this.layers.slice(0, howmany)).each(function(layer) {
-            var v = new Layer(layer);
+            var v = new Layer({
+                layer: layer,
+                bus: self.bus
+            });
             self.views[layer.name] = v;
             el.append(v.render().el);
         });
