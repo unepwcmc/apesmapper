@@ -74,6 +74,18 @@ App.modules.Map = function(app) {
             _.bindAll(this, 'show_report', 'start_edit_polygon', 'end_edit_polygon', 'remove_polygon');
             this.map = new MapView({el: $('.map_container')});
             this.popup = new Popup({mapview: this.map});
+            this.layer_editor = new LayerEditor({
+                el: $('.layers'),
+                layers: [
+                    {name: 'test1'},
+                    {name: 'test2'},
+                    {name: 'test3'},
+                    {name: 'test4'},
+                    {name: 'test5'},
+                    {name: 'test6'},
+                    {name: 'test7'}
+                ]
+            });
             this.polygon_edit = new PolygonDrawTool({mapview: this.map});
             this.polygon_edit.editing_state(true);
             this.polygon_edit.edit_polygon([]);
