@@ -48,3 +48,24 @@ $list-left-margin: 2em;  // left margin for ul an ol
 	background:url('/img/sprite.png') $lr $tb $r;
 }
 
+// Box shadow 
+@mixin box-shadow($h,$v,$b,$s,$c) {
+	-moz-box-shadow: $h $v $b $s $c;
+  -webkit-box-shadow: $h $v $b $s $c;
+	box-shadow: $h $v $b $s $c;
+}
+@mixin vertical-double-box-shadow($h,$v,$b,$s,$c) {
+	-moz-box-shadow: $h $v $b $s $c, 0 10px 10px 0 $c;
+  -webkit-box-shadow: $h $v $b $s $c, 0 10px 10px 0 $c;
+	box-shadow: $h $v $b $s $c, 0 10px 10px 0 $c;
+		// Doesn't work!! :S
+		// -moz-box-shadow: $h $v $b $s $c, $h $v $b $s $c;
+		// -webkit-box-shadow: $h $v $b $s $c, $h $v $b $s $c;
+		// ox-shadow: $h $v $b $s $c, $h $v $b $s $c;
+}
+@mixin horizontal-double-box-shadow($h,$v,$b,$s,$c) {
+	-moz-box-shadow: $h $v $b $s $c,-$h $v $b $s $c;
+  -webkit-box-shadow: $h $v $b $s $c,-$h $v $b $s $c;
+	box-shadow: $h $v $b $s $c,-$h $v $b $s $c;
+}
+
