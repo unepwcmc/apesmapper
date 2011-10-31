@@ -1584,22 +1584,25 @@ body.out div.layout footer {
   margin: 80px 0 0 0;
   padding: 0 0 30px 0;
 }
-/* line 275, ../../css_src/partials/_layout.scss */
-body.out div.layout footer div {
-  border-top: 2px solid #CCCCCC;
+/* line 276, ../../css_src/partials/_layout.scss */
+body.out div.layout footer div h6 {
+  width: 100%;
+  padding: 0 0 5px 0;
+  border-bottom: 2px solid #CCCCCC;
+  font: bold 13px "WhitneyBold","Myriad Pro";
+  color: #333333;
 }
-/* line 279, ../../css_src/partials/_layout.scss */
+/* line 286, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.left {
   width: 550px;
-  padding: 10px 0 0 0;
 }
-/* line 283, ../../css_src/partials/_layout.scss */
+/* line 289, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.left ul {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 10px 0 0 0;
 }
-/* line 288, ../../css_src/partials/_layout.scss */
+/* line 294, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.left ul li {
   display: inline-block;
   vertical-align: top;
@@ -1608,57 +1611,69 @@ body.out div.layout footer div.left ul li {
   margin: 0 27px 0 0;
   padding: 0;
 }
-/* line 296, ../../css_src/partials/_layout.scss */
+/* line 302, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.left ul li a {
   display: inline-block;
   text-indent: -9999px;
   line-height: 0;
   font-size: 0;
 }
-/* line 302, ../../css_src/partials/_layout.scss */
+/* line 308, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.left ul li a.cbd {
   width: 145px;
   height: 48px;
   background: url("/img/sprite.png") no-repeat 0 -1126px;
 }
-/* line 303, ../../css_src/partials/_layout.scss */
+/* line 309, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.left ul li a.lifeweb {
   width: 121px;
   height: 48px;
   background: url("/img/sprite.png") no-repeat -150px -1127px;
 }
-/* line 304, ../../css_src/partials/_layout.scss */
+/* line 310, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.left ul li a.unep-wcmc {
   width: 96px;
   height: 49px;
   background: url("/img/sprite.png") no-repeat -375px -1123px;
 }
-/* line 305, ../../css_src/partials/_layout.scss */
+/* line 311, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.left ul li a.vizzuality {
   width: 89px;
   height: 47px;
   background: url("/img/sprite.png") no-repeat -280px -1126px;
 }
-/* line 310, ../../css_src/partials/_layout.scss */
+/* line 314, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.left ul li.last {
   margin: 0;
 }
-/* line 315, ../../css_src/partials/_layout.scss */
-body.out div.layout footer div.right {
-  width: 333px;
-  padding: 30px 0 0 0;
-}
 /* line 318, ../../css_src/partials/_layout.scss */
-body.out div.layout footer div.right p {
+body.out div.layout footer div.left p {
+  padding: 85px 0 0 0;
   font: normal 15px "Helvetica",Arial;
   color: #B2B2B2;
 }
-/* line 321, ../../css_src/partials/_layout.scss */
-body.out div.layout footer div.right p a {
+/* line 322, ../../css_src/partials/_layout.scss */
+body.out div.layout footer div.left p a {
   color: #7F7F7F;
   text-decoration: none;
 }
-/* line 321, ../../css_src/partials/_layout.scss */
-body.out div.layout footer div.right p a:hover {
+/* line 322, ../../css_src/partials/_layout.scss */
+body.out div.layout footer div.left p a:hover {
   text-decoration: underline;
+}
+/* line 326, ../../css_src/partials/_layout.scss */
+body.out div.layout footer div.right {
+  width: 333px;
+  padding: 0;
+}
+/* line 330, ../../css_src/partials/_layout.scss */
+body.out div.layout footer div.right a.nature {
+  float: left;
+  width: 240px;
+  height: 57px;
+  margin: 15px 0 0;
+  background: url("/img/sprite.png") no-repeat 0 -1369px;
+  text-indent: -9999px;
+  line-height: 0;
+  font-size: 0;
 }

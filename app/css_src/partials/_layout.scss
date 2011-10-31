@@ -273,17 +273,23 @@
 				padding:0 0 30px 0;
 				
 				div {
-					border-top:2px solid #CCCCCC;
+					h6 {
+						width:100%;
+						padding:0 0 5px 0;
+						border-bottom:2px solid #CCCCCC;
+						font:bold 13px "WhitneyBold","Myriad Pro";
+						color:#333333;
+					}
+					
 				}
 				
 				div.left {
-					width:550px;
-					padding:10px 0 0 0;
+					width:550px;									
 					
 					ul {
 						list-style:none;
 						margin:0;
-						padding:0;
+						padding:10px 0 0 0;
 					
 						li {
 							display:inline-block;
@@ -305,20 +311,31 @@
 								&.vizzuality {width:89px; height:47px; @include background(no-repeat,-280px,-1126px);}
 							}
 							
-							
-							
 							&.last {margin:0}
 						}	
+					}
+					
+					p {
+						padding:85px 0 0 0;
+						font:normal 15px "Helvetica",Arial;
+						color:#B2B2B2;
+						a {color:#7F7F7F; text-decoration:none; &:hover {text-decoration:underline}}
 					}
 				}
 				
 				div.right {
 					width:333px;
-					padding:30px 0 0 0;
-					p {
-						font:normal 15px "Helvetica",Arial;
-						color:#B2B2B2;
-						a {color:#7F7F7F; text-decoration:none; &:hover {text-decoration:underline}}
+					padding:0;
+					
+					a.nature {
+						float:left;
+						width:240px;
+						height:57px;
+						margin:15px 0 0;
+						@include background(no-repeat,0,-1369px);
+						text-indent:-9999px;
+						line-height:0;
+						font-size:0;
 					}
 				}
 			}
