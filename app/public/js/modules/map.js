@@ -71,7 +71,7 @@ App.modules.Map = function(app) {
 
     app.Map = Class.extend({
         init: function(bus) {
-            _.bindAll(this, 'show_report', 'start_edit_polygon', 'end_edit_polygon', 'remove_polygon');
+            _.bindAll(this, 'show_report', 'start_edit_polygon', 'end_edit_polygon', 'remove_polygon', 'disable_editing', 'enable_editing');
             this.map = new MapView({el: $('.map_container')});
             this.popup = new Popup({mapview: this.map});
             this.layer_editor = new LayerEditor({
@@ -87,10 +87,7 @@ App.modules.Map = function(app) {
                 ]
             });
             this.polygon_edit = new PolygonDrawTool({mapview: this.map});
-            this.polygon_edit.editing_state(true);
-            this.polygon_edit.edit_polygon([]);
-            this.polygon_edit.editing_state(false);
-            this.polygon_edit.editing_state(true);
+            this.editing(false);
             this.polygons = [];
             this.bus = bus;
 
@@ -98,7 +95,10 @@ App.modules.Map = function(app) {
 
             bus.link(this, {
                 'view:show_report': 'show_report',
-                'view:update_report': 'show_report'
+                'view:update_report': 'show_report',
+                'polygon': 'disable_editing',
+                'map:edit_mode': 'enable_editing',
+                'map:no_edit_mode': 'disable_editing'
             });
 
             //bindings
@@ -106,6 +106,18 @@ App.modules.Map = function(app) {
             this.popup.bind('edit', this.end_edit_polygon);
             this.popup.bind('remove', this.remove_polygon);
 
+        },
+
+        editing: function(b) {
+            this.polygon_edit.editing_state(b);
+        },
+
+        disable_editing: function() {
+            this.editing(false);
+        },
+
+        enable_editing: function() {
+            this.editing(true);
         },
 
         // render polygons

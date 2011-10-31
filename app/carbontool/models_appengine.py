@@ -6,5 +6,5 @@ class Work(db.Model):
     json = db.TextProperty(default='[]')
     
     def unique_id(self):
-        return self.key.id()
+        return self.key().id()
     

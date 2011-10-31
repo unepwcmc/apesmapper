@@ -13,7 +13,7 @@ App.modules.Panel = function(app) {
             _.bindAll(this, 'on_new_report', 'on_remove_all', 'on_update_report', 'on_show_report');
 
             this.bus = bus;
-            this.panel = new Panel();
+            this.panel = new Panel({bus: this.bus});
             this.panel.bind('add_report', function() {
                 bus.emit('model:add_report');
             });
@@ -38,10 +38,21 @@ App.modules.Panel = function(app) {
 
         on_update_report: function(cid, r) {
             this.panel.update_report(cid, r);
+            if(r.polygons.length > 0) {
+                this.show();
+            }
         },
 
         on_show_report: function(cid) {
             this.panel.show_report(cid);
+        },
+
+        hide: function() {
+            this.panel.hide();
+        },
+
+        show: function() {
+            this.panel.show();
         }
 
     });

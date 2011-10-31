@@ -83,8 +83,8 @@ App.modules.Data = function(app) {
             function _done(data) {
                 // default data
                 self.set_work_id(data.id);
-                self.new_report();
                 self.new_report({total: true});
+                self.new_report();
                 self.save({
                     success: function() {
                         success(data.id);
@@ -136,6 +136,12 @@ App.modules.Data = function(app) {
 
         save: function(options) {
             Backbone.sync('update', this, options);
+        },
+
+        polygon_count: function() {
+            return this.reduce(function(memo, r) {
+                return memo + r.get('polygons').length;
+            }, 0);
         }
 
     });
@@ -196,9 +202,14 @@ App.modules.Data = function(app) {
         },
 
         on_work: function(work_id) {
+            var self = this;
             app.Log.log("on work: ", work_id);
             this.work.set_work_id(work_id);
-            this.work.fetch();
+            this.work.fetch({
+                success: function() {
+                    self.bus.emit("app:work_loaded");
+                }
+            });
             //TODO: does not exists
         },
 
@@ -232,6 +243,7 @@ App.modules.Data = function(app) {
         },
 
         select_report: function() {
-        }
+        },
+    
     });
 };

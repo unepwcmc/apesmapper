@@ -6,8 +6,14 @@ var Report = Backbone.View.extend({
     template: _.template($('#report-tmpl').html()),
     template_no_content: _.template($('#report-tmpl-no-content').html()),
 
+    events: {
+        'click .non_editing .go_edit': 'go_edit',
+        'click .editing .leave_edit': 'leave_edit'
+    },
+
     initialize: function() {
         _.bindAll(this, 'show', 'hide');
+        this.bus = this.options.bus;
     },
 
     render: function(data) {
@@ -16,7 +22,22 @@ var Report = Backbone.View.extend({
         } else {
             $(this.el).html(this.template_no_content(data));
         }
+        this.$('.editing').hide();
         return this;
+    },
+
+    go_edit: function(e) {
+        e.preventDefault();
+        this.$('.non_editing').hide();
+        this.$('.editing').show();
+        this.bus.emit('map:edit_mode');
+    },
+
+    leave_edit: function(e) {
+        e.preventDefault();
+        this.$('.editing').hide();
+        this.$('.non_editing').show();
+        this.bus.emit('map:no_edit_mode');
     },
 
     show: function() {
@@ -74,7 +95,7 @@ var Tabs = Backbone.View.extend({
         this.trigger('enable', $(e.target).attr('href').slice(1));
         this.set_enabled($(e.target).parent());
     },
-    
+
     set_enabled: function(el) {
         this.$('li').removeClass('enabled').removeAttr('style');
         $(el).addClass('enabled');
@@ -100,6 +121,7 @@ var Panel = Backbone.View.extend({
 
     initialize: function() {
         _.bindAll(this, 'add_report', 'create_report');
+        this.bus = this.options.bus;
         this.reports = [];
         this.reports_map = {};
         this.tabs = new Tabs({el: this.$('#tabs')});
@@ -113,7 +135,9 @@ var Panel = Backbone.View.extend({
     },
 
     add_report: function(cid, data) {
-        var r = new Report(data);
+        var r = new Report({
+            bus: this.bus
+        });
         this.reports.push(r);
         this.reports_map[cid] = r;
         this.el.find("#tab_content").append(r.render(data).el);
@@ -140,6 +164,14 @@ var Panel = Backbone.View.extend({
             r.hide();
         });
         this.reports_map[cid].show();
+    },
+
+    hide: function() {
+        this.el.hide();
+    },
+
+    show: function() {
+        this.el.show();
     }
 
 });
