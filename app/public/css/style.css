@@ -338,7 +338,7 @@ body.tool header div {
 /* line 63, ../../css_src/partials/_page.scss */
 body.tool header div h1 {
   font: bold 13px "WhitneyBold","Myriad Pro";
-  filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=270, Strength=1);
+  filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=180, Strength=1);
   text-shadow: 0 1px 0 black;
   color: #FFFFFF;
 }
@@ -349,7 +349,7 @@ body.tool header div h1:hover {
 /* line 70, ../../css_src/partials/_page.scss */
 body.tool header div p {
   font: normal 13px "WhitneyBookRegular","Myriad Pro";
-  filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=270, Strength=1);
+  filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=180, Strength=1);
   text-shadow: 0 1px 0 black;
   color: white;
 }
@@ -372,7 +372,7 @@ body.tool header div ul li a {
   padding: 0 0 0 12px;
   background: url("/img/sprite.png") 0 0 no-repeat;
   font: normal 13px "WhitneyBookRegular","Myriad Pro";
-  filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=270, Strength=1);
+  filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=180, Strength=1);
   text-shadow: 0 1px 0 black;
   color: white;
   text-decoration: none;
@@ -819,7 +819,7 @@ div.right {
   font: bold 13px "WhitneyBold";
   color: white;
   background: url("/img/sprite.png") 0 -790px no-repeat;
-  filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=270, Strength=1);
+  filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=180, Strength=1);
   text-shadow: 0 1px 0 #3c7d7d;
   text-decoration: none;
 }
@@ -1275,6 +1275,9 @@ body.out {
 /* line 5, ../../css_src/partials/_layout.scss */
 body.out section.results {
   display: inline-block;
+  vertical-align: top;
+  zoom: 1;
+  *display: inline;
   width: 100%;
   margin: 80px 0 0 0;
   background: url("/img/pattern.jpg") repeat 0 0;
@@ -1367,41 +1370,43 @@ body.out div.layout header h1 a:hover {
 body.out div.layout header ul {
   float: right;
   width: auto;
+  list-style: none;
 }
-/* line 89, ../../css_src/partials/_layout.scss */
+/* line 90, ../../css_src/partials/_layout.scss */
 body.out div.layout header ul li {
   display: inline-block;
   vertical-align: top;
   zoom: 1;
+  *display: inline;
   width: auto;
   margin: 0 0 0 20px;
 }
-/* line 96, ../../css_src/partials/_layout.scss */
+/* line 95, ../../css_src/partials/_layout.scss */
 body.out div.layout header ul li a {
   font: bold 13px "WhitneyBold","Myriad Pro";
   color: #333333;
   text-decoration: none;
 }
-/* line 100, ../../css_src/partials/_layout.scss */
+/* line 99, ../../css_src/partials/_layout.scss */
 body.out div.layout header ul li a:hover {
   color: #66CCCC;
 }
-/* line 103, ../../css_src/partials/_layout.scss */
+/* line 102, ../../css_src/partials/_layout.scss */
 body.out div.layout header ul li.selected a {
   color: #66CCCC;
 }
-/* line 103, ../../css_src/partials/_layout.scss */
+/* line 102, ../../css_src/partials/_layout.scss */
 body.out div.layout header ul li.selected a:hover {
   cursor: default;
 }
-/* line 108, ../../css_src/partials/_layout.scss */
+/* line 107, ../../css_src/partials/_layout.scss */
 body.out div.layout h2 {
   margin: 45px 0 0 0;
   font: bold 47px "WhitneyBold","Myriad Pro";
   color: #333333;
   line-height: 47px;
 }
-/* line 115, ../../css_src/partials/_layout.scss */
+/* line 114, ../../css_src/partials/_layout.scss */
 body.out div.layout p.subtitle {
   padding: 10px 0 0 0;
   font: normal 17px "Helvetica",Arial;
@@ -1439,17 +1444,17 @@ body.out div.layout article.data_sources ul li {
 /* line 150, ../../css_src/partials/_layout.scss */
 body.out div.layout section.start {
   position: relative;
+  float: left;
   width: 918px;
   height: 402px;
   margin: 45px 0 0 0;
   border: 1px solid #CCCCCC;
-  background: url("/img/start.jpg") no-repeat 0 0;
   -moz-box-shadow: 0 0 4px 3px rgba(0, 0, 0, 0.08);
   -webkit-box-shadow: 0 0 4px 3px rgba(0, 0, 0, 0.08);
   box-shadow: 0 0 4px 3px rgba(0, 0, 0, 0.08);
-  filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='15', MakeShadow='true', ShadowOpacity='0.40');
+  background: url("/img/start.jpg") no-repeat 0 0;
 }
-/* line 160, ../../css_src/partials/_layout.scss */
+/* line 162, ../../css_src/partials/_layout.scss */
 body.out div.layout section.start div.mamufas {
   position: absolute;
   display: none;
@@ -1459,7 +1464,7 @@ body.out div.layout section.start div.mamufas {
   height: 402px;
   background: url("/img/mamufas.png") no-repeat 0 0;
 }
-/* line 169, ../../css_src/partials/_layout.scss */
+/* line 171, ../../css_src/partials/_layout.scss */
 body.out div.layout section.start div.mamufas a {
   position: absolute;
   width: 316px;
@@ -1470,15 +1475,19 @@ body.out div.layout section.start div.mamufas a {
   text-decoration: none;
   background: url("/img/sprite.png") no-repeat 0 -1181px;
 }
-/* line 178, ../../css_src/partials/_layout.scss */
+/* line 180, ../../css_src/partials/_layout.scss */
 body.out div.layout section.start div.mamufas a:hover {
   background-position: 0 -1259px;
 }
-/* line 178, ../../css_src/partials/_layout.scss */
+/* line 180, ../../css_src/partials/_layout.scss */
+body.out div.layout section.start div.mamufas a:hover span {
+  cursor: pointer;
+}
+/* line 180, ../../css_src/partials/_layout.scss */
 body.out div.layout section.start div.mamufas a:hover small {
   color: white;
 }
-/* line 180, ../../css_src/partials/_layout.scss */
+/* line 182, ../../css_src/partials/_layout.scss */
 body.out div.layout section.start div.mamufas a span {
   display: block;
   width: 225px;
@@ -1486,105 +1495,112 @@ body.out div.layout section.start div.mamufas a span {
   font: bold 21px "WhitneyBold";
   color: #FFFFFF;
   text-align: center;
-  filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=270, Strength=1);
+  filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=180, Strength=1);
   text-shadow: 0 1px 0 #3c7d7d;
   line-height: 17px;
 }
-/* line 190, ../../css_src/partials/_layout.scss */
+/* line 192, ../../css_src/partials/_layout.scss */
 body.out div.layout section.start div.mamufas a span small {
   padding: 0;
   font: normal 13px "Helvetica",Arial;
   text-shadow: none;
+  filter: none;
   color: #549A9A;
 }
-/* line 201, ../../css_src/partials/_layout.scss */
+/* line 204, ../../css_src/partials/_layout.scss */
 body.out div.layout section.start:hover div.mamufas {
   display: block;
 }
-/* line 205, ../../css_src/partials/_layout.scss */
+/* line 208, ../../css_src/partials/_layout.scss */
 body.out div.layout section.two_columns {
   width: 100%;
   margin: 50px 0 0 0;
   display: inline-block;
+  vertical-align: top;
+  zoom: 1;
+  *display: inline;
 }
-/* line 210, ../../css_src/partials/_layout.scss */
+/* line 213, ../../css_src/partials/_layout.scss */
 body.out div.layout section.two_columns div.left {
   width: 550px;
 }
-/* line 211, ../../css_src/partials/_layout.scss */
+/* line 214, ../../css_src/partials/_layout.scss */
 body.out div.layout section.two_columns div.right {
   width: 333px;
 }
-/* line 213, ../../css_src/partials/_layout.scss */
+/* line 216, ../../css_src/partials/_layout.scss */
 body.out div.layout section.two_columns h4 {
   padding: 0 0 5px 0;
   font: bold 13px "WhitneyBold","Myriad Pro";
   color: #333333;
   border-bottom: 2px solid #333333;
 }
-/* line 220, ../../css_src/partials/_layout.scss */
+/* line 223, ../../css_src/partials/_layout.scss */
 body.out div.layout section.two_columns p {
   padding: 12px 0;
   font: normal 17px "Helvetica",Arial;
   color: #666666;
 }
-/* line 225, ../../css_src/partials/_layout.scss */
+/* line 228, ../../css_src/partials/_layout.scss */
 body.out div.layout section.two_columns p strong {
   font-weight: normal;
   color: #333333;
 }
-/* line 230, ../../css_src/partials/_layout.scss */
+/* line 233, ../../css_src/partials/_layout.scss */
 body.out div.layout section.two_columns p.orange {
   font-style: italic;
   color: #FBB986;
 }
-/* line 236, ../../css_src/partials/_layout.scss */
+/* line 239, ../../css_src/partials/_layout.scss */
 body.out div.layout section.two_columns ul {
   list-style-image: url("/img/icons/list_green.png");
   width: 100%;
   margin: 6px 0 0 0;
 }
-/* line 241, ../../css_src/partials/_layout.scss */
+/* line 244, ../../css_src/partials/_layout.scss */
 body.out div.layout section.two_columns ul li {
   padding: 7px 0;
   font: normal 15px "Helvetica",Arial;
   color: #666666;
 }
-/* line 249, ../../css_src/partials/_layout.scss */
+/* line 252, ../../css_src/partials/_layout.scss */
 body.out div.layout section.video {
   width: 920px;
   margin: 50px 0 0 0;
 }
-/* line 252, ../../css_src/partials/_layout.scss */
+/* line 255, ../../css_src/partials/_layout.scss */
 body.out div.layout section.video div.left {
   width: 441px;
 }
-/* line 253, ../../css_src/partials/_layout.scss */
+/* line 256, ../../css_src/partials/_layout.scss */
 body.out div.layout section.video div.right {
   width: 441px;
   padding: 50px 0 0 0;
 }
-/* line 255, ../../css_src/partials/_layout.scss */
+/* line 258, ../../css_src/partials/_layout.scss */
 body.out div.layout section.video h3 {
   font: bold 27px "WhitneyBold","Myriad Pro";
   color: #333333;
   padding: 0 0 5px 0;
 }
-/* line 261, ../../css_src/partials/_layout.scss */
+/* line 264, ../../css_src/partials/_layout.scss */
 body.out div.layout section.video p {
   padding: 10px 0;
   font: normal 15px "Helvetica",Arial;
   line-height: 20px;
   color: #666666;
 }
-/* line 269, ../../css_src/partials/_layout.scss */
+/* line 272, ../../css_src/partials/_layout.scss */
 body.out div.layout footer {
   display: inline-block;
+  vertical-align: top;
+  zoom: 1;
+  *display: inline;
   width: 100%;
   margin: 80px 0 0 0;
   padding: 0 0 30px 0;
 }
-/* line 276, ../../css_src/partials/_layout.scss */
+/* line 279, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div h6 {
   width: 100%;
   padding: 0 0 5px 0;
@@ -1592,81 +1608,82 @@ body.out div.layout footer div h6 {
   font: bold 13px "WhitneyBold","Myriad Pro";
   color: #333333;
 }
-/* line 286, ../../css_src/partials/_layout.scss */
+/* line 289, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.left {
   width: 550px;
 }
-/* line 289, ../../css_src/partials/_layout.scss */
+/* line 292, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.left ul {
   list-style: none;
   margin: 0;
-  padding: 10px 0 0 0;
+  padding: 20px 0 0 0;
 }
-/* line 294, ../../css_src/partials/_layout.scss */
+/* line 297, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.left ul li {
   display: inline-block;
   vertical-align: top;
   zoom: 1;
+  *display: inline;
   width: auto;
   margin: 0 27px 0 0;
   padding: 0;
 }
-/* line 302, ../../css_src/partials/_layout.scss */
+/* line 303, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.left ul li a {
-  display: inline-block;
+  float: left;
   text-indent: -9999px;
   line-height: 0;
   font-size: 0;
 }
-/* line 308, ../../css_src/partials/_layout.scss */
+/* line 310, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.left ul li a.cbd {
   width: 145px;
   height: 48px;
   background: url("/img/sprite.png") no-repeat 0 -1126px;
 }
-/* line 309, ../../css_src/partials/_layout.scss */
+/* line 311, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.left ul li a.lifeweb {
   width: 121px;
   height: 48px;
   background: url("/img/sprite.png") no-repeat -150px -1127px;
 }
-/* line 310, ../../css_src/partials/_layout.scss */
+/* line 312, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.left ul li a.unep-wcmc {
   width: 96px;
   height: 49px;
   background: url("/img/sprite.png") no-repeat -375px -1123px;
 }
-/* line 311, ../../css_src/partials/_layout.scss */
+/* line 313, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.left ul li a.vizzuality {
   width: 89px;
   height: 47px;
   background: url("/img/sprite.png") no-repeat -280px -1126px;
 }
-/* line 314, ../../css_src/partials/_layout.scss */
+/* line 316, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.left ul li.last {
   margin: 0;
 }
-/* line 318, ../../css_src/partials/_layout.scss */
+/* line 320, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.left p {
   padding: 85px 0 0 0;
   font: normal 15px "Helvetica",Arial;
   color: #B2B2B2;
 }
-/* line 322, ../../css_src/partials/_layout.scss */
+/* line 324, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.left p a {
   color: #7F7F7F;
   text-decoration: none;
 }
-/* line 322, ../../css_src/partials/_layout.scss */
+/* line 324, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.left p a:hover {
   text-decoration: underline;
 }
-/* line 326, ../../css_src/partials/_layout.scss */
+/* line 328, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.right {
   width: 333px;
   padding: 0;
 }
-/* line 330, ../../css_src/partials/_layout.scss */
+/* line 332, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.right a.nature {
   float: left;
   width: 240px;

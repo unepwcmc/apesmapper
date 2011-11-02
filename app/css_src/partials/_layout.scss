@@ -3,7 +3,7 @@
 		background:white;
 		
 		section.results {
-			display:inline-block;
+			@include inline-block();
 			width:100%;
 			margin:80px 0 0 0;
 			background:url('/img/pattern.jpg') repeat 0 0;
@@ -63,7 +63,7 @@
 				}
 			}
 		}
-	
+			
 		div.layout {
 			width:920px;
 			margin:0 auto; 
@@ -85,11 +85,10 @@
 				ul {
 					float:right;
 					width:auto;
+					list-style:none;
 					
 					li {
-						display:inline-block;
-						vertical-align:top;
-						zoom:1;
+						@include inline-block();
 						width:auto;
 						margin:0 0 0 20px;
 						
@@ -118,6 +117,7 @@
 				color:#999999;
 			}
 			
+
 			article.data_sources {
 				margin:50px 0 0 0;
 				
@@ -149,13 +149,15 @@
 			
 			section.start {
 				position:relative;
+				float:left;
 				width:918px;
 				height:402px;
 				margin:45px 0 0 0;
 				border:1px solid #CCCCCC;
-				background:url('/img/start.jpg') no-repeat 0 0;
+				
 				@include box-shadow(0,0,4px,3px,rgba(0,0,0,0.08));
-				filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='15', MakeShadow='true', ShadowOpacity='0.40');
+				background:url('/img/start.jpg') no-repeat 0 0;
+
 				
 				div.mamufas {
 					position:absolute;
@@ -175,7 +177,7 @@
 						margin:-39px 0 0 -158px;
 						text-decoration:none;
 						@include background(no-repeat,0,-1181px);
-						&:hover {background-position:0 -1259px; small {color:white;}}
+						&:hover {background-position:0 -1259px; span {cursor:pointer} small {color:white;}}
 						
 						span {
 							display:block;
@@ -191,6 +193,7 @@
 								padding:0;
 								font:normal 13px "Helvetica",Arial;
 								text-shadow:none;
+								filter:none;
 								color:#549A9A;
 							}
 						}
@@ -205,7 +208,7 @@
 			section.two_columns {
 				width:100%;
 				margin:50px 0 0 0;
-				display:inline-block;
+				@include inline-block();
 				
 				div.left {width:550px}
 				div.right {width:333px}
@@ -267,7 +270,7 @@
 			}
 			
 			footer {
-				display:inline-block;
+				@include inline-block();
 				width:100%;
 				margin:80px 0 0 0;
 				padding:0 0 30px 0;
@@ -289,21 +292,20 @@
 					ul {
 						list-style:none;
 						margin:0;
-						padding:10px 0 0 0;
+						padding:20px 0 0 0;
 					
 						li {
-							display:inline-block;
-							vertical-align:top;
-							zoom:1;
+							@include inline-block();
 							width:auto;
 							margin:0 27px 0 0;
 							padding:0;
 							
 							a {
-								display:inline-block;
+								float:left;
 								text-indent:-9999px;
 								line-height:0;
 								font-size:0;
+								
 								
 								&.cbd {width:145px; height:48px; @include background(no-repeat,0,-1126px);}
 								&.lifeweb {width:121px; height:48px; @include background(no-repeat,-150px,-1127px);}

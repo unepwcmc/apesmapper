@@ -39,7 +39,7 @@ $list-left-margin: 2em;  // left margin for ul an ol
 
 // Text shadow
 @mixin text-shadow($c) {
-		filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=270, Strength=1);
+	filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=180, Strength=1);
 	text-shadow:0 1px 0 $c;
 }
 
@@ -68,4 +68,13 @@ $list-left-margin: 2em;  // left margin for ul an ol
   -webkit-box-shadow: $h $v $b $s $c,-$h $v $b $s $c;
 	box-shadow: $h $v $b $s $c,-$h $v $b $s $c;
 }
+
+// Display: inline-block
+@mixin inline-block() {
+	display:inline-block;
+	vertical-align:top;
+	zoom:1;
+	*display: inline;
+}
+
 
