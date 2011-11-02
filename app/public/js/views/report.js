@@ -92,7 +92,9 @@ var Tabs = Backbone.View.extend({
 
     click_activate: function(e) {
         e.preventDefault();
-        this.trigger('enable', $(e.target).attr('href').slice(1));
+        //this.trigger('enable', $(e.target).attr('href').slice(1));
+        //IE7 love
+        this.trigger('enable', $(e.target).attr('href').split('#')[1]);
         this.set_enabled($(e.target).parent());
     },
 

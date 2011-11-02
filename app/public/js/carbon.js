@@ -24,6 +24,9 @@ App.modules.Carbon = function(app) {
 
         init: function() {
             _.bindAll(this, 'on_route');
+            jQuery.ajaxSetup({
+                cache: false
+            });
         },
 
         run: function() {

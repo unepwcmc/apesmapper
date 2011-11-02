@@ -102,7 +102,6 @@ var CellPolygons = Backbone.View.extend({
     },
 
     remove_poly: function(poly) {
-        console.log('removing poly');
     },
 
     addAll: function() {
@@ -144,7 +143,6 @@ var CellPolygons = Backbone.View.extend({
 
     commit: function() {
         var finished = function () {
-            console.log("finished");
             window.loading.finished('polygons:commit');
         };
         this.polygons.each(function(p) {
