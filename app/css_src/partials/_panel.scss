@@ -9,7 +9,7 @@
   border-left:1px solid #BBB;
 	
   #tabs {
-  	display:inline-block;
+  	@include inline-block();
   	width:100%;
 
     ul {
@@ -171,9 +171,7 @@
 	  	}
 	  	
 	  	a.edit {
-		  	display:inline-block;
-		  	vertical-align:top;
-		  	zoom:1;
+		  	@include inline-block();
 		  	width:16px;
 		  	height:21px;
 		  	margin:7px 0 0 0;
@@ -184,9 +182,7 @@
 	  	}
 	  	
 	  	a.remove {
-		  	display:inline-block;
-		  	vertical-align:top;
-		  	zoom:1;
+		  	@include inline-block();
 		  	width:16px;
 		  	height:21px;
 		  	margin:7px 14px 0 0;
@@ -233,7 +229,7 @@
 		  	@include background(0,-508px,no-repeat);
 		  	
 		  	span.title {
-		  		display:inline-block;
+		  		@include inline-block();
 		  		width:100%;
 		  		padding:0 0 2px 0;
 		  		border-bottom:2px solid #666666;

@@ -60,7 +60,8 @@ var LayerEditor = Backbone.View.extend({
                 bus: self.bus
             });
             self.views[layer.name] = v;
-            el.append(v.render().el);
+            el.find('a.expand').before(v.render().el);
+            //el.append(v.render().el);
         });
         el.sortable({
           revert: false,

@@ -78,9 +78,7 @@ body.tool {
 		  	width:auto;
 		  	
 		  	li {
-		  		display:inline-block;
-		  		vertical-align:top;
-		  		zoom:1;
+		  		@include inline-block();
 			  	width:auto;
 			  	
 			  	a {
