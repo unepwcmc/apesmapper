@@ -44,3 +44,4 @@ Thumbs.db
 frameworks/*
 tmp/**/*
 publish/*
+app/carbontool.db
