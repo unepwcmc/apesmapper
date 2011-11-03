@@ -86,6 +86,29 @@ App.modules.WS = function(app) {
             setTimeout(function() {
                 callback(get_fake_data());
             }, 1000);
+        },
+
+        aggregate_stats: function(polygons, callback) {
+            callback({
+                carbon_sum: {
+                    qty: 10001,
+                    polygons: [
+                        { polygon: 'AOI #1', percent: 100 },
+                        { polygon: 'AOI #2', percent: 20 },
+                        { polygon: 'AOI #3', percent: 40 }
+                    ]
+                },
+                coverage: {
+                    PA: 51,
+                    KBA: 90,
+                    RestP: 65,
+                    FStat: 12
+                },
+                conservation_priority_areas: [
+                    { name: 'United States', percents: [50, 30, 20, 10, 40] },
+                    { name: 'Spain', percents: [50, 30, 20, 10, 40] }
+                ]
+            });
         }
     };
 }

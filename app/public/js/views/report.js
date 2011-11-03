@@ -17,7 +17,7 @@ var Report = Backbone.View.extend({
     },
 
     render: function(data) {
-        if(data.polygons.length !== 0) {
+        if(data.polygons.length !== 0 || data.total) {
             $(this.el).html(this.template(data));
         } else {
             $(this.el).html(this.template_no_content(data));
