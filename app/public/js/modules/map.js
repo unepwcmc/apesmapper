@@ -120,10 +120,7 @@ App.modules.Map = function(app) {
                 _(polygons).each(function(coord) {
                     var polygon = _(coord).map(function(poly) {
                         return _(poly).map(function(latlon) {
-                            //return _(inner).map(function(latlon) {
-                                app.Log.log(latlon[0], latlon[1]);
-                                return [latlon[1], latlon[0]];
-                            //});
+                            return [latlon[1], latlon[0]];
                         });
                     });
                     self.trigger('add_polygon', polygon);
