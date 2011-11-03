@@ -47,39 +47,11 @@ App.modules.Data = function(app) {
         },
 
         fetch: function() {
-            function rnd(max) {
-                return (max*Math.random()).toFixed(0);
-            }
+            var self = this;
             // get data using polygons
-            this.set({'stats': {
-              carbon: {
-                qty: (1234567*Math.random()).toFixed(0),
-                by_country: [
-                  {name: 'Mexico', qty: rnd(9999)},
-                  {name: 'Spain', qty: rnd(9999)}
-                ]
-              },
-              'restoration_potential': {
-                  wide_scale: rnd(100),
-                  mosaic: rnd(100),
-                  remove: rnd(100),
-                  none: rnd(100)
-              },
-              'covered_by_PA':  {
-                percent: rnd(100),
-                num_overlap: rnd(20)
-              },
-              'covered_by_KBA':  {
-                percent: rnd(100),
-                num_overlap: rnd(20)
-              },
-              'forest_status': {
-                intact: rnd(100),
-                fragmented: rnd(100),
-                partial: rnd(100),
-                deforested: rnd(100)
-              }
-            }});
+            app.WS.CartoDB.calculate_stats(this.get('polygons'), function(stats) {
+              self.set({'stats': stats});
+            });
         },
 
         toJSON: function() {
