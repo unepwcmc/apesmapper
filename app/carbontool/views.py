@@ -5,6 +5,7 @@ this module contains views that serve the REST-like API
 for client-side backbone application
 """
 
+import logging
 import json
 
 from django.http import HttpResponse, Http404
@@ -12,6 +13,8 @@ from django.views.decorators.csrf import csrf_exempt
 
 from baseconv import base62
 from models import Work
+
+from cartodb import CartoDB, polygon_text
 
 BASE_ID = 123456
 @csrf_exempt
@@ -50,4 +53,26 @@ def work(request, work_hash=None):
         pass
 
     return HttpResponse(data, status=status, mimetype='application/json')
+
+@csrf_exempt
+def stats(request): 
+    data = { 'error': 'you should use POST' }
+    if request.method == "POST":
+        #TODO: error control
+        polygons = json.loads(request.raw_post_data)['polygons']
+        c = CartoDB()
+        try:
+            carbon = c.carbon(polygon_text(polygons[0]))
+        except Exception as e:
+            data['error'] = str(e)
+        else:
+            data = {
+                'carbon': {
+                    'qty': carbon
+                }
+            }
+    return HttpResponse(json.dumps(data), mimetype='application/json')
+
+
+
 

@@ -83,9 +83,19 @@ App.modules.WS = function(app) {
 
     WS.CartoDB = {
         calculate_stats: function(polygons, callback) {
+            $.ajax({
+                url: '/api/v0/stats',
+                type: 'POST',
+                data: JSON.stringify({polygons: polygons}),
+                success: function(data) {
+                    callback(data);
+                }
+            });
+            /*
             setTimeout(function() {
                 callback(get_fake_data());
             }, 1000);
+            */
         },
 
         aggregate_stats: function(polygons, callback) {
