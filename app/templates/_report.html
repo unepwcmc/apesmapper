@@ -1,0 +1,204 @@
+<!-- report backbone template -->
+<div class="tools non_editing">
+    <h2>
+        <p href="#edit" class="edit"><%= polygons.length %> polygon. <a class='go_edit' href="#add_another">Add another?</a></p>
+    </h2>
+    <span class="tools">
+        <a href='#edit' class="go_edit edit">edit</a>
+        <a href='#remove' class="remove">remove</a>
+    </span>
+</div>
+
+<div class="tools editing">
+    <h2>
+        <a href="#finish_editing" class="finish leave_edit"><span>FINISH EDITING</span></a>
+    </h2>
+    <span class="tools">
+        <a href='#edit' class="edit">edit</a>
+        <a href='#remove' class="remove">remove</a>
+    </span>
+</div>
+
+<% if(stats.carbon) { %> 
+<div class="block">
+    <span class="title">
+        <h2>CARBON</h2>
+        <p><%= stats.carbon.qty %><small>T</small></p>
+    </span>
+    <ul class="normal list">
+      <% _.each(stats.carbon.by_country, function(ct) { %> 
+      <li>
+            <h5><%= ct.name %></h5>
+            <p class="info ok"><%= ct.qty %></p>
+      </li>
+      <% }); %>
+    </ul>
+</div>
+<% } %>
+
+<% if(stats.covered_by_PA) { %> 
+<div class="block">
+    <span class="title">
+        <h2>COVERED BY PA'S</h2>
+        <p><%= stats.covered_by_PA.percent%><small>%</small></p>
+    </span>
+    <ul class="normal list">
+      <li>
+        Overlapping with <%= stats.covered_by_PA.num_overlap %> PA
+      </li>
+    </ul>
+</div>
+<% } %>
+
+<% if(stats.covered_by_KBA) { %> 
+<div class="block">
+    <span class="title">
+        <h2>COVERED BY KPA'S</h2>
+        <p><%= stats.covered_by_KBA.percent%><small>%</small></p>
+    </span>
+    <ul class="normal list">
+      <li>
+        Overlapping with <%= stats.covered_by_KBA.num_overlap %> PA
+      </li>
+    </ul>
+</div>
+<% } %>
+
+<% if(stats.restoration_potential) { %> 
+<div class="block">
+    <span class="title">
+        <h2>RESTORATION POTENTIAL</h2>
+        <p>&nbsp;</p>
+    </span>
+    <ul class="inline list">
+        <li>
+            <h5>WIDE-SCALE</h5>
+            <p class="info"><%=stats.restoration_potential.wide_scale%>%</p>
+        </li>
+        <li>
+            <h5>MOSAIC</h5>
+            <p class="info"><%=stats.restoration_potential.mosaic %>%</p>
+        </li>
+        <li>
+            <h5>REMOVE</h5>
+            <p class="info"><%=stats.restoration_potential.remove%>%</p>
+        </li>
+        <li class="last">
+            <h5>NONE</h5>
+            <p class="info"><%=stats.restoration_potential.none %>%</p>
+        </li>
+    </ul>
+</div>
+<% } %>
+
+<% if(stats.forest_status) { %> 
+<div class="block">
+    <span class="title">
+        <h2>FOREST STATUS</h2>
+    </span>
+    <ul class="normal list">
+      <li><h5>% Defined as intact forest</h5><p class="info "><%= stats.forest_status.intact %>%</p></li>
+      <li><h5>% Defined as fragmented/managed forest</h5><p class="info "><%= stats.forest_status.fragmented%>%</p></li>
+      <li><h5>% Defined as partially deforested areas</h5><p class="info "><%= stats.forest_status.partial %>%</p></li>
+      <li><h5>% Defined as deforested areas</h5><p class="info "><%= stats.forest_status.deforested %>%</p></li>
+    </ul>
+</div>
+<% } %>
+
+<!--
+<div class="block">
+    <span class="title">
+        <h2>CARBON</h2>
+        <p>887,277<small>T</small></p>
+    </span>
+    <ul class="normal list tooltip">
+        <li>
+            <h5 class="stats">PA's</h5>
+            <div class="stats_bar">
+                <span class="r_bar"></span>
+                <div class="stats_bar inner">
+                    <span class="r_bar"></span>
+                </div>
+            </div>
+            <p>51%</p>
+        </li>
+        <li>
+            <h5 class="stats">PA's</h5>
+            <div class="stats_bar">
+                <span class="r_bar"></span>
+                <div class="stats_bar inner">
+                    <span class="r_bar"></span>
+                </div>
+            </div>
+            <p>51%</p>
+        </li>
+    </ul>
+</div>
+
+<div class="block">
+    <span class="title">
+        <h2>COVERAGE STATISTICS</h2>
+        <p>&nbsp;</p>
+    </span>
+    <ul class="normal list">
+        <li>
+            <h5 class="stats">PA's</h5>
+            <div class="stats_bar">
+                <span class="r_bar"></span>
+            </div>
+            <p>51%</p>
+        </li>
+        <li>
+            <h5 class="stats">KBA's</h5>
+            <div class="stats_bar">
+                <span class="r_bar"></span>
+            </div>
+            <p>51%</p>
+        </li>
+        <li>
+            <h5 class="stats">KBAJAMON's</h5>
+            <div class="stats_bar">
+                <span class="r_bar"></span>
+            </div>
+            <p>51%</p>
+        </li>
+    </ul>
+</div>
+
+<div class="block">
+    <span class="title">
+        <h2>CONSERVATION PRIORITIES</h2>
+        <p>&nbsp;</p>
+    </span>
+    <ul class="down list">
+        <li>
+            <h5>Mexico</h5>
+            <ul>
+                <li class="hst">
+                    <h6>Highest</h6>
+                    <div class="stats_bar"><span class="r_bar"></span></div>
+                </li>
+                <li class="h">
+                    <h6>High</h6>
+                    <div class="stats_bar"><span class="r_bar"></span></div>
+                </li>
+                <li class="m">
+                    <h6>Med</h6>
+                    <div class="stats_bar"><span class="r_bar"></span></div>
+                </li>
+                <li class="l">
+                    <h6>Low</h6>
+                    <div class="stats_bar"><span class="r_bar"></span></div>
+                </li>
+                <li class="out">
+                    <h6>Outs.</h6>
+                    <div class="stats_bar"><span class="r_bar"></span></div>
+                </li>
+            </ul>
+        </li>
+
+    </ul>
+</div>
+
+-->
+
