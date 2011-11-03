@@ -69,12 +69,78 @@ App.modules.Map = function(app) {
         }
     });
 
+    //TODO: refactor base popup
+    var ProtectedZonePopup = Backbone.View.extend({
+        el: $('#protected_popup'),
+
+        events: {
+            'click .close': 'hide',
+            'click #add_protected': 'add_protected_area'
+        },
+
+        initialize: function() {
+            _.bindAll(this, 'show', 'hide');
+            this.map = this.options.mapview;
+            this.name_el = this.$('.name');
+            this.protected_zone = null;
+        },
+
+        show: function(at, protected_zone_info) {
+            var self = this;
+            self.name_el.html(protected_zone_info.name);
+            this.protected_zone = protected_zone_info;
+            var px = this.map.projector.transformCoordinates(at);
+            self.set_pos(px);
+        },
+
+        set_pos: function(p) {
+            this.el.css({
+                top: p.y - 20 - 50,
+                left: p.x
+            });
+            this.el.show();
+        },
+
+        hide: function(e) {
+            if(e) { e.preventDefault(); }
+            this.el.hide();
+        },
+
+        add_protected_area: function(e) {
+            var self = this;
+            if(e) { e.preventDefault(); }
+            self.hide();
+            app.WS.ProtectedPlanet.PA_polygon(this.protected_zone.id, function(geom) {
+                // convert polygon lon, lat -> lat, lon
+                var polygons = geom.the_geom.coordinates;
+                if(geom.the_geom.type === "MultiPolygon") {
+                } else {
+                    polygons = [polygons];
+                }
+                _(polygons).each(function(coord) {
+                    var polygon = _(coord).map(function(poly) {
+                        return _(poly).map(function(latlon) {
+                            //return _(inner).map(function(latlon) {
+                                app.Log.log(latlon[0], latlon[1]);
+                                return [latlon[1], latlon[0]];
+                            //});
+                        });
+                    });
+                    self.trigger('add_polygon', polygon);
+                });
+            });
+        }
+
+    });
+
+
     app.Map = Class.extend({
         init: function(bus) {
-            _.bindAll(this, 'show_report', 'start_edit_polygon', 'end_edit_polygon', 'remove_polygon', 'disable_editing', 'enable_editing', 'enable_layer', 'reoder_layers');
+            _.bindAll(this, 'show_report', 'start_edit_polygon', 'end_edit_polygon', 'remove_polygon', 'disable_editing', 'enable_editing', 'enable_layer', 'reoder_layers', 'protected_area_click');
             var self = this;
             this.map = new MapView({el: $('.map_container')});
             this.popup = new Popup({mapview: this.map});
+            this.protectedzone_popup = new ProtectedZonePopup({mapview: this.map});
             this.layer_editor = new LayerEditor({
                 el: $('.layers'),
                 bus: bus,
@@ -102,6 +168,10 @@ App.modules.Map = function(app) {
             this.popup.bind('edit', this.end_edit_polygon);
             this.popup.bind('remove', this.remove_polygon);
 
+            this.protectedzone_popup.bind('add_polygon', function(polygon) {
+                self.bus.emit('polygon', {paths: polygon});
+            });
+
             // add layers to the map
             _(app.config.MAP_LAYERS).each(function(layer) {
                 self.map.add_layer(layer.name, layer);
@@ -120,6 +190,21 @@ App.modules.Map = function(app) {
 
         editing: function(b) {
             this.polygon_edit.editing_state(b);
+            // always try to unbind to avoid bind twice
+            this.map.unbind('click', this.protected_area_click);
+            if(!b) {
+                this.map.bind('click', this.protected_area_click);
+            }
+        },
+
+        protected_area_click: function(e) {
+            var self = this;
+            var pos = [e.latLng.lat(), e.latLng.lng()];
+            app.WS.ProtectedPlanet.info_at(pos, function(data) {
+                if(data) {
+                    self.protectedzone_popup.show(e.latLng, data);
+                }
+            });
         },
 
         disable_editing: function() {
