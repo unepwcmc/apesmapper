@@ -51,6 +51,7 @@ App.modules.Data = function(app) {
             // get data using polygons
             app.WS.CartoDB.calculate_stats(this.get('polygons'), function(stats) {
               self.set({'stats': stats});
+              self.save();
             });
         },
 

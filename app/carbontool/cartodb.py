@@ -30,7 +30,6 @@ class CartoDB(object):
 
     def carbon(self, polygon):
         carbon = json.loads(self.sql(SQL_CARBON % {'polygon': polygon}))
-        import pdb; pdb.set_trace()
         row = carbon['rows'][0]
         return int(row['intersects_sum']) + int(row['within_sum'] or 0)
 
