@@ -33,7 +33,10 @@ $selected-background-color: #ff5E99;  // bg-color for selected text
 $list-left-margin: 2em;  // left margin for ul an ol
 
 
-
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
 
 /* Carbon tool mixins */
 

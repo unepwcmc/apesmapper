@@ -1,7 +1,7 @@
 
 var Report = Backbone.View.extend({
 
-    tagName:  "li",
+    tagName:  "div",
 
     template: _.template($('#report-tmpl').html()),
     template_no_content: _.template($('#report-tmpl-no-content').html()),
@@ -13,16 +13,23 @@ var Report = Backbone.View.extend({
 
     initialize: function() {
         _.bindAll(this, 'show', 'hide');
+        $(this.el).addClass('tab_content_item');
         this.bus = this.options.bus;
     },
 
     render: function(data) {
+        var self = this;
         if(data.polygons.length !== 0 || data.total) {
             $(this.el).html(this.template(data));
         } else {
             $(this.el).html(this.template_no_content(data));
         }
         this.$('.editing').hide();
+        /*
+        setTimeout(function() {
+            $(self.el).jScrollPane({autoReinitialise:true});
+        }, 1000);
+        */
         return this;
     },
 
@@ -129,6 +136,7 @@ var Panel = Backbone.View.extend({
         this.tabs = new Tabs({el: this.$('#tabs')});
         this.tabs.bind('enable', function() {
         });
+        this.tab_contents = this.$('#tab_content');
     },
 
     create_report: function(e) {
@@ -142,13 +150,13 @@ var Panel = Backbone.View.extend({
         });
         this.reports.push(r);
         this.reports_map[cid] = r;
-        this.el.find("#tab_content").append(r.render(data).el);
+        this.tab_contents.append(r.render(data).el);
         this.tabs.add_report(cid, data);
     },
 
     remove_all: function() {
         this.tabs.clear();
-        this.el.find('#tab_content').html('');
+        this.tab_contents.html('');
         for(var i = 0; i < this.reports.length; ++i) {
             delete this.reports[i];
         }
