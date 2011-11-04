@@ -133,15 +133,21 @@ App.modules.Map = function(app) {
 
     app.Map = Class.extend({
         init: function(bus) {
-            _.bindAll(this, 'show_report', 'start_edit_polygon', 'end_edit_polygon', 'remove_polygon', 'disable_editing', 'enable_editing', 'enable_layer', 'reoder_layers', 'protected_area_click');
+            _.bindAll(this, 'show_report', 'start_edit_polygon', 'end_edit_polygon', 'remove_polygon', 'disable_editing', 'enable_editing', 'enable_layer', 'reoder_layers', 'protected_area_click','reorder_layers');
             var self = this;
             this.map = new MapView({el: $('.map_container')});
+            // add layers to the map
+            _(app.config.MAP_LAYERS).each(function(layer) {
+                self.map.add_layer(layer.name, layer);
+                self.map.enable_layer(layer.name, true);
+            });
+
             this.popup = new Popup({mapview: this.map});
             this.protectedzone_popup = new ProtectedZonePopup({mapview: this.map});
             this.layer_editor = new LayerEditor({
                 el: $('.layers'),
                 bus: bus,
-                layers: app.config.MAP_LAYERS
+                layers: this.map.get_layers()
             });
             this.polygon_edit = new PolygonDrawTool({mapview: this.map});
             this.editing(false);
@@ -169,11 +175,6 @@ App.modules.Map = function(app) {
                 self.bus.emit('polygon', {paths: polygon});
             });
 
-            // add layers to the map
-            _(app.config.MAP_LAYERS).each(function(layer) {
-                self.map.add_layer(layer.name, layer);
-                self.map.enable_layer(layer.name, true);
-            });
 
         },
 
@@ -262,6 +263,10 @@ App.modules.Map = function(app) {
             this.finish_editing();
             var p = this.editing_poly;
             this.bus.emit('model:remove_polygon', p.report, p.polygon_id);
+        },
+
+        reorder_layers: function(order) {
+            this.map.reorder_layers(order);
         }
     });
 };

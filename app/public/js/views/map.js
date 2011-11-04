@@ -148,7 +148,11 @@ var MapView = Backbone.View.extend({
 
     // add a new tiled layer
     add_layer: function(name, layer_info) {
-          layer = new google.maps.ImageMapType({
+          var opacity = 1.0;
+          if(layer_info.opacity !== undefined) {
+            opacity = layer_info.opacity;
+          }
+          var layer = new google.maps.ImageMapType({
               getTileUrl: function(tile, zoom) {
                 var y = tile.y;
                 var tileRange = 1 << zoom;
@@ -162,7 +166,7 @@ var MapView = Backbone.View.extend({
                 return this.urlPattern.replace("{X}",x).replace("{Y}",y).replace("{Z}",zoom);
               },
               tileSize: new google.maps.Size(256, 256),
-              opacity: 1.0,
+              opacity: opacity,
               isPng: true,
               urlPattern:layer_info.url
          });
@@ -172,6 +176,13 @@ var MapView = Backbone.View.extend({
          };
          this.layers_order.push(name);
          this.reorder_layers();
+    },
+
+    get_layers: function() {
+        var self = this;
+        return _(this.layers_order).map(function(name) {
+            return self.layers[name];
+        });
     },
 
     enable_layer: function(name, enable) {
@@ -184,7 +195,8 @@ var MapView = Backbone.View.extend({
         var idx = 0;
         this.layers_order = names || this.layers_order;
         self.map.overlayMapTypes.clear();
-        _(this.layers_order).each(function(name) {
+        var order = _.clone(this.layers_order).reverse();
+        _(order).each(function(name) {
             var layer = self.layers[name];
             if(layer.enabled) {
                 self.map.overlayMapTypes.setAt(idx, layer.layer);

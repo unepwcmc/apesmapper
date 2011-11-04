@@ -118,110 +118,118 @@
     right: 375px;
     width:224px;
     z-index:10;
-    
+
     a.view {
-	    float:right;
-	    display:block;
-	    width:auto;
-	    height:33px;
-	    padding:0 0 0 15px;
-	    @include background(no-repeat,0,-1035px);
-	    text-decoration:none;
-	    
-	    span {
-	    	float:left;
-		    height:13px;
-		    margin:0;
-		    padding:11px 32px 9px 5px;
-		    font:normal 13px "WhitneyBookRegular","Myriad Pro";
-		    color:#333333;
-		    @include background(no-repeat,right,-1035px);
-		    text-indent:0px;
-		    text-decoration:none;
-		    
-		    strong {
-		     font:bold 13px "WhitneyBold","Myriad Pro";
-		    }
-	    }
+      float:right;
+      display:block;
+      width:auto;
+      height:33px;
+      padding:0 0 0 15px;
+      @include background(no-repeat,0,-1035px);
+      text-decoration:none;
+
+      span {
+        float:left;
+        height:13px;
+        margin:0;
+        padding:11px 32px 9px 5px;
+        font:normal 13px "WhitneyBookRegular","Myriad Pro";
+        color:#333333;
+        @include background(no-repeat,right,-1035px);
+        text-indent:0px;
+        text-decoration:none;
+
+        strong {
+         font:bold 13px "WhitneyBold","Myriad Pro";
+        }
+      }
     }
-    
+
     div.show {
-	    position:absolute;
-	    top:21px;
-	    right:0;
+      position:absolute;
+      top:21px;
+      right:0;
       display: none;
       width:224px;
       z-index:-1;
-			
-			span.top {
-				float:right;
-				width:100%;
-				height:12px;
-				@include background(no-repeat,right,-1411px);
-			}
-	
-			ul {
-				float:right;
-	      width: 212px;
-	      padding: 0 6px 5px;
-	      list-style: none;
-	      text-align: left;
-	      @include background(no-repeat,right,bottom);
-	      
-	      li {
-	      	padding: 5px 9px;
-	      	border:none;
-	        border-bottom: 1px solid #F2F2F2;
-	        font:bold 13px "Helvetica Neue";
-	        color:#333333;
-	        
-	        &:last-child {border:none}
-	        &.last {border:none}
-	        
-	        &:hover {
-	        	@include background(no-repeat,-270px,-1372px);
-	        	background-color:#EDEDED;
-	        	cursor:pointer!important;
-	        }
-	        
-	        &.moving {
-		        border-top:1px solid #CCCCCC;
-		        border-bottom:1px solid #CCCCCC;
-	        }
-	      }
-	      
-	      a.expand {
-	      	display:block;
-		      width:100%;
-		      height:9px;
-		      text-indent:-9999px;
-		      font-size:0;
-		      line-height:0;
-		      @include background(no-repeat,0,-1444px);
-		      &:hover {background-position:0 -1452px}
-	      }
-	    }  
-	    
+
+      span.top {
+        float:right;
+        width:100%;
+        height:12px;
+        @include background(no-repeat,right,-1411px);
+      }
+
+      ul {
+        float:right;
+        width: 212px;
+        padding: 0 6px 5px;
+        list-style: none;
+        text-align: left;
+        @include background(no-repeat,right,bottom);
+
+        li {
+          padding: 5px 9px;
+          border:none;
+          border-bottom: 1px solid #F2F2F2;
+          font:normal 13px "Helvetica Neue";
+          color:#333333;
+
+          &:last-child {
+              border:none;
+          }
+          &.last {
+            border:none;
+          }
+
+          &:hover {
+            @include background(no-repeat,-270px,-1372px);
+            background-color:#EDEDED;
+            cursor:pointer!important;
+          }
+
+          &.enabled {
+            font-weight:bold;
+          }
+
+          &.moving {
+            border-top:1px solid #CCCCCC;
+            border-bottom:1px solid #CCCCCC;
+          }
+        }
+
+        a.expand {
+          display:block;
+          width:100%;
+          height:9px;
+          text-indent:-9999px;
+          font-size:0;
+          line-height:0;
+          @include background(no-repeat,0,-1444px);
+          &:hover {background-position:0 -1452px}
+        }
+      }
+
     }
 
-    
 
 
-    
-    
+
+
+
     &:hover {
-    
-    	a.view {
-	    	background-position:left -1072px;
-	    	
-	    	span {
-		    	background-position:right -1072px;
-	    	}
-    	}
-    	
-    	.show {
-      	display: block;
-    	}
+
+      a.view {
+        background-position:left -1072px;
+
+        span {
+          background-position:right -1072px;
+        }
+      }
+
+      .show {
+        display: block;
+      }
     }
 
   }
