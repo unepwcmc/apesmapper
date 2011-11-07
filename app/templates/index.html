@@ -11,7 +11,7 @@
        Remove this if you use the .htaccess -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title></title>
+  <title>CarbonTool</title>
   <meta name="description" content="">
   <meta name="author" content="">
 
@@ -45,8 +45,13 @@
       <div class="right">
         <ul>
           <li><a class="no_bkg" href="#about">ABOUT</a></li>
-          <li><a href="#share"><span><strong>SHARE</strong> THIS REPORT</span></a></li>
+          <li><a href="#share" class='share_button'><span><strong>SHARE</strong> THIS REPORT</span></a></li>
         </ul>
+        <div class="share_tooltip">
+            <a class="close">x</a>
+            <h1>share your report using this link</h1>
+            <p class="link">http://dummy/path</p>
+        </div>
       </div>
     </header>
 
@@ -164,6 +169,7 @@
   <script src="js/modules/panel.js"></script>
   <script src="js/modules/start_banner.js"></script>
   <script src="js/modules/ws.js"></script>
+  <script src="js/modules/header.js"></script>
 
   <!-- backbone components -->
   <script src="js/views/draw_tool.js"></script>
@@ -172,6 +178,7 @@
   <script src="js/views/report.js"></script>
   <script src="js/views/polygon.js"></script>
   <script src="js/views/layers.js"></script>
+  <script src="js/views/sharepopup.js"></script>
 
 
   <!-- main -->
