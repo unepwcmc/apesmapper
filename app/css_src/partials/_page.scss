@@ -59,18 +59,24 @@ body.tool {
     
 
     div.share_tooltip {
-      //display: none;
+      display: none;
       position: absolute;
-      top: 66px;
+      top: 30px;
       left: -145px;
       z-index: 100;
-      background: white;
-      border: 1px solid #000;
-      padding: 10px;
-      width: 331px;
+      @include background(left,-1700px,no-repeat);
+      padding: 33px 20px 20px 20px;
+      width: 312px;
       .close {
         float: right;
+        width: 12px;
+        height: 17px;
+        @include background(right,-1258px,no-repeat);
+        &:hover {
+          //@include background(right,-1275px,no-repeat);
+        }
       }
+
       h1 {
         margin: 0 0 5px;
         padding: 0;
@@ -79,6 +85,7 @@ body.tool {
         text-shadow: none;
       }
       .link {
+        width: 297px;
         background-color: rgb(242, 242, 242);
         border: 1px solid #999999;
         padding: 5px;
