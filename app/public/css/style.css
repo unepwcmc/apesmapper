@@ -343,34 +343,65 @@ body.tool header {
   height: 73px;
   background: #333333;
 }
-/* line 60, ../../css_src/partials/_page.scss */
+/* line 61, ../../css_src/partials/_page.scss */
+body.tool header div.share_tooltip {
+  position: absolute;
+  top: 66px;
+  left: -145px;
+  z-index: 100;
+  background: white;
+  border: 1px solid #000;
+  padding: 10px;
+  width: 331px;
+}
+/* line 71, ../../css_src/partials/_page.scss */
+body.tool header div.share_tooltip .close {
+  float: right;
+}
+/* line 74, ../../css_src/partials/_page.scss */
+body.tool header div.share_tooltip h1 {
+  margin: 0 0 5px;
+  padding: 0;
+  text-transform: uppercase;
+  color: #333;
+  text-shadow: none;
+}
+/* line 81, ../../css_src/partials/_page.scss */
+body.tool header div.share_tooltip .link {
+  background-color: #f2f2f2;
+  border: 1px solid #999999;
+  padding: 5px;
+  color: #666666;
+  text-shadow: none;
+}
+/* line 90, ../../css_src/partials/_page.scss */
 body.tool header div {
   padding: 20px;
 }
-/* line 63, ../../css_src/partials/_page.scss */
+/* line 93, ../../css_src/partials/_page.scss */
 body.tool header div h1 {
   font: bold 13px "WhitneyBold","Myriad Pro";
   filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=180, Strength=1);
   text-shadow: 0 1px 0 black;
   color: #FFFFFF;
 }
-/* line 67, ../../css_src/partials/_page.scss */
+/* line 97, ../../css_src/partials/_page.scss */
 body.tool header div h1:hover {
   cursor: default;
 }
-/* line 70, ../../css_src/partials/_page.scss */
+/* line 100, ../../css_src/partials/_page.scss */
 body.tool header div p {
   font: normal 13px "WhitneyBookRegular","Myriad Pro";
   filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=180, Strength=1);
   text-shadow: 0 1px 0 black;
   color: white;
 }
-/* line 76, ../../css_src/partials/_page.scss */
+/* line 106, ../../css_src/partials/_page.scss */
 body.tool header div ul {
   float: right;
   width: auto;
 }
-/* line 80, ../../css_src/partials/_page.scss */
+/* line 110, ../../css_src/partials/_page.scss */
 body.tool header div ul li {
   display: inline-block;
   vertical-align: top;
@@ -378,7 +409,7 @@ body.tool header div ul li {
   *display: inline;
   width: auto;
 }
-/* line 84, ../../css_src/partials/_page.scss */
+/* line 114, ../../css_src/partials/_page.scss */
 body.tool header div ul li a {
   float: left;
   height: 28px;
@@ -390,12 +421,12 @@ body.tool header div ul li a {
   color: white;
   text-decoration: none;
 }
-/* line 94, ../../css_src/partials/_page.scss */
+/* line 124, ../../css_src/partials/_page.scss */
 body.tool header div ul li a:hover {
   text-decoration: underline;
   color: white;
 }
-/* line 99, ../../css_src/partials/_page.scss */
+/* line 129, ../../css_src/partials/_page.scss */
 body.tool header div ul li a span {
   float: left;
   width: auto;
@@ -405,28 +436,29 @@ body.tool header div ul li a span {
   background: url("/img/sprite.png") right -28px no-repeat;
   line-height: 13px;
 }
-/* line 106, ../../css_src/partials/_page.scss */
+/* line 136, ../../css_src/partials/_page.scss */
 body.tool header div ul li a span strong {
   font: bold 13px "WhitneyBold";
 }
-/* line 110, ../../css_src/partials/_page.scss */
+/* line 140, ../../css_src/partials/_page.scss */
 body.tool header div ul li a.no_bkg {
   margin: 6px 12px 0 0;
   background: none;
 }
-/* line 113, ../../css_src/partials/_page.scss */
+/* line 143, ../../css_src/partials/_page.scss */
 body.tool header div ul li a.no_bkg span {
   background: none;
 }
 
-/* line 122, ../../css_src/partials/_page.scss */
+/* line 152, ../../css_src/partials/_page.scss */
 div.left {
   float: left;
 }
 
-/* line 123, ../../css_src/partials/_page.scss */
+/* line 153, ../../css_src/partials/_page.scss */
 div.right {
   float: right;
+  position: relative;
 }
 
 /* line 2, ../../css_src/partials/_map.scss */
@@ -466,29 +498,29 @@ div.right {
   position: absolute;
   top: 20px;
   left: 20px;
-  width: 22px;
-  height: 44px;
+  width: 26px;
+  height: 50px;
   z-index: 10;
 }
 /* line 39, ../../css_src/partials/_map.scss */
 .map_container div.zoom_control a {
   display: block;
-  width: 22px;
-  height: 22px;
+  width: 26px;
+  height: 26px;
   text-indent: -9999px;
   background: url("../img/icons/zoom.png") no-repeat 0 0;
 }
 /* line 46, ../../css_src/partials/_map.scss */
 .map_container div.zoom_control a.zoom_in:hover {
-  background-position: 0 -22px;
+  background-position: -26px 0px;
 }
 /* line 51, ../../css_src/partials/_map.scss */
 .map_container div.zoom_control a.zoom_out {
-  background-position: -22px 0;
+  background-position: 0 -26px;
 }
 /* line 53, ../../css_src/partials/_map.scss */
 .map_container div.zoom_control a.zoom_out:hover {
-  background-position: -22px -22px;
+  background-position: -26px -26px;
 }
 /* line 63, ../../css_src/partials/_map.scss */
 .map_container div.crosshair {
