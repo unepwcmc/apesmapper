@@ -13,9 +13,9 @@ var PolygonDrawTool = Backbone.View.extend({
         this.reset();
 
         this.image = new google.maps.MarkerImage('/img/sprite.png',
-                    new google.maps.Size(11, 11),
-                    new google.maps.Point(0,52),
-                    new google.maps.Point(5, 5)
+                    new google.maps.Size(13, 13),
+                    new google.maps.Point(457, 1234),
+                    new google.maps.Point(6,6)
         );
     },
 
@@ -51,7 +51,8 @@ var PolygonDrawTool = Backbone.View.extend({
           //strokeColor: "#DC143C",
           strokeColor: "#FFF",
           strokeOpacity: 1.0,
-          fillOpacity: 0.4,
+          fillOpacity: 0.3,
+          fillColor: '#66CCCC',
           strokeWeight: 1,
           map: this.map
         });
@@ -172,7 +173,7 @@ var PolygonDrawEditTool = PolygonDrawTool.extend({
           //strokeColor: "#DC143C",
           strokeColor: "#0099CC",
           strokeOpacity: 1.0,
-          fillColor: "#0099CC",
+          fillColor: 'rgba(102, 204, 204, 0.3)',
           fillOpacity: 0.5,
           strokeWeight: 1,
           map: this.map

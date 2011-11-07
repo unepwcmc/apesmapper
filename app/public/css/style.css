@@ -345,20 +345,23 @@ body.tool header {
 }
 /* line 61, ../../css_src/partials/_page.scss */
 body.tool header div.share_tooltip {
+  display: none;
   position: absolute;
-  top: 66px;
+  top: 30px;
   left: -145px;
   z-index: 100;
-  background: white;
-  border: 1px solid #000;
-  padding: 10px;
-  width: 331px;
+  background: url("/img/sprite.png") left -1700px no-repeat;
+  padding: 33px 20px 20px 20px;
+  width: 312px;
 }
-/* line 71, ../../css_src/partials/_page.scss */
+/* line 70, ../../css_src/partials/_page.scss */
 body.tool header div.share_tooltip .close {
   float: right;
+  width: 12px;
+  height: 17px;
+  background: url("/img/sprite.png") right -1258px no-repeat;
 }
-/* line 74, ../../css_src/partials/_page.scss */
+/* line 80, ../../css_src/partials/_page.scss */
 body.tool header div.share_tooltip h1 {
   margin: 0 0 5px;
   padding: 0;
@@ -366,42 +369,43 @@ body.tool header div.share_tooltip h1 {
   color: #333;
   text-shadow: none;
 }
-/* line 81, ../../css_src/partials/_page.scss */
+/* line 87, ../../css_src/partials/_page.scss */
 body.tool header div.share_tooltip .link {
+  width: 297px;
   background-color: #f2f2f2;
   border: 1px solid #999999;
   padding: 5px;
   color: #666666;
   text-shadow: none;
 }
-/* line 90, ../../css_src/partials/_page.scss */
+/* line 97, ../../css_src/partials/_page.scss */
 body.tool header div {
   padding: 20px;
 }
-/* line 93, ../../css_src/partials/_page.scss */
+/* line 100, ../../css_src/partials/_page.scss */
 body.tool header div h1 {
   font: bold 13px "WhitneyBold","Myriad Pro";
   filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=180, Strength=1);
   text-shadow: 0 1px 0 black;
   color: #FFFFFF;
 }
-/* line 97, ../../css_src/partials/_page.scss */
+/* line 104, ../../css_src/partials/_page.scss */
 body.tool header div h1:hover {
   cursor: default;
 }
-/* line 100, ../../css_src/partials/_page.scss */
+/* line 107, ../../css_src/partials/_page.scss */
 body.tool header div p {
   font: normal 13px "WhitneyBookRegular","Myriad Pro";
   filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=180, Strength=1);
   text-shadow: 0 1px 0 black;
   color: white;
 }
-/* line 106, ../../css_src/partials/_page.scss */
+/* line 113, ../../css_src/partials/_page.scss */
 body.tool header div ul {
   float: right;
   width: auto;
 }
-/* line 110, ../../css_src/partials/_page.scss */
+/* line 117, ../../css_src/partials/_page.scss */
 body.tool header div ul li {
   display: inline-block;
   vertical-align: top;
@@ -409,7 +413,7 @@ body.tool header div ul li {
   *display: inline;
   width: auto;
 }
-/* line 114, ../../css_src/partials/_page.scss */
+/* line 121, ../../css_src/partials/_page.scss */
 body.tool header div ul li a {
   float: left;
   height: 28px;
@@ -421,12 +425,12 @@ body.tool header div ul li a {
   color: white;
   text-decoration: none;
 }
-/* line 124, ../../css_src/partials/_page.scss */
+/* line 131, ../../css_src/partials/_page.scss */
 body.tool header div ul li a:hover {
   text-decoration: underline;
   color: white;
 }
-/* line 129, ../../css_src/partials/_page.scss */
+/* line 136, ../../css_src/partials/_page.scss */
 body.tool header div ul li a span {
   float: left;
   width: auto;
@@ -436,26 +440,26 @@ body.tool header div ul li a span {
   background: url("/img/sprite.png") right -28px no-repeat;
   line-height: 13px;
 }
-/* line 136, ../../css_src/partials/_page.scss */
+/* line 143, ../../css_src/partials/_page.scss */
 body.tool header div ul li a span strong {
   font: bold 13px "WhitneyBold";
 }
-/* line 140, ../../css_src/partials/_page.scss */
+/* line 147, ../../css_src/partials/_page.scss */
 body.tool header div ul li a.no_bkg {
   margin: 6px 12px 0 0;
   background: none;
 }
-/* line 143, ../../css_src/partials/_page.scss */
+/* line 150, ../../css_src/partials/_page.scss */
 body.tool header div ul li a.no_bkg span {
   background: none;
 }
 
-/* line 152, ../../css_src/partials/_page.scss */
+/* line 159, ../../css_src/partials/_page.scss */
 div.left {
   float: left;
 }
 
-/* line 153, ../../css_src/partials/_page.scss */
+/* line 160, ../../css_src/partials/_page.scss */
 div.right {
   float: right;
   position: relative;
@@ -472,28 +476,38 @@ div.right {
   width: 100%;
   height: 100%;
 }
-/* line 11, ../../css_src/partials/_map.scss */
+/* line 12, ../../css_src/partials/_map.scss */
+.map_container .cartodb_logo {
+  display: block;
+  position: absolute;
+  bottom: 90px;
+  left: 20px;
+  width: 69px;
+  height: 27px;
+  background: url("/img/sprite.png") no-repeat right -1182px;
+}
+/* line 22, ../../css_src/partials/_map.scss */
 .map_container div.layer_editor {
   position: absolute;
   top: 20px;
   right: 30px;
   z-index: 21;
 }
-/* line 16, ../../css_src/partials/_map.scss */
+/* line 27, ../../css_src/partials/_map.scss */
 .map_container div.layer_editor .layer_raster {
   display: block;
   width: 22px;
   height: 23px;
   background: url("../img/layers_editor.png") no-repeat 0 0;
 }
-/* line 22, ../../css_src/partials/_map.scss */
+/* line 33, ../../css_src/partials/_map.scss */
 .map_container div.layer_editor .layer_google_maps {
   display: block;
   width: 22px;
   height: 22px;
   background: url("../img/layers_editor.png") no-repeat 0 -23px;
 }
-/* line 31, ../../css_src/partials/_map.scss */
+/* line 42, ../../css_src/partials/_map.scss */
 .map_container div.zoom_control {
   position: absolute;
   top: 20px;
@@ -502,7 +516,7 @@ div.right {
   height: 50px;
   z-index: 10;
 }
-/* line 39, ../../css_src/partials/_map.scss */
+/* line 50, ../../css_src/partials/_map.scss */
 .map_container div.zoom_control a {
   display: block;
   width: 26px;
@@ -510,31 +524,31 @@ div.right {
   text-indent: -9999px;
   background: url("../img/icons/zoom.png") no-repeat 0 0;
 }
-/* line 46, ../../css_src/partials/_map.scss */
+/* line 57, ../../css_src/partials/_map.scss */
 .map_container div.zoom_control a.zoom_in:hover {
   background-position: -26px 0px;
 }
-/* line 51, ../../css_src/partials/_map.scss */
+/* line 62, ../../css_src/partials/_map.scss */
 .map_container div.zoom_control a.zoom_out {
   background-position: 0 -26px;
 }
-/* line 53, ../../css_src/partials/_map.scss */
+/* line 64, ../../css_src/partials/_map.scss */
 .map_container div.zoom_control a.zoom_out:hover {
   background-position: -26px -26px;
 }
-/* line 63, ../../css_src/partials/_map.scss */
+/* line 74, ../../css_src/partials/_map.scss */
 .map_container div.crosshair {
   display: none;
   position: absolute;
   top: 50%;
   left: 50%;
 }
-/* line 68, ../../css_src/partials/_map.scss */
+/* line 79, ../../css_src/partials/_map.scss */
 .map_container div.crosshair img {
   margin-left: -7px;
   margin-top: -7px;
 }
-/* line 75, ../../css_src/partials/_map.scss */
+/* line 86, ../../css_src/partials/_map.scss */
 .map_container #protected_popup {
   position: absolute;
   display: none;
@@ -543,11 +557,11 @@ div.right {
   padding: 10px;
   background: #FFF;
 }
-/* line 82, ../../css_src/partials/_map.scss */
+/* line 93, ../../css_src/partials/_map.scss */
 .map_container #protected_popup .close {
   float: right;
 }
-/* line 87, ../../css_src/partials/_map.scss */
+/* line 98, ../../css_src/partials/_map.scss */
 .map_container #polygon_popup {
   position: absolute;
   display: none;
@@ -558,7 +572,7 @@ div.right {
   padding: 21px 20px 33px 20px;
   background: url("/img/sprite.png") -325px -478px no-repeat;
 }
-/* line 98, ../../css_src/partials/_map.scss */
+/* line 109, ../../css_src/partials/_map.scss */
 .map_container #polygon_popup a {
   display: inline-block;
   vertical-align: top;
@@ -571,16 +585,16 @@ div.right {
   text-transform: uppercase;
   line-height: 11px;
 }
-/* line 110, ../../css_src/partials/_map.scss */
+/* line 121, ../../css_src/partials/_map.scss */
 .map_container #polygon_popup a#delete {
   width: 50px;
   color: #FF9933;
 }
-/* line 111, ../../css_src/partials/_map.scss */
+/* line 122, ../../css_src/partials/_map.scss */
 .map_container #polygon_popup a:hover {
   text-decoration: underline;
 }
-/* line 115, ../../css_src/partials/_map.scss */
+/* line 126, ../../css_src/partials/_map.scss */
 .map_container .layers {
   position: absolute;
   top: 20px;
@@ -588,7 +602,7 @@ div.right {
   width: 224px;
   z-index: 10;
 }
-/* line 122, ../../css_src/partials/_map.scss */
+/* line 133, ../../css_src/partials/_map.scss */
 .map_container .layers a.view {
   float: right;
   display: block;
@@ -598,7 +612,7 @@ div.right {
   background: url("/img/sprite.png") no-repeat 0 -1035px;
   text-decoration: none;
 }
-/* line 131, ../../css_src/partials/_map.scss */
+/* line 142, ../../css_src/partials/_map.scss */
 .map_container .layers a.view span {
   float: left;
   height: 13px;
@@ -610,11 +624,11 @@ div.right {
   text-indent: 0px;
   text-decoration: none;
 }
-/* line 142, ../../css_src/partials/_map.scss */
+/* line 153, ../../css_src/partials/_map.scss */
 .map_container .layers a.view span strong {
   font: bold 13px "WhitneyBold","Myriad Pro";
 }
-/* line 148, ../../css_src/partials/_map.scss */
+/* line 159, ../../css_src/partials/_map.scss */
 .map_container .layers div.show {
   position: absolute;
   top: 21px;
@@ -623,23 +637,23 @@ div.right {
   width: 224px;
   z-index: -1;
 }
-/* line 156, ../../css_src/partials/_map.scss */
+/* line 167, ../../css_src/partials/_map.scss */
 .map_container .layers div.show span.top {
   float: right;
   width: 100%;
   height: 12px;
   background: url("/img/sprite.png") no-repeat right -1411px;
 }
-/* line 163, ../../css_src/partials/_map.scss */
+/* line 174, ../../css_src/partials/_map.scss */
 .map_container .layers div.show ul {
   float: right;
   width: 212px;
   padding: 0 6px 5px;
   list-style: none;
   text-align: left;
-  background: url("/img/sprite.png") no-repeat right bottom;
+  background: url("/img/sprite.png") no-repeat right -1425px;
 }
-/* line 171, ../../css_src/partials/_map.scss */
+/* line 182, ../../css_src/partials/_map.scss */
 .map_container .layers div.show ul li {
   padding: 5px 9px;
   border: none;
@@ -647,30 +661,30 @@ div.right {
   font: normal 13px "Helvetica Neue";
   color: #333333;
 }
-/* line 178, ../../css_src/partials/_map.scss */
+/* line 189, ../../css_src/partials/_map.scss */
 .map_container .layers div.show ul li:last-child {
   border: none;
 }
-/* line 181, ../../css_src/partials/_map.scss */
+/* line 192, ../../css_src/partials/_map.scss */
 .map_container .layers div.show ul li.last {
   border: none;
 }
-/* line 185, ../../css_src/partials/_map.scss */
+/* line 196, ../../css_src/partials/_map.scss */
 .map_container .layers div.show ul li:hover {
   background: url("/img/sprite.png") no-repeat -270px -1372px;
   background-color: #EDEDED;
   cursor: pointer!important;
 }
-/* line 191, ../../css_src/partials/_map.scss */
+/* line 202, ../../css_src/partials/_map.scss */
 .map_container .layers div.show ul li.enabled {
   font-weight: bold;
 }
-/* line 195, ../../css_src/partials/_map.scss */
+/* line 206, ../../css_src/partials/_map.scss */
 .map_container .layers div.show ul li.moving {
   border-top: 1px solid #CCCCCC;
   border-bottom: 1px solid #CCCCCC;
 }
-/* line 201, ../../css_src/partials/_map.scss */
+/* line 212, ../../css_src/partials/_map.scss */
 .map_container .layers div.show ul a.expand {
   display: block;
   width: 100%;
@@ -680,19 +694,19 @@ div.right {
   line-height: 0;
   background: url("/img/sprite.png") no-repeat 0 -1444px;
 }
-/* line 209, ../../css_src/partials/_map.scss */
+/* line 220, ../../css_src/partials/_map.scss */
 .map_container .layers div.show ul a.expand:hover {
   background-position: 0 -1452px;
 }
-/* line 222, ../../css_src/partials/_map.scss */
+/* line 233, ../../css_src/partials/_map.scss */
 .map_container .layers:hover a.view {
   background-position: left -1072px;
 }
-/* line 225, ../../css_src/partials/_map.scss */
+/* line 236, ../../css_src/partials/_map.scss */
 .map_container .layers:hover a.view span {
   background-position: right -1072px;
 }
-/* line 230, ../../css_src/partials/_map.scss */
+/* line 241, ../../css_src/partials/_map.scss */
 .map_container .layers:hover .show {
   display: block;
 }
