@@ -1,5 +1,6 @@
 # Django settings for carbontool project.
 import os
+import logging
 
 PRODUCTION = False
 if 'SERVER_SOFTWARE' in os.environ and os.environ['SERVER_SOFTWARE'].startswith('Google App Engine'):
@@ -49,6 +50,7 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.gzip.GZipMiddleware'
 )
 
 ROOT_URLCONF = 'urls'
@@ -62,3 +64,8 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'carbontool'
 )
+if DEBUG:
+    logging.basicConfig(
+        level = logging.DEBUG,
+        format = '%(asctime)s %(levelname)s %(message)s',
+    )
