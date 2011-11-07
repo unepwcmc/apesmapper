@@ -12,8 +12,10 @@ var SQL_FOREST = "SELECT total_n_pixels, (pvc).value, SUM((pvc).count) FROM (SEL
     var resource_url = 'https://carbon-tool.cartodb.com/api/v1/sql';
 
     function query(sql, callback) {
+         //TODO: POST if the sql if too long
          $.getJSON(resource_url + '?q=' + encodeURI(sql) + '&callback=?')
-         .success(callback);
+         .success(callback)
+         .error(function(){ callback(); });
     }
 
     function wtk_polygon(poly) {
