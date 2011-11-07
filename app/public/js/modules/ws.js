@@ -1,39 +1,3 @@
-
-function get_fake_data() {
-    function rnd(max) {
-        return (max*Math.random()).toFixed(0);
-    }
-    return {
-      carbon: {
-        qty: (1234567*Math.random()).toFixed(0),
-        by_country: [
-          {name: 'Mexico', qty: rnd(9999)},
-          {name: 'Spain', qty: rnd(9999)}
-        ]
-      },
-      'restoration_potential': {
-          wide_scale: rnd(100),
-          mosaic: rnd(100),
-          remove: rnd(100),
-          none: rnd(100)
-      },
-      'covered_by_PA':  {
-        percent: rnd(100),
-        num_overlap: rnd(20)
-      },
-      'covered_by_KBA':  {
-        percent: rnd(100),
-        num_overlap: rnd(20)
-      },
-      'forest_status': {
-        intact: rnd(100),
-        fragmented: rnd(100),
-        partial: rnd(100),
-        deforested: rnd(100)
-      }
-    };
-}
-
 /*
  ===============================================
  external ws
@@ -83,19 +47,22 @@ App.modules.WS = function(app) {
 
     WS.CartoDB = {
         calculate_stats: function(polygons, callback) {
-            $.ajax({
-                url: '/api/v0/stats',
-                type: 'POST',
-                data: JSON.stringify({polygons: polygons}),
-                success: function(data) {
-                    callback(data);
-                }
-            });
-            /*
-            setTimeout(function() {
-                callback(get_fake_data());
-            }, 1000);
-            */
+            var stats = {};
+            var count = 0;
+            var stats_to_get = ['carbon', 'restoration_potential', 'forest_status'];
+            _.each(stats_to_get, function(stat) {
+                app.CartoDB[stat](polygons, function(data) {
+                    if(data) {
+                        stats[stat] = data;
+                    } else {
+                        app.Log.error("can't get stats from cartodb for ", stat);
+                    }
+                    count++;
+                    if(count == stats_to_get.length) {
+                        callback(stats);
+                    }
+                });
+             });
         },
 
         aggregate_stats: function(polygons, callback) {
