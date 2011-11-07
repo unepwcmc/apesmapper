@@ -52,9 +52,7 @@ App.modules.Carbon = function(app) {
                 }
             });
             this.bus.on('view:show_report', function(id, r) {
-                if(r.polygons.length === 0) {
-                    self.map.editing(true);
-                }
+                self.map.editing(r.polygons.length === 0);
             });
 
             if(location.hash === '') {

@@ -95,8 +95,8 @@ App.modules.Map = function(app) {
 
         set_pos: function(p) {
             this.el.css({
-                top: p.y - 20 - 50,
-                left: p.x
+                top: p.y - 120,
+                left: p.x - 30
             });
             this.el.show();
         },

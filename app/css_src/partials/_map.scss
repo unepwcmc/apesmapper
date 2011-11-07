@@ -85,13 +85,51 @@
 
   #protected_popup{
     position: absolute;
+    @include background(left,-1469px,no-repeat);
     display: none;
-    top: 0;
-    left: 0;
-    padding: 10px;
-    background: #FFF;
+    top: 100px;
+    left: 100px;
+    width: 193px;
+    height: 114px; 
+    padding: 18px;
+
+    h1.name {
+        font:bold 13px "WhitneyBookRegular","Myriad Pro";
+        color:#333333;
+        text-transform: uppercase;
+        border-bottom: 2px solid #333;
+        letter-spacing: -1px;
+        padding-bottom: 5px;
+    }
     .close {
-      float: right;
+        float: right;
+        width: 12px;
+        height: 17px;
+        @include background(right,-1258px,no-repeat);
+    }
+    #add_protected {
+        float:left;
+        width:auto;
+        height:30px;
+        margin:10px 0 0 0px;
+        padding:0 0 0 11px;
+        @include background(-2px,-453px,no-repeat);
+        font:bold 13px "WhitneyBold";
+        color:white;
+        text-transform: uppercase;
+        @include background(0,-790px,no-repeat);
+        @include text-shadow(#3C7D7D);
+        text-decoration:none;
+
+        span {
+          float:left;
+          width:auto;
+          height:14px;
+          padding:8px 12px 8px 0;
+          @include background(right,-820px,no-repeat);
+        }
+
+        &:hover {text-decoration:underline;}
     }
   }
 
