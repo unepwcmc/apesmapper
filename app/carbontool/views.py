@@ -58,18 +58,41 @@ def work(request, work_hash=None):
 def stats(request): 
     data = { 'error': 'you should use POST' }
     if request.method == "POST":
-        #TODO: error control
         polygons = json.loads(request.raw_post_data)['polygons']
         c = CartoDB()
         try:
-            carbon = c.carbon(polygon_text(polygons[0]))
+            carbon = c.carbon(polygon_text(polygons))
         except Exception as e:
             data['error'] = str(e)
         else:
             data = {
                 'carbon': {
-                    'qty': carbon
-                }
+                    'qty': carbon,
+                    'by_country': [
+                      {'name': 'Mexico', 'qty': 1234},
+                      {'name': 'Spain', 'qty': 5678}
+                      ],
+                },
+                'restoration_potential': {
+                      'wide_scale': 12,
+                      'mosaic': 12,
+                      'remove': 12,
+                      'none': 14
+                 },
+                 'covered_by_PA':  {
+                    'percent': 90,
+                    'num_overlap': 12
+                 },
+                 'covered_by_KBA':  {
+                    'percent': 12,
+                    'num_overlap': 34
+                 },
+                 'forest_status': {
+                    'intact': 12,
+                    'fragmented': 23,
+                    'partial': 34,
+                    'deforested': 14
+                 }
             }
     return HttpResponse(json.dumps(data), mimetype='application/json')
 
