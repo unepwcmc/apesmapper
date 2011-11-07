@@ -177,7 +177,7 @@
         padding: 0 6px 5px;
         list-style: none;
         text-align: left;
-        @include background(no-repeat,right,bottom);
+        @include background(no-repeat,right,-1425px);
 
         li {
           padding: 5px 9px;
