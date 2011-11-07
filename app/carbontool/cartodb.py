@@ -21,7 +21,10 @@ SELECT intersects_sum, within_sum FROM (SELECT SUM((pvc).value * (pvc).count) AS
 """
 # should return "rows":[{"intersects_sum":5818935663,"within_sum":57668562021}]}
 
-#TODO add support for multiploygon
+SQL_RESTORATION = """
+SELECT total_n_pixels, (pvc).value, SUM((pvc).count) FROM (SELECT ST_ValueCount(ST_AsRaster((intersection).geom, scalex, scaley, NULL, NULL, ARRAY['32BSI'], ARRAY[(intersection).val])) AS pvc, CAST((area / (scalex * scalex)) AS Integer) AS total_n_pixels FROM (SELECT (ST_Intersection(rast, the_geom)) AS intersection, ST_ScaleX(rast) AS scalex, ST_ScaleY(rast) AS scaley, ST_Area(the_geom) AS area FROM restoration_potential, (SELECT ST_GeomFromText('%(polygon)s',4326) AS the_geom) foo WHERE ST_Intersects(rast, the_geom)) bar) AS foo GROUP BY total_n_pixels, value;
+"""
+
 def polygon_text(poly):
     """
         get a polygon, close it and reverse the lat,lon
@@ -56,6 +59,26 @@ class CartoDB(object):
         except ValueError, e:
             logging.error("error parsing result from carbon", e)
         return 0
+
+    def restoration_potential(self, polygon):
+        restoration = json.loads(self.sql(SQL_RESTORATION % {'polygon': polygon}))
+        rows = restoration['rows']
+        #1 -> wide-scale; 2 -> mosaic; 3 -> remote, 4 -> agricultural lands
+        value_map = {'1': 'wide-scale', '2': 'mosaic', '3': 'remote', '4':'agricultural lands'}
+        stats = {
+          'wide_scale': 0,
+          'mosaic': 0,
+          'remove': 0,
+          'none': 0
+        }
+        total = 0
+        total_n_pixels = 1
+        for x in rows:
+            stats[value_map[str(x['value'])]] = 100.0*float(x['sum'])/float(x['total_n_pixels'])
+            total_n_pixels = float(x['total_n_pixels'])
+            total += float(x['sum'])
+        stats['none'] = 100 * (1.0 - total/total_n_pixels)
+        return stats
 
 if __name__ == '__main__':
     c = CartoDB()

@@ -61,8 +61,11 @@ def stats(request):
         polygons = json.loads(request.raw_post_data)['polygons']
         c = CartoDB()
         try:
-            carbon = c.carbon(polygon_text(polygons))
+            wkt = polygon_text(polygons)
+            carbon = c.carbon(wkt)
+            restoration = c.restoration_potential(wkt)
         except Exception as e:
+            logging.error(e)
             data['error'] = str(e)
         else:
             data = {
@@ -73,12 +76,13 @@ def stats(request):
                       {'name': 'Spain', 'qty': 5678}
                       ],
                 },
-                'restoration_potential': {
-                      'wide_scale': 12,
-                      'mosaic': 12,
-                      'remove': 12,
-                      'none': 14
-                 },
+                'restoration_potential': restoration,
+                #{
+                      #'wide_scale': 12,
+                      #'mosaic': 12,
+                      #'remove': 12,
+                      #'none': 14
+                 #},
                  'covered_by_PA':  {
                     'percent': 90,
                     'num_overlap': 12
