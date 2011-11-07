@@ -25,6 +25,10 @@ SQL_RESTORATION = """
 SELECT total_n_pixels, (pvc).value, SUM((pvc).count) FROM (SELECT ST_ValueCount(ST_AsRaster((intersection).geom, scalex, scaley, NULL, NULL, ARRAY['32BSI'], ARRAY[(intersection).val])) AS pvc, CAST((area / (scalex * scalex)) AS Integer) AS total_n_pixels FROM (SELECT (ST_Intersection(rast, the_geom)) AS intersection, ST_ScaleX(rast) AS scalex, ST_ScaleY(rast) AS scaley, ST_Area(the_geom) AS area FROM restoration_potential, (SELECT ST_GeomFromText('%(polygon)s',4326) AS the_geom) foo WHERE ST_Intersects(rast, the_geom)) bar) AS foo GROUP BY total_n_pixels, value;
 """
 
+SQL_FOREST = """
+SELECT total_n_pixels, (pvc).value, SUM((pvc).count) FROM (SELECT ST_ValueCount(ST_AsRaster((intersection).geom, scalex, scaley, NULL, NULL, ARRAY['32BSI'], ARRAY[(intersection).val])) AS pvc, CAST((area / (scalex * scalex)) AS Integer) AS total_n_pixels FROM (SELECT (ST_Intersection(rast, the_geom)) AS intersection, ST_ScaleX(rast) AS scalex, ST_ScaleY(rast) AS scaley, ST_Area(the_geom) AS area FROM carbon_forest_intact, (SELECT ST_GeomFromText('%(polygon)s',4326) AS the_geom) foo WHERE ST_Intersects(rast, the_geom)) bar) AS foo GROUP BY total_n_pixels, value;
+"""
+
 def polygon_text(poly):
     """
         get a polygon, close it and reverse the lat,lon
@@ -79,6 +83,27 @@ class CartoDB(object):
             total += float(x['sum'])
         stats['none'] = 100 * (1.0 - total/total_n_pixels)
         return stats
+
+    def forest(self, polygon):
+        forest = json.loads(self.sql(SQL_FOREST % {'polygon': polygon}))
+        rows = forest['rows']
+        stats = {
+            'intact': 0,
+            'fragmented': 0,
+            'partial': 0,
+            'deforested': 0 
+        }
+        def get_type(v):
+            if    0 <= v <= 3: return 'intact'
+            elif  4 <= v <= 6: return 'deforested'
+            elif  7 <= v <= 7: return 'partial'
+            else:              return 'managed' 
+
+        for x in rows:
+            stats[get_type(x['value'])] = 100.0*float(x['sum'])/float(x['total_n_pixels'])
+
+        return stats
+        
 
 if __name__ == '__main__':
     c = CartoDB()

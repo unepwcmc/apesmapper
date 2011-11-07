@@ -64,6 +64,7 @@ def stats(request):
             wkt = polygon_text(polygons)
             carbon = c.carbon(wkt)
             restoration = c.restoration_potential(wkt)
+            forest = c.forest(wkt)
         except Exception as e:
             logging.error(e)
             data['error'] = str(e)
@@ -91,12 +92,13 @@ def stats(request):
                     'percent': 12,
                     'num_overlap': 34
                  },
-                 'forest_status': {
-                    'intact': 12,
-                    'fragmented': 23,
-                    'partial': 34,
-                    'deforested': 14
-                 }
+                 'forest_status': forest
+                 #{
+                    #'intact': 12,
+                    #'fragmented': 23,
+                    #'partial': 34,
+                    #'deforested': 14
+                 #}
             }
     return HttpResponse(json.dumps(data), mimetype='application/json')
 
