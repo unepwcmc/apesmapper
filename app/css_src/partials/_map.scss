@@ -8,6 +8,17 @@
     height: 100%;
   }
 
+
+  .cartodb_logo {
+    display: block;
+    position: absolute;
+    bottom: 90px;
+    left: 20px;
+    width: 69px;
+    height: 27px;
+    @include background(no-repeat,right,-1182px);
+  }
+
   div.layer_editor {
     position: absolute;
     top: 20px;
