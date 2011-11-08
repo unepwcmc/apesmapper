@@ -33,7 +33,6 @@ var Layer = Backbone.View.extend({
         if(this.layer.enabled) {
             el.addClass('enabled');
         }
-        
         return this;
     },
 
@@ -105,7 +104,16 @@ var LayerEditor = Backbone.View.extend({
             $(ui.item).addClass('moving');
           }
         });
+        this.updateLayerNumber();
         return this;
+    },
+
+    updateLayerNumber: function() {
+        var t = 0;
+        _(this.layers).each(function(a) {
+            if(a.enabled) t++;
+        });
+        this.$('.layer_number').html(t + " LAYER"+ (t>1?'S':''));
     },
 
     sortLayers: function() {
