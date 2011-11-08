@@ -9,12 +9,12 @@ $base-line-height: 1.231;  // default line-height for YUI fonts
 /* Golden ratio scale from http://modularscale.com/scale/?px1=12&px2=48&ra1=1.618&ra2=0
 ---------------------------------------- */
                         // px     em
-$font-size-1:369.231%;    //48.000	4
-$font-size-2:241.654%;    //31.415	2.618
-$font-size-3:228.200%;    //29.666	2.472
-$font-size-4:149.354%;    //19.416	1.618
-$font-size-5:141.038%;    //18.335	1.528
-$font-size-6:92.308%;     //12.000	1
+$font-size-1:369.231%;    //48.000  4
+$font-size-2:241.654%;    //31.415  2.618
+$font-size-3:228.200%;    //29.666  2.472
+$font-size-4:149.354%;    //19.416  1.618
+$font-size-5:141.038%;    //18.335  1.528
+$font-size-6:92.308%;     //12.000  1
 
 $font-color: #444;
 
@@ -35,49 +35,48 @@ $list-left-margin: 2em;  // left margin for ul an ol
 
 html, body {
   height: 100%;
-  overflow: hidden;
 }
 
 /* Carbon tool mixins */
 
 // Text shadow
 @mixin text-shadow($c) {
-	filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=180, Strength=1);
-	text-shadow:0 1px 0 $c;
+  filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=180, Strength=1);
+  text-shadow:0 1px 0 $c;
 }
 
 // Sprite background
 @mixin background($lr,$tb,$r) {
-	background:url('/img/sprite.png') $lr $tb $r;
+  background:url('/img/sprite.png') $lr $tb $r;
 }
 
-// Box shadow 
+// Box shadow
 @mixin box-shadow($h,$v,$b,$s,$c) {
-	-moz-box-shadow: $h $v $b $s $c;
+  -moz-box-shadow: $h $v $b $s $c;
   -webkit-box-shadow: $h $v $b $s $c;
-	box-shadow: $h $v $b $s $c;
+  box-shadow: $h $v $b $s $c;
 }
 @mixin vertical-double-box-shadow($h,$v,$b,$s,$c) {
-	-moz-box-shadow: $h $v $b $s $c, 0 10px 10px 0 $c;
+  -moz-box-shadow: $h $v $b $s $c, 0 10px 10px 0 $c;
   -webkit-box-shadow: $h $v $b $s $c, 0 10px 10px 0 $c;
-	box-shadow: $h $v $b $s $c, 0 10px 10px 0 $c;
-		// Doesn't work!! :S
-		// -moz-box-shadow: $h $v $b $s $c, $h $v $b $s $c;
-		// -webkit-box-shadow: $h $v $b $s $c, $h $v $b $s $c;
-		// ox-shadow: $h $v $b $s $c, $h $v $b $s $c;
+  box-shadow: $h $v $b $s $c, 0 10px 10px 0 $c;
+    // Doesn't work!! :S
+    // -moz-box-shadow: $h $v $b $s $c, $h $v $b $s $c;
+    // -webkit-box-shadow: $h $v $b $s $c, $h $v $b $s $c;
+    // ox-shadow: $h $v $b $s $c, $h $v $b $s $c;
 }
 @mixin horizontal-double-box-shadow($h,$v,$b,$s,$c) {
-	-moz-box-shadow: $h $v $b $s $c,-$h $v $b $s $c;
+  -moz-box-shadow: $h $v $b $s $c,-$h $v $b $s $c;
   -webkit-box-shadow: $h $v $b $s $c,-$h $v $b $s $c;
-	box-shadow: $h $v $b $s $c,-$h $v $b $s $c;
+  box-shadow: $h $v $b $s $c,-$h $v $b $s $c;
 }
 
 // Display: inline-block
 @mixin inline-block() {
-	display:inline-block;
-	vertical-align:top;
-	zoom:1;
-	*display: inline;
+  display:inline-block;
+  vertical-align:top;
+  zoom:1;
+  *display: inline;
 }
 
 
