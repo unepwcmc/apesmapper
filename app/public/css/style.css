@@ -484,8 +484,8 @@ div.right {
 .map_container .cartodb_logo {
   display: block;
   position: absolute;
-  bottom: 90px;
-  left: 20px;
+  bottom: 7px;
+  left: 70px;
   width: 69px;
   height: 27px;
   background: url("/img/sprite.png") no-repeat right -1182px;
@@ -1306,11 +1306,57 @@ div.right {
 /* line 465, ../../css_src/partials/_panel.scss */
 #panel span.loader {
   float: left;
-  width: 376px;
+  width: 312px;
   height: 47px;
   margin: 0;
   padding: 0;
   background: url("/img/loading.gif") no-repeat -37px 0;
+}
+/* line 474, ../../css_src/partials/_panel.scss */
+#panel span.list_tooltip {
+  position: absolute;
+  bottom: 10px;
+  left: 50px;
+  width: 140px;
+  height: 93px;
+  padding: 17px 22px 31px 22px;
+  margin: 0;
+  background: url("/img/sprite.png") no-repeat -267px -1436px;
+}
+/* line 484, ../../css_src/partials/_panel.scss */
+#panel span.list_tooltip h4 {
+  font: bold 11px "WhitneyBold";
+  color: #333333;
+  padding: 0 0 8px;
+  border-bottom: 2px solid #666666;
+}
+/* line 491, ../../css_src/partials/_panel.scss */
+#panel span.list_tooltip span {
+  float: left;
+  padding: 0 0 0 10px;
+  margin: 7px 0 0 0;
+}
+/* line 495, ../../css_src/partials/_panel.scss */
+#panel span.list_tooltip span.blue {
+  background: url("/img/sprite.png") no-repeat -464px -1452px;
+}
+/* line 496, ../../css_src/partials/_panel.scss */
+#panel span.list_tooltip span.white {
+  background: url("/img/sprite.png") no-repeat -464px -1536px;
+}
+/* line 498, ../../css_src/partials/_panel.scss */
+#panel span.list_tooltip span h6 {
+  margin: 0;
+  padding: 0;
+  font: bold 13px "Helvetica",Arial;
+  color: #333333;
+}
+/* line 504, ../../css_src/partials/_panel.scss */
+#panel span.list_tooltip span p {
+  margin: 2px 0 0 0;
+  padding: 0;
+  font: normal 11px "Helvetica",Arial;
+  color: #666666;
 }
 
 /* Golden ratio scale from http://modularscale.com/scale/?px1=12&px2=48&ra1=1.618&ra2=0
