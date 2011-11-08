@@ -132,6 +132,12 @@ App.modules.Data = function(app) {
            }
         },
 
+        get_reports: function() {
+            return _.filter(this.models, function(r) {
+                return r.get('total')=== undefined;
+            });
+        },
+
         on_add: function(r) {
             r.bind('change', this.on_report_change);
         },
@@ -152,7 +158,10 @@ App.modules.Data = function(app) {
         // agregate all the stats in the total report
         aggregate_stats: function() {
           var self = this;
-          app.WS.CartoDB.aggregate_stats(null, function(stats) {
+          var reports = _(this.get_reports()).filter(function(r) {
+                return r.get('stats') !== undefined;
+          });
+          app.WS.CartoDB.aggregate_stats(reports, null, function(stats) {
             self.get_total_report().set({stats: stats});
           });
           /*this.filter(function(r) { return r.get('total') === undefined; }).each(function(r) {

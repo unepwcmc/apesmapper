@@ -120,11 +120,11 @@
           <h5 class="stats"><%= p.polygon %></h5>
             <div class="stats_bar">
                 <span class="r_bar"></span>
-                <div class="stats_bar inner">
+                <div class="stats_bar inner" style="width: <%= p.percent %>%">
                     <span class="r_bar"></span>
                 </div>
             </div>
-            <p><%= p.percent %>%</p>
+            <p><%= p.percent.toFixed(1) %>%</p>
         </li>
       <% }); %>
     </ul>
@@ -147,7 +147,7 @@
                     <span class="r_bar"></span>
                 </div>
             </div>
-            <p><%= v %>%</p>
+            <p><%= v.toFixed(1) %>%</p>
         </li>
       <% }); %>
     </ul>

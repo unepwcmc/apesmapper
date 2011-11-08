@@ -69,15 +69,39 @@ App.modules.WS = function(app) {
              });
         },
 
-        aggregate_stats: function(polygons, callback) {
+        aggregate_stats: function(reports, polygons, callback) {
+            function sum(reports, what) {
+                var t = 0;
+                _(reports).each(function(r) {
+                    t += what(r);
+                });
+                return t;
+            }
+            // carbon
+            total_carbon = sum(reports, function(r) { 
+                var s = r.get('stats');
+                if(s && s.carbon && s.carbon.qty) {
+                    return s.carbon.qty;
+                }
+                return 0;
+            });
+
+            var carbon_per_polygon = _(reports).map(function(r, i) {
+                var percent = 0;
+                var s = r.get('stats');
+                if(total_carbon > 0 && s && s.carbon && s.carbon.qty) {
+                    percent =  100*s.carbon.qty/total_carbon;
+                }
+                return {
+                    polygon: 'AOI #' + i,
+                    percent: percent
+                };
+            });
+
             callback({
                 carbon_sum: {
-                    qty: 10001,
-                    polygons: [
-                        { polygon: 'AOI #1', percent: 100 },
-                        { polygon: 'AOI #2', percent: 20 },
-                        { polygon: 'AOI #3', percent: 40 }
-                    ]
+                    qty: total_carbon,
+                    polygons: carbon_per_polygon
                 },
                 coverage: {
                     PA: 51,

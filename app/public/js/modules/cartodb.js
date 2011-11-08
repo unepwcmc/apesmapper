@@ -120,7 +120,6 @@ var SQL_COVERED_KBA = "SELECT (SELECT (SELECT ST_Area(ST_Intersection(ST_Union(t
                 var total_n_pixels = 1.0;
                 _.each(data.rows, function(x) {
                     var k = get_type(x.value);
-                    console.log("key ", k);
                     stats[k] = 100.0*x.sum/x.total_n_pixels;
                 });
                 callback(stats);
