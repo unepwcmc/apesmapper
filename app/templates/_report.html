@@ -1,20 +1,19 @@
 <!-- report backbone template -->
 
-<% if(typeof total === 'undefined') { %> 
+<% if(typeof total === 'undefined') { %>
+
 <div class="tools non_editing">
-    <h2>
-        <p href="#edit" class="edit"><%= polygons.length %> polygon. <a class='go_edit' href="#add_another">Add another?</a></p>
-    </h2>
+    <h2><p href="#edit" class="edit"><%= polygons.length %> polygon. <a class='go_edit' href="#add_another">Add another?</a></p></h2>
     <span class="tools">
         <a href='#edit' class="go_edit edit">edit</a>
         <a href='#remove' class="remove">remove</a>
     </span>
 </div>
 
+<span class="loader"></span>
+
 <div class="tools editing">
-    <h2>
-        <a href="#finish_editing" class="finish leave_edit"><span>FINISH EDITING</span></a>
-    </h2>
+    <h2><a href="#finish_editing" class="finish leave_edit"><span>FINISH EDITING</span></a></h2>
     <span class="tools">
         <a href='#edit' class="edit">edit</a>
         <a href='#remove' class="remove">remove</a>
@@ -22,14 +21,14 @@
 </div>
 <% } %>
 
-<% if(stats.carbon) { %> 
+<% if(stats.carbon) { %>
 <div class="block">
     <span class="title">
         <h2>CARBON</h2>
         <p><%= stats.carbon.qty %><small>T</small></p>
     </span>
     <ul class="normal list">
-      <% _.each(stats.carbon.by_country, function(ct) { %> 
+      <% _.each(stats.carbon.by_country, function(ct) { %>
       <li>
             <h5><%= ct.name %></h5>
             <p class="info ok"><%= ct.qty %></p>
@@ -39,7 +38,7 @@
 </div>
 <% } %>
 
-<% if(stats.covered_by_PA) { %> 
+<% if(stats.covered_by_PA) { %>
 <div class="block">
     <span class="title">
         <h2>COVERED BY PA'S</h2>
@@ -53,7 +52,7 @@
 </div>
 <% } %>
 
-<% if(stats.covered_by_KBA) { %> 
+<% if(stats.covered_by_KBA) { %>
 <div class="block">
     <span class="title">
         <h2>COVERED BY KPA'S</h2>
@@ -67,7 +66,7 @@
 </div>
 <% } %>
 
-<% if(stats.restoration_potential) { %> 
+<% if(stats.restoration_potential) { %>
 <div class="block">
     <span class="title">
         <h2>RESTORATION POTENTIAL</h2>
@@ -94,7 +93,7 @@
 </div>
 <% } %>
 
-<% if(stats.forest_status) { %> 
+<% if(stats.forest_status) { %>
 <div class="block">
     <span class="title">
         <h2>FOREST STATUS</h2>
@@ -108,14 +107,14 @@
 </div>
 <% } %>
 
-<% if(stats.carbon_sum) { %> 
+<% if(stats.carbon_sum) { %>
 <div class="block">
     <span class="title">
         <h2>CARBON</h2>
         <p><%= stats.carbon_sum.qty %><small>T</small></p>
     </span>
     <ul class="normal list tooltip">
-      <% _.each(stats.carbon_sum.polygons, function(p) { %> 
+      <% _.each(stats.carbon_sum.polygons, function(p) { %>
         <li>
           <h5 class="stats"><%= p.polygon %></h5>
             <div class="stats_bar">
@@ -131,14 +130,14 @@
 </div>
 <% } %>
 
-<% if(stats.coverage) { %> 
+<% if(stats.coverage) { %>
 <div class="block">
     <span class="title">
         <h2>COVERAGE STATICTICS</h2>
         <p>&nbsp;</p>
     </span>
     <ul class="normal list tooltip">
-      <% _.each(stats.coverage, function(v, k) { %> 
+      <% _.each(stats.coverage, function(v, k) { %>
         <li>
           <h5 class="stats"><%= k %></h5>
             <div class="stats_bar">
@@ -155,14 +154,14 @@
 <% } %>
 
 
-<% if(stats.conservation_priority_areas) { %> 
+<% if(stats.conservation_priority_areas) { %>
 <div class="block">
     <span class="title">
         <h2>CONSERVATION PRIORITIES</h2>
         <p>&nbsp;</p>
     </span>
     <ul class="down list">
-        <% _.each(stats.conservation_priority_areas, function(area) { %> 
+        <% _.each(stats.conservation_priority_areas, function(area) { %>
         <li>
             <h5><%= area.name %></h5>
             <ul>

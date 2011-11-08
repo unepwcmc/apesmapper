@@ -458,14 +458,19 @@
           }
         }
       } // ul
-
-
-
     }
-
-
-
   }
+
+
+  span.loader {
+    float:left;
+    width:376px;
+    height:47px;
+    margin:0;
+    padding:0;
+    background:url('/img/loading.gif') no-repeat -37px 0;
+  }
+
 
 }
 

@@ -1303,6 +1303,15 @@ div.right {
 #panel #tab_content div.block ul.down ul div.stats_bar {
   margin: 2px 0 0 0;
 }
+/* line 465, ../../css_src/partials/_panel.scss */
+#panel span.loader {
+  float: left;
+  width: 376px;
+  height: 47px;
+  margin: 0;
+  padding: 0;
+  background: url("/img/loading.gif") no-repeat -37px 0;
+}
 
 /* Golden ratio scale from http://modularscale.com/scale/?px1=12&px2=48&ra1=1.618&ra2=0
 ---------------------------------------- */
