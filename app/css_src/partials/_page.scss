@@ -56,7 +56,7 @@ body.tool {
     width:100%;
     height:73px;
     background:#333333;
-    
+
 
     div.share_tooltip {
       display: none;
@@ -96,54 +96,57 @@ body.tool {
 
     div {
       padding:20px;
-      
+
       h1 {
         font:bold 13px "WhitneyBold","Myriad Pro";
         @include text-shadow(black);
         color:#FFFFFF;
         &:hover {cursor:default}
       }
-      
+
       p {
         font:normal 13px "WhitneyBookRegular","Myriad Pro";
         @include text-shadow(black);
         color:white;
       }
-      
+
       ul {
         float:right;
         width:auto;
-        
+
         li {
           @include inline-block();
           width:auto;
-          
+
           a {
             float:left;
             height:28px;
+            height:26px\9;
             padding:0 0 0 12px;
             @include background(0,0,no-repeat);
             font:normal 13px "WhitneyBookRegular","Myriad Pro";
             @include text-shadow(black);
             color:white;
+            border:none;
             text-decoration:none;
-            
+
             &:hover {
               text-decoration:underline;
               color:white
             }
-            
+
             span {
               float:left;
               width:auto;
               height:14px;
+              height:12px\9;
               padding:6px 12px 8px 0;
               margin:0;
               @include background(right,-28px,no-repeat);
               strong {font:bold 13px "WhitneyBold"};
               line-height:13px;
             }
-            
+
             &.no_bkg {
               margin:6px 12px 0 0;
               background:none;

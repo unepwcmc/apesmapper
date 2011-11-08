@@ -1,345 +1,356 @@
 
-	body.out {
-		background:white;
-		
-		section.results {
-			@include inline-block();
-			width:100%;
-			margin:80px 0 0 0;
-			background:url('/img/pattern.jpg') repeat 0 0;
-			
-			div.inner {
-				width:920px;
-				margin:0 auto;
-				padding:38px 0;
-				
-				h3 {
-					padding:0 0 20px 0;
-					font:bold 27px "WhitneyBold","Myriad Pro";
-					color:#333333;
-				}
-				
-				table {
-					width:920px;
-					
-					div {width:440px; padding:0 0 40px;}
-					
-					h6 {
-						width:100%;
-						font:bold 13px "WhitneyBold","Myriad Pro";
-						color:#333333;
-						padding:0 0 5px;
-						border-bottom:2px solid #323232;
-					}
-					
-					p {
-						margin:7px 0 0 0;
-						padding:0 0 15px 0;
-						font:normal 13px "Helvetica",Arial;
-						color:#666666;
-					}
-					
-					a {
-						float:left;
-						width:auto;
-						height:26px;
-						padding:0 0 0 4px;
-						margin:0 4px 0 0;
-						@include background(no-repeat,0,-1337px);
-						font:bold 11px "WhitneyBold","Myriad Pro";
-						color:#66CCCC;
-						text-decoration:none;
-						
-						span {
-							float:left;
-							width:auto;
-							height:11px;
-							padding:7px 8px 8px 4px;
-							@include background(no-repeat,right,-1337px);
-						}
-						
-						&:hover {color:#3A7676}
-					}
-				}
-			}
-		}
-			
-		div.layout {
-			width:920px;
-			margin:0 auto; 
-			
-			header {
-				padding:35px 0 45px;
-				border-bottom:2px solid #323232;
-				
-				h1 {
-					float:left;
-					a {
-						font:bold 13px "WhitneyBold","Myriad Pro";
-						color:#333333;
-						text-decoration:none;
-						&:hover {color:black}
-					}
-				}
-				
-				ul {
-					float:right;
-					width:auto;
-					list-style:none;
-					
-					li {
-						@include inline-block();
-						width:auto;
-						margin:0 0 0 20px;
-						
-						a {
-							font:bold 13px "WhitneyBold","Myriad Pro";
-							color:#333333;
-							text-decoration:none;
-							&:hover {color:#66CCCC}
-						}
-						
-						&.selected a {color:#66CCCC; &:hover {cursor:default}}
-					}
-				}
-			}
-			
-			h2 {
-				margin:45px 0 0 0;
-				font:bold 47px "WhitneyBold","Myriad Pro";
-				color:#333333;
-				line-height:47px;
-			}
-			
-			p.subtitle {
-				padding:10px 0 0 0;
-				font:normal 17px "Helvetica",Arial;
-				color:#999999;
-			}
-			
+  body.out {
+    background:white;
 
-			article.data_sources {
-				margin:50px 0 0 0;
-				
-				h4 {
-					font:bold 27px "WhitneyBold","Myriad Pro";
-					color:#333333;
-				}
-				
-				h6 {
-					padding:20px 0 5px 0;
-					font:bold 13px "WhitneyBold","Myriad Pro";
-					color:#333333;
-					border-bottom:2px solid #333333;
-				}
-				
-				ul {
-					list-style-image:url('/img/icons/list.png');
-					width:100%;
-					margin:0;
-					padding:5px 0 0 0;
-					
-					li {
-						padding:5px 0;
-						font:normal 15px "Helvetica",Arial;
-						color:#666666;
-					}
-				}
-			}
-			
-			section.start {
-				position:relative;
-				float:left;
-				width:918px;
-				height:402px;
-				margin:45px 0 0 0;
-				border:1px solid #CCCCCC;
-				
-				@include box-shadow(0,0,4px,3px,rgba(0,0,0,0.08));
-				background:url('/img/start.jpg') no-repeat 0 0;
+    section.results {
+      @include inline-block();
+      width:100%;
+      margin:80px 0 0 0;
+      background:url('/img/pattern.jpg') repeat 0 0;
 
-				
-				div.mamufas {
-					position:absolute;
-					display:none;
-					top:0;
-					left:0;
-					width:918px;
-					height:402px;
-					background:url('/img/mamufas.png') no-repeat 0 0;
-					
-					a {
-						position:absolute;
-						width:316px;
-						height:78px;
-						top:50%;
-						left:50%;
-						margin:-39px 0 0 -158px;
-						text-decoration:none;
-						@include background(no-repeat,0,-1181px);
-						&:hover {background-position:0 -1259px; span {cursor:pointer} small {color:white;}}
-						
-						span {
-							display:block;
-							width:225px;
-							padding:22px 0 0 15px;							
-							font:bold 21px "WhitneyBold";
-							color:#FFFFFF;
-							text-align:center;
-							@include text-shadow(#3C7D7D);
-							line-height:17px;
-							
-							small {
-								padding:0;
-								font:normal 13px "Helvetica",Arial;
-								text-shadow:none;
-								filter:none;
-								color:#549A9A;
-							}
-						}
-					}
-				}
-				
-				&:hover {
-					div.mamufas {display:block}
-				}
-			}
-			
-			section.two_columns {
-				width:100%;
-				margin:50px 0 0 0;
-				@include inline-block();
-				
-				div.left {width:550px}
-				div.right {width:333px}
-				
-				h4 {
-					padding:0 0 5px 0;
-					font:bold 13px "WhitneyBold","Myriad Pro";
-					color:#333333;
-					border-bottom:2px solid #333333;
-				}
-				
-				p {
-					padding:12px 0;
-					font:normal 17px "Helvetica",Arial;
-					color:#666666;
-					
-					strong {
-						font-weight:normal;
-						color:#333333;
-					}
-					
-					&.orange {
-						font-style:italic;
-						color:#FBB986;
-					}
-				}
-				
-				ul {
-					list-style-image:url('/img/icons/list_green.png');
-					width:100%;
-					margin:6px 0 0 0;
-					
-					li {
-						padding:7px 0;
-						font:normal 15px "Helvetica",Arial;
-						color:#666666;
-					}
-				}				
-			}
-			
-			section.video {
-				width:920px;
-				margin:50px 0 0 0;
-				div.left {width:441px;}
-				div.right {width:441px; padding:50px 0 0 0;}
-				
-				h3 {
-					font:bold 27px "WhitneyBold","Myriad Pro";
-					color:#333333;
-					padding:0 0 5px 0;
-				}
-				
-				p {
-					padding:10px 0;
-					font:normal 15px "Helvetica",Arial;
-					line-height:20px;
-					color:#666666;
-				}
-			}
-			
-			footer {
-				@include inline-block();
-				width:100%;
-				margin:80px 0 0 0;
-				padding:0 0 30px 0;
-				
-				div {
-					h6 {
-						width:100%;
-						padding:0 0 5px 0;
-						border-bottom:2px solid #CCCCCC;
-						font:bold 13px "WhitneyBold","Myriad Pro";
-						color:#333333;
-					}
-					
-				}
-				
-				div.left {
-					width:550px;									
-					
-					ul {
-						list-style:none;
-						margin:0;
-						padding:20px 0 0 0;
-					
-						li {
-							@include inline-block();
-							width:auto;
-							margin:0 27px 0 0;
-							padding:0;
-							
-							a {
-								float:left;
-								text-indent:-9999px;
-								line-height:0;
-								font-size:0;
-								
-								
-								&.cbd {width:145px; height:48px; @include background(no-repeat,0,-1126px);}
-								&.lifeweb {width:121px; height:48px; @include background(no-repeat,-150px,-1127px);}
-								&.unep-wcmc {width:96px; height:49px; @include background(no-repeat,-375px,-1123px);}
-								&.vizzuality {width:89px; height:47px; @include background(no-repeat,-280px,-1126px);}
-							}
-							
-							&.last {margin:0}
-						}	
-					}
-					
-					p {
-						padding:85px 0 0 0;
-						font:normal 15px "Helvetica",Arial;
-						color:#B2B2B2;
-						a {color:#7F7F7F; text-decoration:none; &:hover {text-decoration:underline}}
-					}
-				}
-				
-				div.right {
-					width:333px;
-					padding:0;
-					
-					a.nature {
-						float:left;
-						width:240px;
-						height:57px;
-						margin:15px 0 0;
-						@include background(no-repeat,0,-1369px);
-						text-indent:-9999px;
-						line-height:0;
-						font-size:0;
-					}
-				}
-			}
-		}
-	}
+      div.inner {
+        width:920px;
+        margin:0 auto;
+        padding:38px 0;
+
+        h3 {
+          padding:0 0 20px 0;
+          font:bold 27px "WhitneyBold","Myriad Pro";
+          color:#333333;
+        }
+
+        table {
+          width:920px;
+
+          div {width:440px; padding:0 0 40px;}
+
+          h6 {
+            width:100%;
+            font:bold 13px "WhitneyBold","Myriad Pro";
+            color:#333333;
+            padding:0 0 5px;
+            border-bottom:2px solid #323232;
+          }
+
+          p {
+            margin:7px 0 0 0;
+            padding:0 0 15px 0;
+            font:normal 13px "Helvetica",Arial;
+            color:#666666;
+          }
+
+          a {
+            float:left;
+            width:auto;
+            height:26px;
+            padding:0 0 0 4px;
+            margin:0 4px 0 0;
+            @include background(no-repeat,0,-1337px);
+            font:bold 11px "WhitneyBold","Myriad Pro";
+            color:#66CCCC;
+            text-decoration:none;
+
+            span {
+              float:left;
+              width:auto;
+              height:11px;
+              padding:7px 8px 8px 4px;
+              @include background(no-repeat,right,-1337px);
+            }
+
+            &:hover {color:#3A7676}
+          }
+        }
+      }
+    }
+
+    div.layout {
+      width:920px;
+      margin:0 auto;
+
+      header {
+        padding:35px 0 45px;
+        border-bottom:2px solid #323232;
+
+        h1 {
+          float:left;
+          a {
+            font:bold 13px "WhitneyBold","Myriad Pro";
+            color:#333333;
+            text-decoration:none;
+            &:hover {color:black}
+          }
+        }
+
+        ul {
+          float:right;
+          width:auto;
+          padding:0;
+          margin:0;
+          list-style:none;
+
+          li {
+            float:left;
+            width:auto;
+            margin:0 0 0 20px;
+
+            a {
+              font:bold 13px "WhitneyBold","Myriad Pro";
+              color:#333333;
+              text-decoration:none;
+              &:hover {color:#66CCCC}
+            }
+
+            &.selected a {color:#66CCCC; &:hover {cursor:default}}
+          }
+        }
+      }
+
+      h2 {
+        margin:45px 0 0 0;
+        font:bold 47px "WhitneyBold","Myriad Pro";
+        color:#333333;
+        line-height:47px;
+      }
+
+      p.subtitle {
+        padding:10px 0 0 0;
+        font:normal 17px "Helvetica",Arial;
+        color:#999999;
+      }
+
+
+      section.error {
+        width:600px;
+        margin:0 auto;
+        padding:220px 0;
+        text-align:center;
+        a {color:#66CCCC; &:hover {color:#66AAAA;}}
+      }
+
+
+      article.data_sources {
+        margin:50px 0 0 0;
+
+        h4 {
+          font:bold 27px "WhitneyBold","Myriad Pro";
+          color:#333333;
+        }
+
+        h6 {
+          padding:20px 0 5px 0;
+          font:bold 13px "WhitneyBold","Myriad Pro";
+          color:#333333;
+          border-bottom:2px solid #333333;
+        }
+
+        ul {
+          list-style-image:url('/img/icons/list.png');
+          width:100%;
+          margin:0;
+          padding:5px 0 0 0;
+
+          li {
+            padding:5px 0;
+            font:normal 15px "Helvetica",Arial;
+            color:#666666;
+          }
+        }
+      }
+
+      section.start {
+        position:relative;
+        float:left;
+        width:918px;
+        height:402px;
+        margin:45px 0 0 0;
+        border:1px solid #CCCCCC;
+
+        @include box-shadow(0,0,4px,3px,rgba(0,0,0,0.08));
+        background:url('/img/start.jpg') no-repeat 0 0;
+
+
+        div.mamufas {
+          position:absolute;
+          display:none;
+          top:0;
+          left:0;
+          width:918px;
+          height:402px;
+          background:url('/img/mamufas.png') no-repeat 0 0;
+
+          a {
+            position:absolute;
+            width:316px;
+            height:78px;
+            top:50%;
+            left:50%;
+            margin:-39px 0 0 -158px;
+            text-decoration:none;
+            @include background(no-repeat,0,-1181px);
+            &:hover {background-position:0 -1259px; span {cursor:pointer} small {color:white;}}
+
+            span {
+              display:block;
+              width:225px;
+              padding:22px 0 0 15px;
+              font:bold 21px "WhitneyBold";
+              color:#FFFFFF;
+              text-align:center;
+              @include text-shadow(#3C7D7D);
+              line-height:17px;
+
+              small {
+                padding:0;
+                font:normal 13px "Helvetica",Arial;
+                text-shadow:none;
+                filter:none;
+                color:#549A9A;
+              }
+            }
+          }
+        }
+
+        &:hover {
+          div.mamufas {display:block}
+        }
+      }
+
+      section.two_columns {
+        width:100%;
+        margin:50px 0 0 0;
+        @include inline-block();
+
+        div.left {width:550px}
+        div.right {width:333px}
+
+        h4 {
+          padding:0 0 5px 0;
+          font:bold 13px "WhitneyBold","Myriad Pro";
+          color:#333333;
+          border-bottom:2px solid #333333;
+        }
+
+        p {
+          padding:12px 0;
+          font:normal 17px "Helvetica",Arial;
+          color:#666666;
+
+          strong {
+            font-weight:normal;
+            color:#333333;
+          }
+
+          &.orange {
+            font-style:italic;
+            color:#FBB986;
+          }
+        }
+
+        ul {
+          list-style-image:url('/img/icons/list_green.png');
+          width:100%;
+          margin:6px 0 0 0;
+
+          li {
+            padding:7px 0;
+            font:normal 15px "Helvetica",Arial;
+            color:#666666;
+          }
+        }
+      }
+
+      section.video {
+        width:920px;
+        margin:50px 0 0 0;
+        div.left {width:441px;}
+        div.right {width:441px; padding:50px 0 0 0;}
+
+        h3 {
+          font:bold 27px "WhitneyBold","Myriad Pro";
+          color:#333333;
+          padding:0 0 5px 0;
+        }
+
+        p {
+          padding:10px 0;
+          font:normal 15px "Helvetica",Arial;
+          line-height:20px;
+          color:#666666;
+        }
+      }
+
+      footer {
+        @include inline-block();
+        width:100%;
+        margin:80px 0 0 0;
+        padding:0 0 30px 0;
+
+        div {
+          h6 {
+            width:100%;
+            padding:0 0 5px 0;
+            border-bottom:2px solid #CCCCCC;
+            font:bold 13px "WhitneyBold","Myriad Pro";
+            color:#333333;
+          }
+
+        }
+
+        div.left {
+          width:550px;
+
+          ul {
+            list-style:none;
+            margin:0;
+            padding:20px 0 0 0;
+
+            li {
+              @include inline-block();
+              width:auto;
+              margin:0 27px 0 0;
+              padding:0;
+
+              a {
+                float:left;
+                text-indent:-9999px;
+                line-height:0;
+                font-size:0;
+
+
+                &.cbd {width:145px; height:48px; @include background(no-repeat,0,-1126px);}
+                &.lifeweb {width:121px; height:48px; @include background(no-repeat,-150px,-1127px);}
+                &.unep-wcmc {width:96px; height:49px; @include background(no-repeat,-375px,-1123px);}
+                &.vizzuality {width:89px; height:47px; @include background(no-repeat,-280px,-1126px);}
+              }
+
+              &.last {margin:0}
+            }
+          }
+
+          p {
+            padding:75px 0 0 0;
+            font:normal 15px "Helvetica",Arial;
+            color:#B2B2B2;
+            a {color:#7F7F7F; text-decoration:none; &:hover {text-decoration:underline}}
+          }
+        }
+
+        div.right {
+          width:333px;
+          padding:0;
+
+          a.nature {
+            float:left;
+            width:240px;
+            height:57px;
+            margin:15px 0 0;
+            @include background(no-repeat,0,-1369px);
+            text-indent:-9999px;
+            line-height:0;
+            font-size:0;
+          }
+        }
+      }
+    }
+  }
