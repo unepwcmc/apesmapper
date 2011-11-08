@@ -7,12 +7,47 @@
 
 App.modules.Panel = function(app) {
 
+    var Loader = Backbone.View.extend({
+        
+        initialize: function() {
+            _.bindAll(this, 'show', 'hide');
+            this.count = 0;
+            this.interval = null;
+        },
+
+        show: function() {
+            app.Log.log("loading");
+            var el = $('.loader');
+            el.show();
+            this.count++;
+            if(this.count === 1) {
+                this.interval = setInterval(function() {
+                   var el = $('.loader');
+                   el.show();
+                }, 400);
+            }
+        },
+
+        hide: function() {
+            if(this.count === 0) return;
+            app.Log.log("loading_end");
+            var el = $('.loader');
+            this.count--;
+            if(this.count === 0) {
+                el.hide();
+                clearInterval(this.interval);
+            }
+        },
+    });
+
     app.Panel = Class.extend({
 
         init: function(bus) {
             _.bindAll(this, 'on_new_report', 'on_remove_all', 'on_update_report', 'on_show_report');
 
+            var self = this;
             this.bus = bus;
+            this.loader = new Loader();
             this.panel = new Panel({bus: this.bus});
             this.panel.bind('add_report', function() {
                 bus.emit('model:add_report');
@@ -26,6 +61,14 @@ App.modules.Panel = function(app) {
                 'view:update_report': 'on_update_report',
                 'view:show_report': 'on_show_report'
             });
+            this.bus.on('loading_start', function() {
+                self.loader.show();
+            });
+            this.bus.on('loading_end', function() {
+                self.loader.hide();
+            });
+
+            this.loader.hide();
         },
 
         on_new_report: function(cid, data) {

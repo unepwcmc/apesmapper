@@ -49,9 +49,15 @@ App.modules.Data = function(app) {
         fetch: function() {
             var self = this;
             // get data using polygons
+            if(this.bus) {
+                this.bus.emit('loading_start');
+            }
             app.WS.CartoDB.calculate_stats(this.get('polygons'), function(stats) {
               self.set({'stats': stats});
               self.save();
+              if(self.bus) {
+                self.bus.emit('loading_end');
+              }
             });
         },
 
@@ -119,6 +125,9 @@ App.modules.Data = function(app) {
         new_report: function(defaults, options) {
             var r = new Report();
             r.set(defaults);
+            if(this.bus) {
+                r.bus = this.bus;
+            }
             this.add(r);
             return r.cid;
         },
@@ -140,6 +149,9 @@ App.modules.Data = function(app) {
 
         on_add: function(r) {
             r.bind('change', this.on_report_change);
+            if(this.bus) {
+                r.bus = this.bus;
+            }
         },
 
         on_add_all: function() {
@@ -194,6 +206,7 @@ App.modules.Data = function(app) {
             _.bindAll(this, 'on_polygon', 'on_work', 'on_new_report','add_report', 'on_create_work', 'active_report', 'on_remove_polygon', 'on_update_polygon');
             this.bus = bus;
             this.work = new WorkModel();
+            this.work.bus = bus;
             this.active_report_id = -1;
             this.bus.link(this, {
                 'polygon': 'on_polygon',
