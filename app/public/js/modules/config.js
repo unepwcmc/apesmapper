@@ -13,18 +13,18 @@ App.modules.Config = function(app) {
           }, {
              name: 'carbon',
              opacity: 0.4,
-             url: 'http://downloads.wdpa.org/ArcGIS/rest/services/carbon/Carbon_webmerc_93/MapServer/tile/{Z}/{Y}/{X}'
+             url: 'http://lifeweb-maps.unep-wcmc.org/ArcGIS/rest/services/lifeweb/carbon/MapServer/tile/{Z}/{Y}/{X}'
           }, {
             name: 'carbon sequestration',
             opacity: 0.4,
-            url: 'http://ec2-46-137-148-168.eu-west-1.compute.amazonaws.com/ArcGIS/rest/services/lifeweb/carbonseq/MapServer/tile/{Z}/{Y}/{X}'
+            url: 'http://lifeweb-maps.unep-wcmc.org/ArcGIS/rest/services/lifeweb/carb_seq/MapServer/tile/{Z}/{Y}/{X}'
           }, {
-            name: 'carbon 2',
+            name: 'restoration potential',
             opacity: 0.4,
-            url: 'http://ec2-46-137-148-168.eu-west-1.compute.amazonaws.com/ArcGIS/rest/services/lifeweb/carbon/MapServer/tile/{Z}/{Y}/{X}'
+            url: 'http://lifeweb-maps.unep-wcmc.org/ArcGIS/rest/services/lifeweb/rest_pot/MapServer/tile/{Z}/{Y}/{X}'
           }, {
             name: 'forest',
-            url: 'http://ec2-46-137-148-168.eu-west-1.compute.amazonaws.com/ArcGIS/rest/services/lifeweb/forest_intact/MapServer/tile/{Z}/{Y}/{X}',
+            url: 'http://lifeweb-maps.unep-wcmc.org/ArcGIS/rest/services/lifeweb/forest_intact/MapServer/tile/{Z}/{Y}/{X}',
             opacity: 0.4
           }
 

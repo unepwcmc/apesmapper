@@ -78,10 +78,18 @@ App.modules.WS = function(app) {
                 return t;
             }
             // carbon
-            total_carbon = sum(reports, function(r) { 
+            var total_carbon = sum(reports, function(r) { 
                 var s = r.get('stats');
                 if(s && s.carbon && s.carbon.qty) {
                     return s.carbon.qty;
+                }
+                return 0;
+            });
+
+            var total_area = sum(reports, function(r) { 
+                var s = r.get('stats');
+                if(s && s.carbon && s.carbon.area) {
+                    return s.carbon.area;
                 }
                 return 0;
             });
@@ -101,7 +109,8 @@ App.modules.WS = function(app) {
             callback({
                 carbon_sum: {
                     qty: total_carbon,
-                    polygons: carbon_per_polygon
+                    polygons: carbon_per_polygon,
+                    area: total_area
                 },
                 coverage: {
                     PA: 51,

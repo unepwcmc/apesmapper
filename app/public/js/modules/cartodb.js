@@ -9,6 +9,8 @@ var SQL_FOREST = "SELECT total_n_pixels, (pvc).value, SUM((pvc).count) FROM (SEL
 
 var SQL_COVERED_KBA = "SELECT (SELECT (SELECT ST_Area(ST_Intersection(ST_Union(the_geom),ST_GeomFromText('<%= polygon %>',4326))) as overlapped_area FROM kba WHERE ST_Intersects(ST_GeomFromText('<%= polygon %>',4326), the_geom)) / (SELECT ST_Area(ST_GeomFromText('<%= polygon %>', 4326)) FROM kba LIMIT 1 ) as result) * 100 as kba_percentage;"
 
+var SQL_COUNTRIES = "SELECT priority, country, ST_Area(ST_Intersection( ST_Union(mg.the_geom)::geography, ST_GeographyFromText('<%= polygon %>')))/1000 AS covered_area FROM gaps_merged mg WHERE ST_Intersects(mg.the_geom, ST_GeometryFromText('<%= polygon %>', 4326)) GROUP BY priority, country";
+
 
 
     var resource_url = 'https://carbon-tool.cartodb.com/api/v1/sql';

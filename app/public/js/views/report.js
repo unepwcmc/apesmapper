@@ -72,18 +72,18 @@ var Tabs = Backbone.View.extend({
         var el = null;
         var area = '0';
         if(data && data.stats && data.stats.carbon) {
-            area =  (data.stats.carbon.area/1000000).toFixed(1);
+            area =  (data.stats.carbon.area/1000000).toFixed(0);
         }
         if(data && data.stats && data.stats.carbon_sum) {
-            //area =  (data.stats.carbon_sum.area/1000000).toFixed(1);
+            area =  (data.stats.carbon_sum.area/1000000).toFixed(0);
         }
         if(data.total) {
-            var li = $("<li class='total'><a class='tab' href='#" + cid + "'>total</a><span class='stats'><span class='stats_inner'><h5>TOTAL</h5><p>"+ area +"km in total</p></span></span></li>");
+            var li = $("<li class='total'><a class='tab' href='#" + cid + "'>total</a><span class='stats'><span class='stats_inner'><h5>TOTAL</h5><p><span class='area'>"+ area +"</span>km in total</p></span></span></li>");
             this.tab_el.append(li);
             el = li;
         } else {
             this.tab_count++;
-            var li = $("<li><a class='tab' href='#" + cid + "'>#"+this.tab_count+"</a><span class='stats'><span class='stats_inner'><h5>AOI #"+this.tab_count+"</h5><p>"+ area +" km<sup>2</sup></p></span></span></li>");
+            var li = $("<li><a class='tab' href='#" + cid + "'>#"+this.tab_count+"</a><span class='stats'><span class='stats_inner'><h5>AOI #"+this.tab_count+"</h5><p><span class='area'>"+ area +"</span> km<sup>2</sup></p></span></span></li>");
             li.insertBefore(this.$('#add_report').parent());
             el = li;
         }
@@ -96,6 +96,17 @@ var Tabs = Backbone.View.extend({
         if(el) {
             this.set_enabled($(el));
         }
+    },
+
+    update: function(rid, data) {
+        var a = null;
+        if(data.stats.carbon) {
+            a = data.stats.carbon.area;
+        } else if (data.stats.carbon_sum) {
+            a = data.stats.carbon_sum.area;
+        }
+        if(a)
+            this.tab_el.find("a[href=#" + rid +"]").parent().find('.area').html((a/100000).toFixed(0));
     },
 
     clear: function() {
@@ -173,6 +184,7 @@ var Panel = Backbone.View.extend({
 
     update_report: function(cid, data) {
         this.reports_map[cid].render(data);
+        this.tabs.update(cid, data);
     },
 
     show_report: function(cid) {
