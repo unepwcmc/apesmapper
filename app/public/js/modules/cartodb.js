@@ -16,10 +16,21 @@ var SQL_COUNTRIES = "SELECT priority, country, ST_Area(ST_Intersection( ST_Union
     var resource_url = 'https://carbon-tool.cartodb.com/api/v1/sql';
 
     function query(sql, callback) {
+        if(sql.length > 1500) {
+            $.ajax({
+              url: resource_url,
+              type: 'POST',
+              dataType: 'json',
+              data: 'q=' + encodeURI(sql),
+              success: callback,
+              error: function(){ callback(); }
+            });
+        } else {
          //TODO: POST if the sql if too long
-         $.getJSON(resource_url + '?q=' + encodeURI(sql) + '&callback=?')
-         .success(callback)
-         .error(function(){ callback(); });
+             $.getJSON(resource_url + '?q=' + encodeURI(sql) + '&callback=?')
+             .success(callback)
+             .error(function(){ callback(); });
+        }
     }
 
     function wtk_polygon(poly) {
