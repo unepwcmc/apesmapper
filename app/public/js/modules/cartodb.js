@@ -7,6 +7,8 @@ var SQL_RESTORATION = "SELECT total_n_pixels, (pvc).value, SUM((pvc).count) FROM
 
 var SQL_FOREST = "SELECT total_n_pixels, (pvc).value, SUM((pvc).count) FROM (SELECT ST_ValueCount(ST_AsRaster((intersection).geom, scalex, scaley, NULL, NULL, ARRAY['32BSI'], ARRAY[(intersection).val])) AS pvc, CAST((area / (scalex * scalex)) AS Integer) AS total_n_pixels FROM (SELECT (ST_Intersection(rast, the_geom)) AS intersection, ST_ScaleX(rast) AS scalex, ST_ScaleY(rast) AS scaley, ST_Area(the_geom) AS area FROM carbon_forest_intact, (SELECT ST_GeomFromText('<%= polygon %>',4326) AS the_geom) foo WHERE ST_Intersects(rast, the_geom)) bar) AS foo GROUP BY total_n_pixels, value;";
 
+var SQL_COVERED_KBA = "SELECT (SELECT (SELECT ST_Area(ST_Intersection(ST_Union(the_geom),ST_GeomFromText('<%= polygon %>',4326))) as overlapped_area FROM kba WHERE ST_Intersects(ST_GeomFromText('<%= polygon %>',4326), the_geom)) / (SELECT ST_Area(ST_GeomFromText('<%= polygon %>', 4326)) FROM kba LIMIT 1 ) as result) * 100 as kba_percentage;"
+
 
 
     var resource_url = 'https://carbon-tool.cartodb.com/api/v1/sql';
@@ -84,6 +86,18 @@ var SQL_FOREST = "SELECT total_n_pixels, (pvc).value, SUM((pvc).count) FROM (SEL
             }
         });
     };
+
+    app.CartoDB.covered_by_KBA = function(p, callback) {
+        stats_query(SQL_COVERED_KBA, p, function(data) {
+            if(data) {
+                callback({
+                    'percent': data.rows[0].kba_percentage,
+                    'num_overlap': 'todo'
+                });
+
+            }
+        });
+    }
 
     app.CartoDB.forest_status = function(p, callback) {
         stats_query(SQL_FOREST, p, function(data) {

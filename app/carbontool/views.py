@@ -6,7 +6,10 @@ for client-side backbone application
 """
 
 import logging
-import json
+try:
+    import json
+except:
+    import simplejson as json
 
 from django.http import HttpResponse, Http404
 from django.views.decorators.csrf import csrf_exempt
@@ -65,7 +68,7 @@ def stats(request):
             carbon = c.carbon(wkt)
             restoration = c.restoration_potential(wkt)
             forest = c.forest(wkt)
-        except Exception as e:
+        except Exception, e:
             logging.error(e)
             data['error'] = str(e)
         else:

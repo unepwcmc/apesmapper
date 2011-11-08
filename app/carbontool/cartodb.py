@@ -8,7 +8,10 @@ the application from the data source is using
 import logging
 import urllib
 import urllib2
-import json
+try:
+    import json
+except:
+    import simplejson as json
 
 LOG = logging
 

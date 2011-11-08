@@ -49,7 +49,11 @@ App.modules.WS = function(app) {
         calculate_stats: function(polygons, callback) {
             var stats = {};
             var count = 0;
-            var stats_to_get = ['carbon', 'restoration_potential', 'forest_status'];
+            var stats_to_get = ['carbon', 
+                    'restoration_potential',
+                    'forest_status',
+                    'covered_by_KBA'];
+
             _.each(stats_to_get, function(stat) {
                 app.CartoDB[stat](polygons, function(data) {
                     if(data) {
