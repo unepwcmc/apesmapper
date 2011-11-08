@@ -18,7 +18,7 @@ var MapView = Backbone.View.extend({
     mapOptions: {
             zoom: 5,
             center: new google.maps.LatLng(-6.653695352486294, 58.743896484375),
-            mapTypeId: google.maps.MapTypeId.TERRAIN,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
             disableDefaultUI: true,
             disableDoubleClickZoom: true,
             draggableCursor:'default',
@@ -51,6 +51,16 @@ var MapView = Backbone.View.extend({
        this.projector = new Projector(this.map);
        this.projector.draw = this.ready;
        this.signals_on = true;
+       this.map.setOptions({'styles': [
+             {
+             stylers: [
+             { visibility: "on" },
+             { saturation: -100 }
+             ]
+             },{
+             }
+            ]
+       });
     },
 
     adjustSize: function() {
