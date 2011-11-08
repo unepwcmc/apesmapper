@@ -70,13 +70,20 @@ var Tabs = Backbone.View.extend({
 
     add_report: function(cid, data) {
         var el = null;
+        var area = '0';
+        if(data && data.stats && data.stats.carbon) {
+            area =  (data.stats.carbon.area/1000000).toFixed(1);
+        }
+        if(data && data.stats && data.stats.carbon_sum) {
+            //area =  (data.stats.carbon_sum.area/1000000).toFixed(1);
+        }
         if(data.total) {
-            var li = $("<li class='total'><a class='tab' href='#" + cid + "'>total</a><span class='stats'><span class='stats_inner'><h5>TOTAL</h5><p>25,221.1km in total</p></span></span></li>");
+            var li = $("<li class='total'><a class='tab' href='#" + cid + "'>total</a><span class='stats'><span class='stats_inner'><h5>TOTAL</h5><p>"+ area +"km in total</p></span></span></li>");
             this.tab_el.append(li);
             el = li;
         } else {
             this.tab_count++;
-            var li = $("<li><a class='tab' href='#" + cid + "'>#"+this.tab_count+"</a><span class='stats'><span class='stats_inner'><h5>AOI #"+this.tab_count+"</h5><p>25,221.1km</p></span></span></li>");
+            var li = $("<li><a class='tab' href='#" + cid + "'>#"+this.tab_count+"</a><span class='stats'><span class='stats_inner'><h5>AOI #"+this.tab_count+"</h5><p>"+ area +" km<sup>2</sup></p></span></span></li>");
             li.insertBefore(this.$('#add_report').parent());
             el = li;
         }

@@ -1,7 +1,7 @@
 
 App.modules.Cartodb = function(app) {
 
-var SQL_CARBON = "SELECT intersects_sum, within_sum FROM (SELECT SUM((pvc).value * (pvc).count) AS intersects_sum FROM (SELECT ST_ValueCount(ST_AsRaster((intersection).geom, 0.0089285714, -0.0089285714, NULL, NULL, ARRAY['32BSI'], ARRAY[(intersection).val])) AS pvc FROM (SELECT (ST_Intersection(rast, the_geom)) AS intersection FROM carbon, (SELECT ST_GeomFromText('<%= polygon %>',4326) AS the_geom) foo WHERE ST_Intersects(rast, the_geom) AND ST_Within(rast, the_geom) = false) bar) AS foo WHERE (pvc).value > 0 and (pvc).value != 2147483647) intersects,(SELECT SUM((ST_SummaryStats(rast)).sum) AS within_sum FROM carbon, (SELECT ST_GeomFromText('<%= polygon %>',4326) AS the_geom) foo WHERE ST_Within(rast, the_geom)) within;";
+var SQL_CARBON = "SELECT ST_Area(ST_GeomFromText('<%= polygon %>', 4326)::geography) as area, intersects_sum, within_sum FROM (SELECT SUM((pvc).value * (pvc).count) AS intersects_sum FROM (SELECT ST_ValueCount(ST_AsRaster((intersection).geom, 0.0089285714, -0.0089285714, NULL, NULL, ARRAY['32BSI'], ARRAY[(intersection).val])) AS pvc FROM (SELECT (ST_Intersection(rast, the_geom)) AS intersection FROM carbon, (SELECT ST_GeomFromText('<%= polygon %>',4326) AS the_geom) foo WHERE ST_Intersects(rast, the_geom) AND ST_Within(rast, the_geom) = false) bar) AS foo WHERE (pvc).value > 0 and (pvc).value != 2147483647) intersects,(SELECT SUM((ST_SummaryStats(rast)).sum) AS within_sum FROM carbon, (SELECT ST_GeomFromText('<%= polygon %>',4326) AS the_geom) foo WHERE ST_Within(rast, the_geom)) within;";
 
 var SQL_RESTORATION = "SELECT total_n_pixels, (pvc).value, SUM((pvc).count) FROM (SELECT ST_ValueCount(ST_AsRaster((intersection).geom, scalex, scaley, NULL, NULL, ARRAY['32BSI'], ARRAY[(intersection).val])) AS pvc, CAST((area / (scalex * scalex)) AS Integer) AS total_n_pixels FROM (SELECT (ST_Intersection(rast, the_geom)) AS intersection, ST_ScaleX(rast) AS scalex, ST_ScaleY(rast) AS scaley, ST_Area(the_geom) AS area FROM restoration_potential, (SELECT ST_GeomFromText('<%= polygon %>',4326) AS the_geom) foo WHERE ST_Intersects(rast, the_geom)) bar) AS foo GROUP BY total_n_pixels, value;";
 
@@ -38,12 +38,13 @@ var SQL_COVERED_KBA = "SELECT (SELECT (SELECT ST_Area(ST_Intersection(ST_Union(t
         app.CartoDB.carbon(p, function(data) {
             console.log(data);
         });
-        app.CartoDB.restoration_potential(p, function(data) {
+        /*app.CartoDB.restoration_potential(p, function(data) {
             console.log(data);
         });
         app.CartoDB.forest(p, function(data) {
             console.log(data);
         });
+        */
     };
 
     function stats_query(sql_query, polygon, callback) {
@@ -58,7 +59,8 @@ var SQL_COVERED_KBA = "SELECT (SELECT (SELECT ST_Area(ST_Intersection(ST_Union(t
             if(data) {
                 row = data.rows[0];
                 callback({
-                    qty: row.intersects_sum + (row.within_sum || 0)
+                    qty: row.intersects_sum + (row.within_sum || 0),
+                    area: row.area
                 });
             }
         });
@@ -91,7 +93,7 @@ var SQL_COVERED_KBA = "SELECT (SELECT (SELECT ST_Area(ST_Intersection(ST_Union(t
         stats_query(SQL_COVERED_KBA, p, function(data) {
             if(data) {
                 callback({
-                    'percent': data.rows[0].kba_percentage,
+                    'percent': data.rows[0].kba_percentage || 0,
                     'num_overlap': 'todo'
                 });
 
