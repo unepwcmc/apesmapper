@@ -78,7 +78,7 @@ var Tabs = Backbone.View.extend({
             area =  (data.stats.carbon_sum.area/1000000).toFixed(0);
         }
         if(data.total) {
-            var li = $("<li class='total'><a class='tab' href='#" + cid + "'>total</a><span class='stats'><span class='stats_inner'><h5>TOTAL</h5><p><span class='area'>"+ area +"</span>km in total</p></span></span></li>");
+            var li = $("<li class='total'><a class='tab' href='#" + cid + "'>total</a><span class='stats'><span class='stats_inner'><h5>TOTAL</h5><p><span class='area'>"+ area +"</span> km<sup>2</sup> in total</p></span></span></li>");
             this.tab_el.append(li);
             el = li;
         } else {
