@@ -26,6 +26,10 @@ App.modules.Config = function(app) {
             name: 'forest',
             url: 'http://lifeweb-maps.unep-wcmc.org/ArcGIS/rest/services/lifeweb/forest_intact/MapServer/tile/{Z}/{Y}/{X}',
             opacity: 0.4
+          }, {
+            name: 'KBA',
+            url: 'https://carbon-tool.cartodb.com/tiles/kba/{Z}/{X}/{Y}.png',
+            opacity: 0.4
           }
 
         ]
