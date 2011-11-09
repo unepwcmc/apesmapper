@@ -56,14 +56,17 @@ App.modules.WS = function(app) {
                     'covered_by_KBA'];
 
             _.each(stats_to_get, function(stat) {
+                app.bus.emit("loading_start");
                 app.CartoDB[stat](polygons, function(data) {
                     if(data) {
                         stats[stat] = data;
                     } else {
+                        app.bus.emit("loading_end");
                         app.Log.error("can't get stats from cartodb for ", stat);
                     }
                     count++;
-                    if(count == stats_to_get.length) {
+                    if(1 || count == stats_to_get.length) {
+                        app.bus.emit("loading_end");
                         callback(stats);
                     }
                 });

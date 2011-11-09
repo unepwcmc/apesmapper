@@ -33,6 +33,8 @@ App.modules.Carbon = function(app) {
             _.bindAll(this, 'on_route_to');
             var self = this;
             this.bus = new app.Bus();
+            // set a global bus
+            app.bus = this.bus;
             this.map = new app.Map(this.bus);
             this.work = new app.Work(this.bus);
             this.panel = new app.Panel(this.bus);

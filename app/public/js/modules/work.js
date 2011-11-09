@@ -50,13 +50,17 @@ App.modules.Data = function(app) {
             var self = this;
             // get data using polygons
             if(this.bus) {
-                this.bus.emit('loading_start');
+                //this.bus.emit('loading_start');
             }
             app.WS.CartoDB.calculate_stats(this.get('polygons'), function(stats) {
-              self.set({'stats': stats});
+              var new_stats = _.extend(self.get('stats'), stats);
+              self.set({'stats': new_stats});
+              //trigger manually
+              self.trigger('change:stats', self);
+              self.trigger('change', self);
               self.save();
               if(self.bus) {
-                self.bus.emit('loading_end');
+                //self.bus.emit('loading_end');
               }
             });
         },

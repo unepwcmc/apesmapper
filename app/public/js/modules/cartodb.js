@@ -147,12 +147,11 @@ var SQL_COUNTRIES = "SELECT priority, country, ST_Area(ST_Intersection( ST_Union
                     return 'fragmented';
                 }
 
-                //var total = 0.0;
-                //var total_n_pixels = 1.0;
                 _.each(data.rows, function(x) {
                     var k = get_type(x.band);
-                    stats[k] = x.total;//100.0*x.sum/x.total_n_pixels;
+                    stats[k] = x.total;
                 });
+
                 callback(stats);
             }
         });
