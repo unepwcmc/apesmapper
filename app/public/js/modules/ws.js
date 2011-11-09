@@ -50,6 +50,7 @@ App.modules.WS = function(app) {
             var stats = {};
             var count = 0;
             var stats_to_get = ['carbon', 
+                    'carbon_countries',
                     'restoration_potential',
                     'forest_status',
                     'covered_by_KBA'];
