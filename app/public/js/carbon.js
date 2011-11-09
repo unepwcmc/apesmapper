@@ -69,6 +69,7 @@ App.modules.Carbon = function(app) {
             this.banner.hide();
             // show the panel and set mode to adding polys
             this.panel.show();
+            this.map.show_controls(true);
 
             app.Log.debug("route: work => ", work_id);
             this.bus.emit('work', work_id);

@@ -39,14 +39,14 @@
 <div class="block">
     <span class="title">
         <h2>CARBON</h2>
-        <p><%= stats.carbon.qty %><small>T</small></p>
+        <p><% print(number_format(stats.carbon.qty)); %><small>T</small></p>
     </span>
     <% if(stats.carbon) { %>
     <ul class="normal list">
       <% _.each(stats.carbon_countries, function(ct) { %>
       <li>
             <h5><%= ct.name %></h5>
-            <p class="info ok"><%= ct.qty %></p>
+            <p class="info ok"><% print(number_format(ct.qty)); %></p>
       </li>
       <% }); %>
     </ul>
@@ -127,7 +127,7 @@
 <div class="block">
     <span class="title">
         <h2>CARBON</h2>
-        <p><%= stats.carbon_sum.qty %><small>T</small></p>
+        <p><% print(number_format(stats.carbon_sum.qty)); %><small>T</small></p>
     </span>
     <ul class="normal list tooltip">
       <% _.each(stats.carbon_sum.polygons, function(p) { %>

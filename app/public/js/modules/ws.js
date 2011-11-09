@@ -58,16 +58,15 @@ App.modules.WS = function(app) {
             _.each(stats_to_get, function(stat) {
                 app.bus.emit("loading_start");
                 app.CartoDB[stat](polygons, function(data) {
+                    count++;
+                    app.bus.emit("loading_end");
                     if(data) {
                         stats[stat] = data;
+                        if(1 || count == stats_to_get.length) {
+                            callback(stats);
+                        }
                     } else {
-                        app.bus.emit("loading_end");
                         app.Log.error("can't get stats from cartodb for ", stat);
-                    }
-                    count++;
-                    if(1 || count == stats_to_get.length) {
-                        app.bus.emit("loading_end");
-                        callback(stats);
                     }
                 });
              });

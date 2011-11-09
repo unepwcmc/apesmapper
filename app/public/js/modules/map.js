@@ -174,6 +174,8 @@ App.modules.Map = function(app) {
             this.protectedzone_popup.bind('add_polygon', function(polygon) {
                 self.bus.emit('polygon', {paths: polygon});
             });
+            
+            this.show_controls(false);
 
 
         },
@@ -267,6 +269,16 @@ App.modules.Map = function(app) {
 
         reorder_layers: function(order) {
             this.map.reorder_layers(order);
+        },
+
+        show_controls: function(show) {
+            if(show) {
+                this.map.show_controls();
+                $('.layers').show();
+            } else {
+                this.map.hide_controls();
+                $('.layers').hide();
+            }
         }
     });
 };

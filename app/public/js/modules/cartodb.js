@@ -79,6 +79,8 @@ var SQL_COUNTRIES = "SELECT priority, country, ST_Area(ST_Intersection( ST_Union
                     qty: row.intersects_sum + (row.within_sum || 0),
                     area: row.area
                 });
+            } else {
+                callback();
             }
         });
     };
@@ -91,6 +93,8 @@ var SQL_COUNTRIES = "SELECT priority, country, ST_Area(ST_Intersection( ST_Union
                     return { name: c.country, qty: c.total };
                 });
                 callback(countries);
+            } else {
+                callback();
             }
         });
     };
@@ -114,6 +118,8 @@ var SQL_COUNTRIES = "SELECT priority, country, ST_Area(ST_Intersection( ST_Union
                 });
                 stats.none = 100.0 * (1.0 - total/total_n_pixels);
                 callback(stats);
+            } else {
+                callback();
             }
         });
     };
@@ -125,7 +131,8 @@ var SQL_COUNTRIES = "SELECT priority, country, ST_Area(ST_Intersection( ST_Union
                     'percent': data.rows[0].kba_percentage || 0,
                     'num_overlap': 'todo'
                 });
-
+            } else {
+                callback();
             }
         });
     }
@@ -153,6 +160,8 @@ var SQL_COUNTRIES = "SELECT priority, country, ST_Area(ST_Intersection( ST_Union
                 });
 
                 callback(stats);
+            } else {
+                callback();
             }
         });
     }
