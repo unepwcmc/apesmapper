@@ -139,7 +139,7 @@ App.modules.Map = function(app) {
             // add layers to the map
             _(app.config.MAP_LAYERS).each(function(layer) {
                 self.map.add_layer(layer.name, layer);
-                self.map.enable_layer(layer.name, true);
+                self.map.enable_layer(layer.name, layer.enabled);
             });
 
             this.popup = new Popup({mapview: this.map});

@@ -9,27 +9,33 @@ App.modules.Config = function(app) {
         MAP_LAYERS: [{
              name: 'protected',
              url: 'http://184.73.201.235/blue/{Z}/{X}/{Y}',
-             opacity: 0.4
+             opacity: 0.4,
+             enabled: true
           }, {
              name: 'carbon',
              opacity: 0.4,
-             url: 'http://lifeweb-maps.unep-wcmc.org/ArcGIS/rest/services/lifeweb/carbon/MapServer/tile/{Z}/{Y}/{X}'
+             url: 'http://lifeweb-maps.unep-wcmc.org/ArcGIS/rest/services/lifeweb/carbon/MapServer/tile/{Z}/{Y}/{X}',
+             enabled: true 
           }, {
             name: 'carbon sequestration',
             opacity: 0.4,
-            url: 'http://lifeweb-maps.unep-wcmc.org/ArcGIS/rest/services/lifeweb/carb_seq/MapServer/tile/{Z}/{Y}/{X}'
+            url: 'http://lifeweb-maps.unep-wcmc.org/ArcGIS/rest/services/lifeweb/carb_seq/MapServer/tile/{Z}/{Y}/{X}',
+             enabled: false
           }, {
             name: 'restoration potential',
             opacity: 0.4,
-            url: 'http://lifeweb-maps.unep-wcmc.org/ArcGIS/rest/services/lifeweb/rest_pot/MapServer/tile/{Z}/{Y}/{X}'
+            url: 'http://lifeweb-maps.unep-wcmc.org/ArcGIS/rest/services/lifeweb/rest_pot/MapServer/tile/{Z}/{Y}/{X}',
+            enabled: false
           }, {
             name: 'forest',
             url: 'http://lifeweb-maps.unep-wcmc.org/ArcGIS/rest/services/lifeweb/forest_intact/MapServer/tile/{Z}/{Y}/{X}',
-            opacity: 0.4
+            opacity: 0.4,
+            enabled: false
           }, {
             name: 'KBA',
             url: 'https://carbon-tool.cartodb.com/tiles/kba/{Z}/{X}/{Y}.png',
-            opacity: 0.4
+            opacity: 0.4,
+            enabled: false
           }
 
         ]
