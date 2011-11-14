@@ -129,6 +129,11 @@
      {% include "_report.html" %}
   </script>
 
+  <script type="text/template" id="report-tmpl-common">
+     {% include "_report_common.html" %}
+  </script>
+
+
    <script type="text/template" id="report-tmpl-no-content">
     <div class="no_content">
       <div class="inner">
@@ -189,7 +194,12 @@
 
   <script>
     function number_format(n) {
-        return n.toFixed(0).match(/.../g).join(',');
+        var s = n.toFixed(0);
+        var g = s.match(/.../g)
+        if(g) {
+            return g.join(',');
+        }
+        return s;
     }
   </script>
 

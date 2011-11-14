@@ -148,6 +148,11 @@
       overflow: auto;
     }
 
+    .stats_header {
+      overflow: hidden;
+      height: 44px;
+    }
+    //.stats_header {
     // polygon edition
     div.tools {
       width:100%;
@@ -462,7 +467,7 @@
   }
 
 
-  span.loader {
+  div.loader {
     float:left;
     width:312px;
     height:47px;

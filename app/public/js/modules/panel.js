@@ -21,21 +21,23 @@ App.modules.Panel = function(app) {
             el.show();
             this.count++;
             if(this.count === 1) {
-                this.interval = setInterval(function() {
+                app.bus.emit("loading_started");
+                /*this.interval = setInterval(function() {
                    var el = $('.loader');
                    el.show();
                 }, 400);
+                */
             }
         },
 
         hide: function() {
             if(this.count === 0) return;
-            app.Log.log("loading_end");
-            var el = $('.loader');
+            //var el = $('.loader');
             this.count--;
             if(this.count === 0) {
-                el.hide();
-                clearInterval(this.interval);
+                app.bus.emit("loading_finished");
+                //el.hide();
+                //clearInterval(this.interval);
             }
         },
     });

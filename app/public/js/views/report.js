@@ -5,6 +5,7 @@ var Report = Backbone.View.extend({
 
     template: _.template($('#report-tmpl').html()),
     template_no_content: _.template($('#report-tmpl-no-content').html()),
+    template_header: _.template($('#report-tmpl-common').html()),
 
     events: {
         'click .non_editing .go_edit': 'go_edit',
@@ -15,16 +16,29 @@ var Report = Backbone.View.extend({
         _.bindAll(this, 'show', 'hide');
         $(this.el).addClass('tab_content_item');
         this.bus = this.options.bus;
+        this.header = null;
+        this.showing_loading = false;
     },
 
     render: function(data) {
         var self = this;
         if(data.polygons.length !== 0 || data.total) {
-            $(this.el).html(this.template(data));
+            // check if header has been already rendered and 
+            // update only the stats part
+            if(this.header) {
+                this.$('.report_stats').html(this.template(data));
+            } else {
+                $(this.el).html(this.template_header(data));
+                $(this.el).append(this.template(data));
+                this.header = this.$('.stats_header');
+            }
         } else {
             $(this.el).html(this.template_no_content(data));
+            this.header = null;
         }
-        this.$('.editing').hide();
+        //this.$('.editing').hide();
+        this.leave_edit();
+        this.loading(this.showing_loading);
         /*
         setTimeout(function() {
             $(self.el).jScrollPane({autoReinitialise:true});
@@ -41,7 +55,7 @@ var Report = Backbone.View.extend({
     },
 
     leave_edit: function(e) {
-        e.preventDefault();
+        if(e) e.preventDefault();
         this.$('.editing').hide();
         this.$('.non_editing').show();
         this.bus.emit('map:no_edit_mode');
@@ -53,7 +67,22 @@ var Report = Backbone.View.extend({
 
     hide: function() {
         $(this.el).hide();
+    },
+
+    loading: function(b) {
+        this.showing_loading = b;
+        if(this.header) {
+            var loading = this.header.find('.loader');
+            var add_poly = this.header.find('.editing_tools');
+            if(b) {
+                add_poly.animate({'margin-top': '-44px'}, 1000);
+            } else {
+                this.leave_edit();
+                add_poly.animate({'margin-top': '0px'}, 1000);
+            }
+        }
     }
+
 
 });
 
@@ -148,6 +177,7 @@ var Panel = Backbone.View.extend({
 
     initialize: function() {
         _.bindAll(this, 'add_report', 'create_report');
+        var self = this;
         this.bus = this.options.bus;
         this.reports = [];
         this.reports_map = {};
@@ -155,6 +185,16 @@ var Panel = Backbone.View.extend({
         this.tabs.bind('enable', function() {
         });
         this.tab_contents = this.$('#tab_content');
+        this.bus.on('loading_started', function() {
+            _(self.reports).each(function(r) {
+                r.loading(true);
+            });
+        });
+        this.bus.on('loading_finished', function() {
+            _(self.reports).each(function(r) {
+                r.loading(false);
+            });
+        });
     },
 
     create_report: function(e) {
