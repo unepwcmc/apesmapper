@@ -51,15 +51,7 @@ var MapView = Backbone.View.extend({
        this.projector = new Projector(this.map);
        this.projector.draw = this.ready;
        this.signals_on = true;
-       this.map.setOptions({'styles': [
-             {
-             stylers: [
-             { visibility: "on" },
-             { saturation: -100 }
-             ]
-             },{
-             }
-            ]
+       this.map.setOptions({'styles':[ { featureType: "water", stylers: [ { hue: "#00eeff" }, { saturation: -44 }, { lightness: 40 } ] },{ featureType: "road", stylers: [ { saturation: -81 }, { visibility: "simplified" }, { lightness: 50 } ] },{ featureType: "road", elementType: "labels", stylers: [ { visibility: "off" } ] },{ featureType: "poi.business", stylers: [ { visibility: "off" } ] },{ featureType: "poi.school", elementType: "labels", stylers: [ { visibility: "off" } ] },{ featureType: "poi.medical", stylers: [ { visibility: "off" } ] },{ featureType: "administrative.neighborhood", stylers: [ { visibility: "off" } ] },{ featureType: "administrative.land_parcel", stylers: [ { visibility: "off" } ] },{ featureType: "administrative.locality", stylers: [ { visibility: "on" } ] } ]
        });
     },
 
