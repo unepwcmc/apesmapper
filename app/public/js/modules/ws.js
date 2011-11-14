@@ -35,6 +35,22 @@ App.modules.WS = function(app) {
                 }
              })
             .error(function() { callback(null); });
+        },
+
+        PA_coverage: function(polygon, callback) {
+          $.ajax({
+            url: '/api/v0/proxy/' + this.URL + 'api2/geo_searches',
+            type: 'POST',
+            data: {data: JSON.stringify([{id: 1, the_geom: polygon}])},
+            success: callback
+          });
+        },
+      
+        test: function() {
+          var p = [[[-1.4170918294416264,23.148193359375],[-1.6806671337507222,25.125732421875],[-3.743671274749718,24.290771484375]]];
+          this.PA_coverage(app.CartoDB.wtk_polygon(p), function(d) {
+            console.log(d);
+          });
         }
     };
 
@@ -53,7 +69,8 @@ App.modules.WS = function(app) {
                     'carbon_countries',
                     'restoration_potential',
                     'forest_status',
-                    'covered_by_KBA'];
+                    'covered_by_KBA',
+                    'covered_by_PA'];
 
             _.each(stats_to_get, function(stat) {
                 app.bus.emit("loading_start");
@@ -109,6 +126,22 @@ App.modules.WS = function(app) {
                 };
             });
 
+            var covered_by_kba = sum(reports, function(r) {
+                var s = r.get('stats');
+                if(total_area && s && s.carbon && s.carbon.area && s.covered_by_KBA) {
+                    return s.covered_by_KBA.percent*s.carbon.area/total_area;
+                }
+                return 0;
+            });
+
+            var covered_by_pa = sum(reports, function(r) {
+                var s = r.get('stats');
+                if(total_area && s && s.covered_by_PA) {
+                    return 1e6*s.covered_by_PA.km2/total_area;
+                }
+                return 0;
+            });
+
             callback({
                 carbon_sum: {
                     qty: total_carbon,
@@ -116,10 +149,8 @@ App.modules.WS = function(app) {
                     area: total_area
                 },
                 coverage: {
-                    PA: 51,
-                    KBA: 90,
-                    RestP: 65,
-                    FStat: 12
+                    PA: covered_by_pa*100,
+                    KBA: covered_by_kba
                 },
                 conservation_priority_areas: [
                     { name: 'United States', percents: [50, 30, 20, 10, 40] },

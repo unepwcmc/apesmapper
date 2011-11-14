@@ -33,11 +33,11 @@
 </div>
 <% } %>
 
-<% if(stats.covered_by_PA) { %>
+<% if(stats.covered_by_PA && stats.carbon) { %>
 <div class="block">
     <span class="title">
         <h2>COVERED BY PA'S</h2>
-        <p><%= stats.covered_by_PA.percent%><small>%</small></p>
+        <p><%= (1e8*stats.covered_by_PA.km2/stats.carbon.area).toFixed(1) %><small>%</small></p>
     </span>
     <ul class="normal list">
       <li>
@@ -53,11 +53,11 @@
         <h2>COVERED BY KPA'S</h2>
         <p><%= stats.covered_by_KBA.percent.toFixed(1) %><small>%</small></p>
     </span>
-    <ul class="normal list">
+    <!--<ul class="normal list">
       <li>
         Overlapping with <%= stats.covered_by_KBA.num_overlap %> PA
       </li>
-    </ul>
+  </ul> -->
 </div>
 <% } %>
 
@@ -92,6 +92,7 @@
 <div class="block">
     <span class="title">
         <h2>FOREST STATUS</h2>
+        <p>&nbsp;</p>
     </span>
     <ul class="normal list">
       <li><h5>% Defined as intact forest</h5><p class="info "><%= stats.forest_status.intact.toFixed(1) %>%</p></li>
@@ -114,7 +115,7 @@
           <h5 class="stats"><%= p.polygon %></h5>
             <div class="stats_bar">
                 <span class="r_bar"></span>
-                <div class="stats_bar inner" style="width: <%= 0.84*p.percent %>%">
+                <div class="stats_bar inner" style="width: <%= 0.87*p.percent %>%">
                     <span class="r_bar"></span>
                 </div>
             </div>
@@ -137,7 +138,7 @@
           <h5 class="stats"><%= k %></h5>
             <div class="stats_bar">
                 <span class="r_bar"></span>
-                <div class="stats_bar inner">
+                <div class="stats_bar inner" style="width: <%= 0.87*v %>%">
                     <span class="r_bar"></span>
                 </div>
             </div>

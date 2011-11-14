@@ -6,6 +6,7 @@ for client-side backbone application
 """
 
 import logging
+import urllib2
 try:
     import json
 except:
@@ -58,52 +59,16 @@ def work(request, work_hash=None):
     return HttpResponse(data, status=status, mimetype='application/json')
 
 @csrf_exempt
-def stats(request): 
-    data = { 'error': 'you should use POST' }
+def proxy(request, host):
     if request.method == "POST":
-        polygons = json.loads(request.raw_post_data)['polygons']
-        c = CartoDB()
-        try:
-            wkt = polygon_text(polygons)
-            carbon = c.carbon(wkt)
-            restoration = c.restoration_potential(wkt)
-            forest = c.forest(wkt)
-        except Exception, e:
-            logging.error(e)
-            data['error'] = str(e)
-        else:
-            data = {
-                'carbon': {
-                    'qty': carbon,
-                    'by_country': [
-                      {'name': 'Mexico', 'qty': 1234},
-                      {'name': 'Spain', 'qty': 5678}
-                      ],
-                },
-                'restoration_potential': restoration,
-                #{
-                      #'wide_scale': 12,
-                      #'mosaic': 12,
-                      #'remove': 12,
-                      #'none': 14
-                 #},
-                 'covered_by_PA':  {
-                    'percent': 90,
-                    'num_overlap': 12
-                 },
-                 'covered_by_KBA':  {
-                    'percent': 12,
-                    'num_overlap': 34
-                 },
-                 'forest_status': forest
-                 #{
-                    #'intact': 12,
-                    #'fragmented': 23,
-                    #'partial': 34,
-                    #'deforested': 14
-                 #}
-            }
-    return HttpResponse(json.dumps(data), mimetype='application/json')
+        f = urllib2.urlopen(host, request.raw_post_data)
+        nfo = f.info()
+        r = HttpResponse(f.read())
+        for h in nfo:
+          if h in ['content-type']:
+            r[h] = nfo.getheader(h)
+        return r
+    return HttpResponse("use POST", status=404)
 
 
 

@@ -95,6 +95,7 @@ var SQL_COUNTRIES = "SELECT priority, country, ST_Area(ST_Intersection( ST_Union
     }
 
     app.CartoDB = {};
+    app.CartoDB.wtk_polygon = wtk_polygon;
     app.CartoDB.test = function() {
         var p = [[[-1.4170918294416264,23.148193359375],[-1.6806671337507222,25.125732421875],[-3.743671274749718,24.290771484375]]];
         app.CartoDB.carbon(p, function(data) {
@@ -217,5 +218,20 @@ var SQL_COUNTRIES = "SELECT priority, country, ST_Area(ST_Intersection( ST_Union
             }
         });
     }
+
+    app.CartoDB.covered_by_PA = function(p, callback) {
+         // data from protected planet
+         // but here to follow the same rule
+         app.WS.ProtectedPlanet.PA_coverage(wtk_polygon(p), function(d) {
+            var num = 0;
+            if(d.results && d.results.length >= 1) {
+                num = d.results[0].protected_areas.length;
+            }
+            callback({
+              num_overlap: num,
+              km2: d.sum_pa_cover_km2
+            });
+         });
+    };
 
 };
