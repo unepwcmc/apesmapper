@@ -47,13 +47,15 @@ var LayerEditor = Backbone.View.extend({
 
     events: {
         'click .expand': 'expand',
-        'mouseleave': 'hiding'
+        'mouseleave': 'hiding',
+        'click': 'open'
     },
 
     initialize: function() {
         var self = this;
         this.layers = this.options.layers;
         this.bus = this.options.bus;
+        this.open = false;
         this.views = {};
         this.render();
     },
@@ -124,7 +126,18 @@ var LayerEditor = Backbone.View.extend({
         this.bus.emit("map:reorder_layers", order);
     },
 
+    open: function(e) {
+      this.el.addClass('open');
+      this.open = true;
+    },
+
+    close: function(e) {
+      this.el.removeClass('open');
+      this.open = false;
+    },
+
     hiding: function(e) {
+        if(!this.open) return;
         // put first what are showing
         this.layers.sort(function(a, b) {
             if(a.enabled && !b.enabled) {
@@ -138,6 +151,7 @@ var LayerEditor = Backbone.View.extend({
         this.bus.emit("map:reorder_layers", layers);
         this.order = layers;
         this.render(3);
+        this.close();
     }
 
 });

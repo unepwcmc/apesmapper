@@ -757,16 +757,16 @@ div.right {
 .map_container .layers div.show ul a.expand:hover {
   background-position: 0 -1452px;
 }
-/* line 279, ../../css_src/partials/_map.scss */
-.map_container .layers:hover a.view {
+/* line 274, ../../css_src/partials/_map.scss */
+.map_container .layers.open a.view {
   background-position: left -1072px;
 }
-/* line 282, ../../css_src/partials/_map.scss */
-.map_container .layers:hover a.view span {
+/* line 277, ../../css_src/partials/_map.scss */
+.map_container .layers.open a.view span {
   background-position: right -1072px;
 }
-/* line 287, ../../css_src/partials/_map.scss */
-.map_container .layers:hover .show {
+/* line 282, ../../css_src/partials/_map.scss */
+.map_container .layers.open .show {
   display: block;
 }
 
