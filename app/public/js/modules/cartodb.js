@@ -1,14 +1,59 @@
 
 App.modules.Cartodb = function(app) {
 
-var SQL_CARBON = "SELECT ST_Area(ST_GeomFromText('<%= polygon %>', 4326)::geography) as area, intersects_sum, within_sum FROM (SELECT SUM((pvc).value * (pvc).count) AS intersects_sum FROM (SELECT ST_ValueCount(ST_AsRaster((intersection).geom, 0.0089285714, -0.0089285714, NULL, NULL, ARRAY['32BSI'], ARRAY[(intersection).val])) AS pvc FROM (SELECT (ST_Intersection(rast, the_geom)) AS intersection FROM carbon, (SELECT ST_GeomFromText('<%= polygon %>',4326) AS the_geom) foo WHERE ST_Intersects(rast, the_geom) AND ST_Within(rast, the_geom) = false) bar) AS foo WHERE (pvc).value > 0 and (pvc).value != 2147483647) intersects,(SELECT SUM((ST_SummaryStats(rast)).sum) AS within_sum FROM carbon, (SELECT ST_GeomFromText('<%= polygon %>',4326) AS the_geom) foo WHERE ST_Within(rast, the_geom)) within;";
+var SQL_CARBON= "SELECT SUM(ST_Value(rast, 1, x, y)) AS total, \
+ST_Area(ST_GeomFromText('<%= polygon %>', 4326)::geography) as area \
+FROM carbon_query_test_s CROSS JOIN \
+generate_series(1,10) As x CROSS JOIN generate_series(1,10) As y \
+WHERE rid in ( SELECT rid FROM carbon_query_test_s WHERE ST_Intersects(rast, ST_GeomFromText('<%= polygon %>',4326)) ) \
+AND \
+ST_Intersects( \
+  ST_Translate(ST_SetSRID(ST_Point(ST_UpperLeftX(rast), ST_UpperLeftY(rast)), 4326), ST_ScaleX(rast)*x, ST_ScaleY(rast)*y), \
+  ST_GeomFromText('<%= polygon %>',4326) \
+);";
 
-var SQL_CARBON_COUNTRIES = "SELECT intersects.country, (CASE WHEN SUM(within_sum) IS NULL THEN SUM(intersects_sum) ELSE SUM(intersects_sum) + SUM(within_sum) END) AS total FROM ( SELECT objectid, country, SUM((pvc).value * (pvc).count) AS intersects_sum FROM ( SELECT objectid, country, ST_ValueCount(ST_AsRaster((intersection).geom, scalex, scaley, NULL, NULL, ARRAY['32BSI'], ARRAY[(intersection).val])) AS pvc FROM ( SELECT objectid, country, (ST_Intersection(rast, base_geom)) AS intersection, ST_ScaleX(rast) AS scalex, ST_ScaleY(rast) AS scaley FROM carbon100km, ( SELECT objectid, country, ST_Union(the_geom, ST_GeomFromText('<%= polygon %>',4326)) AS base_geom FROM countries WHERE ST_Intersects(the_geom, ST_GeomFromText('<%= polygon %>',4326))) foo WHERE ST_Intersects(rast, base_geom) AND ST_Within(rast, base_geom) = false) bar) foo GROUP BY objectid, country) intersects LEFT JOIN ( SELECT objectid, country, SUM((ST_SummaryStats(rast)).sum) AS within_sum FROM carbon100km, ( SELECT objectid, country, ST_Union(the_geom, ST_GeomFromText('<%= polygon %>',4326)) AS base_geom FROM countries WHERE ST_Intersects(the_geom, ST_GeomFromText('<%= polygon %>',4326))) foo WHERE ST_Within(rast, base_geom) GROUP BY objectid, country) within ON intersects.objectid = within.objectid GROUP BY intersects.country";
+var SQL_CARBON_COUNTRIES = "\
+SELECT country, SUM(ST_Value(rast, 1, x, y)) AS total \
+FROM carbon_query_test_s CROSS JOIN \
+generate_series(1,10) As x CROSS JOIN generate_series(1,10) As y CROSS JOIN countries \
+WHERE rid IN ( SELECT rid FROM carbon_query_test_s WHERE ST_Intersects(rast, ST_GeomFromText('<%= polygon %>',4326)) ) \
+AND \
+objectid IN ( SELECT objectid FROM countries WHERE ST_Intersects(the_geom, ST_GeomFromText('<%= polygon %>',4326)) ) \
+AND \
+ST_Intersects( \
+  ST_Translate(ST_SetSRID(ST_Point(ST_UpperLeftX(rast) + (ST_ScaleX(rast)/2), ST_UpperLeftY(rast) + (ST_ScaleY(rast)/2)), 4326), ST_ScaleX(rast)*x, ST_ScaleY(rast)*y), \
+  ST_GeomFromText('<%= polygon %>',4326) \
+) \
+AND \
+ST_Intersects( \
+  ST_Translate(ST_SetSRID(ST_Point(ST_UpperLeftX(rast) + (ST_ScaleX(rast)/2), ST_UpperLeftY(rast) + (ST_ScaleY(rast)/2)), 4326), ST_ScaleX(rast)*x, ST_ScaleY(rast)*y), \
+  the_geom \
+) \
+GROUP BY country;"; 
 
-var SQL_RESTORATION = "SELECT total_n_pixels, (pvc).value, SUM((pvc).count) FROM (SELECT ST_ValueCount(ST_AsRaster((intersection).geom, scalex, scaley, NULL, NULL, ARRAY['32BSI'], ARRAY[(intersection).val])) AS pvc, CAST((area / (scalex * scalex)) AS Integer) AS total_n_pixels FROM (SELECT (ST_Intersection(rast, the_geom)) AS intersection, ST_ScaleX(rast) AS scalex, ST_ScaleY(rast) AS scaley, ST_Area(the_geom) AS area FROM restoration_potential, (SELECT ST_GeomFromText('<%= polygon %>',4326) AS the_geom) foo WHERE ST_Intersects(rast, the_geom)) bar) AS foo GROUP BY total_n_pixels, value;";
+var SQL_RESTORATION = " \
+SELECT band, SUM(ST_Value(rast, band, x, y)) AS sum, (CAST(SUM( (CASE WHEN ST_Value(rast, band, x, y) > 0 THEN 1 ELSE 0 END) ) AS FLOAT)/COUNT(1))*100 AS percentage \
+FROM carbon_query_test_s CROSS JOIN \
+generate_series(1,10) As x CROSS JOIN generate_series(1,10) As y CROSS JOIN generate_series(1,4) As band \
+WHERE rid in ( SELECT rid FROM carbon_query_test_s WHERE ST_Intersects(rast, ST_GeomFromText('<%= polygon %>',4326)) ) \
+AND \
+ST_Intersects( \
+  ST_Translate(ST_SetSRID(ST_Point(ST_UpperLeftX(rast), ST_UpperLeftY(rast)), 4326), ST_ScaleX(rast)*x, ST_ScaleY(rast)*y), \
+  ST_GeomFromText('<%= polygon %>',4326) \
+) \
+GROUP BY band;"
 
-var SQL_FOREST = "SELECT intersects.band, (CASE WHEN within.avg IS NULL OR within.area IS NULL THEN intersects.avg ELSE (((intersects.avg * intersects.area) + (within.avg * within.area)) / (intersects.area + within.area)) END) AS total FROM ( SELECT band, avg((ST_SummaryStats(ST_AsRaster((intersection).geom, scalex, scaley, NULL, NULL, ARRAY['32BSI'], ARRAY[(intersection).val]))).mean), SUM(area) AS area FROM ( SELECT band, (ST_Intersection(the_geom, rast, band)) AS intersection, ST_ScaleX(rast) AS scalex, ST_ScaleY(rast) AS scaley, ST_Area(the_geom) AS area FROM forest_intact, ( SELECT ST_GeomFromText('<%= polygon %>',4326) AS the_geom) foo, ( SELECT 1 AS band UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4) bar WHERE ST_Intersects(rast, the_geom, band) AND ST_Within(rast, the_geom) = false) bar GROUP BY band) intersects LEFT JOIN ( SELECT band, avg((ST_SummaryStats(ST_AsRaster((intersection).geom, scalex, scaley, NULL, NULL, ARRAY['32BSI'], ARRAY[(intersection).val]))).mean), SUM(area) AS area FROM ( SELECT band, (ST_Intersection(the_geom, rast, band)) AS intersection, ST_ScaleX(rast) AS scalex, ST_ScaleY(rast) AS scaley, ST_Area(rast) AS area FROM forest_intact, ( SELECT ST_GeomFromText('<%= polygon %>',4326) AS the_geom) foo, ( SELECT 1 AS band UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4) bar WHERE ST_Within(rast, the_geom)) foo GROUP BY band) within ON intersects.band = within.band";
-
+var SQL_FOREST = " \
+SELECT band, SUM(ST_Value(rast, band, x, y)) AS total \
+FROM carbon_query_test_s CROSS JOIN \
+generate_series(1,10) As x CROSS JOIN generate_series(1,10) As y CROSS JOIN generate_series(1,4) As band \
+WHERE rid in ( SELECT rid FROM carbon_query_test_s WHERE ST_Intersects(rast, ST_GeomFromText('<%= polygon %>',4326)) ) \
+AND \
+ST_Intersects( \
+  ST_Translate(ST_SetSRID(ST_Point(ST_UpperLeftX(rast), ST_UpperLeftY(rast)), 4326), ST_ScaleX(rast)*x, ST_ScaleY(rast)*y), \
+  ST_GeomFromText('<%= polygon %>',4326) \
+) \
+GROUP BY band;"
 
 var SQL_COVERED_KBA = "SELECT (SELECT (SELECT ST_Area(ST_Intersection(ST_Union(the_geom),ST_GeomFromText('<%= polygon %>',4326))) as overlapped_area FROM kba WHERE ST_Intersects(ST_GeomFromText('<%= polygon %>',4326), the_geom)) / (SELECT ST_Area(ST_GeomFromText('<%= polygon %>', 4326)) FROM kba LIMIT 1 ) as result) * 100 as kba_percentage;"
 
@@ -52,16 +97,19 @@ var SQL_COUNTRIES = "SELECT priority, country, ST_Area(ST_Intersection( ST_Union
     app.CartoDB = {};
     app.CartoDB.test = function() {
         var p = [[[-1.4170918294416264,23.148193359375],[-1.6806671337507222,25.125732421875],[-3.743671274749718,24.290771484375]]];
+        app.CartoDB.carbon(p, function(data) {
+            console.log("carbon", data);
+        });
         app.CartoDB.carbon_countries(p, function(data) {
-            console.log(data);
+            console.log('countries', data);
         });
-        /*app.CartoDB.restoration_potential(p, function(data) {
-            console.log(data);
+        app.CartoDB.restoration_potential(p, function(data) {
+            console.log("restoration", data);
         });
-        */
         app.CartoDB.forest_status(p, function(data) {
-            console.log(data);
+            console.log("forest", data);
         });
+
     };
 
     function stats_query(sql_query, polygon, callback) {
@@ -76,7 +124,7 @@ var SQL_COUNTRIES = "SELECT priority, country, ST_Area(ST_Intersection( ST_Union
             if(data) {
                 row = data.rows[0];
                 callback({
-                    qty: row.intersects_sum + (row.within_sum || 0),
+                    qty: row.total || 0,
                     area: row.area
                 });
             } else {
@@ -106,17 +154,15 @@ var SQL_COUNTRIES = "SELECT priority, country, ST_Area(ST_Intersection( ST_Union
                 var stats = {
                   'wide_scale': 0,
                   'mosaic': 0,
-                  'remove': 0,
+                  'remote': 0,
                   'none': 0
                 };
                 var total = 0.0;
-                var total_n_pixels = 1.0;
                 _.each(data.rows, function(x) {
-                    stats[value_map[x.value]] = 100.0*x.sum/x.total_n_pixels;
-                    total += x.sum;
-                    total_n_pixels = x.total_n_pixels;
+                    stats[value_map[x.band]] = x.percentage;
+                    total += x.percentage;
                 });
-                stats.none = 100.0 * (1.0 - total/total_n_pixels);
+                stats.none = 100.0 - total;
                 callback(stats);
             } else {
                 callback();
@@ -148,16 +194,22 @@ var SQL_COUNTRIES = "SELECT priority, country, ST_Area(ST_Intersection( ST_Union
                 };
 
                 function get_type(v) {
-                    if      (0 <= v && v <= 3) return 'intact';
-                    else if (4 <= v && v <= 6) return 'deforested';
-                    else if (7 <= v && v <= 9) return 'partial';
+                    if      (0 == v) return 'intact';
+                    else if (1 == v) return 'deforested';
+                    else if (2 == v) return 'partial';
                     return 'fragmented';
                 }
 
+                var total = 0;
                 _.each(data.rows, function(x) {
-                    var k = get_type(x.band);
-                    stats[k] = x.total;
+                  total += x.total;
                 });
+                if(total > 0) {
+                  _.each(data.rows, function(x) {
+                      var k = get_type(x.band);
+                      stats[k] = 100.0*x.total/total;
+                  });
+                }
 
                 callback(stats);
             } else {
