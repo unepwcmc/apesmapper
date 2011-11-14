@@ -127,6 +127,7 @@ var LayerEditor = Backbone.View.extend({
     },
 
     open: function(e) {
+      if(e) e.preventDefault();
       this.el.addClass('open');
       this.open = true;
     },
