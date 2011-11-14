@@ -3,7 +3,9 @@ var SharePopup = Backbone.View.extend({
     el: $('.share_tooltip'),
 
     events: {
-        'click .close': 'close'
+        'click .close': 'close',
+        //'focus .link': 'focus',
+        'click .link': 'focus'
     },
 
     initialize: function() {
@@ -18,8 +20,13 @@ var SharePopup = Backbone.View.extend({
 
     open: function(loc) {
         loc = loc || location.href;
-        this.link_el.html(loc);
+        this.link_el.val(loc);
         this.el.show();
+        this.focus();
+    },
+
+    focus: function() {
+        this.link_el.select();
     }
 
 });
