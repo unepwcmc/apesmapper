@@ -28,7 +28,8 @@ var PolygonView = Backbone.View.extend({
                 strokeColor: "#fff",
                 strokeWeight: 1.5
         });
-        poly.setMap(this.mapview.map);
+        this.poly = poly;
+        this.show();
         google.maps.event.addListener(poly, 'click', this.click);
         google.maps.event.addListener(poly, 'mouseover', function(e) {
             self.trigger('mouseover', this, e);
@@ -36,7 +37,6 @@ var PolygonView = Backbone.View.extend({
         google.maps.event.addListener(poly, 'mouseout', function(e) {
             self.trigger('mouseout', this, e);
         });
-        this.poly = poly;
         return this;
     },
 
@@ -46,6 +46,14 @@ var PolygonView = Backbone.View.extend({
 
     click: function(event) {
         this.trigger('click', this);
+    },
+
+    hide: function() {
+        this.poly.setMap(null);
+    },
+
+    show: function() {
+        this.poly.setMap(this.mapview.map);
     },
 
     remove: function() {

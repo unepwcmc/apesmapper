@@ -28,7 +28,9 @@ var Report = Backbone.View.extend({
             if(this.header) {
                 this.$('.report_stats').html(this.template(data));
             } else {
-                $(this.el).html(this.template_header(data));
+                if(!data.total) {
+                    $(this.el).html(this.template_header(data));
+                }
                 $(this.el).append(this.template(data));
                 this.header = this.$('.stats_header');
             }

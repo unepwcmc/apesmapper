@@ -240,6 +240,7 @@ App.modules.Map = function(app) {
             var self = this;
             this.finish_editing();
             this.editing_poly = p;
+            p.hide();
             this.paths = [p.paths];
             this.polygon_edit.editing_state(false);
             this.polygon_edit.edit_polygon(this.paths);
