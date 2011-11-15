@@ -71,10 +71,14 @@ App.modules.Carbon = function(app) {
 
         banner_animation: function() {
             var self = this;
+            var update_vel = 0.01;
+            this.bus.on('model:create_work', function() {
+              update_vel = 0.2;
+            });
             this.animation = setInterval(function() {
                 var m = self.map.map;
                 var c = m.get_center();
-                m.set_center(new google.maps.LatLng(c.lat(), c.lng()+ 0.01));
+                m.set_center(new google.maps.LatLng(c.lat(), c.lng() + update_vel));
             }, 20);
         },
 

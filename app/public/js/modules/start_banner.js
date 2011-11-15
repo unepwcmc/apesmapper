@@ -12,11 +12,17 @@ App.modules.Banner = function(app) {
 
         initialize: function() {
             this.bus = this.options.bus;
+            this.creating = false;
         },
 
         create_work: function(e) {
+            var self = this;
             if(e) e.preventDefault();
-            this.bus.emit('model:create_work');
+            if(!this.creating) {
+              self.bus.emit('model:create_work');
+              this.$('.button_info').html("creating...");
+            }
+            this.creating = true;
         },
 
         show: function() {
