@@ -10,7 +10,8 @@ runtime: python27
 api_version: 1
 threadsafe: true
 
-default_expiration: "30d"
+# set realy low expiration for development pourposes
+default_expiration: "10s"
 
 libraries:
 - name: django
