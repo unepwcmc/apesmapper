@@ -1,18 +1,6 @@
 <!-- report backbone template -->
 <div class="report_stats">
-<!--
-<span class="list_tooltip">
-  <h4>AOI #3</h4>
-  <span class="blue">
-    <h6>421,931.3 T</h6>
-    <p>Carbon</p>
-  </span>
-  <span class="white">
-    <h6>39,213 T</h6>
-    <p>RestP: Max. Extra Carbon</p>
-  </span>
-</span>
--->
+
 
 <% if(stats.carbon) { %>
 <div class="block">
@@ -22,7 +10,7 @@
     </span>
     <% if(stats.carbon) { %>
     <ul class="normal list">
-      <% _.each(stats.carbon_countries, function(ct) { %>
+      <% _.each(stats.carbon.countries, function(ct) { %>
       <li>
             <h5><%= ct.name %></h5>
             <p class="info ok"><% print(number_format(ct.qty)); %></p>
@@ -112,7 +100,21 @@
     <ul class="normal list tooltip">
       <% _.each(stats.carbon_sum.polygons, function(p) { %>
         <li>
-          <h5 class="stats"><%= p.polygon %></h5>
+
+        <!-- tooltip -->
+        <span class="list_tooltip">
+          <h4><%= p.polygon %></h4>
+          <span class="blue">
+              <h6><%= number_format(p.carbon) %> T</h6>
+            <p>Carbon</p>
+          </span>
+          <span class="white">
+            <h6><%= number_format(p.carbon_sequestration) %>T</h6>
+            <p>RestP: Max. Extra Carbon</p>
+          </span>
+        </span>
+
+        <h5 class="stats"><%= p.polygon %></h5>
             <div class="stats_bar">
                 <span class="r_bar"></span>
                 <div class="stats_bar inner" style="width: <%= 0.87*p.percent %>%">
@@ -150,7 +152,7 @@
 <% } %>
 
 
-<% if(stats.conservation_priority_areas) { %>
+<% if(stats.conservation_priority_areas && stats.conservation_priority_areas.length > 0) { %>
 <div class="block">
     <span class="title">
         <h2>CONSERVATION PRIORITIES</h2>

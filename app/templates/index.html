@@ -195,11 +195,15 @@
   <script>
     function number_format(n) {
         var s = n.toFixed(0);
-        var g = s.match(/.../g)
-        if(g) {
-            return g.join(',');
+        var chrs = [];
+        var c = 0;
+        for(var i = s.length - 1; i != -1; --i, ++c) {
+            if(c % 3 == 0 && c > 0) {
+                chrs.push(',');
+            }
+            chrs.push(s[i]);
         }
-        return s;
+        return chrs.reverse().join('');
     }
   </script>
 

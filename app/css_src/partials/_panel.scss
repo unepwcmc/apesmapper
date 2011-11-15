@@ -340,6 +340,43 @@
               white-space:nowrap;
             }
           }
+          span.list_tooltip {
+            display:none;
+            position:absolute;
+            /*
+            bottom:10px;
+            left:50px;
+            */
+            width:140px;
+            height:93px;
+            padding:17px 22px 31px 22px;
+            margin:0;
+            z-index: 100;
+            @include background(no-repeat,-267px,-1436px);
+
+            h4 {
+              font:bold 11px "WhitneyBold";
+              color:#333333;
+              padding:0 0 8px;
+              border-bottom: 2px solid #666666;
+            }
+
+            span {
+              float:left;
+              padding:0 0 0 10px;
+              margin:7px 0 0 0;
+              &.blue {@include background(no-repeat,-464px,-1452px);}
+              &.white {@include background(no-repeat,-464px,-1536px);}
+
+              h6 {
+                margin:0;
+                padding:0;
+                font:bold 13px "Helvetica",Arial;
+                color:#333333;
+              }
+              p {float: left; margin:2px 0 0 0; padding:0; font:normal 10px "Helvetica",Arial; color:#666666;}
+            }
+          }
 
           div.stats_bar {
             position:relative;
@@ -394,6 +431,9 @@
           li:hover {
             background-color:#EDEDED;
             cursor:pointer;
+            span.list_tooltip {
+               //display: block;
+            }
           }
         }
 
@@ -476,39 +516,6 @@
     background:url('/img/loading.gif') no-repeat -37px 0;
   }
 
-  span.list_tooltip {
-    position:absolute;
-    bottom:10px;
-    left:50px;
-    width:140px;
-    height:93px;
-    padding:17px 22px 31px 22px;
-    margin:0;
-    @include background(no-repeat,-267px,-1436px);
-
-    h4 {
-      font:bold 11px "WhitneyBold";
-      color:#333333;
-      padding:0 0 8px;
-      border-bottom: 2px solid #666666;
-    }
-
-    span {
-      float:left;
-      padding:0 0 0 10px;
-      margin:7px 0 0 0;
-      &.blue {@include background(no-repeat,-464px,-1452px);}
-      &.white {@include background(no-repeat,-464px,-1536px);}
-
-      h6 {
-        margin:0;
-        padding:0;
-        font:bold 13px "Helvetica",Arial;
-        color:#333333;
-      }
-      p {margin:2px 0 0 0; padding:0; font:normal 11px "Helvetica",Arial; color:#666666;}
-    }
-  }
 }
 
 

@@ -9,7 +9,9 @@ var Report = Backbone.View.extend({
 
     events: {
         'click .non_editing .go_edit': 'go_edit',
-        'click .editing .leave_edit': 'leave_edit'
+        'click .editing .leave_edit': 'leave_edit',
+        'mouseover .tooltip': 'show_tooltip',
+        'mouseout .tooltip': 'hide_tooltip'
     },
 
     initialize: function() {
@@ -48,6 +50,20 @@ var Report = Backbone.View.extend({
         }, 1000);
         */
         return this;
+    },
+
+    show_tooltip: function(e) {
+      var el = $(e.target);
+      var tooltip = el.find('.list_tooltip');
+      var pos = el.position();
+      tooltip.css({top: pos.top - 130, left: pos.left + 120});
+      tooltip.show();
+    },
+
+    hide_tooltip: function(e) {
+      var el = $(e.target);
+      var tooltip = el.find('.list_tooltip');
+      tooltip.hide();
     },
 
     go_edit: function(e) {

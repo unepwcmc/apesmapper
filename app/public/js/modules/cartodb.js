@@ -13,7 +13,8 @@ ST_Intersects( \
 );";
 
 var SQL_CARBON_COUNTRIES = "\
-SELECT country, SUM(ST_Value(rast, 1, x, y)) AS total \
+SELECT country, SUM(ST_Value(rast, 1, x, y)) AS total, \
+ST_Area(ST_GeomFromText('<%= polygon %>', 4326)::geography) as area \
 FROM carbon_query_test_s CROSS JOIN \
 generate_series(1,10) As x CROSS JOIN generate_series(1,10) As y CROSS JOIN countries \
 WHERE rid IN ( SELECT rid FROM carbon_query_test_s WHERE ST_Intersects(rast, ST_GeomFromText('<%= polygon %>',4326)) ) \
@@ -134,7 +135,7 @@ GROUP BY priority, country";
         query(sql, callback);
     }
 
-    app.CartoDB.carbon = function(p, callback) {
+    app.CartoDB.carbon_sequestration = function(p, callback) {
         stats_query(SQL_CARBON, p, function(data) {
             if(data) {
                 row = data.rows[0];
@@ -148,14 +149,20 @@ GROUP BY priority, country";
         });
     };
 
-    app.CartoDB.carbon_countries = function(p, callback) {
+    app.CartoDB.carbon = function(p, callback) {
         stats_query(SQL_CARBON_COUNTRIES, p, function(data) {
             if(data) {
                 //{"country":"Ghana","total":12578440024}
+                var total = 0;
                 var countries = _(data.rows).map(function(c) {
+                    total += c.total;
                     return { name: c.country, qty: c.total };
                 });
-                callback(countries);
+                callback({
+                    qty: total,
+                    area: data.rows[0].area,
+                    countries: countries
+                });
             } else {
                 callback();
             }

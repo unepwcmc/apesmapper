@@ -67,7 +67,7 @@ App.modules.WS = function(app) {
             var stats = {};
             var count = 0;
             var stats_to_get = ['carbon',
-                    'carbon_countries',
+                    'carbon_sequestration',
                     'restoration_potential',
                     'forest_status',
                     'covered_by_KBA',
@@ -123,7 +123,10 @@ App.modules.WS = function(app) {
                 }
                 return {
                     polygon: 'AOI #' + i,
-                    percent: percent
+                    percent: percent,
+                    carbon: s.carbon ? s.carbon.qty: 0,
+                    carbon_sequestration: s.carbon_sequestration? s.carbon_sequestration.qty:0
+
                 };
             });
 
