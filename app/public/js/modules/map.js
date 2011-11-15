@@ -255,10 +255,14 @@ App.modules.Map = function(app) {
             this.polygon_edit.bind('mousemove', function(p, e) {
                 self.popup.show(e.latLng);
             });
+            this.map.bind('mousemove', function(e) {
+                self.popup.show(e.latLng);
+            });
         },
 
         finish_editing: function() {
             this.polygon_edit.unbind('mousemove');
+            this.map.unbind('mousemove');
             this.popup.hide();
             this.polygon_edit.editing_state(true);
         },
