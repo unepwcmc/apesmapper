@@ -889,7 +889,7 @@ div.right {
 /* line 106, ../../css_src/partials/_panel.scss */
 #panel #tabs ul li.total a {
   width: auto;
-  padding: 17px 20px;
+  padding: 17px 15px;
 }
 /* line 109, ../../css_src/partials/_panel.scss */
 #panel #tabs ul li.total span.stats span.stats_inner {
