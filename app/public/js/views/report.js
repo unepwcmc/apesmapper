@@ -9,7 +9,10 @@ var Report = Backbone.View.extend({
 
     events: {
         'click .non_editing .go_edit': 'go_edit',
+        'click .non_editing .remove': 'go_remove',
         'click .editing .leave_edit': 'leave_edit',
+        'click .removing .cancel': 'leave_edit',
+        'click .removing .remove_it_please': 'remove_polygons',
         'mouseover .tooltip': 'show_tooltip',
         'mouseout .tooltip': 'hide_tooltip'
     },
@@ -20,6 +23,7 @@ var Report = Backbone.View.extend({
         this.bus = this.options.bus;
         this.header = null;
         this.showing_loading = false;
+        this.showing = false;
     },
 
     render: function(data) {
@@ -37,18 +41,13 @@ var Report = Backbone.View.extend({
                 $(this.el).append(this.template(data));
                 this.header = this.$('.stats_header');
             }
+            this.leave_edit();
         } else {
             $(this.el).html(this.template_no_content(data));
             this.header = null;
+            this.go_edit();
         }
-        //this.$('.editing').hide();
-        this.leave_edit();
         this.loading(this.showing_loading);
-        /*
-        setTimeout(function() {
-            $(self.el).jScrollPane({autoReinitialise:true});
-        }, 1000);
-        */
         return this;
     },
 
@@ -67,24 +66,42 @@ var Report = Backbone.View.extend({
     },
 
     go_edit: function(e) {
-        e.preventDefault();
+        if(e) e.preventDefault();
         this.$('.non_editing').hide();
+        this.$('.removing').hide();
         this.$('.editing').show();
-        this.bus.emit('map:edit_mode');
+        if(this.showing)
+          this.bus.emit('map:edit_mode');
     },
 
     leave_edit: function(e) {
         if(e) e.preventDefault();
         this.$('.editing').hide();
+        this.$('.removing').hide();
         this.$('.non_editing').show();
-        this.bus.emit('map:no_edit_mode');
+        if(this.showing)
+          this.bus.emit('map:no_edit_mode');
+    },
+  
+    go_remove: function(e) {
+        if(e) e.preventDefault();
+        this.$('.editing').hide();
+        this.$('.non_editing').hide();
+        this.$('.removing').show();
+    },
+
+    remove_polygons: function(e) {
+      if(e) e.preventDefault();
+      this.bus.emit("model:clear");
     },
 
     show: function() {
+        this.showing = true;
         $(this.el).show();
     },
 
     hide: function() {
+        this.showing = false;
         $(this.el).hide();
     },
 
@@ -96,7 +113,7 @@ var Report = Backbone.View.extend({
             if(b) {
                 add_poly.animate({'margin-top': '-44px'}, 1000);
             } else {
-                this.leave_edit();
+                //this.leave_edit();
                 add_poly.animate({'margin-top': '0px'}, 1000);
             }
         }

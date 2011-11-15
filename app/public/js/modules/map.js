@@ -133,7 +133,7 @@ App.modules.Map = function(app) {
 
     app.Map = Class.extend({
         init: function(bus) {
-            _.bindAll(this, 'show_report', 'start_edit_polygon', 'end_edit_polygon', 'remove_polygon', 'disable_editing', 'enable_editing', 'enable_layer', 'reoder_layers', 'protected_area_click','reorder_layers');
+            _.bindAll(this, 'show_report', 'start_edit_polygon', 'end_edit_polygon', 'remove_polygon', 'disable_editing', 'enable_editing', 'enable_layer', 'reoder_layers', 'protected_area_click','reorder_layers', 'update_report');
             var self = this;
             this.map = new MapView({el: $('.map_container')});
             // add layers to the map
@@ -158,7 +158,7 @@ App.modules.Map = function(app) {
 
             bus.link(this, {
                 'view:show_report': 'show_report',
-                'view:update_report': 'show_report',
+                'view:update_report': 'update_report',
                 'polygon': 'disable_editing',
                 'map:edit_mode': 'enable_editing',
                 'map:no_edit_mode': 'disable_editing',
@@ -174,7 +174,6 @@ App.modules.Map = function(app) {
             this.protectedzone_popup.bind('add_polygon', function(polygon) {
                 self.bus.emit('polygon', {paths: polygon});
             });
-            
             this.show_controls(false);
 
 
@@ -215,8 +214,17 @@ App.modules.Map = function(app) {
             this.editing(true);
         },
 
+        update_report: function(rid, data) {
+          if(this.showing === rid) {
+            this.show_report(rid, data);
+            this.report_polygons = data.polygons.length;
+          }
+        },
+
         // render polygons
         show_report: function(rid, data) {
+            this.showing = rid;
+            this.report_polygons = data.polygons.length;
             var self = this;
             // clean
             _(self.polygons).each(function(p) {

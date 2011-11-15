@@ -46,11 +46,19 @@ App.modules.Data = function(app) {
             this.save();
         },
 
+        clear: function() {
+            this.set({'polygons': [], 'stats': {}});
+            this.trigger('change:polygons', this);
+            this.trigger('change:stats', this);
+            this.trigger('change', this);
+            this.save();
+        },
+
         fetch: function() {
             var self = this;
             // get data using polygons
-            if(this.bus) {
-                //this.bus.emit('loading_start');
+            if(self.get('polygons').length === 0) {
+                return;
             }
             app.WS.CartoDB.calculate_stats(this.get('polygons'), function(stats) {
               var new_stats = _.extend(self.get('stats'), stats);
@@ -215,7 +223,7 @@ App.modules.Data = function(app) {
 
         init: function(bus) {
             var self = this;
-            _.bindAll(this, 'on_polygon', 'on_work', 'on_new_report','add_report', 'on_create_work', 'active_report', 'on_remove_polygon', 'on_update_polygon');
+            _.bindAll(this, 'on_polygon', 'on_work', 'on_new_report','add_report', 'on_create_work', 'active_report', 'on_remove_polygon', 'on_update_polygon', 'on_clear');
             this.bus = bus;
             this.work = new WorkModel();
             this.work.bus = bus;
@@ -227,7 +235,8 @@ App.modules.Data = function(app) {
                 'model:create_work': 'on_create_work',
                 'model:active_report': 'active_report',
                 'model:remove_polygon': 'on_remove_polygon',
-                'model:update_polygon': 'on_update_polygon'
+                'model:update_polygon': 'on_update_polygon',
+                'model:clear': 'on_clear'
             });
 
             this.work.bind('add', this.on_new_report);
@@ -265,6 +274,11 @@ App.modules.Data = function(app) {
             // append polygon to current report
             var r = this.work.getByCid(this.active_report_id);
             r.add_polygon(polygon.paths[0]);
+        },
+
+        on_clear: function() {
+            var r = this.work.getByCid(this.active_report_id);
+            r.clear();
         },
 
         on_work: function(work_id) {

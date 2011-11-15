@@ -178,8 +178,19 @@
           text-decoration:underline;
           &:hover {color:black}
         }
+          
       }
 
+      &.removing {
+        background-color: #FFEFEA;
+        p {
+            padding:10px 10px;
+          &.last {
+            float: right;
+            padding:10px 3px;
+          }
+        }
+      }
       a.edit {
         @include inline-block();
         width:16px;
@@ -225,8 +236,20 @@
 
         &:hover {text-decoration:underline;}
       }
+      a.remove_it_please {
+        @include background(0,-1817px,no-repeat);
+        @include text-shadow(#CC3300);
+        height:30px;
+        font:bold 13px "WhitneyBold";
+        color:white;
+        text-decoration:none;
+        &:hover {text-decoration:underline;}
+        padding:8px 12px 8px 12px;
+        margin-left: 5px;
+      }
 
     }
+
 
     // no content
     div.no_content {

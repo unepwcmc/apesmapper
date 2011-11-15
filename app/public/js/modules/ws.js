@@ -91,6 +91,9 @@ App.modules.WS = function(app) {
         },
 
         aggregate_stats: function(reports, polygons, callback) {
+            if(polygons.length === 0) {
+                callback({});
+            }
             function sum(reports, what) {
                 var t = 0;
                 _(reports).each(function(r) {
