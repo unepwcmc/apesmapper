@@ -177,7 +177,15 @@ App.modules.Data = function(app) {
           var reports = _(this.get_reports()).filter(function(r) {
                 return r.get('stats') !== undefined;
           });
-          app.WS.CartoDB.aggregate_stats(reports, null, function(stats) {
+          // get all polygons in the same array
+          var polygons = [];
+          _.each(reports, function(r) {
+                _.each(r.get('polygons'), function(p) {
+                    polygons.push(p);
+                });
+          });
+
+          app.WS.CartoDB.aggregate_stats(reports, polygons, function(stats) {
             self.get_total_report().set({stats: stats});
           });
           /*this.filter(function(r) { return r.get('total') === undefined; }).each(function(r) {
@@ -302,6 +310,6 @@ App.modules.Data = function(app) {
 
         select_report: function() {
         }
-    
+
     });
 };

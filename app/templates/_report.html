@@ -53,11 +53,11 @@
         <h2>COVERED BY KPA'S</h2>
         <p><%= stats.covered_by_KBA.percent.toFixed(1) %><small>%</small></p>
     </span>
-    <!--<ul class="normal list">
+    <ul class="normal list">
       <li>
         Overlapping with <%= stats.covered_by_KBA.num_overlap %> PA
       </li>
-  </ul> -->
+  </ul> 
 </div>
 <% } %>
 
@@ -163,23 +163,23 @@
             <ul>
                 <li class="hst">
                     <h6>Highest</h6>
-                    <div class="stats_bar"><span class="r_bar"></span></div>
+                    <div class="stats_bar"><span class="r_bar" style="width: <%= area.percents[0] %>%"></span></div>
                 </li>
                 <li class="h">
                     <h6>High</h6>
-                    <div class="stats_bar"><span class="r_bar"></span></div>
+                    <div class="stats_bar"><span class="r_bar" style="width: <%= area.percents[1] %>%"></span></div>
                 </li>
                 <li class="m">
                     <h6>Med</h6>
-                    <div class="stats_bar"><span class="r_bar"></span></div>
+                    <div class="stats_bar"><span class="r_bar" style="width: <%= area.percents[2] %>%"></span></div>
                 </li>
                 <li class="l">
                     <h6>Low</h6>
-                    <div class="stats_bar"><span class="r_bar"></span></div>
+                    <div class="stats_bar"><span class="r_bar" style="width: <%= area.percents[3] %>%"></span></div>
                 </li>
                 <li class="out">
                     <h6>Outs.</h6>
-                    <div class="stats_bar"><span class="r_bar"></span></div>
+                    <div class="stats_bar"><span class="r_bar" style="width: <%= area.percents[4] %>%"></span></div>
                 </li>
             </ul>
         </li>

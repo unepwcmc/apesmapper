@@ -29,7 +29,7 @@ ST_Intersects( \
   ST_Translate(ST_SetSRID(ST_Point(ST_UpperLeftX(rast) + (ST_ScaleX(rast)/2), ST_UpperLeftY(rast) + (ST_ScaleY(rast)/2)), 4326), ST_ScaleX(rast)*x, ST_ScaleY(rast)*y), \
   the_geom \
 ) \
-GROUP BY country;"; 
+GROUP BY country;";
 
 var SQL_RESTORATION = " \
 SELECT band, SUM(ST_Value(rast, band, x, y)) AS sum, (CAST(SUM( (CASE WHEN ST_Value(rast, band, x, y) > 0 THEN 1 ELSE 0 END) ) AS FLOAT)/COUNT(1))*100 AS percentage \
@@ -55,9 +55,19 @@ ST_Intersects( \
 ) \
 GROUP BY band;"
 
-var SQL_COVERED_KBA = "SELECT (SELECT (SELECT ST_Area(ST_Intersection(ST_Union(the_geom),ST_GeomFromText('<%= polygon %>',4326))) as overlapped_area FROM kba WHERE ST_Intersects(ST_GeomFromText('<%= polygon %>',4326), the_geom)) / (SELECT ST_Area(ST_GeomFromText('<%= polygon %>', 4326)) FROM kba LIMIT 1 ) as result) * 100 as kba_percentage;"
+var SQL_COVERED_KBA = "SELECT (overlapped_area / ( SELECT ST_Area(ST_GeomFromText('<%= polygon %>', 4326)) LIMIT 1 )) * 100 AS kba_percentage, count FROM ( SELECT COUNT(1), ST_Area( ST_Intersection( ST_Union(the_geom), ST_GeomFromText('<%= polygon %>',4326))) AS overlapped_area FROM kba WHERE ST_Intersects( ST_GeomFromText('<%= polygon %>',4326), the_geom) ) foo";
 
-var SQL_COUNTRIES = "SELECT priority, country, ST_Area(ST_Intersection( ST_Union(mg.the_geom)::geography, ST_GeographyFromText('<%= polygon %>')))/1000 AS covered_area FROM gaps_merged mg WHERE ST_Intersects(mg.the_geom, ST_GeometryFromText('<%= polygon %>', 4326)) GROUP BY priority, country";
+
+var SQL_COUNTRIES = " \
+SELECT priority, country, ST_Area(ST_Intersection( \
+ ST_Union(mg.the_geom)::geography, \
+ ST_GeographyFromText('<%= polygon %>') \
+))/1000 AS covered_area \
+FROM gaps_merged mg \
+WHERE ST_Intersects(mg.the_geom, \
+ ST_GeometryFromText('<%= polygon %>', 4326) \
+) \
+GROUP BY priority, country";
 
 
 
@@ -98,7 +108,7 @@ var SQL_COUNTRIES = "SELECT priority, country, ST_Area(ST_Intersection( ST_Union
     app.CartoDB.wtk_polygon = wtk_polygon;
     app.CartoDB.test = function() {
         var p = [[[-1.4170918294416264,23.148193359375],[-1.6806671337507222,25.125732421875],[-3.743671274749718,24.290771484375]]];
-        app.CartoDB.carbon(p, function(data) {
+        /*app.CartoDB.carbon(p, function(data) {
             console.log("carbon", data);
         });
         app.CartoDB.carbon_countries(p, function(data) {
@@ -109,6 +119,10 @@ var SQL_COUNTRIES = "SELECT priority, country, ST_Area(ST_Intersection( ST_Union
         });
         app.CartoDB.forest_status(p, function(data) {
             console.log("forest", data);
+        });*/
+        var p2 =[[[-1.5,-77.7],[-1.5,-65.9],[3.1,-65.9],[3.1,-77.7],[-1.5,-77.7],[-1.5,-77.7]]];
+        app.CartoDB.conservation_priorities(p2, 10000,  function(data) {
+            console.log("conservation priorities", data);
         });
 
     };
@@ -176,7 +190,7 @@ var SQL_COUNTRIES = "SELECT priority, country, ST_Area(ST_Intersection( ST_Union
             if(data) {
                 callback({
                     'percent': data.rows[0].kba_percentage || 0,
-                    'num_overlap': 'todo'
+                    'num_overlap': data.rows[0].count|| 0,
                 });
             } else {
                 callback();
@@ -191,7 +205,7 @@ var SQL_COUNTRIES = "SELECT priority, country, ST_Area(ST_Intersection( ST_Union
                     'intact': 0,
                     'fragmented': 0,
                     'partial': 0,
-                    'deforested': 0 
+                    'deforested': 0
                 };
 
                 function get_type(v) {
@@ -236,6 +250,42 @@ var SQL_COUNTRIES = "SELECT priority, country, ST_Area(ST_Intersection( ST_Union
               callback();
             }
          });
+    };
+
+    app.CartoDB.conservation_priorities = function(p, total_area, callback) {
+        stats_query(SQL_COUNTRIES, p, function(data) {
+            var countries = {};
+            var priorities = {
+                "Extremamente Alta": 0,
+                "extrema": 0,
+                "Muito Alta": 1,
+                "Very High": 1,
+                "Alta": 2,
+                "alta": 2,
+                "High": 2,
+                "media": 3,
+                "Medium": 3
+                //"HUECO": 1
+            };
+            if(data) {
+                _.each(data.rows, function(r) {
+                    var priority = priorities[r.priority];
+                    if(priority) {
+                        countries[r.country] = countries[r.country] || new Array(0,0,0,0,0);
+                        countries[r.country][priority] = 100*r.covered_area/total_area;
+                    }
+                });
+                var stats = [];
+                _.each(countries, function(percents, country) {
+                    var total = percents[0] + percents[1] + percents[2] + percents[3];
+                    percents[4] = 100 - total;
+                    stats.push({ name: country, percents: percents});
+                });
+                callback(stats);
+            } else {
+                callback();
+            }
+        });
     };
 
 };
