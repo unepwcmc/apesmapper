@@ -117,6 +117,10 @@ var MapView = Backbone.View.extend({
         this.set_center(c, false);
     },
 
+    get_center: function() {
+        return this.map.getCenter();
+    },
+
     set_zoom: function(z, s) {
         this.signals_on = s === undefined? true: s;
         this.map.setZoom(z);

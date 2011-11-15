@@ -27,6 +27,7 @@ var Report = Backbone.View.extend({
             // update only the stats part
             if(this.header) {
                 this.$('.report_stats').html(this.template(data));
+                this.header.find('.polygon_num').html(data.polygons.length);
             } else {
                 if(!data.total) {
                     $(this.el).html(this.template_header(data));

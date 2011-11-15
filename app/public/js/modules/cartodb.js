@@ -223,14 +223,18 @@ var SQL_COUNTRIES = "SELECT priority, country, ST_Area(ST_Intersection( ST_Union
          // data from protected planet
          // but here to follow the same rule
          app.WS.ProtectedPlanet.PA_coverage(wtk_polygon(p), function(d) {
-            var num = 0;
-            if(d.results && d.results.length >= 1) {
-                num = d.results[0].protected_areas.length;
+            if(d) {
+              var num = 0;
+              if(d.results && d.results.length >= 1) {
+                  num = d.results[0].protected_areas.length;
+              }
+              callback({
+                num_overlap: num,
+                km2: d.sum_pa_cover_km2
+              });
+            } else {
+              callback();
             }
-            callback({
-              num_overlap: num,
-              km2: d.sum_pa_cover_km2
-            });
          });
     };
 

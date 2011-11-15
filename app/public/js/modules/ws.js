@@ -42,7 +42,8 @@ App.modules.WS = function(app) {
             url: '/api/v0/proxy/' + this.URL + 'api2/geo_searches',
             type: 'POST',
             data: {data: JSON.stringify([{id: 1, the_geom: polygon}])},
-            success: callback
+            success: callback,
+            error: function(){ callback(null); }
           });
         },
       
