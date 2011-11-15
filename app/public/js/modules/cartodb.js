@@ -70,20 +70,33 @@ WHERE ST_Intersects(mg.the_geom, \
 ) \
 GROUP BY priority, country";
 
+    var resource_path= 'carbon-tool.cartodb.com/api/v1/sql';
+    var resource_url = 'https://' + resource_path;
 
-
-
-    var resource_url = 'https://carbon-tool.cartodb.com/api/v1/sql';
-
-    function query(sql, callback) {
+    function query(sql, callback, proxy) {
+        var url = resource_url;
+        var crossDomain = true;
+        if(proxy) {
+            url = 'api/v0/proxy/' + resource_url
+            crossDomain = false;
+        }
         if(sql.length > 1500) {
             $.ajax({
-              url: resource_url,
+              url: url,
+              crossDomain: crossDomain,
               type: 'POST',
               dataType: 'json',
               data: 'q=' + encodeURIComponent(sql),
               success: callback,
-              error: function(){ callback(); }
+              error: function(){ 
+                if(proxy) {
+                    callback(); 
+                } else {
+                    //try fallback
+                    app.Log.log("failed cross POST, using proxy");
+                    query(sql, callback, true)
+                }
+              }
             });
         } else {
          //TODO: POST if the sql if too long
