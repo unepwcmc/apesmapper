@@ -59,14 +59,29 @@ App.modules.Carbon = function(app) {
 
             if(location.hash === '') {
                 this.banner.show();
+                if(jQuery.browser.msie === undefined) {
+                    this.banner_animation();
+                }
             }
             // ready, luanch
             Backbone.history.start();
             //this.router.navigate('w/work_test');
         },
 
+        banner_animation: function() {
+            var self = this;
+            this.animation = setInterval(function() {
+                var m = self.map.map;
+                var c = m.get_center();
+                m.set_center(new google.maps.LatLng(c.lat(), c.lng()+ 0.01));
+            }, 20);
+        },
+
         on_route: function(work_id) {
             this.banner.hide();
+            if(jQuery.browser.msie === undefined) {
+                clearInterval(this.animation);
+            }
             // show the panel and set mode to adding polys
             this.panel.show();
             this.map.show_controls(true);
