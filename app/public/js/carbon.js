@@ -57,8 +57,10 @@ App.modules.Carbon = function(app) {
                     // I <3 my code
                     var b = new google.maps.LatLngBounds();
                     _.each(polys, function(p) {
-                       var pos = new google.maps.LatLng(p[0][0], p[0][1]);
-                       b.extend(pos);
+                        _.each(p, function(point) {
+                            var pos = new google.maps.LatLng(point[0], point[1]);
+                            b.extend(pos);
+                        });
                     });
                     self.map.map.map.fitBounds(b);
                 }

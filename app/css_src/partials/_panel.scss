@@ -8,6 +8,7 @@
   bottom: 0;
   width: 352px;
   border-left:1px solid #BBB;
+  margin-top: -1px;
 
   #tabs {
     @include inline-block();

@@ -146,6 +146,7 @@ GROUP BY priority, country";
         var poly = wtk_polygon(polygon);
         var sql = c({polygon: poly});
         query(sql, callback);
+        return sql;
     }
 
     app.CartoDB.carbon_sequestration = function(p, callback) {
@@ -229,9 +230,9 @@ GROUP BY priority, country";
                 };
 
                 function get_type(v) {
-                    if      (0 == v) return 'intact';
-                    else if (1 == v) return 'deforested';
-                    else if (2 == v) return 'partial';
+                    if      (1 == v) return 'intact';
+                    else if (2 == v) return 'deforested';
+                    else if (3 == v) return 'partial';
                     return 'fragmented';
                 }
 

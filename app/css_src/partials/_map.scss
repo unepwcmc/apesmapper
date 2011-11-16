@@ -11,9 +11,9 @@
 .map_container {
   position: absolute;
   top:72px;
-  width:100%;
+  //width:100%;
   left:0;
-  right:0;
+  right:352px;
   bottom:0;
 
   .map {
@@ -177,7 +177,7 @@
   .layers {
     position: absolute;
     top: 20px;
-    right: 375px;
+    right: 375px - 352px;
     width:224px;
     z-index:10;
 
