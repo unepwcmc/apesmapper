@@ -136,6 +136,7 @@ App.modules.Map = function(app) {
             _.bindAll(this, 'show_report', 'start_edit_polygon', 'end_edit_polygon', 'remove_polygon', 'disable_editing', 'enable_editing', 'enable_layer', 'reoder_layers', 'protected_area_click','reorder_layers', 'update_report');
             var self = this;
             this.map = new MapView({el: $('.map_container')});
+            this.seachbox = new Searchbox({el: $('.map_container .search')});
             this.report_polygons = {};
             // add layers to the map
             _(app.config.MAP_LAYERS).each(function(layer) {
@@ -175,6 +176,10 @@ App.modules.Map = function(app) {
 
             this.protectedzone_popup.bind('add_polygon', function(polygon) {
                 self.bus.emit('polygon', {paths: polygon});
+            });
+            this.seachbox.bind('goto', function(latlng, zooom) {
+                self.map.set_center(latlng);
+                self.map.set_zoom(zoom);
             });
             this.show_controls(false);
 

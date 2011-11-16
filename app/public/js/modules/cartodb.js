@@ -33,7 +33,7 @@ ST_Intersects( \
 GROUP BY country;";
 
 var SQL_RESTORATION = " \
-SELECT band, SUM(ST_Value(rast, band, x, y)) AS sum, (CAST(SUM( (CASE WHEN ST_Value(rast, band, x, y) > 0 THEN 1 ELSE 0 END) ) AS FLOAT)/COUNT(1))*100 AS percentage \
+SELECT band, SUM(ST_Value(rast, band, x, y)) AS total \
 FROM restorationpotencial CROSS JOIN \
 generate_series(1,10) As x CROSS JOIN generate_series(1,10) As y CROSS JOIN generate_series(1,4) As band \
 WHERE rid in ( SELECT rid FROM restorationpotencial WHERE ST_Intersects(rast, ST_GeomFromText('<%= polygon %>',4326)) ) \
@@ -43,6 +43,7 @@ ST_Intersects( \
   ST_GeomFromText('<%= polygon %>',4326) \
 ) \
 GROUP BY band;"
+
 
 var SQL_FOREST = " \
 SELECT band, SUM(ST_Value(rast, band, x, y)) AS total \
@@ -193,12 +194,14 @@ GROUP BY priority, country";
                   'remote': 0,
                   'none': 0
                 };
-                var total = 0.0;
+                var total = 1.0;
+                var percent = 100.0;
                 _.each(data.rows, function(x) {
-                    stats[value_map[x.band]] = x.percentage;
-                    total += x.percentage;
+                    var p = 100*x.total/total;
+                    percent -= p;
+                    stats[value_map[x.band]] = p;
                 });
-                stats.none = 100.0 - total;
+                stats.none = percent;
                 callback(stats);
             } else {
                 callback();
