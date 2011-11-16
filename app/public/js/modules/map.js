@@ -185,6 +185,10 @@ App.modules.Map = function(app) {
 
 
         },
+        
+        work_mode: function() {
+            $('.map_container').css({right: '352px'});
+        },
 
         enable_layer: function(name, enable) {
             this.map.enable_layer(name, enable);

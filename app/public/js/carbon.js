@@ -95,6 +95,7 @@ App.modules.Carbon = function(app) {
 
         on_route: function(work_id) {
             this.banner.hide();
+            this.map.work_mode();
             if(jQuery.browser.msie === undefined) {
                 clearInterval(this.animation);
             }

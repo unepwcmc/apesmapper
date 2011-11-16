@@ -13,7 +13,8 @@
   top:72px;
   //width:100%;
   left:0;
-  right:352px;
+  //right:352px;
+  right:0;
   bottom:0;
 
   .map {
@@ -33,6 +34,7 @@
   }
 
   div.layer_editor {
+    display: none;
     position: absolute;
     top: 20px;
     right: 30px;
@@ -53,6 +55,7 @@
   }
 
   div.zoom_control {
+    display: none;
     position: absolute;
     top: 20px;
     left: 20px;
@@ -175,6 +178,7 @@
   }
 
   .search {
+      display: none;
       position: absolute;
       top: 26px;
       right: 200px;
@@ -204,6 +208,7 @@
    }
 
   .layers {
+    display: none;
     position: absolute;
     top: 20px;
     right: 375px - 352px;
