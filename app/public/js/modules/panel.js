@@ -39,7 +39,7 @@ App.modules.Panel = function(app) {
                 //el.hide();
                 //clearInterval(this.interval);
             }
-        },
+        }
     });
 
     app.Panel = Class.extend({

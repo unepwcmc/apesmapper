@@ -210,7 +210,7 @@ GROUP BY priority, country";
             if(data) {
                 callback({
                     'percent': data.rows[0].kba_percentage || 0,
-                    'num_overlap': data.rows[0].count|| 0,
+                    'num_overlap': data.rows[0].count|| 0
                 });
             } else {
                 callback();
