@@ -136,6 +136,7 @@ App.modules.Map = function(app) {
             _.bindAll(this, 'show_report', 'start_edit_polygon', 'end_edit_polygon', 'remove_polygon', 'disable_editing', 'enable_editing', 'enable_layer', 'reoder_layers', 'protected_area_click','reorder_layers', 'update_report');
             var self = this;
             this.map = new MapView({el: $('.map_container')});
+            this.report_polygons = {};
             // add layers to the map
             _(app.config.MAP_LAYERS).each(function(layer) {
                 self.map.add_layer(layer.name, layer);
@@ -159,6 +160,7 @@ App.modules.Map = function(app) {
             bus.link(this, {
                 'view:show_report': 'show_report',
                 'view:update_report': 'update_report',
+                'view:new_report': 'update_report',
                 'polygon': 'disable_editing',
                 'map:edit_mode': 'enable_editing',
                 'map:no_edit_mode': 'disable_editing',
@@ -215,16 +217,13 @@ App.modules.Map = function(app) {
         },
 
         update_report: function(rid, data) {
-          if(this.showing === rid) {
-            this.show_report(rid, data);
-            this.report_polygons = data.polygons.length;
-          }
+          this.report_polygons[rid] = data.polygons;
+          this.show_report(rid, data);
         },
 
         // render polygons
         show_report: function(rid, data) {
             this.showing = rid;
-            this.report_polygons = data.polygons.length;
             var self = this;
 
             // clean
@@ -235,15 +234,20 @@ App.modules.Map = function(app) {
             self.polygons = [];
 
             // recreate
-            _(data.polygons).each(function(paths, i) {
-                var p = new PolygonView({
-                    mapview: self.map,
-                    paths: paths
+            _(this.report_polygons).each(function(report_polys, report_id) {
+                _(report_polys).each(function(paths, i) {
+                    var p = new PolygonView({
+                        mapview: self.map,
+                        paths: paths,
+                        color: rid == report_id ? "#66CCCC": "#FFCC00"
+                    });
+                    p.report = rid;
+                    p.polygon_id = i;
+                    if(rid == report_id) {
+                        p.bind('click', self.start_edit_polygon);
+                    }
+                    self.polygons.push(p.render());
                 });
-                p.report = rid;
-                p.polygon_id = i;
-                p.bind('click', self.start_edit_polygon);
-                self.polygons.push(p.render());
             });
             if(self.polygons.length > 0) {
                 //self.map.set_center(self.polygons[0].bounds().getCenter());
