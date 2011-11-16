@@ -304,9 +304,11 @@ App.modules.Map = function(app) {
             if(show) {
                 this.map.show_controls();
                 $('.layers').show();
+                $('.search').show();
             } else {
                 this.map.hide_controls();
                 $('.layers').hide();
+                $('.search').hide();
             }
         }
     });
