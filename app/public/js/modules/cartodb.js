@@ -32,8 +32,8 @@ ST_Intersects( \
 ) \
 GROUP BY country;";
 
-var SQL_RESTORATION = " \
-SELECT band, SUM(ST_Value(rast, band, x, y)) AS total \
+var SQL_RESTORATION ="  \
+SELECT band, AVG(ST_Value(rast, band, x, y)) AS percentage \
 FROM restorationpotencial CROSS JOIN \
 generate_series(1,10) As x CROSS JOIN generate_series(1,10) As y CROSS JOIN generate_series(1,4) As band \
 WHERE rid in ( SELECT rid FROM restorationpotencial WHERE ST_Intersects(rast, ST_GeomFromText('<%= polygon %>',4326)) ) \
@@ -197,7 +197,7 @@ GROUP BY priority, country";
                 var total = 1.0;
                 var percent = 100.0;
                 _.each(data.rows, function(x) {
-                    var p = 100*x.total/total;
+                    var p = x.percent;
                     percent -= p;
                     stats[value_map[x.band]] = p;
                 });
