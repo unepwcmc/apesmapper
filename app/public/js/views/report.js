@@ -13,8 +13,8 @@ var Report = Backbone.View.extend({
         'click .editing .leave_edit': 'leave_edit',
         'click .removing .cancel': 'leave_edit',
         'click .removing .remove_it_please': 'remove_polygons',
-        'mouseover .tooltip': 'show_tooltip',
-        'mouseout .tooltip': 'hide_tooltip'
+        'mouseover .tooltip li': 'show_tooltip',
+        'mouseleave .tooltip li': 'hide_tooltip'
     },
 
     initialize: function() {
