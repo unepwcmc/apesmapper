@@ -218,7 +218,7 @@ App.modules.Map = function(app) {
 
         update_report: function(rid, data) {
           this.report_polygons[rid] = data.polygons;
-          this.show_report(rid, data);
+          this.show_report(this.showing, data);
         },
 
         // render polygons

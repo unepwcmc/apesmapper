@@ -29,7 +29,6 @@ var PolygonView = Backbone.View.extend({
         var self = this;
         var fillColor = this.color;
 
-        // conversion
         var poly = new google.maps.Polygon({
                 paths: this.path(),
                 fillOpacity: 0.3,
