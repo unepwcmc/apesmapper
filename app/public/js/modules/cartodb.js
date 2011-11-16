@@ -3,9 +3,9 @@ App.modules.Cartodb = function(app) {
 
 var SQL_CARBON= "SELECT SUM(ST_Value(rast, 1, x, y)) AS total, \
 ST_Area(ST_GeomFromText('<%= polygon %>', 4326)::geography) as area \
-FROM carbon_query_test_s CROSS JOIN \
+FROM carbonsequestration CROSS JOIN \
 generate_series(1,10) As x CROSS JOIN generate_series(1,10) As y \
-WHERE rid in ( SELECT rid FROM carbon_query_test_s WHERE ST_Intersects(rast, ST_GeomFromText('<%= polygon %>',4326)) ) \
+WHERE rid in ( SELECT rid FROM carbonsequestration WHERE ST_Intersects(rast, ST_GeomFromText('<%= polygon %>',4326)) ) \
 AND \
 ST_Intersects( \
   ST_Translate(ST_SetSRID(ST_Point(ST_UpperLeftX(rast), ST_UpperLeftY(rast)), 4326), ST_ScaleX(rast)*x, ST_ScaleY(rast)*y), \
@@ -15,9 +15,9 @@ ST_Intersects( \
 var SQL_CARBON_COUNTRIES = "\
 SELECT country, SUM(ST_Value(rast, 1, x, y)) AS total, \
 ST_Area(ST_GeomFromText('<%= polygon %>', 4326)::geography) as area \
-FROM carbon_query_test_s CROSS JOIN \
+FROM carbonintersection CROSS JOIN \
 generate_series(1,10) As x CROSS JOIN generate_series(1,10) As y CROSS JOIN countries \
-WHERE rid IN ( SELECT rid FROM carbon_query_test_s WHERE ST_Intersects(rast, ST_GeomFromText('<%= polygon %>',4326)) ) \
+WHERE rid IN ( SELECT rid FROM carbonintersection WHERE ST_Intersects(rast, ST_GeomFromText('<%= polygon %>',4326)) ) \
 AND \
 objectid IN ( SELECT objectid FROM countries WHERE ST_Intersects(the_geom, ST_GeomFromText('<%= polygon %>',4326)) ) \
 AND \
@@ -34,9 +34,9 @@ GROUP BY country;";
 
 var SQL_RESTORATION = " \
 SELECT band, SUM(ST_Value(rast, band, x, y)) AS sum, (CAST(SUM( (CASE WHEN ST_Value(rast, band, x, y) > 0 THEN 1 ELSE 0 END) ) AS FLOAT)/COUNT(1))*100 AS percentage \
-FROM carbon_query_test_s CROSS JOIN \
+FROM restorationpotencial CROSS JOIN \
 generate_series(1,10) As x CROSS JOIN generate_series(1,10) As y CROSS JOIN generate_series(1,4) As band \
-WHERE rid in ( SELECT rid FROM carbon_query_test_s WHERE ST_Intersects(rast, ST_GeomFromText('<%= polygon %>',4326)) ) \
+WHERE rid in ( SELECT rid FROM restorationpotencial WHERE ST_Intersects(rast, ST_GeomFromText('<%= polygon %>',4326)) ) \
 AND \
 ST_Intersects( \
   ST_Translate(ST_SetSRID(ST_Point(ST_UpperLeftX(rast), ST_UpperLeftY(rast)), 4326), ST_ScaleX(rast)*x, ST_ScaleY(rast)*y), \
@@ -46,9 +46,9 @@ GROUP BY band;"
 
 var SQL_FOREST = " \
 SELECT band, SUM(ST_Value(rast, band, x, y)) AS total \
-FROM carbon_query_test_s CROSS JOIN \
+FROM forestintactness CROSS JOIN \
 generate_series(1,10) As x CROSS JOIN generate_series(1,10) As y CROSS JOIN generate_series(1,4) As band \
-WHERE rid in ( SELECT rid FROM carbon_query_test_s WHERE ST_Intersects(rast, ST_GeomFromText('<%= polygon %>',4326)) ) \
+WHERE rid in ( SELECT rid FROM forestintactness WHERE ST_Intersects(rast, ST_GeomFromText('<%= polygon %>',4326)) ) \
 AND \
 ST_Intersects( \
   ST_Translate(ST_SetSRID(ST_Point(ST_UpperLeftX(rast), ST_UpperLeftY(rast)), 4326), ST_ScaleX(rast)*x, ST_ScaleY(rast)*y), \
