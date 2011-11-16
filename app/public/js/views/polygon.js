@@ -16,6 +16,14 @@ var PolygonView = Backbone.View.extend({
         });
     },
 
+    bounds: function() {
+        var b = new google.maps.LatLngBounds();
+        _.each(this.paths, function(p) {
+            b.extend(new google.maps.LatLng(p[0], p[1]));
+        });
+        return b;
+    },
+
     render: function() {
         var self = this;
         var fillColor = this.COLOR;

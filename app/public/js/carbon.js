@@ -52,6 +52,15 @@ App.modules.Carbon = function(app) {
             this.bus.on('app:work_loaded', function() {
                 if(self.work.work.polygon_count() === 0) {
                     self.map.editing(true);
+                } else {
+                    var polys = self.work.work.get_all_polygons();
+                    // I <3 my code
+                    var b = new google.maps.LatLngBounds();
+                    _.each(polys, function(p) {
+                       var pos = new google.maps.LatLng(p[0][0], p[0][1]);
+                       b.extend(pos);
+                    });
+                    self.map.map.map.fitBounds(b);
                 }
             });
             this.bus.on('view:show_report', function(id, r) {

@@ -179,19 +179,27 @@ App.modules.Data = function(app) {
             this.save();
         },
 
-        // agregate all the stats in the total report
-        aggregate_stats: function() {
-          var self = this;
+        get_all_polygons: function() {
+          // get all polygons in the same array
           var reports = _(this.get_reports()).filter(function(r) {
                 return r.get('stats') !== undefined;
           });
-          // get all polygons in the same array
           var polygons = [];
           _.each(reports, function(r) {
                 _.each(r.get('polygons'), function(p) {
                     polygons.push(p);
                 });
           });
+          return polygons;
+        },
+
+        // agregate all the stats in the total report
+        aggregate_stats: function() {
+          var self = this;
+          var reports = _(this.get_reports()).filter(function(r) {
+                return r.get('stats') !== undefined;
+          });
+          var polygons = self.get_all_polygons();
 
           app.WS.CartoDB.aggregate_stats(reports, polygons, function(stats) {
             self.get_total_report().set({stats: stats});

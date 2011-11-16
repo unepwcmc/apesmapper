@@ -226,10 +226,13 @@ App.modules.Map = function(app) {
             this.showing = rid;
             this.report_polygons = data.polygons.length;
             var self = this;
+
             // clean
             _(self.polygons).each(function(p) {
                 p.remove();
             });
+
+            self.polygons = [];
 
             // recreate
             _(data.polygons).each(function(paths, i) {
@@ -242,6 +245,10 @@ App.modules.Map = function(app) {
                 p.bind('click', self.start_edit_polygon);
                 self.polygons.push(p.render());
             });
+            if(self.polygons.length > 0) {
+                //self.map.set_center(self.polygons[0].bounds().getCenter());
+            }
+
         },
 
         start_edit_polygon: function(p) {
