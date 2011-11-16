@@ -126,19 +126,21 @@ GROUP BY priority, country";
         /*app.CartoDB.carbon(p, function(data) {
             console.log("carbon", data);
         });
-        app.CartoDB.carbon_countries(p, function(data) {
+        app.CartoDB.carbon(p, function(data) {
             console.log('countries', data);
-        });
+        });*/
         app.CartoDB.restoration_potential(p, function(data) {
             console.log("restoration", data);
         });
+        /*
         app.CartoDB.forest_status(p, function(data) {
             console.log("forest", data);
-        });*/
+        });
         var p2 =[[[-1.5,-77.7],[-1.5,-65.9],[3.1,-65.9],[3.1,-77.7],[-1.5,-77.7],[-1.5,-77.7]]];
         app.CartoDB.conservation_priorities(p2, 10000,  function(data) {
             console.log("conservation priorities", data);
         });
+        */
 
     };
 
@@ -197,7 +199,7 @@ GROUP BY priority, country";
                 var total = 1.0;
                 var percent = 100.0;
                 _.each(data.rows, function(x) {
-                    var p = x.percent;
+                    var p = x.percentage;
                     percent -= p;
                     stats[value_map[x.band]] = p;
                 });
