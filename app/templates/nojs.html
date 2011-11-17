@@ -44,8 +44,10 @@
     </header>
 
     <section class="error">
+      {% block msg %}
       <h2>You need to enable javascript for being able to use the tool</h2>
       <p class="subtitle"><a href="/tool" target="_blank">Try again</a> or take a look on <a href="http://www.activatejavascript.org/" target="_blank">how to do it</a></p>
+      {% endblock %}
     </section>
 
     <footer>
