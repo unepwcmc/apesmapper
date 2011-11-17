@@ -78,6 +78,7 @@
           @include background(no-repeat,-61px,-923px);
 
           span.stats_inner {
+            display:block;
             float:left;
             width:100%;
             padding:20px 20px 12px 0;
