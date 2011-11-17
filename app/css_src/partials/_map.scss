@@ -190,15 +190,16 @@
       h1 {
           margin: 0;
           padding: 0;
-          display: inline-block;
+          display: inline;
           text-transform: uppercase;
           font:bold 13px "WhitneyBookRegular","Myriad Pro";
           color:#333333;
           letter-spacing: -1px;
       }
       input {
-          width: 110px;
-          display: inline-block;
+          width: 105px;
+          margin-left: 5px;
+          display: inline;
           border: 0;
           font:normal 13px "Helvetica";
        }

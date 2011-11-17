@@ -150,7 +150,7 @@ GROUP BY priority, country";
         var sql = c({polygon: poly});
         query(sql, function(data) {
             if(!data) {
-                app.Log.to_server("FAIL SQL(" + location.url + )+ ": " + sql);
+                app.Log.to_server("FAIL SQL(" + location.url + "): " + sql);
             }
             callback(data);
         });
