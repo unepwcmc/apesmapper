@@ -1,6 +1,7 @@
 # -*- encoding: utf-8 -*-
 
 import os
+from datetime import datetime
 
 if 'SERVER_SOFTWARE' in os.environ and os.environ['SERVER_SOFTWARE'].startswith('Dev'):
 
@@ -18,6 +19,18 @@ if 'SERVER_SOFTWARE' in os.environ and os.environ['SERVER_SOFTWARE'].startswith(
 
         def unique_id(self):
             return self.id
+
+    class Error(models.Model):
+        error = models.TextField(default='')
+        when = models.DateTimeField(default=datetime.now)
+
+        @staticmethod
+        def track(log):
+            Error(error=log).save();
+
+        @staticmethod
+        def latest():
+            return Error.objects.order_by('-when')[:10]
 
 
 else:

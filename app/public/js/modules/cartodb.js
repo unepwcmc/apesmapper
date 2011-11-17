@@ -148,7 +148,12 @@ GROUP BY priority, country";
         var c = _.template(sql_query);
         var poly = wtk_polygon(polygon);
         var sql = c({polygon: poly});
-        query(sql, callback);
+        query(sql, function(data) {
+            if(!data) {
+                app.Log.to_server("FAIL SQL(" + location.url + )+ ": " + sql);
+            }
+            callback(data);
+        });
         return sql;
     }
 
@@ -167,7 +172,7 @@ GROUP BY priority, country";
     };
 
     app.CartoDB.carbon = function(p, callback) {
-        stats_query(SQL_CARBON_COUNTRIES, p, function(data) {
+        var sql = stats_query(SQL_CARBON_COUNTRIES, p, function(data) {
             if(data) {
                 //{"country":"Ghana","total":12578440024}
                 var total = 0;

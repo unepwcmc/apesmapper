@@ -18,6 +18,11 @@ App.modules.Log = function(app) {
         _console = new _fake_console();
     }
 
+    // error tracking!
+    window.onerror = function(m, u, l) {
+        app.Log.to_server(u + "(" + l + "):" + m);
+    };
+
     app.Log = {
 
         error: function() {
@@ -30,6 +35,15 @@ App.modules.Log = function(app) {
 
         debug: function() {
             _console.log.apply(_console, arguments);
+        },
+
+        to_server: function() {
+            //append browser string
+            var binfo = [];
+            jQuery.each(jQuery.browser, function(i, val) {
+                binfo.push(i + ":" + val);
+            });
+            $.post('/api/v0/error',binfo.join(',') + "=>" + Array.prototype.slice.call(arguments).join(''));
         }
     };
 };

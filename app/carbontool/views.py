@@ -16,7 +16,7 @@ from django.http import HttpResponse, Http404
 from django.views.decorators.csrf import csrf_exempt
 
 from baseconv import base62
-from models import Work
+from models import Work, Error
 
 from cartodb import CartoDB, polygon_text
 
@@ -70,6 +70,17 @@ def proxy(request, host):
         return r
     return HttpResponse("use POST", status=404)
 
+@csrf_exempt
+def error(request):
+    if request.method == "POST":
+        Error.track(request.raw_post_data)
+        return HttpResponse("logged, thanks!")
+    return HttpResponse("use POST", status=403)
+
+def errors(request):
+    text = '\n'.join([x.when.isoformat() + " =>" + x.error for x in Error.latest()])
+    return HttpResponse(text, mimetype='text/plain')
+    
 
 
 

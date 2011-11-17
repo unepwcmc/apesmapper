@@ -49,7 +49,7 @@ var Searchbox = Backbone.View.extend({
     },
 
     keyPress: function(e) {
-        if (e.keyCode == 13) { //lovely
+        if (e.keyCode == 13 || e.which == 13) { //lovely
             this.typing();
         }
     }
