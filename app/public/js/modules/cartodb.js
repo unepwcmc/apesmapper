@@ -100,10 +100,14 @@ GROUP BY priority, country";
               }
             });
         } else {
-         //TODO: POST if the sql if too long
+             //OK, if the server returns 400 none of the callbacks are called
+             // :(
              $.getJSON(resource_url + '?q=' + encodeURIComponent(sql) + '&callback=?')
              .success(callback)
-             .error(function(){ callback(); });
+             .fail(function(){ 
+                    callback(); 
+             }).complete(function() {
+             });
         }
     }
 

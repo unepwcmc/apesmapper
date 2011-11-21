@@ -75,7 +75,9 @@ App.modules.WS = function(app) {
 
             _.each(stats_to_get, function(stat) {
                 app.bus.emit("loading_start");
+                app.Log.log("init ", stat);
                 app.CartoDB[stat](polygons, function(data) {
+                    app.Log.log("end ", stat);
                     count++;
                     app.bus.emit("loading_end");
                     if(data) {
