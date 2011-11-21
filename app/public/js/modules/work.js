@@ -287,9 +287,10 @@ App.modules.Data = function(app) {
             var area = google.maps.geometry.spherical.computeArea(path);
             if(area > app.config.MAX_POLYGON_AREA) {
               this.bus.emit("view:show_error", "polygon too big");
+            } else {
+              r.add_polygon(polygon.paths[0]);
             }
             app.Log.log("area: ", area);
-            r.add_polygon(polygon.paths[0]);
         },
 
         on_clear: function() {

@@ -13,7 +13,7 @@
       <% _.each(stats.carbon.countries, function(ct) { %>
       <li>
             <h5><%= ct.name %></h5>
-            <p class="info ok"><% print(number_format(ct.qty)); %></p>
+            <p class="info"><% print(number_format(ct.qty)); %> T</p>
       </li>
       <% }); %>
     </ul>
