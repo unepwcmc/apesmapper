@@ -41,7 +41,7 @@ App.modules.Carbon = function(app) {
             this.panel = new app.Panel(this.bus);
             this.banner = new app.StartBanner(this.bus);
             this.header = new app.Header();
-            this.error = app.
+            //this.error = app.
 
             this.panel.hide();
 
