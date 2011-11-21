@@ -264,7 +264,7 @@
         margin:0;
         list-style: none;
         text-align: left;
-        @include background(no-repeat,right,bottom);
+        @include background(no-repeat,right, bottom);
 
         &:last-child {
           border:none;
