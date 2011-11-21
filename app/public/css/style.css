@@ -334,14 +334,62 @@ input:invalid, textarea:invalid {
   background-color: #f0dddd;
 }
 
-/* line 54, ../../css_src/partials/_page.scss */
+/* line 55, ../../css_src/partials/_page.scss */
+body.tool div#error_dialog {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: none;
+}
+/* line 62, ../../css_src/partials/_page.scss */
+body.tool div#error_dialog .error_wrapper {
+  background-color: #FFF;
+  margin-top: -155px;
+  margin-left: -270px;
+  width: 372px;
+  height: 108px;
+  padding: 10px;
+  background: url("/img/sprite.png") left -1581px no-repeat;
+}
+/* line 71, ../../css_src/partials/_page.scss */
+body.tool div#error_dialog h1 {
+  margin: 0 0 10px;
+  padding: 0;
+  text-transform: uppercase;
+  color: #333;
+  text-shadow: none;
+  border-bottom: 2px solid black;
+  padding-bottom: 3px;
+}
+/* line 80, ../../css_src/partials/_page.scss */
+body.tool div#error_dialog p {
+  margin: 25px 0 13px 105px;
+  color: #666666;
+}
+/* line 84, ../../css_src/partials/_page.scss */
+body.tool div#error_dialog a {
+  margin: 35px 0 0 105px;
+  font-size: 15px;
+  font: bold 13px "Helvetica Neue", "Helvetica";
+  color: black;
+}
+/* line 90, ../../css_src/partials/_page.scss */
+body.tool div#error_dialog .close {
+  float: right;
+  width: 12px;
+  height: 17px;
+  background: url("/img/sprite.png") right -1258px no-repeat;
+}
+/* line 98, ../../css_src/partials/_page.scss */
 body.tool header {
   position: relative;
   width: 100%;
   height: 73px;
   background: #333333;
 }
-/* line 61, ../../css_src/partials/_page.scss */
+/* line 105, ../../css_src/partials/_page.scss */
 body.tool header div.share_tooltip {
   display: none;
   position: absolute;
@@ -352,14 +400,14 @@ body.tool header div.share_tooltip {
   padding: 33px 20px 20px 20px;
   width: 312px;
 }
-/* line 70, ../../css_src/partials/_page.scss */
+/* line 114, ../../css_src/partials/_page.scss */
 body.tool header div.share_tooltip .close {
   float: right;
   width: 12px;
   height: 17px;
   background: url("/img/sprite.png") right -1258px no-repeat;
 }
-/* line 80, ../../css_src/partials/_page.scss */
+/* line 124, ../../css_src/partials/_page.scss */
 body.tool header div.share_tooltip h1 {
   margin: 0 0 5px;
   padding: 0;
@@ -367,7 +415,7 @@ body.tool header div.share_tooltip h1 {
   color: #333;
   text-shadow: none;
 }
-/* line 87, ../../css_src/partials/_page.scss */
+/* line 131, ../../css_src/partials/_page.scss */
 body.tool header div.share_tooltip .link {
   width: 297px;
   background-color: #f2f2f2;
@@ -376,34 +424,34 @@ body.tool header div.share_tooltip .link {
   color: #666666;
   text-shadow: none;
 }
-/* line 97, ../../css_src/partials/_page.scss */
+/* line 141, ../../css_src/partials/_page.scss */
 body.tool header div {
   padding: 20px;
 }
-/* line 100, ../../css_src/partials/_page.scss */
+/* line 144, ../../css_src/partials/_page.scss */
 body.tool header div h1 {
   font: bold 13px "WhitneyBold","Myriad Pro";
   filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=180, Strength=1);
   text-shadow: 0 1px 0 black;
   color: #FFFFFF;
 }
-/* line 104, ../../css_src/partials/_page.scss */
+/* line 148, ../../css_src/partials/_page.scss */
 body.tool header div h1:hover {
   cursor: default;
 }
-/* line 107, ../../css_src/partials/_page.scss */
+/* line 151, ../../css_src/partials/_page.scss */
 body.tool header div p {
   font: normal 13px "WhitneyBookRegular","Myriad Pro";
   filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=180, Strength=1);
   text-shadow: 0 1px 0 black;
   color: white;
 }
-/* line 113, ../../css_src/partials/_page.scss */
+/* line 157, ../../css_src/partials/_page.scss */
 body.tool header div ul {
   float: right;
   width: auto;
 }
-/* line 117, ../../css_src/partials/_page.scss */
+/* line 161, ../../css_src/partials/_page.scss */
 body.tool header div ul li {
   display: inline-block;
   vertical-align: top;
@@ -411,7 +459,7 @@ body.tool header div ul li {
   *display: inline;
   width: auto;
 }
-/* line 121, ../../css_src/partials/_page.scss */
+/* line 165, ../../css_src/partials/_page.scss */
 body.tool header div ul li a {
   float: left;
   height: 28px;
@@ -425,12 +473,12 @@ body.tool header div ul li a {
   border: none;
   text-decoration: none;
 }
-/* line 133, ../../css_src/partials/_page.scss */
+/* line 177, ../../css_src/partials/_page.scss */
 body.tool header div ul li a:hover {
   text-decoration: underline;
   color: white;
 }
-/* line 138, ../../css_src/partials/_page.scss */
+/* line 182, ../../css_src/partials/_page.scss */
 body.tool header div ul li a span {
   float: left;
   width: auto;
@@ -441,26 +489,26 @@ body.tool header div ul li a span {
   background: url("/img/sprite.png") right -28px no-repeat;
   line-height: 13px;
 }
-/* line 146, ../../css_src/partials/_page.scss */
+/* line 190, ../../css_src/partials/_page.scss */
 body.tool header div ul li a span strong {
   font: bold 13px "WhitneyBold";
 }
-/* line 150, ../../css_src/partials/_page.scss */
+/* line 194, ../../css_src/partials/_page.scss */
 body.tool header div ul li a.no_bkg {
   margin: 6px 12px 0 0;
   background: none;
 }
-/* line 153, ../../css_src/partials/_page.scss */
+/* line 197, ../../css_src/partials/_page.scss */
 body.tool header div ul li a.no_bkg span {
   background: none;
 }
 
-/* line 162, ../../css_src/partials/_page.scss */
+/* line 206, ../../css_src/partials/_page.scss */
 div.left {
   float: left;
 }
 
-/* line 163, ../../css_src/partials/_page.scss */
+/* line 207, ../../css_src/partials/_page.scss */
 div.right {
   float: right;
   position: relative;
