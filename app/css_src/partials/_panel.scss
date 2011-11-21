@@ -337,14 +337,20 @@
           }
         }
       } // span.title
-      h5 {
+      .conservation_header {
+        background-color: #C7C7C7;
         margin: 0;
         padding: 0;
-        font: normal 13px "Helvetica Neue",Arial;
-        color: #666;
-        padding: 5px 0;
+        font: bold 11px "Helvetica Neue",Arial;
+        color: white;
+        padding: 1px 0px;
         width: 100%;
         float: left;
+        text-transform: uppercase;
+        border-bottom: 1px solid #B3B3B3;
+        p{
+          margin-left: 5px;
+        }
       }
 
       ul {

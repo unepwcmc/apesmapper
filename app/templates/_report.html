@@ -84,7 +84,7 @@
         <p>&nbsp;</p>
     </span>
     <% _.each(stats.conservation_priorities, function(area) { %>
-    <h5><%= area.name %></h5>
+    <span class="conservation_header"><p><%= area.name %></p></span>
     <ul class="inline list">
         <li>
             <h5>VERY-HIGH</h5>
@@ -96,7 +96,7 @@
         </li>
         <li>
             <h5>MEDIUM</h5>
-            <p class="info"><%= area.percents[4].toFixed(1)  %>%</p>
+            <p class="info"><%= area.percents[2].toFixed(1)  %>%</p>
         </li>
         <li class="last">
             <h5>OUT</h5>
