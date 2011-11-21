@@ -184,12 +184,13 @@
       }
 
       &.removing {
-        background-color: #FFEFEA;
+        background: none;
+        background-color: #FFECE6;
         p {
             padding:10px 10px;
           &.last {
             float: right;
-            padding:10px 3px;
+            padding:8px 1px 0 0;
           }
         }
       }
@@ -245,8 +246,8 @@
         font:bold 13px "WhitneyBold";
         color:white;
         text-decoration:none;
-        &:hover {text-decoration:underline;}
-        padding:8px 12px 8px 12px;
+        &:hover {text-decoration:underline; color:white;}
+        padding:7px 12px 14px 14px;
         margin-left: 5px;
       }
 
