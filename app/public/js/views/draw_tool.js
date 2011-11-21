@@ -150,9 +150,11 @@ var PolygonDrawTool = Backbone.View.extend({
         var self = this;
         if (this.vertex.length === 1) {
             google.maps.event.addListener(marker, "click", function() {
-                self.create_polygon(self.vertex);
-                self.reset();
-            })
+                if (self.vertex.length >= 3) {
+                  self.create_polygon(self.vertex);
+                  self.reset();
+                }
+            });
         }
     },
 
