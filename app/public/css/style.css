@@ -655,13 +655,13 @@ div.right {
 .map_container .search {
   display: none;
   position: absolute;
-  top: 26px;
+  top: 25px;
   right: 200px;
   width: 192px;
   height: 25px;
   z-index: 10;
   padding: 4px 0px 4px 5px;
-  background: url("/img/sprite.png") no-repeat 0 -1859px;
+  background: url("/img/sprite.png") no-repeat 0 -1858px;
 }
 /* line 190, ../../css_src/partials/_map.scss */
 .map_container .search h1 {
