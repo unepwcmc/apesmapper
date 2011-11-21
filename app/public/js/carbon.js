@@ -50,6 +50,10 @@ App.modules.Carbon = function(app) {
 
             this.bus.on('app:route_to', this.on_route_to);
             this.bus.on('app:work_loaded', function() {
+                var default_pos = new google.maps.LatLng(28.488005204159457, 7.403798828124986);
+                self.map.map.set_center(default_pos);
+                self.map.map.set_zoom(2);
+
                 if(self.work.work.polygon_count() === 0) {
                     self.map.editing(true);
                 } else {
