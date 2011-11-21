@@ -196,6 +196,7 @@ App.modules.Map = function(app) {
 
         reoder_layers: function(new_order) {
             this.map.reoder_layers(new_order);
+            this.layer_editor.render();
         },
 
         editing: function(b) {
@@ -307,6 +308,7 @@ App.modules.Map = function(app) {
 
         reorder_layers: function(order) {
             this.map.reorder_layers(order);
+            this.layer_editor.render();
         },
 
         show_controls: function(show) {

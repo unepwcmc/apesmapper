@@ -126,6 +126,8 @@ var MapView = Backbone.View.extend({
         this.map.setZoom(z);
         this.signals_on = true;
     },
+    
+    get_zoom: function() { return this.map.getZoom(); },
 
     set_zoom_silence: function(z) {
         this.set_zoom(z, false);
@@ -210,6 +212,7 @@ var MapView = Backbone.View.extend({
             idx++;
         });
     },
+
 
     remove_layer: function(name) {
         //TODO

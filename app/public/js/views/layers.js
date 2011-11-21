@@ -67,7 +67,7 @@ var LayerEditor = Backbone.View.extend({
         this.render(this.layers.length);
     },
 
-    render: function(howmany) {
+    render: function(howmany, order) {
         howmany = howmany || 3;
         var self = this;
         var el = this.$('.dropdown');
@@ -137,6 +137,15 @@ var LayerEditor = Backbone.View.extend({
         this.el.removeClass('open');
         this.el.css("z-index","10");
         this.open = false;
+    },
+
+    sort_by: function(layers_order) {
+        this.layers.sort(function(a, b) {
+          return _(layers_order).indexOf(a.name) -
+             _(layers_order).indexOf(b.name);
+        });
+        this.open = true;
+        this.hiding();
     },
 
     hiding: function(e) {
