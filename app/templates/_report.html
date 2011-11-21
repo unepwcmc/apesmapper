@@ -21,17 +21,6 @@
 </div>
 <% } %>
 
-<% if(stats.carbon_sequestration) { %>
-<div class="block">
-    <span class="title">
-        <h2>C. SEQUESTRATION</h2>
-        <p><% print(number_format(stats.carbon_sequestration.qty)); %><small>T</small></p>
-    </span>
-    <ul class="normal list">
-        <li></li>
-    </ul>
-</div>
-<% } %>
 
 <% if(stats.covered_by_PA && stats.carbon) { %>
 <div class="block">
@@ -99,6 +88,18 @@
       <li><h5>% Defined as fragmented/managed forest</h5><p class="info "><%= stats.forest_status.fragmented.toFixed(1) %>%</p></li>
       <li><h5>% Defined as partially deforested areas</h5><p class="info "><%= stats.forest_status.partial.toFixed(1) %>%</p></li>
       <li><h5>% Defined as deforested areas</h5><p class="info "><%= stats.forest_status.deforested.toFixed(1) %>%</p></li>
+    </ul>
+</div>
+<% } %>
+
+<% if(stats.carbon_sequestration) { %>
+<div class="block">
+    <span class="title">
+        <h2>C. SEQUESTRATION</h2>
+        <p><% print(number_format(stats.carbon_sequestration.qty)); %><small>T</small></p>
+    </span>
+    <ul class="normal list">
+        <li></li>
     </ul>
 </div>
 <% } %>
