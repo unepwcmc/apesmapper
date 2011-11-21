@@ -395,9 +395,9 @@ body.tool header div.share_tooltip {
   position: absolute;
   top: 30px;
   left: -145px;
-  z-index: 100;
-  background: url("/img/sprite.png") left -1700px no-repeat;
-  padding: 33px 20px 20px 20px;
+  z-index: 200;
+  background: url("/img/sprite.png") left -1702px no-repeat;
+  padding: 31px 20px 20px 20px;
   width: 312px;
 }
 /* line 114, ../../css_src/partials/_page.scss */
@@ -1239,7 +1239,17 @@ div.right {
   font-size: 13px;
   padding: 0 0 0 5px;
 }
-/* line 341, ../../css_src/partials/_panel.scss */
+/* line 340, ../../css_src/partials/_panel.scss */
+#panel #tab_content div.block h5 {
+  margin: 0;
+  padding: 0;
+  font: normal 13px "Helvetica Neue",Arial;
+  color: #666;
+  padding: 5px 0;
+  width: 100%;
+  float: left;
+}
+/* line 350, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul {
   width: 100%;
   height: 100%;
@@ -1247,14 +1257,14 @@ div.right {
   padding: 0;
   margin: 0;
 }
-/* line 348, ../../css_src/partials/_panel.scss */
+/* line 357, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li {
   float: left;
   width: 100%;
   padding: 7px 0;
   border-bottom: 1px solid #CCCCCC;
 }
-/* line 354, ../../css_src/partials/_panel.scss */
+/* line 363, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li h5 {
   float: left;
   margin: 0;
@@ -1262,7 +1272,7 @@ div.right {
   font: normal 13px "Helvetica Neue",Arial;
   color: #666666;
 }
-/* line 361, ../../css_src/partials/_panel.scss */
+/* line 370, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li h5.stats {
   max-width: 45px;
   width: 45px;
@@ -1271,7 +1281,7 @@ div.right {
   overflow: hidden;
   white-space: nowrap;
 }
-/* line 370, ../../css_src/partials/_panel.scss */
+/* line 379, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li span.list_tooltip {
   display: none;
   position: absolute;
@@ -1286,35 +1296,35 @@ div.right {
   z-index: 100;
   background: url("/img/sprite.png") no-repeat -267px -1436px;
 }
-/* line 384, ../../css_src/partials/_panel.scss */
+/* line 393, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li span.list_tooltip h4 {
   font: bold 11px "WhitneyBold";
   color: #333333;
   padding: 0 0 8px;
   border-bottom: 2px solid #666666;
 }
-/* line 391, ../../css_src/partials/_panel.scss */
+/* line 400, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li span.list_tooltip span {
   float: left;
   padding: 0 0 0 10px;
   margin: 7px 0 0 0;
 }
-/* line 395, ../../css_src/partials/_panel.scss */
+/* line 404, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li span.list_tooltip span.blue {
   background: url("/img/sprite.png") no-repeat -464px -1452px;
 }
-/* line 396, ../../css_src/partials/_panel.scss */
+/* line 405, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li span.list_tooltip span.white {
   background: url("/img/sprite.png") no-repeat -464px -1536px;
 }
-/* line 398, ../../css_src/partials/_panel.scss */
+/* line 407, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li span.list_tooltip span h6 {
   margin: 0;
   padding: 0;
   font: bold 13px "Helvetica",Arial;
   color: #333333;
 }
-/* line 404, ../../css_src/partials/_panel.scss */
+/* line 413, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li span.list_tooltip span p {
   float: left;
   margin: 2px 0 0 0;
@@ -1322,7 +1332,7 @@ div.right {
   font: normal 10px "Helvetica",Arial;
   color: #666666;
 }
-/* line 408, ../../css_src/partials/_panel.scss */
+/* line 417, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li div.stats_bar {
   position: relative;
   float: left;
@@ -1332,14 +1342,14 @@ div.right {
   margin: 4px 0 0 0;
   background: url("/img/sprite.png") no-repeat 0 -904px;
 }
-/* line 417, ../../css_src/partials/_panel.scss */
+/* line 426, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li div.stats_bar span.r_bar {
   float: left;
   width: 100%;
   height: 100%;
   background: url("/img/sprite.png") no-repeat right -904px;
 }
-/* line 424, ../../css_src/partials/_panel.scss */
+/* line 433, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li div.stats_bar.inner {
   position: absolute;
   top: 2px;
@@ -1350,12 +1360,12 @@ div.right {
   height: 4px;
   background-position: 0 -868px;
 }
-/* line 433, ../../css_src/partials/_panel.scss */
+/* line 442, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li div.stats_bar.inner span.r_bar {
   height: 4px;
   background-position: right -868px;
 }
-/* line 440, ../../css_src/partials/_panel.scss */
+/* line 449, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li p {
   float: right;
   margin: 0;
@@ -1364,30 +1374,30 @@ div.right {
   color: #666666;
   line-height: 13px;
 }
-/* line 448, ../../css_src/partials/_panel.scss */
+/* line 457, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li p.ok {
   padding: 0 15px 0 0;
   background: url("/img/sprite.png") no-repeat right -384px;
 }
-/* line 449, ../../css_src/partials/_panel.scss */
+/* line 458, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li p.ko {
   padding: 0 15px 0 0;
   background: url("/img/sprite.png") no-repeat right -397px;
 }
-/* line 452, ../../css_src/partials/_panel.scss */
+/* line 461, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li.last {
   border: none;
 }
-/* line 453, ../../css_src/partials/_panel.scss */
+/* line 462, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li:last-child {
   border: none;
 }
-/* line 457, ../../css_src/partials/_panel.scss */
+/* line 466, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.tooltip li:hover {
   background-color: #EDEDED;
   cursor: pointer;
 }
-/* line 468, ../../css_src/partials/_panel.scss */
+/* line 477, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.inline li {
   width: 77px;
   height: 80px;
@@ -1395,7 +1405,7 @@ div.right {
   border: none;
   border-right: 1px solid #E5E5E5;
 }
-/* line 475, ../../css_src/partials/_panel.scss */
+/* line 484, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.inline li h5 {
   float: left;
   width: 100%;
@@ -1408,7 +1418,7 @@ div.right {
   background: #EDEDED;
   border-bottom: 1px solid #CCCCCC;
 }
-/* line 488, ../../css_src/partials/_panel.scss */
+/* line 497, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.inline li p {
   float: right;
   width: 100%;
@@ -1420,71 +1430,71 @@ div.right {
   letter-spacing: -1px;
   text-align: center;
 }
-/* line 500, ../../css_src/partials/_panel.scss */
+/* line 509, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.inline li.last {
   border: none;
   width: 78px;
 }
-/* line 501, ../../css_src/partials/_panel.scss */
+/* line 510, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.inline li:last-child {
   border: none;
   width: 78px;
 }
-/* line 506, ../../css_src/partials/_panel.scss */
+/* line 515, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul {
   float: left;
   width: 100%;
   margin: 7px 0 0 0;
 }
-/* line 511, ../../css_src/partials/_panel.scss */
+/* line 520, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li {
   padding: 3px 0;
   border: none;
 }
-/* line 514, ../../css_src/partials/_panel.scss */
+/* line 523, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li.hst div.stats_bar {
   background-position: 0 -872px;
 }
-/* line 514, ../../css_src/partials/_panel.scss */
+/* line 523, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li.hst div.stats_bar span.r_bar {
   background-position: right -872px;
 }
-/* line 515, ../../css_src/partials/_panel.scss */
+/* line 524, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li.h div.stats_bar {
   background-position: 0 -880px;
 }
-/* line 515, ../../css_src/partials/_panel.scss */
+/* line 524, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li.h div.stats_bar span.r_bar {
   background-position: right -880px;
 }
-/* line 516, ../../css_src/partials/_panel.scss */
+/* line 525, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li.m div.stats_bar {
   background-position: 0 -888px;
 }
-/* line 516, ../../css_src/partials/_panel.scss */
+/* line 525, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li.m div.stats_bar span.r_bar {
   background-position: right -888px;
 }
-/* line 517, ../../css_src/partials/_panel.scss */
+/* line 526, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li.l div.stats_bar {
   background-position: 0 -896px;
 }
-/* line 517, ../../css_src/partials/_panel.scss */
+/* line 526, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li.l div.stats_bar span.r_bar {
   background-position: right -896px;
 }
-/* line 520, ../../css_src/partials/_panel.scss */
+/* line 529, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul h6 {
   float: left;
   width: 45px!important;
   font: normal 11px "Helvetica Neue",Arial;
   color: #999999;
 }
-/* line 527, ../../css_src/partials/_panel.scss */
+/* line 536, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul div.stats_bar {
   margin: 2px 0 0 0;
 }
-/* line 536, ../../css_src/partials/_panel.scss */
+/* line 545, ../../css_src/partials/_panel.scss */
 #panel div.loader {
   float: left;
   width: 312px;

@@ -107,9 +107,9 @@ body.tool {
       position: absolute;
       top: 30px;
       left: -145px;
-      z-index: 100;
-      @include background(left,-1700px,no-repeat);
-      padding: 33px 20px 20px 20px;
+      z-index: 200;
+      @include background(left,-1702px,no-repeat);
+      padding: 31px 20px 20px 20px;
       width: 312px;
       .close {
         float: right;
