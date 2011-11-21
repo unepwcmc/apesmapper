@@ -77,6 +77,36 @@
 </div>
 <% } %>
 
+<% if(stats.conservation_priorities) { %>
+<div class="block">
+    <span class="title">
+        <h2>CONSERVATION PRIORITIES</h2>
+        <p>&nbsp;</p>
+    </span>
+    <% _.each(stats.conservation_priorities, function(area) { %>
+    <h5><%= area.name %></h5>
+    <ul class="inline list">
+        <li>
+            <h5>VERY-HIGH</h5>
+            <p class="info"><%= area.percents[0].toFixed(1) %>%</p>
+        </li>
+        <li>
+            <h5>HIGH</h5>
+            <p class="info"><%= area.percents[1].toFixed(1)  %>%</p>
+        </li>
+        <li>
+            <h5>MEDIUM</h5>
+            <p class="info"><%= area.percents[4].toFixed(1)  %>%</p>
+        </li>
+        <li class="last">
+            <h5>OUT</h5>
+            <p class="info"><%= area.percents[4].toFixed(1)  %>%</p>
+        </li>
+    </ul>
+    <% }); %>
+</div>
+<% } %>
+
 <% if(stats.forest_status) { %>
 <div class="block">
     <span class="title">

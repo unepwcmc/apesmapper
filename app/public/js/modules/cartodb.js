@@ -307,7 +307,11 @@ GROUP BY priority, country";
                     var priority = priorities[r.priority];
                     if(priority) {
                         countries[r.country] = countries[r.country] || new Array(0,0,0,0,0);
-                        countries[r.country][priority] = 100*r.covered_area/total_area;
+                        if(total_area) {
+                            countries[r.country][priority] = 100*r.covered_area/total_area;
+                        } else {
+                            countries[r.country][priority] = 0;
+                        }
                     }
                 });
                 var stats = [];

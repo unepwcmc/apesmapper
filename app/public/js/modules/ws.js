@@ -64,8 +64,8 @@ App.modules.WS = function(app) {
 
     WS.CartoDB = {
         calculate_stats: function(polygons, callback) {
+            var stat;
             var stats = {};
-            var count = 0;
             var stats_to_get = ['carbon',
                     'carbon_sequestration',
                     'restoration_potential',
@@ -73,23 +73,34 @@ App.modules.WS = function(app) {
                     'covered_by_KBA',
                     'covered_by_PA'];
 
-            _.each(stats_to_get, function(stat) {
+            function ready(what) {
+                if(what == 'carbon') {
+                    app.CartoDB.conservation_priorities(polygons, stats.carbon.qty, function(data) {
+                        stats['conservation_priorities'] = data;
+                        callback(stats);
+                    });
+                }
+            }
+
+            function get_stat(stat) {
                 app.bus.emit("loading_start");
                 app.Log.log("init ", stat);
                 app.CartoDB[stat](polygons, function(data) {
                     app.Log.log("end ", stat);
-                    count++;
                     app.bus.emit("loading_end");
                     if(data) {
                         stats[stat] = data;
-                        if(1 || count == stats_to_get.length) {
-                            callback(stats);
-                        }
+                        ready(stat);
+                        callback(stats);
                     } else {
                         app.Log.error("can't get stats from cartodb for ", stat);
                     }
                 });
-             });
+             }
+
+             while(stat = stats_to_get.pop()) {
+               get_stat(stat); 
+             }
         },
 
         aggregate_stats: function(reports, polygons, callback) {
