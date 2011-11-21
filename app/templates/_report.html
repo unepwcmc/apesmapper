@@ -125,7 +125,11 @@
 <% if(stats.carbon_sequestration) { %>
 <div class="block">
     <span class="title">
-        <h2>C. SEQUESTRATION</h2>
+        <% if (stats.carbon_sequestration.qty.toFixed(0).length > 7) { %>
+            <h2>C. SEQ.</h2>
+        <% } else { %>
+            <h2>C. SEQUESTRATION</h2>
+        <% } %>
         <p><% print(number_format(stats.carbon_sequestration.qty)); %><small>T</small></p>
     </span>
     <ul class="normal list">
