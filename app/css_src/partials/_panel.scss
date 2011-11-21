@@ -255,45 +255,33 @@
 
     // no content
     div.no_content {
-      width:312px;
-      margin:0;
+      width: 348px;
+      height: 348px;
+      margin: 100px 0 0 0;
+      text-align: center;
+      @include background(-83px,-2229px,no-repeat);
 
       div.inner {
-        width:292px;
-        padding:10px;
-        @include background(0,-508px,no-repeat);
+        width:300px;
 
         span.title {
           @include inline-block();
-          width:100%;
-          padding:0 0 2px 0;
-          border-bottom:2px solid #666666;
-
+          width:300px;
+          padding:192px 0 2px 0;
+          
           h2 {
-            float:left;
             width:auto;
             padding:0;
             margin:0;
-            font:normal 13px "Helvetica Neue",Arial;
-            color:#666666;
-          }
-
-          a.remove {
-            float:right;
-            width:18px;
-            height:21px;
-            margin:0;
-            padding:0;
-            text-indent:-9999px;
-            font-size:0;
-            line-height:0;
-            @include background(0,-454px,no-repeat);
+            font:bold 13px "WhitneyBold";
+            color:#333333;
           }
         }
 
-        p {color:#666666; &.margin {margin:20px 0 0 0;}}
+        p {color:#666666; width:300px; &.margin {margin:20px 0 0 0;}}
 
       }
+
       span.end {
         width:312px;
         height:5px;
