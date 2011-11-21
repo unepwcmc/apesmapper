@@ -22,7 +22,13 @@ quick start
 6.- point your browser to http://localhost:8000
 
 *extra*
+
 if you want to change application style you will need compass: (probably you need to install ruby and gem before this)
 
     $ gem install compass
 
+and then:
+
+    $ cd app && compass watch
+
+it will compile every change you do in css_src folder css files
