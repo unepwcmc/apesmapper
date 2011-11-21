@@ -111,10 +111,10 @@ var Report = Backbone.View.extend({
             var loading = this.header.find('.loader');
             var add_poly = this.header.find('.editing_tools');
             if(b) {
-                add_poly.animate({'margin-top': '-44px'}, 1000);
+                add_poly.animate({'margin-top': '-44px'}, 500);
             } else {
                 //this.leave_edit();
-                add_poly.animate({'margin-top': '0px'}, 1000);
+                add_poly.animate({'margin-top': '0px'}, 500);
             }
         }
     }
