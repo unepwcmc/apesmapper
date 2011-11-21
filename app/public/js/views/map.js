@@ -20,7 +20,7 @@ var MapView = Backbone.View.extend({
             center: new google.maps.LatLng(-6.653695352486294, 58.743896484375),
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             disableDefaultUI: true,
-            disableDoubleClickZoom: true,
+            //disableDoubleClickZoom: true,
             draggableCursor:'default',
             scrollwheel: false,
             mapTypeControl:false
