@@ -182,7 +182,7 @@ GROUP BY priority, country";
                 });
                 callback({
                     qty: total,
-                    area: data.rows[0].area,
+                    area: data.rows[0]?data.rows[0].area: 0,
                     countries: countries
                 });
             } else {
