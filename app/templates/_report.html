@@ -128,8 +128,8 @@
 
         <h5 class="stats"><%= p.polygon %></h5>
             <div class="stats_bar">
-                <span class="r_bar"></span>
-                <div class="stats_bar inner" style="width: <%= 0.87*p.percent %>%">
+                <span class="r_bar" style="width: <%= p.percent %>%"></span>
+                <div class="stats_bar inner" style="width: <%= p.percent_seq %>%">
                     <span class="r_bar"></span>
                 </div>
             </div>
@@ -151,10 +151,7 @@
         <li>
           <h5 class="stats"><%= k %></h5>
             <div class="stats_bar">
-                <span class="r_bar"></span>
-                <div class="stats_bar inner" style="width: <%= 0.87*v %>%">
-                    <span class="r_bar"></span>
-                </div>
+                <span class="r_bar" style="width: <%=v %>%"></span>
             </div>
             <p><%= v.toFixed(1) %>%</p>
         </li>
