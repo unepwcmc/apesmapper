@@ -6,6 +6,7 @@ App.modules.Config = function(app) {
     app.config = {
         API_URL: '/api/v0/work',
         LOCAL_STORAGE: false,
+        MAX_POLYGON_AREA: 10000*1000,
         MAP_LAYERS: [{
              name: 'protected areas',
              url: 'http://184.73.201.235/blue/{Z}/{X}/{Y}',

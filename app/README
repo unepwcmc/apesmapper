@@ -1,26 +1,28 @@
-A boilerplate web project I use to start my custom projects.
 
-Components:
-html5boilderplate (html5boilerplate.com)
-Compass (compass-style.org)
-Google App Engine hosting (code.google.com/appengine)
+Carbontool
+=========
 
+quick start
+-----------
 
-Install (assuming you have html5boilderplate and Compass gems installed):
-git clone https://bstaats@github.com/bstaats/MyBoilerplate.git <MyNewProject>
+1.- check out the code
 
-Dependencies for html5boilderplate build script:
+3.- install django1.2
 
-Using http://mxcl.github.com/homebrew/
-brew install libjpeg optipng
+    $ pip install django==1.2.4
 
-Using http://www.macports.org/
-port install jpeg optipng
+4.- create the models
 
-Rename project in:
-app.yml
+    $ cd app && python manage.py syncb
 
+5.- start the server
+    
+    $ cd app && python manage.py 
 
-Build (from http://html5boilerplate.com/docs/#Build-script):
-cd build
-ant
+6.- point your browser to http://localhost:8000
+
+*extra*
+if you want to change application style you will need compass: (probably you need to install ruby and gem before this)
+
+    $ gem install compass
+

@@ -281,6 +281,14 @@ App.modules.Data = function(app) {
         on_polygon: function(polygon) {
             // append polygon to current report
             var r = this.work.getByCid(this.active_report_id);
+            var path = _.map(polygon.paths[0], function(p) {
+              return new google.maps.LatLng(p[0], p[1]);
+            });
+            var area = google.maps.geometry.spherical.computeArea(path);
+            if(area > app.config.MAX_POLYGON_AREA) {
+              this.bus.emit("view:show_error", "polygon too big");
+            }
+            app.Log.log("area: ", area);
             r.add_polygon(polygon.paths[0]);
         },
 
