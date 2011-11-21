@@ -127,14 +127,16 @@ var LayerEditor = Backbone.View.extend({
     },
 
     open: function(e) {
-      if(e) e.preventDefault();
-      this.el.addClass('open');
-      this.open = true;
+        if(e) e.preventDefault();
+        this.el.addClass('open');
+        this.el.css("z-index","100");      
+        this.open = true;
     },
 
     close: function(e) {
-      this.el.removeClass('open');
-      this.open = false;
+        this.el.removeClass('open');
+        this.el.css("z-index","10");
+        this.open = false;
     },
 
     hiding: function(e) {
