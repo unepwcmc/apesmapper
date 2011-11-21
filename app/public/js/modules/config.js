@@ -7,7 +7,7 @@ App.modules.Config = function(app) {
         API_URL: '/api/v0/work',
         LOCAL_STORAGE: false,
         MAP_LAYERS: [{
-             name: 'protected',
+             name: 'protected areas',
              url: 'http://184.73.201.235/blue/{Z}/{X}/{Y}',
              opacity: 0.4,
              enabled: true
@@ -27,7 +27,7 @@ App.modules.Config = function(app) {
             url: 'http://lifeweb-maps.unep-wcmc.org/ArcGIS/rest/services/lifeweb/rest_pot/MapServer/tile/{Z}/{Y}/{X}',
             enabled: false
           }, {
-            name: 'forest',
+            name: 'forest status',
             url: 'http://lifeweb-maps.unep-wcmc.org/ArcGIS/rest/services/lifeweb/forest_intact/MapServer/tile/{Z}/{Y}/{X}',
             opacity: 0.4,
             enabled: false
