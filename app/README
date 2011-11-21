@@ -13,7 +13,7 @@ quick start
 
 3.- create the models
 
-    $ cd app && python manage.py syncb
+    $ cd app && python manage.py syncdb
 
 4.- start the server
     
@@ -26,6 +26,8 @@ quick start
 if you want to change application style you will need compass: (probably you need to install ruby and gem before this)
 
     $ gem install compass
+    $ gem install html5-boilerplate
+    
 
 and then:
 
