@@ -120,13 +120,16 @@ App.modules.WS = function(app) {
 
             var carbon_per_polygon = _(reports).map(function(r, i) {
                 var percent = 0;
+                var percent_seq = 0;
                 var s = r.get('stats');
                 if(total_carbon > 0 && s && s.carbon && s.carbon.qty) {
-                    percent =  100*s.carbon.qty/total_carbon;
+                    percent =  s.carbon.qty/total_carbon;
+                    percent_seq =  percent*s.carbon_sequestration.qty/s.carbon.qty;
                 }
                 return {
                     polygon: 'AOI #' + i,
-                    percent: percent,
+                    percent: 100*percent,
+                    percent_seq: 100*percent_seq,
                     carbon: s.carbon ? s.carbon.qty: 0,
                     carbon_sequestration: s.carbon_sequestration? s.carbon_sequestration.qty:0
 
