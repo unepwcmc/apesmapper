@@ -6,7 +6,7 @@ html, body {
 }
 
 /* Carbon tool mixins */
-/* line 14, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_reset.scss */
+/* line 14, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_reset.scss */
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
@@ -23,32 +23,32 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 23, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_reset.scss */
+/* line 23, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_reset.scss */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
 }
 
-/* line 27, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_reset.scss */
+/* line 27, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_reset.scss */
 blockquote, q {
   quotes: none;
 }
 
-/* line 30, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_reset.scss */
+/* line 30, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_reset.scss */
 blockquote:before, blockquote:after,
 q:before, q:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_reset.scss */
+/* line 32, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_reset.scss */
 ins {
   background-color: #ff9;
   color: #000;
   text-decoration: none;
 }
 
-/* line 34, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_reset.scss */
+/* line 34, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_reset.scss */
 mark {
   background-color: #ff9;
   color: #000;
@@ -56,24 +56,24 @@ mark {
   font-weight: bold;
 }
 
-/* line 36, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_reset.scss */
+/* line 36, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_reset.scss */
 del {
   text-decoration: line-through;
 }
 
-/* line 38, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_reset.scss */
+/* line 38, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_reset.scss */
 abbr[title], dfn[title] {
   border-bottom: 1px dotted;
   cursor: help;
 }
 
-/* line 40, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_reset.scss */
+/* line 40, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_reset.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 42, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_reset.scss */
+/* line 42, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_reset.scss */
 hr {
   display: block;
   height: 1px;
@@ -83,7 +83,7 @@ hr {
   padding: 0;
 }
 
-/* line 11, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_fonts.scss */
+/* line 11, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_fonts.scss */
 body {
   font-size: 13px;
   font-family: sans-serif;
@@ -91,34 +91,34 @@ body {
   *font-size: small;
 }
 
-/* line 20, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_fonts.scss */
+/* line 20, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_fonts.scss */
 pre, code, kbd, samp {
   font-family: monospace, sans-serif;
 }
 
-/* line 15, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
+/* line 15, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
 html {
   overflow-y: scroll;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
 
-/* line 17, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
+/* line 17, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
 ul, ol {
   margin-left: 2em;
 }
 
-/* line 18, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
+/* line 18, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
 ol {
   list-style-type: decimal;
 }
 
-/* line 20, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
+/* line 20, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
 td {
   vertical-align: top;
 }
 
-/* line 22, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
+/* line 22, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
 sub {
   font-size: 75%;
   line-height: 0;
@@ -126,7 +126,7 @@ sub {
   bottom: -0.25em;
 }
 
-/* line 24, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
+/* line 24, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
 sup {
   font-size: 75%;
   line-height: 0;
@@ -134,12 +134,12 @@ sup {
   top: -0.5em;
 }
 
-/* line 53, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
+/* line 53, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
 a:hover, a:active {
   outline: none;
 }
 
-/* line 58, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
+/* line 58, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
 pre {
   white-space: pre;
   white-space: pre-wrap;
@@ -147,12 +147,12 @@ pre {
   padding: 15px;
 }
 
-/* line 71, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
+/* line 71, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
 label, input[type="button"], input[type="submit"], input[type="image"], button {
   cursor: pointer;
 }
 
-/* line 80, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
+/* line 80, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
 button, input, select, textarea {
   width: auto;
   overflow: visible;
@@ -162,56 +162,56 @@ button, input, select, textarea {
   vertical-align: baseline;
 }
 
-/* line 84, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
+/* line 84, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
 textarea {
   overflow: auto;
   vertical-align: text-top;
 }
 
-/* line 88, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
+/* line 88, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
 input::-moz-focus-inner,
 button::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
 
-/* line 99, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
+/* line 99, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
 ::-moz-selection {
   background: #ff5e99;
   color: white;
   text-shadow: none;
 }
 
-/* line 100, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
+/* line 100, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
 ::selection {
   background: #ff5e99;
   color: white;
   text-shadow: none;
 }
 
-/* line 105, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
+/* line 105, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
 a:link {
   -webkit-tap-highlight-color: #ff5e99;
 }
 
-/* line 118, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
+/* line 118, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
 .ie7 img {
   -ms-interpolation-mode: bicubic;
 }
 
-/* line 120, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
+/* line 120, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
 .ie6 legend, .ie7 legend {
   margin-left: -7px;
 }
 
-/* line 125, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
+/* line 125, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_styles.scss */
 nav ul, nav li {
   margin: 0;
   list-style: none;
   list-style-image: none;
 }
 
-/* line 10, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_helpers.scss */
+/* line 10, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_helpers.scss */
 .ir {
   text-indent: -119988px;
   overflow: hidden;
@@ -220,13 +220,13 @@ nav ul, nav li {
   background-repeat: no-repeat;
 }
 
-/* line 12, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_helpers.scss */
+/* line 12, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_helpers.scss */
 .hidden {
   display: none;
   visibility: hidden;
 }
 
-/* line 14, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_helpers.scss */
+/* line 14, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_helpers.scss */
 .visuallyhidden {
   border: 0;
   clip: rect(0 0 0 0);
@@ -237,7 +237,7 @@ nav ul, nav li {
   position: absolute;
   width: 1px;
 }
-/* line 50, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_helpers.scss */
+/* line 50, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_helpers.scss */
 .visuallyhidden.focusable:active, .visuallyhidden.focusable:focus {
   clip: auto;
   height: auto;
@@ -247,16 +247,16 @@ nav ul, nav li {
   width: auto;
 }
 
-/* line 16, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_helpers.scss */
+/* line 16, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_helpers.scss */
 .clearfix {
   zoom: 1;
 }
-/* line 61, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_helpers.scss */
+/* line 61, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_helpers.scss */
 .clearfix:before, .clearfix:after {
   content: "";
   display: table;
 }
-/* line 62, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_helpers.scss */
+/* line 62, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_helpers.scss */
 .clearfix:after {
   clear: both;
 }
@@ -1007,42 +1007,44 @@ div.right {
 #panel #tab_content {
   display: block;
   width: 312px;
-  height: 100%;
   padding: 20px;
   margin: 0;
   list-style: none;
   overflow: auto;
+  position: absolute;
+  top: 51px;
+  bottom: 0;
 }
-/* line 148, ../../css_src/partials/_panel.scss */
+/* line 150, ../../css_src/partials/_panel.scss */
 #panel #tab_content .tab_content_item {
   height: 100%;
   overflow: auto;
 }
-/* line 153, ../../css_src/partials/_panel.scss */
+/* line 155, ../../css_src/partials/_panel.scss */
 #panel #tab_content .stats_header {
   overflow: hidden;
   height: 44px;
 }
-/* line 159, ../../css_src/partials/_panel.scss */
+/* line 161, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools {
   width: 100%;
   height: 34px;
   margin: 10px 0 0 0;
   background: url("/img/sprite.png") 0 -474px no-repeat;
 }
-/* line 165, ../../css_src/partials/_panel.scss */
+/* line 167, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools h2 {
   float: left;
   padding: 0;
   margin: 0;
 }
-/* line 166, ../../css_src/partials/_panel.scss */
+/* line 168, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools span.tools {
   float: right;
   margin: 0;
   padding: 0;
 }
-/* line 168, ../../css_src/partials/_panel.scss */
+/* line 170, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools p {
   float: left;
   width: auto;
@@ -1052,30 +1054,30 @@ div.right {
   font: normal 13px "Helvetica Neue",Arial;
   color: #666666;
 }
-/* line 177, ../../css_src/partials/_panel.scss */
+/* line 179, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools p a {
   font: bold 13px "Helvetica Neue",Arial;
   color: #333333;
   text-decoration: underline;
 }
-/* line 181, ../../css_src/partials/_panel.scss */
+/* line 183, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools p a:hover {
   color: black;
 }
-/* line 186, ../../css_src/partials/_panel.scss */
+/* line 188, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools.removing {
   background-color: #FFEFEA;
 }
-/* line 188, ../../css_src/partials/_panel.scss */
+/* line 190, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools.removing p {
   padding: 10px 10px;
 }
-/* line 190, ../../css_src/partials/_panel.scss */
+/* line 192, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools.removing p.last {
   float: right;
   padding: 10px 3px;
 }
-/* line 196, ../../css_src/partials/_panel.scss */
+/* line 198, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools a.edit {
   display: inline-block;
   vertical-align: top;
@@ -1089,7 +1091,7 @@ div.right {
   line-height: 0;
   background: url("/img/sprite.png") -22px -453px no-repeat;
 }
-/* line 207, ../../css_src/partials/_panel.scss */
+/* line 209, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools a.remove {
   display: inline-block;
   vertical-align: top;
@@ -1103,7 +1105,7 @@ div.right {
   line-height: 0;
   background: url("/img/sprite.png") -2px -453px no-repeat;
 }
-/* line 218, ../../css_src/partials/_panel.scss */
+/* line 220, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools a.finish {
   float: left;
   width: auto;
@@ -1118,7 +1120,7 @@ div.right {
   text-shadow: 0 1px 0 #3c7d7d;
   text-decoration: none;
 }
-/* line 231, ../../css_src/partials/_panel.scss */
+/* line 233, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools a.finish span {
   float: left;
   width: auto;
@@ -1126,11 +1128,11 @@ div.right {
   padding: 8px 12px 8px 0;
   background: url("/img/sprite.png") right -820px no-repeat;
 }
-/* line 239, ../../css_src/partials/_panel.scss */
+/* line 241, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools a.finish:hover {
   text-decoration: underline;
 }
-/* line 241, ../../css_src/partials/_panel.scss */
+/* line 243, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools a.remove_it_please {
   background: url("/img/sprite.png") 0 -1817px no-repeat;
   filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=180, Strength=1);
@@ -1142,22 +1144,22 @@ div.right {
   padding: 8px 12px 8px 12px;
   margin-left: 5px;
 }
-/* line 248, ../../css_src/partials/_panel.scss */
+/* line 250, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools a.remove_it_please:hover {
   text-decoration: underline;
 }
-/* line 257, ../../css_src/partials/_panel.scss */
+/* line 259, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.no_content {
   width: 312px;
   margin: 0;
 }
-/* line 261, ../../css_src/partials/_panel.scss */
+/* line 263, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.no_content div.inner {
   width: 292px;
   padding: 10px;
   background: url("/img/sprite.png") 0 -508px no-repeat;
 }
-/* line 266, ../../css_src/partials/_panel.scss */
+/* line 268, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.no_content div.inner span.title {
   display: inline-block;
   vertical-align: top;
@@ -1167,7 +1169,7 @@ div.right {
   padding: 0 0 2px 0;
   border-bottom: 2px solid #666666;
 }
-/* line 272, ../../css_src/partials/_panel.scss */
+/* line 274, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.no_content div.inner span.title h2 {
   float: left;
   width: auto;
@@ -1176,7 +1178,7 @@ div.right {
   font: normal 13px "Helvetica Neue",Arial;
   color: #666666;
 }
-/* line 281, ../../css_src/partials/_panel.scss */
+/* line 283, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.no_content div.inner span.title a.remove {
   float: right;
   width: 18px;
@@ -1188,26 +1190,26 @@ div.right {
   line-height: 0;
   background: url("/img/sprite.png") 0 -454px no-repeat;
 }
-/* line 294, ../../css_src/partials/_panel.scss */
+/* line 296, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.no_content div.inner p {
   color: #666666;
 }
-/* line 294, ../../css_src/partials/_panel.scss */
+/* line 296, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.no_content div.inner p.margin {
   margin: 20px 0 0 0;
 }
-/* line 297, ../../css_src/partials/_panel.scss */
+/* line 299, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.no_content span.end {
   width: 312px;
   height: 5px;
   background: url("/img/sprite.png") 0 -785px no-repeat;
 }
-/* line 305, ../../css_src/partials/_panel.scss */
+/* line 307, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block {
   width: 100%;
   margin: 15px 0 0 0;
 }
-/* line 309, ../../css_src/partials/_panel.scss */
+/* line 311, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block span.title {
   float: left;
   width: 100%;
@@ -1215,7 +1217,7 @@ div.right {
   padding: 0;
   border-bottom: 2px solid #666666;
 }
-/* line 316, ../../css_src/partials/_panel.scss */
+/* line 318, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block span.title h2 {
   float: left;
   padding: 0;
@@ -1223,7 +1225,7 @@ div.right {
   font: bold 11px "WhitneyBold","Myriad Pro";
   color: #333333;
 }
-/* line 324, ../../css_src/partials/_panel.scss */
+/* line 326, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block span.title p {
   float: right;
   padding: 0;
@@ -1232,12 +1234,12 @@ div.right {
   letter-spacing: -1px;
   color: #333333;
 }
-/* line 332, ../../css_src/partials/_panel.scss */
+/* line 334, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block span.title p small {
   font-size: 13px;
   padding: 0 0 0 5px;
 }
-/* line 339, ../../css_src/partials/_panel.scss */
+/* line 341, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul {
   width: 100%;
   height: 100%;
@@ -1245,14 +1247,14 @@ div.right {
   padding: 0;
   margin: 0;
 }
-/* line 346, ../../css_src/partials/_panel.scss */
+/* line 348, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li {
   float: left;
   width: 100%;
   padding: 7px 0;
   border-bottom: 1px solid #CCCCCC;
 }
-/* line 352, ../../css_src/partials/_panel.scss */
+/* line 354, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li h5 {
   float: left;
   margin: 0;
@@ -1260,7 +1262,7 @@ div.right {
   font: normal 13px "Helvetica Neue",Arial;
   color: #666666;
 }
-/* line 359, ../../css_src/partials/_panel.scss */
+/* line 361, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li h5.stats {
   max-width: 45px;
   width: 45px;
@@ -1269,7 +1271,7 @@ div.right {
   overflow: hidden;
   white-space: nowrap;
 }
-/* line 368, ../../css_src/partials/_panel.scss */
+/* line 370, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li span.list_tooltip {
   display: none;
   position: absolute;
@@ -1284,35 +1286,35 @@ div.right {
   z-index: 100;
   background: url("/img/sprite.png") no-repeat -267px -1436px;
 }
-/* line 382, ../../css_src/partials/_panel.scss */
+/* line 384, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li span.list_tooltip h4 {
   font: bold 11px "WhitneyBold";
   color: #333333;
   padding: 0 0 8px;
   border-bottom: 2px solid #666666;
 }
-/* line 389, ../../css_src/partials/_panel.scss */
+/* line 391, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li span.list_tooltip span {
   float: left;
   padding: 0 0 0 10px;
   margin: 7px 0 0 0;
 }
-/* line 393, ../../css_src/partials/_panel.scss */
+/* line 395, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li span.list_tooltip span.blue {
   background: url("/img/sprite.png") no-repeat -464px -1452px;
 }
-/* line 394, ../../css_src/partials/_panel.scss */
+/* line 396, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li span.list_tooltip span.white {
   background: url("/img/sprite.png") no-repeat -464px -1536px;
 }
-/* line 396, ../../css_src/partials/_panel.scss */
+/* line 398, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li span.list_tooltip span h6 {
   margin: 0;
   padding: 0;
   font: bold 13px "Helvetica",Arial;
   color: #333333;
 }
-/* line 402, ../../css_src/partials/_panel.scss */
+/* line 404, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li span.list_tooltip span p {
   float: left;
   margin: 2px 0 0 0;
@@ -1320,7 +1322,7 @@ div.right {
   font: normal 10px "Helvetica",Arial;
   color: #666666;
 }
-/* line 406, ../../css_src/partials/_panel.scss */
+/* line 408, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li div.stats_bar {
   position: relative;
   float: left;
@@ -1330,14 +1332,14 @@ div.right {
   margin: 4px 0 0 0;
   background: url("/img/sprite.png") no-repeat 0 -904px;
 }
-/* line 415, ../../css_src/partials/_panel.scss */
+/* line 417, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li div.stats_bar span.r_bar {
   float: left;
   width: 100%;
   height: 100%;
   background: url("/img/sprite.png") no-repeat right -904px;
 }
-/* line 422, ../../css_src/partials/_panel.scss */
+/* line 424, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li div.stats_bar.inner {
   position: absolute;
   top: 2px;
@@ -1348,12 +1350,12 @@ div.right {
   height: 4px;
   background-position: 0 -868px;
 }
-/* line 431, ../../css_src/partials/_panel.scss */
+/* line 433, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li div.stats_bar.inner span.r_bar {
   height: 4px;
   background-position: right -868px;
 }
-/* line 438, ../../css_src/partials/_panel.scss */
+/* line 440, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li p {
   float: right;
   margin: 0;
@@ -1362,30 +1364,30 @@ div.right {
   color: #666666;
   line-height: 13px;
 }
-/* line 446, ../../css_src/partials/_panel.scss */
+/* line 448, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li p.ok {
   padding: 0 15px 0 0;
   background: url("/img/sprite.png") no-repeat right -384px;
 }
-/* line 447, ../../css_src/partials/_panel.scss */
+/* line 449, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li p.ko {
   padding: 0 15px 0 0;
   background: url("/img/sprite.png") no-repeat right -397px;
 }
-/* line 450, ../../css_src/partials/_panel.scss */
+/* line 452, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li.last {
   border: none;
 }
-/* line 451, ../../css_src/partials/_panel.scss */
+/* line 453, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li:last-child {
   border: none;
 }
-/* line 455, ../../css_src/partials/_panel.scss */
+/* line 457, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.tooltip li:hover {
   background-color: #EDEDED;
   cursor: pointer;
 }
-/* line 466, ../../css_src/partials/_panel.scss */
+/* line 468, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.inline li {
   width: 77px;
   height: 80px;
@@ -1393,7 +1395,7 @@ div.right {
   border: none;
   border-right: 1px solid #E5E5E5;
 }
-/* line 473, ../../css_src/partials/_panel.scss */
+/* line 475, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.inline li h5 {
   float: left;
   width: 100%;
@@ -1406,7 +1408,7 @@ div.right {
   background: #EDEDED;
   border-bottom: 1px solid #CCCCCC;
 }
-/* line 486, ../../css_src/partials/_panel.scss */
+/* line 488, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.inline li p {
   float: right;
   width: 100%;
@@ -1418,71 +1420,71 @@ div.right {
   letter-spacing: -1px;
   text-align: center;
 }
-/* line 498, ../../css_src/partials/_panel.scss */
+/* line 500, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.inline li.last {
   border: none;
   width: 78px;
 }
-/* line 499, ../../css_src/partials/_panel.scss */
+/* line 501, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.inline li:last-child {
   border: none;
   width: 78px;
 }
-/* line 504, ../../css_src/partials/_panel.scss */
+/* line 506, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul {
   float: left;
   width: 100%;
   margin: 7px 0 0 0;
 }
-/* line 509, ../../css_src/partials/_panel.scss */
+/* line 511, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li {
   padding: 3px 0;
   border: none;
 }
-/* line 512, ../../css_src/partials/_panel.scss */
+/* line 514, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li.hst div.stats_bar {
   background-position: 0 -872px;
 }
-/* line 512, ../../css_src/partials/_panel.scss */
+/* line 514, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li.hst div.stats_bar span.r_bar {
   background-position: right -872px;
 }
-/* line 513, ../../css_src/partials/_panel.scss */
+/* line 515, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li.h div.stats_bar {
   background-position: 0 -880px;
 }
-/* line 513, ../../css_src/partials/_panel.scss */
+/* line 515, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li.h div.stats_bar span.r_bar {
   background-position: right -880px;
 }
-/* line 514, ../../css_src/partials/_panel.scss */
+/* line 516, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li.m div.stats_bar {
   background-position: 0 -888px;
 }
-/* line 514, ../../css_src/partials/_panel.scss */
+/* line 516, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li.m div.stats_bar span.r_bar {
   background-position: right -888px;
 }
-/* line 515, ../../css_src/partials/_panel.scss */
+/* line 517, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li.l div.stats_bar {
   background-position: 0 -896px;
 }
-/* line 515, ../../css_src/partials/_panel.scss */
+/* line 517, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li.l div.stats_bar span.r_bar {
   background-position: right -896px;
 }
-/* line 518, ../../css_src/partials/_panel.scss */
+/* line 520, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul h6 {
   float: left;
   width: 45px!important;
   font: normal 11px "Helvetica Neue",Arial;
   color: #999999;
 }
-/* line 525, ../../css_src/partials/_panel.scss */
+/* line 527, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul div.stats_bar {
   margin: 2px 0 0 0;
 }
-/* line 534, ../../css_src/partials/_panel.scss */
+/* line 536, ../../css_src/partials/_panel.scss */
 #panel div.loader {
   float: left;
   width: 312px;
@@ -1582,7 +1584,7 @@ html, body {
 }
 
 @media print {
-  /* line 10, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_media.scss */
+  /* line 10, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_media.scss */
   * {
     background: transparent !important;
     color: black !important;
@@ -1591,44 +1593,44 @@ html, body {
     -ms-filter: none !important;
   }
 
-  /* line 12, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_media.scss */
+  /* line 12, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_media.scss */
   a, a:visited {
     color: #444 !important;
     text-decoration: underline;
   }
 
-  /* line 13, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_media.scss */
+  /* line 13, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_media.scss */
   a[href]:after {
     content: " (" attr(href) ")";
   }
 
-  /* line 14, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_media.scss */
+  /* line 14, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_media.scss */
   abbr[title]:after {
     content: " (" attr(title) ")";
   }
 
-  /* line 15, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_media.scss */
+  /* line 15, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_media.scss */
   .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after {
     content: "";
   }
 
-  /* line 16, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_media.scss */
+  /* line 16, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_media.scss */
   pre, blockquote {
     border: 1px solid #999;
     page-break-inside: avoid;
   }
 
-  /* line 17, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_media.scss */
+  /* line 17, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_media.scss */
   thead {
     display: table-header-group;
   }
 
-  /* line 18, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_media.scss */
+  /* line 18, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_media.scss */
   tr, img {
     page-break-inside: avoid;
   }
 
-  /* line 19, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_media.scss */
+  /* line 19, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_media.scss */
   img {
     max-width: 100% !important;
   }
@@ -1637,13 +1639,13 @@ html, body {
     margin: 0.5cm;
 }
 
-  /* line 21, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_media.scss */
+  /* line 21, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_media.scss */
   p, h2, h3 {
     orphans: 3;
     widows: 3;
   }
 
-  /* line 22, ../../../../../.rvm/gems/ruby-1.9.2-p290@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_media.scss */
+  /* line 22, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_media.scss */
   h2, h3 {
     page-break-after: avoid;
   }

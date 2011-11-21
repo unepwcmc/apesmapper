@@ -139,11 +139,13 @@
   #tab_content {
     display:block;
     width: 312px;
-    height:100%;
     padding:20px;
     margin:0;
     list-style:none;
     overflow: auto;
+    position: absolute;
+    top: 51px;
+    bottom: 0;
 
     .tab_content_item {
       height:100%;
