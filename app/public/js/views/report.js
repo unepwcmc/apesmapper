@@ -188,6 +188,11 @@ var Tabs = Backbone.View.extend({
         this.set_enabled($(e.target).parent());
     },
 
+    show_tab: function(rid) {
+      var el = this.tab_el.find("a[href=#" + rid +"]").parent();
+      this.set_enabled($(el));
+    },
+
     set_enabled: function(el) {
         this.$('li').removeClass('enabled').removeAttr('style');
         $(el).addClass('enabled');
@@ -269,6 +274,7 @@ var Panel = Backbone.View.extend({
             r.hide();
         });
         this.reports_map[cid].show();
+        this.tabs.show_tab(cid);
     },
 
     hide: function() {

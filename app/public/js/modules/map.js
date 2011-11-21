@@ -254,6 +254,11 @@ App.modules.Map = function(app) {
                     p.polygon_id = i;
                     if(rid == report_id) {
                         p.bind('click', self.start_edit_polygon);
+                    } else {
+                        p.bind('click', function() {
+                            self.finish_editing();
+                            self.bus.emit('model:active_report', report_id);
+                        });
                     }
                     self.polygons.push(p.render());
                 });
