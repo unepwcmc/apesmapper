@@ -102,4 +102,4 @@ App.modules.Panel = function(app) {
 
     });
 
-}
+};

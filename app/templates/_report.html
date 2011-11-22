@@ -22,11 +22,11 @@
 <% } %>
 
 
-<% if(stats.covered_by_PA && stats.carbon) { %>
+<% if(stats.covered_by_PA && stats.carbon_sequestration) { %>
 <div class="block">
     <span class="title">
         <h2>COVERED BY PA'S</h2>
-        <p><%= (1e8*stats.covered_by_PA.km2/stats.carbon.area).toFixed(1) %><small>%</small></p>
+        <p><%= (1e8*stats.covered_by_PA.km2/stats.carbon_sequestration.area).toFixed(1) %><small>%</small></p>
     </span>
     <ul class="normal list">
       <li>
