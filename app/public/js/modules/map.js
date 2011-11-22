@@ -103,12 +103,14 @@ App.modules.Map = function(app) {
         },
 
         move: function() {
-            this.set_pos(this.at);
+            if(self.at)
+                this.set_pos(this.at);
         },
 
         hide: function(e) {
             if(e) { e.preventDefault(); }
             this.el.hide();
+            self.at = null;
         },
 
         add_protected_area: function(e) {
