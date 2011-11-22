@@ -206,11 +206,6 @@ var Tabs = Backbone.View.extend({
       this.set_enabled($(el));
     },
 
-    remove_report: function(rid) {
-      var el = this.tab_el.find("a[href$=#" + rid +"]").parent();
-      el.remove();
-    },
-
     set_enabled: function(el) {
         this.$('li').removeClass('enabled').removeAttr('style');
         $(el).addClass('enabled');
@@ -280,12 +275,6 @@ var Panel = Backbone.View.extend({
         }
         this.reports_map = {};
         this.reports = [];
-    },
-
-    remove_report: function(rid) {
-        this.reports_map[cid].remove();
-        delete this.reports_map[cid];
-        this.tabs.remove_report(rid);
     },
 
     update_report: function(cid, data) {
