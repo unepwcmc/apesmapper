@@ -52,7 +52,11 @@ def work(request, work_hash=None):
         pass
     # get
     else:
-        data = work.json
+        if not work:
+          data = '{"error": "does not exist"}'
+          status = 404
+        else: 
+          data = work.json
         pass
 
     return HttpResponse(data, status=status, mimetype='application/json')
