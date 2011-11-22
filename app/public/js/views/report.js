@@ -117,7 +117,7 @@ var Report = Backbone.View.extend({
                 add_poly.animate({'margin-top': '0px'}, 500);
             }
         }
-    },
+    }
 
 
 });
