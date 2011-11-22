@@ -30,20 +30,3 @@ class APITest(TestCase):
         data = json.loads(response.content)
 
 
-class StatsTests(TestCase):
-    
-    def test_stats_post(self):
-        """ stats should a valid json """
-        response = self.client.post('/api/v0/stats', TEST_POLY, 'application/json');
-        self.assertEquals(200, response.status_code)
-        data = json.loads(response.content)
-
-        self.assertTrue('carbon' in data)
-        self.assertTrue('qty' in data['carbon'])
-        self.assertTrue('by_country' in data['carbon'])
-
-        self.assertTrue('restoration_potential' in data)
-        self.assertTrue('covered_by_PA' in data)
-        self.assertTrue('covered_by_KBA' in data)
-        self.assertTrue('forest_status' in data)
-

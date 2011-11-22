@@ -18,7 +18,6 @@ from django.views.decorators.csrf import csrf_exempt
 from baseconv import base62
 from models import Work, Error
 
-from cartodb import CartoDB, polygon_text
 
 BASE_ID = 123456
 @csrf_exempt
