@@ -89,16 +89,21 @@ App.modules.Map = function(app) {
             var self = this;
             self.name_el.html(protected_zone_info.name);
             this.protected_zone = protected_zone_info;
-            var px = this.map.projector.transformCoordinates(at);
-            self.set_pos(px);
+            self.at = at;
+            self.set_pos(at);
+            this.el.show();
         },
 
-        set_pos: function(p) {
+        set_pos: function(at) {
+            var p = this.map.projector.transformCoordinates(at);
             this.el.css({
                 top: p.y - 120,
                 left: p.x - 30
             });
-            this.el.show();
+        },
+
+        move: function() {
+            this.set_pos(this.at);
         },
 
         hide: function(e) {
@@ -173,6 +178,9 @@ App.modules.Map = function(app) {
             bus.attach(this.polygon_edit, 'polygon');
             this.popup.bind('edit', this.end_edit_polygon);
             this.popup.bind('remove', this.remove_polygon);
+            this.map.bind('center_changed', function(pos) {
+                self.protectedzone_popup.move(pos);
+            });
 
             this.protectedzone_popup.bind('add_polygon', function(polygon) {
                 self.bus.emit('polygon', {paths: polygon});
@@ -185,7 +193,7 @@ App.modules.Map = function(app) {
 
 
         },
-        
+
         work_mode: function() {
             $('.map_container').css({right: '352px'});
         },
