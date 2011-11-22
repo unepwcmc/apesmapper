@@ -42,6 +42,7 @@ var Report = Backbone.View.extend({
                 this.header = this.$('.stats_header');
             }
             this.leave_edit();
+            //this.$('.report_stats').jScrollPane({autoReinitialise:true});
         } else {
             $(this.el).html(this.template_no_content(data));
             this.header = null;
@@ -159,7 +160,14 @@ var Tabs = Backbone.View.extend({
         }
 
         if(el) {
-            this.set_enabled($(el));
+            var self = this;
+            if ($.browser.msie  && parseInt($.browser.version, 10) == 7) {
+              setTimeout(function() {
+                self.set_enabled($(el));
+              }, 500);
+            } else {
+                self.set_enabled($(el));
+            }
         }
     },
 
@@ -189,7 +197,7 @@ var Tabs = Backbone.View.extend({
     },
 
     show_tab: function(rid) {
-      var el = this.tab_el.find("a[href=#" + rid +"]").parent();
+      var el = this.tab_el.find("a[href$=#" + rid +"]").parent();
       this.set_enabled($(el));
     },
 
