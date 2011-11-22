@@ -103,7 +103,7 @@ App.modules.Map = function(app) {
         },
 
         move: function() {
-            if(self.at)
+            if(this.at)
                 this.set_pos(this.at);
         },
 

@@ -172,11 +172,12 @@ App.modules.Data = function(app) {
         },
 
         delete_report: function(rid) {
-            var r = this.at(rid);
+            var r = this.getByCid(rid);
             this.remove(r);
             r.unbind('change', this.on_report_change);
-            r.remove();
+            //r.remove();
             this.save();
+            this.aggregate_stats();
         },
 
         get_all_polygons: function() {
@@ -231,7 +232,7 @@ App.modules.Data = function(app) {
 
         init: function(bus) {
             var self = this;
-            _.bindAll(this, 'on_polygon', 'on_work', 'on_new_report','add_report', 'on_create_work', 'active_report', 'on_remove_polygon', 'on_update_polygon', 'on_clear');
+            _.bindAll(this, 'on_polygon', 'on_work', 'on_new_report','add_report', 'on_create_work', 'active_report', 'on_remove_polygon', 'on_update_polygon', 'on_clear', 'on_delete_report');
             this.bus = bus;
             this.work = new WorkModel();
             this.work.bus = bus;
@@ -244,7 +245,8 @@ App.modules.Data = function(app) {
                 'model:active_report': 'active_report',
                 'model:remove_polygon': 'on_remove_polygon',
                 'model:update_polygon': 'on_update_polygon',
-                'model:clear': 'on_clear'
+                'model:clear': 'on_clear',
+                'model:delete_report': 'on_delete_report'
             });
 
             this.work.bind('add', this.on_new_report);
@@ -275,6 +277,21 @@ App.modules.Data = function(app) {
                 r.update_polygon(index, new_path);
             } else {
                 app.Log.error("can't get report: ", rid);
+            }
+        },
+
+        on_delete_report: function(rid) {
+            var self = this;
+            // if we only have the total and another report
+            // dont remove, only clear polygons
+            if(this.work.models.length == 2) {
+                this.on_clear();
+            } else {
+                this.work.delete_report(rid);
+                this.bus.emit('view:remove_all');
+                this.work.each(function(r) {
+                    self.on_new_report(r);
+                });
             }
         },
 

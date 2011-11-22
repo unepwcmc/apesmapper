@@ -21,6 +21,7 @@ var Report = Backbone.View.extend({
         _.bindAll(this, 'show', 'hide');
         $(this.el).addClass('tab_content_item');
         this.bus = this.options.bus;
+        this.rid = this.options.rid;
         this.header = null;
         this.showing_loading = false;
         this.showing = false;
@@ -93,7 +94,7 @@ var Report = Backbone.View.extend({
 
     remove_polygons: function(e) {
       if(e) e.preventDefault();
-      this.bus.emit("model:clear");
+      this.bus.emit("model:delete_report", this.rid);
     },
 
     show: function() {
@@ -118,6 +119,10 @@ var Report = Backbone.View.extend({
                 add_poly.animate({'margin-top': '0px'}, 500);
             }
         }
+    },
+
+    remove: function() {
+        $(this.el).remove();
     }
 
 
@@ -172,14 +177,14 @@ var Tabs = Backbone.View.extend({
     },
 
     update: function(rid, data) {
-        var a = null;
+        var a = 0;
         if(data.stats.carbon) {
             a = data.stats.carbon.area;
         } else if (data.stats.carbon_sum) {
             a = data.stats.carbon_sum.area;
         }
-        if(a)
-            this.tab_el.find("a[href=#" + rid +"]").parent().find('.area').html((a/100000).toFixed(0));
+        a = a || 0;
+        this.tab_el.find("a[href=#" + rid +"]").parent().find('.area').html((a/100000).toFixed(0));
     },
 
     clear: function() {
@@ -199,6 +204,11 @@ var Tabs = Backbone.View.extend({
     show_tab: function(rid) {
       var el = this.tab_el.find("a[href$=#" + rid +"]").parent();
       this.set_enabled($(el));
+    },
+
+    remove_report: function(rid) {
+      var el = this.tab_el.find("a[href$=#" + rid +"]").parent();
+      el.remove();
     },
 
     set_enabled: function(el) {
@@ -253,7 +263,8 @@ var Panel = Backbone.View.extend({
 
     add_report: function(cid, data) {
         var r = new Report({
-            bus: this.bus
+            bus: this.bus,
+            rid: cid
         });
         this.reports.push(r);
         this.reports_map[cid] = r;
@@ -269,6 +280,12 @@ var Panel = Backbone.View.extend({
         }
         this.reports_map = {};
         this.reports = [];
+    },
+
+    remove_report: function(rid) {
+        this.reports_map[cid].remove();
+        delete this.reports_map[cid];
+        this.tabs.remove_report(rid);
     },
 
     update_report: function(cid, data) {

@@ -61,7 +61,8 @@ App.modules.Panel = function(app) {
                 'view:new_report': 'on_new_report',
                 'view:remove_all': 'on_remove_all',
                 'view:update_report': 'on_update_report',
-                'view:show_report': 'on_show_report'
+                'view:show_report': 'on_show_report',
+                'view:remove_report': 'on_remove_report'
             });
             this.bus.on('loading_start', function() {
                 self.loader.show();
@@ -79,6 +80,10 @@ App.modules.Panel = function(app) {
 
         on_remove_all: function() {
             this.panel.remove_all();
+        },
+
+        on_remove_report: function(rid) {
+            this.panel.remove_report(rid);
         },
 
         on_update_report: function(cid, r) {
