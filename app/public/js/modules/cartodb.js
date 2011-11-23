@@ -181,8 +181,8 @@ GROUP BY priority, country";
                 //{"country":"Ghana","total":12578440024}
                 var total = 0;
                 var countries = _(data.rows).map(function(c) {
-                    total += c.total;
-                    return { name: c.country, qty: c.total };
+                    total += c.total || 0;
+                    return { name: c.country, qty: c.total || 0 };
                 });
                 callback({
                     qty: total,

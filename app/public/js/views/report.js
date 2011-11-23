@@ -33,7 +33,8 @@ var Report = Backbone.View.extend({
             // check if header has been already rendered and 
             // update only the stats part
             if(this.header) {
-                this.$('.report_stats').html(this.template(data));
+                this.$('.report_stats').remove();//html(this.template(data));
+                $(this.el).append(this.template(data));
                 this.header.find('.polygon_num').html(data.polygons.length);
             } else {
                 if(!data.total) {
