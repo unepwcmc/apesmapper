@@ -614,15 +614,35 @@ div.right {
 /* line 103, ../../css_src/partials/_map.scss */
 .map_container #protected_popup {
   position: absolute;
-  background: url("/img/sprite.png") left -1469px no-repeat;
   display: none;
   top: 100px;
   left: 100px;
   width: 193px;
   height: 80px;
-  padding: 18px;
 }
 /* line 113, ../../css_src/partials/_map.scss */
+.map_container #protected_popup .top {
+  padding: 18px 18px 0 18px;
+  width: 100%;
+  background: url("/img/sprite.png") left -1469px no-repeat;
+  height: 0px;
+}
+/* line 120, ../../css_src/partials/_map.scss */
+.map_container #protected_popup .center {
+  padding: 0px 18px 0 18px;
+  width: 100%;
+  background: url("/img/sprite.png") left -1480px no-repeat;
+  float: left;
+}
+/* line 126, ../../css_src/partials/_map.scss */
+.map_container #protected_popup .bottom {
+  padding: 0px 18px 18px 18px;
+  width: 100%;
+  background: url("/img/sprite.png") left -1556px no-repeat;
+  float: left;
+  height: 12px;
+}
+/* line 134, ../../css_src/partials/_map.scss */
 .map_container #protected_popup h1.name {
   font: bold 13px "WhitneyBookRegular","Myriad Pro";
   color: #333333;
@@ -631,14 +651,14 @@ div.right {
   letter-spacing: -1px;
   padding-bottom: 5px;
 }
-/* line 121, ../../css_src/partials/_map.scss */
+/* line 142, ../../css_src/partials/_map.scss */
 .map_container #protected_popup .close {
   float: right;
   width: 12px;
   height: 17px;
   background: url("/img/sprite.png") right -1258px no-repeat;
 }
-/* line 127, ../../css_src/partials/_map.scss */
+/* line 148, ../../css_src/partials/_map.scss */
 .map_container #protected_popup #add_protected {
   float: left;
   width: auto;
@@ -654,7 +674,7 @@ div.right {
   text-shadow: 0 1px 0 #3c7d7d;
   text-decoration: none;
 }
-/* line 141, ../../css_src/partials/_map.scss */
+/* line 162, ../../css_src/partials/_map.scss */
 .map_container #protected_popup #add_protected span {
   float: left;
   width: auto;
@@ -662,11 +682,11 @@ div.right {
   padding: 8px 12px 8px 0;
   background: url("/img/sprite.png") right -820px no-repeat;
 }
-/* line 149, ../../css_src/partials/_map.scss */
+/* line 170, ../../css_src/partials/_map.scss */
 .map_container #protected_popup #add_protected:hover {
   text-decoration: underline;
 }
-/* line 153, ../../css_src/partials/_map.scss */
+/* line 174, ../../css_src/partials/_map.scss */
 .map_container #polygon_popup {
   position: absolute;
   display: none;
@@ -677,7 +697,7 @@ div.right {
   padding: 21px 20px 33px 20px;
   background: url("/img/sprite.png") -325px -478px no-repeat;
 }
-/* line 164, ../../css_src/partials/_map.scss */
+/* line 185, ../../css_src/partials/_map.scss */
 .map_container #polygon_popup a {
   display: inline-block;
   vertical-align: top;
@@ -690,16 +710,16 @@ div.right {
   text-transform: uppercase;
   line-height: 11px;
 }
-/* line 176, ../../css_src/partials/_map.scss */
+/* line 197, ../../css_src/partials/_map.scss */
 .map_container #polygon_popup a#delete {
   width: 50px;
   color: #FF9933;
 }
-/* line 177, ../../css_src/partials/_map.scss */
+/* line 198, ../../css_src/partials/_map.scss */
 .map_container #polygon_popup a:hover {
   text-decoration: underline;
 }
-/* line 181, ../../css_src/partials/_map.scss */
+/* line 202, ../../css_src/partials/_map.scss */
 .map_container .search {
   display: none;
   position: absolute;
@@ -711,7 +731,7 @@ div.right {
   padding: 5px 0px 3px 8px;
   background: url("/img/sprite.png") no-repeat 0 -1858px;
 }
-/* line 191, ../../css_src/partials/_map.scss */
+/* line 212, ../../css_src/partials/_map.scss */
 .map_container .search h1 {
   margin: 0;
   padding: 0;
@@ -721,7 +741,7 @@ div.right {
   color: #333333;
   letter-spacing: -1px;
 }
-/* line 200, ../../css_src/partials/_map.scss */
+/* line 221, ../../css_src/partials/_map.scss */
 .map_container .search input {
   outline: none;
   width: 105px;
@@ -729,11 +749,11 @@ div.right {
   border: 0;
   font: normal 13px "Helvetica";
 }
-/* line 207, ../../css_src/partials/_map.scss */
+/* line 228, ../../css_src/partials/_map.scss */
 .map_container .search a {
   text-decoration: none;
 }
-/* line 212, ../../css_src/partials/_map.scss */
+/* line 233, ../../css_src/partials/_map.scss */
 .map_container .layers {
   display: none;
   position: absolute;
@@ -742,7 +762,7 @@ div.right {
   width: 224px;
   z-index: 100;
 }
-/* line 220, ../../css_src/partials/_map.scss */
+/* line 241, ../../css_src/partials/_map.scss */
 .map_container .layers a.view {
   float: right;
   display: block;
@@ -752,7 +772,7 @@ div.right {
   background: url("/img/sprite.png") no-repeat 0 -1035px;
   text-decoration: none;
 }
-/* line 229, ../../css_src/partials/_map.scss */
+/* line 250, ../../css_src/partials/_map.scss */
 .map_container .layers a.view span {
   float: left;
   height: 13px;
@@ -764,11 +784,11 @@ div.right {
   text-indent: 0px;
   text-decoration: none;
 }
-/* line 240, ../../css_src/partials/_map.scss */
+/* line 261, ../../css_src/partials/_map.scss */
 .map_container .layers a.view span strong {
   font: bold 13px "WhitneyBold","Myriad Pro";
 }
-/* line 246, ../../css_src/partials/_map.scss */
+/* line 267, ../../css_src/partials/_map.scss */
 .map_container .layers div.show {
   position: absolute;
   top: 21px;
@@ -777,14 +797,14 @@ div.right {
   width: 224px;
   z-index: -1;
 }
-/* line 254, ../../css_src/partials/_map.scss */
+/* line 275, ../../css_src/partials/_map.scss */
 .map_container .layers div.show span.top {
   float: right;
   width: 100%;
   height: 12px;
   background: url("/img/sprite.png") no-repeat right -1911px;
 }
-/* line 261, ../../css_src/partials/_map.scss */
+/* line 282, ../../css_src/partials/_map.scss */
 .map_container .layers div.show ul {
   float: right;
   width: 212px;
@@ -794,7 +814,7 @@ div.right {
   text-align: left;
   background: url("/img/sprite.png") no-repeat right bottom;
 }
-/* line 270, ../../css_src/partials/_map.scss */
+/* line 291, ../../css_src/partials/_map.scss */
 .map_container .layers div.show ul:last-child {
   border: none;
   -moz-border-radius-bottomleft: 4px;
@@ -810,7 +830,7 @@ div.right {
   -khtml-border-bottom-right-radius: 4px;
   border-bottom-right-radius: 4px;
 }
-/* line 275, ../../css_src/partials/_map.scss */
+/* line 296, ../../css_src/partials/_map.scss */
 .map_container .layers div.show ul li {
   padding: 5px 9px;
   border: none;
@@ -818,26 +838,26 @@ div.right {
   font: normal 13px "Helvetica Neue";
   color: #333333;
 }
-/* line 283, ../../css_src/partials/_map.scss */
+/* line 304, ../../css_src/partials/_map.scss */
 .map_container .layers div.show ul li.last {
   border: none;
 }
-/* line 287, ../../css_src/partials/_map.scss */
+/* line 308, ../../css_src/partials/_map.scss */
 .map_container .layers div.show ul li:hover {
   background: url("/img/sprite.png") no-repeat -270px -1372px;
   background-color: #EDEDED;
   cursor: pointer!important;
 }
-/* line 293, ../../css_src/partials/_map.scss */
+/* line 314, ../../css_src/partials/_map.scss */
 .map_container .layers div.show ul li.enabled {
   font-weight: bold;
 }
-/* line 297, ../../css_src/partials/_map.scss */
+/* line 318, ../../css_src/partials/_map.scss */
 .map_container .layers div.show ul li.moving {
   border-top: 1px solid #CCCCCC;
   border-bottom: 1px solid #CCCCCC;
 }
-/* line 303, ../../css_src/partials/_map.scss */
+/* line 324, ../../css_src/partials/_map.scss */
 .map_container .layers div.show ul a.expand {
   display: block;
   width: 100%;
@@ -847,19 +867,19 @@ div.right {
   line-height: 0;
   background: url("/img/sprite.png") no-repeat 0 -1444px;
 }
-/* line 311, ../../css_src/partials/_map.scss */
+/* line 332, ../../css_src/partials/_map.scss */
 .map_container .layers div.show ul a.expand:hover {
   background-position: 0 -1452px;
 }
-/* line 319, ../../css_src/partials/_map.scss */
+/* line 340, ../../css_src/partials/_map.scss */
 .map_container .layers.open a.view {
   background-position: left -1072px;
 }
-/* line 322, ../../css_src/partials/_map.scss */
+/* line 343, ../../css_src/partials/_map.scss */
 .map_container .layers.open a.view span {
   background-position: right -1072px;
 }
-/* line 327, ../../css_src/partials/_map.scss */
+/* line 348, ../../css_src/partials/_map.scss */
 .map_container .layers.open .show {
   display: block;
 }
