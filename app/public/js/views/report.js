@@ -18,13 +18,20 @@ var Report = Backbone.View.extend({
     },
 
     initialize: function() {
-        _.bindAll(this, 'show', 'hide');
+        _.bindAll(this, 'show', 'hide', 'render', '_render_stats');
         $(this.el).addClass('tab_content_item');
         this.bus = this.options.bus;
         this.rid = this.options.rid;
         this.header = null;
         this.showing_loading = false;
         this.showing = false;
+        this.render_stats = _.debounce(this._render_stats, 300);
+    },
+
+    _render_stats: function(data) {
+          this.$('.report_stats').remove();
+          $(this.el).append(this.template(data));
+          this.$('.report_stats').hide().fadeIn();
     },
 
     render: function(data) {
@@ -33,15 +40,13 @@ var Report = Backbone.View.extend({
             // check if header has been already rendered and 
             // update only the stats part
             if(this.header) {
-                this.$('.report_stats').remove();//html(this.template(data));
-                $(this.el).append(this.template(data));
+                this.render_stats(data);
                 this.header.find('.polygon_num').html(data.polygons.length);
             } else {
                 if(!data.total) {
                     $(this.el).html(this.template_header(data));
                 }
-                var a = [];
-                $(this.el).append(this.template(data));
+                this.render_stats(data);
                 this.header = this.$('.stats_header');
             }
             this.leave_edit();
@@ -49,7 +54,7 @@ var Report = Backbone.View.extend({
             //to avoid jScrollpane timer fuck the render speed
             setTimeout(function() {
               self.$('.report_stats').jScrollPane({autoReinitialise:true, contentWidth: 312});
-            }, 500);
+            }, 1000);
         } else {
             $(this.el).html(this.template_no_content(data));
             this.header = null;

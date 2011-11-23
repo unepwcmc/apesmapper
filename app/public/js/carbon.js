@@ -31,7 +31,7 @@ App.modules.Carbon = function(app) {
         },
 
         run: function() {
-            _.bindAll(this, 'on_route_to', 'state_url');
+            _.bindAll(this, 'on_route_to', '_state_url');
             var self = this;
             this.bus = new app.Bus();
             // set a global bus
@@ -79,6 +79,7 @@ App.modules.Carbon = function(app) {
               app.Error.show(error);
             });
 
+            this.state_url = _.debounce(this._state_url, 200);
             this.map.map.bind('center_changed', this.state_url);
             this.map.map.bind('zoom_changed', this.state_url);
             this.bus.on('map:reorder_layers', this.state_url);
@@ -107,7 +108,7 @@ App.modules.Carbon = function(app) {
             }, 20);
         },
 
-        state_url: function() {
+        _state_url: function() {
             var self = this;
             if(self.work_id === undefined) return;
             var center = self.map.map.get_center();
