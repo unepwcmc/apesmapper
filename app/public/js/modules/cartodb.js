@@ -57,7 +57,15 @@ ST_Intersects( \
 ) \
 GROUP BY band;"
 
-var SQL_COVERED_KBA = "SELECT (overlapped_area / ( SELECT ST_Area(ST_GeomFromText('<%= polygon %>', 4326)) LIMIT 1 )) * 100 AS kba_percentage, count FROM ( SELECT COUNT(1), ST_Area( ST_Intersection( ST_Union(the_geom), ST_GeomFromText('<%= polygon %>',4326))) AS overlapped_area FROM kba WHERE ST_Intersects( ST_GeomFromText('<%= polygon %>',4326), the_geom) ) foo";
+//var SQL_COVERED_KBA = "SELECT (overlapped_area / ( SELECT ST_Area(ST_GeomFromText('<%= polygon %>', 4326)) LIMIT 1 )) * 100 AS kba_percentage, count FROM ( SELECT COUNT(1), ST_Area( ST_Intersection( ST_Union(the_geom), ST_GeomFromText('<%= polygon %>',4326))) AS overlapped_area FROM kba WHERE ST_Intersects( ST_GeomFromText('<%= polygon %>',4326), the_geom) ) foo";
+
+var SQL_COVERED_KBA = " \
+SELECT (overlapped_area / ( SELECT ST_Area( ST_MakeValid(ST_GeomFromText('<%= polygon %>', 4326)) \
+) LIMIT 1 )) * 100 AS kba_percentage, count FROM ( SELECT COUNT(1), ST_Area( ST_Intersection( ST_Union(the_geom), \
+ST_MakeValid(ST_GeomFromText('<%= polygon %>',4326)) \
+)) AS overlapped_area FROM kba WHERE ST_Intersects( \
+ST_MakeValid(ST_GeomFromText('<%= polygon %>',4326)) \
+, the_geom) ) foo"
 
 
 var SQL_COUNTRIES = " \
