@@ -272,14 +272,14 @@ GROUP BY priority, country";
          // data from protected planet
          // but here to follow the same rule
          app.WS.ProtectedPlanet.PA_coverage(wtk_polygon(p), function(d) {
-            if(d) {
+            if(d && d.sum_pa_cover_km2) {
               var num = 0;
               if(d.results && d.results.length >= 1) {
                   num = d.results[0].protected_areas.length;
               }
               callback({
                 num_overlap: num,
-                km2: d.sum_pa_cover_km2
+                km2: d.sum_pa_cover_km2 || 0
               });
             } else {
               callback();

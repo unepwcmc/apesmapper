@@ -44,10 +44,11 @@ var Report = Backbone.View.extend({
                 this.header = this.$('.stats_header');
             }
             this.leave_edit();
-            if(true)
-              setTimeout(function() {
-                self.$('.report_stats').jScrollPane({autoReinitialise:true, contentWidth: 312});
-              }, 1000);
+            //wait a little bit to content be rendered
+            //to avoid jScrollpane timer fuck the render speed
+            setTimeout(function() {
+              self.$('.report_stats').jScrollPane({autoReinitialise:true, contentWidth: 312});
+            }, 500);
         } else {
             $(this.el).html(this.template_no_content(data));
             this.header = null;
