@@ -152,7 +152,8 @@
       <% _.each(stats.carbon_sum.polygons, function(p) { %>
         <li>
         <!-- tooltip -->
-        <div class="list_tooltip">
+
+        <div class="list_tooltip_data">
           <h4><%= p.polygon %></h4>
           <span class="blue">
               <h6><%= number_format(p.carbon) %> T</h6>
@@ -184,7 +185,7 @@
         <h2>COVERAGE STATICTICS</h2>
         <p>&nbsp;</p>
     </span>
-    <ul class="normal list tooltip">
+    <ul class="normal list">
       <% _.each(stats.coverage, function(v, k) { %>
         <li>
           <h5 class="stats"><%= k %></h5>

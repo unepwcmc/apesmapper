@@ -68,16 +68,18 @@ var Report = Backbone.View.extend({
     },
 
     show_tooltip: function(e) {
-      var el = $(e.target);
-      var tooltip = el.find('.list_tooltip');
+      var el = $(e.currentTarget);
+      var tooltip = $('#panel').find('.list_tooltip');
       var pos = el.position();
-      tooltip.css({top: pos.top - 130, left: pos.left + 120});
+      tooltip.css({top: pos.top - 80, left: 120});
+      //set html rendered previously
+      tooltip.html(el.find('.list_tooltip_data').html());
       tooltip.show();
     },
 
     hide_tooltip: function(e) {
-      var el = $(e.target);
-      var tooltip = el.find('.list_tooltip');
+      //var el = $(e.target);
+      var tooltip = $('#panel').find('.list_tooltip');
       tooltip.hide();
     },
 
