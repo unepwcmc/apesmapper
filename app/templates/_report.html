@@ -9,14 +9,34 @@
     </span>
     <% if(stats.carbon) { %>
     <ul class="normal list">
-      <% _.each(stats.carbon.countries, function(ct) { %>
-      <li>
-            <h5><%= ct.name %></h5>
-            <p class="info"><% print(number_format(ct.qty)); %> T</p>
-      </li>
-      <% }); %>
+      <% if(stats.carbon.countries.length === 0) { %>
+        <ul><li></li></ul>
+      <% } else { %>
+          <% _.each(stats.carbon.countries, function(ct) { %>
+          <li>
+                <h5><%= ct.name %></h5>
+                <p class="info"><% print(number_format(ct.qty)); %> T</p>
+          </li>
+          <% }); %>
+      <% } %>
     </ul>
     <% } %>
+</div>
+<% } %>
+
+<% if(stats.carbon_sequestration) { %>
+<div class="block">
+    <span class="title">
+        <% if (stats.carbon_sequestration.qty.toFixed(0).length > 7) { %>
+            <h2>C. SEQ.</h2>
+        <% } else { %>
+            <h2>C. SEQUESTRATION</h2>
+        <% } %>
+        <p><% print(number_format(stats.carbon_sequestration.qty)); %><small>T</small></p>
+    </span>
+    <ul class="normal list">
+        <li></li>
+    </ul>
 </div>
 <% } %>
 
@@ -121,21 +141,6 @@
 </div>
 <% } %>
 
-<% if(stats.carbon_sequestration) { %>
-<div class="block">
-    <span class="title">
-        <% if (stats.carbon_sequestration.qty.toFixed(0).length > 7) { %>
-            <h2>C. SEQ.</h2>
-        <% } else { %>
-            <h2>C. SEQUESTRATION</h2>
-        <% } %>
-        <p><% print(number_format(stats.carbon_sequestration.qty)); %><small>T</small></p>
-    </span>
-    <ul class="normal list">
-        <li></li>
-    </ul>
-</div>
-<% } %>
 
 <% if(stats.carbon_sum) { %>
 <div class="block">
