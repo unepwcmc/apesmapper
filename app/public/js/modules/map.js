@@ -140,7 +140,7 @@ App.modules.Map = function(app) {
 
     app.Map = Class.extend({
         init: function(bus) {
-            _.bindAll(this, 'show_report', 'start_edit_polygon', 'end_edit_polygon', 'remove_polygon', 'disable_editing', 'enable_editing', 'enable_layer', 'reoder_layers', 'protected_area_click','reorder_layers', 'update_report', 'remove_all');
+            _.bindAll(this, 'show_report', 'start_edit_polygon', 'end_edit_polygon', 'remove_polygon', 'disable_editing', 'enable_editing', 'enable_layer', 'reoder_layers', 'protected_area_click','reorder_layers', 'update_report', 'remove_all', 'clear');
             var self = this;
             this.map = new MapView({el: $('.map_container')});
             this.seachbox = new Searchbox({el: $('.map_container .search')});
@@ -169,7 +169,7 @@ App.modules.Map = function(app) {
                 'view:show_report': 'show_report',
                 'view:update_report': 'update_report',
                 'view:new_report': 'update_report',
-                'view:remove_all': 'remove_all',
+                'view:remove_all': 'clear',
                 'polygon': 'disable_editing',
                 'map:edit_mode': 'enable_editing',
                 'map:no_edit_mode': 'disable_editing',
@@ -240,6 +240,11 @@ App.modules.Map = function(app) {
         update_report: function(rid, data) {
           this.report_polygons[rid] = data.polygons;
           this.show_report(this.showing, data);
+        },
+
+        clear: function() {
+          this.report_polygons = {};
+          this.remove_all();
         },
 
         remove_all: function() {
