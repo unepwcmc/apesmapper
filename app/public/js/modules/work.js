@@ -353,7 +353,9 @@ App.modules.Data = function(app) {
         active_report: function(rid) {
             this.active_report_id = rid;
             var r = this.work.getByCid(rid);
-            this.bus.emit('view:show_report', rid, r.toJSON());
+            if(r) {
+              this.bus.emit('view:show_report', rid, r.toJSON());
+            }
         },
 
         select_report: function() {
