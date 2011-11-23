@@ -244,11 +244,15 @@ GROUP BY priority, country";
                 };
 
                 function get_type(v) {
-                    if      (1 == v) return 'intact';
-                    else if (2 == v) return 'deforested';
-                    else if (3 == v) return 'partial';
+                    if      (3 == v) return 'intact';
+                    else if (1 == v) return 'deforested';
+                    else if (4 == v) return 'partial';
                     return 'fragmented';
                 }
+                //Band 1 = Defined as deforested areas
+                //Band 2 = Defined as fragmented/managed forest
+                //Band 3 = Defined as intact forest
+                //Band 4 = Defined as partially deforested areas
 
                 var total = 0;
                 _.each(data.rows, function(x) {
