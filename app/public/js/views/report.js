@@ -32,7 +32,11 @@ var Report = Backbone.View.extend({
         var self = this;
         this.$('.report_stats').remove();
         $(this.el).append(this.template(data));
-        this.$('.report_stats').hide().fadeIn();
+        var s = this.$('.report_stats');
+        s.hide().fadeIn();
+        if(data.total) {
+          s.css({top: 5});
+        }
         setTimeout(function() {
             self.$('.report_stats').jScrollPane({autoReinitialise:true, contentWidth: 312});
         }, 0);
@@ -295,7 +299,9 @@ var Panel = Backbone.View.extend({
     show_report: function(cid) {
         //hide all first
         _(this.reports).each(function(r) {
-            r.hide();
+            if(r.rid != cid) {
+              r.hide();
+            }
         });
         this.reports_map[cid].show();
         this.tabs.show_tab(cid);

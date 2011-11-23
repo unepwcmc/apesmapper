@@ -395,7 +395,7 @@
               white-space:nowrap;
             }
           }
-          span.list_tooltip {
+          div.list_tooltip {
             display:none;
             position:absolute;
             /*
@@ -406,7 +406,7 @@
             height:93px;
             padding:17px 22px 31px 22px;
             margin:0;
-            z-index: 100;
+            z-index: 300;
             @include background(no-repeat,-267px,-1436px);
 
             h4 {
@@ -482,10 +482,12 @@
         }
 
         &.tooltip {
+          li {
+          }
           li:hover {
             background-color:#EDEDED;
             cursor:pointer;
-            span.list_tooltip {
+            div.list_tooltip {
                //display: block;
             }
           }

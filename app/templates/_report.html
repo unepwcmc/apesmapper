@@ -152,7 +152,7 @@
       <% _.each(stats.carbon_sum.polygons, function(p) { %>
         <li>
         <!-- tooltip -->
-        <span class="list_tooltip">
+        <div class="list_tooltip">
           <h4><%= p.polygon %></h4>
           <span class="blue">
               <h6><%= number_format(p.carbon) %> T</h6>
@@ -162,7 +162,7 @@
             <h6><%= number_format(p.carbon_sequestration) %>T</h6>
             <p>RestP: Max. Extra Carbon</p>
           </span>
-        </span>
+        </div>
 
         <h5 class="stats"><%= p.polygon %></h5>
             <div class="stats_bar">
