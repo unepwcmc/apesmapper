@@ -158,8 +158,27 @@
       height: 44px;
     }
     .report_stats {
-      float: left;
+      position: absolute;
+      //height: 200px;
+      width: 324px;
+      top: 80px;
+      bottom: 0;
+      .jspVerticalBar { 
+        width: 7px;
+        right: 0px;
+        background: #BBD;
+      }
+      .jspTrack {
+        background: #FFF;
+        .jspDrag {
+          background-color: rgba(127, 127, 127, 0.9);
+        }
+      }
+      .jspPane {
+        width: 310px !important;
+      }
     }
+
     //.stats_header {
     // polygon edition
     div.tools {
@@ -475,7 +494,7 @@
 
         &.inline {
           li {
-            width:77px;
+            width:76px;
             height:80px;
             padding:0;
             border:none;

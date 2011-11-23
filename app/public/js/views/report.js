@@ -39,11 +39,15 @@ var Report = Backbone.View.extend({
                 if(!data.total) {
                     $(this.el).html(this.template_header(data));
                 }
+                var a = [];
                 $(this.el).append(this.template(data));
                 this.header = this.$('.stats_header');
             }
             this.leave_edit();
-            //this.$('.report_stats').jScrollPane({autoReinitialise:true});
+            if(true)
+              setTimeout(function() {
+                self.$('.report_stats').jScrollPane({autoReinitialise:true, contentWidth: 312});
+              }, 1000);
         } else {
             $(this.el).html(this.template_no_content(data));
             this.header = null;

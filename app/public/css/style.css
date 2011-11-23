@@ -1028,28 +1028,49 @@ div.right {
 }
 /* line 160, ../../css_src/partials/_panel.scss */
 #panel #tab_content .report_stats {
-  float: left;
+  position: absolute;
+  width: 324px;
+  top: 80px;
+  bottom: 0;
 }
-/* line 165, ../../css_src/partials/_panel.scss */
+/* line 166, ../../css_src/partials/_panel.scss */
+#panel #tab_content .report_stats .jspVerticalBar {
+  width: 7px;
+  right: 0px;
+  background: #BBD;
+}
+/* line 171, ../../css_src/partials/_panel.scss */
+#panel #tab_content .report_stats .jspTrack {
+  background: #FFF;
+}
+/* line 173, ../../css_src/partials/_panel.scss */
+#panel #tab_content .report_stats .jspTrack .jspDrag {
+  background-color: rgba(127, 127, 127, 0.9);
+}
+/* line 177, ../../css_src/partials/_panel.scss */
+#panel #tab_content .report_stats .jspPane {
+  width: 310px !important;
+}
+/* line 184, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools {
   width: 100%;
   height: 34px;
   margin: 10px 0 0 0;
   background: url("/img/sprite.png") 0 -474px no-repeat;
 }
-/* line 171, ../../css_src/partials/_panel.scss */
+/* line 190, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools h2 {
   float: left;
   padding: 0;
   margin: 0;
 }
-/* line 172, ../../css_src/partials/_panel.scss */
+/* line 191, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools span.tools {
   float: right;
   margin: 0;
   padding: 0;
 }
-/* line 174, ../../css_src/partials/_panel.scss */
+/* line 193, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools p {
   float: left;
   width: auto;
@@ -1059,31 +1080,31 @@ div.right {
   font: normal 13px "Helvetica Neue",Arial;
   color: #666666;
 }
-/* line 183, ../../css_src/partials/_panel.scss */
+/* line 202, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools p a {
   font: bold 13px "Helvetica Neue",Arial;
   color: #333333;
   text-decoration: underline;
 }
-/* line 187, ../../css_src/partials/_panel.scss */
+/* line 206, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools p a:hover {
   color: black;
 }
-/* line 192, ../../css_src/partials/_panel.scss */
+/* line 211, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools.removing {
   background: none;
   background-color: #FFECE6;
 }
-/* line 195, ../../css_src/partials/_panel.scss */
+/* line 214, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools.removing p {
   padding: 10px 10px;
 }
-/* line 197, ../../css_src/partials/_panel.scss */
+/* line 216, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools.removing p.last {
   float: right;
   padding: 8px 1px 0 0;
 }
-/* line 203, ../../css_src/partials/_panel.scss */
+/* line 222, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools a.edit {
   display: inline-block;
   vertical-align: top;
@@ -1097,7 +1118,7 @@ div.right {
   line-height: 0;
   background: url("/img/sprite.png") -22px -453px no-repeat;
 }
-/* line 214, ../../css_src/partials/_panel.scss */
+/* line 233, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools a.remove {
   display: inline-block;
   vertical-align: top;
@@ -1111,7 +1132,7 @@ div.right {
   line-height: 0;
   background: url("/img/sprite.png") -2px -453px no-repeat;
 }
-/* line 225, ../../css_src/partials/_panel.scss */
+/* line 244, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools a.finish {
   float: left;
   width: auto;
@@ -1126,7 +1147,7 @@ div.right {
   text-shadow: 0 1px 0 #3c7d7d;
   text-decoration: none;
 }
-/* line 238, ../../css_src/partials/_panel.scss */
+/* line 257, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools a.finish span {
   float: left;
   width: auto;
@@ -1134,11 +1155,11 @@ div.right {
   padding: 8px 12px 8px 0;
   background: url("/img/sprite.png") right -820px no-repeat;
 }
-/* line 246, ../../css_src/partials/_panel.scss */
+/* line 265, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools a.finish:hover {
   text-decoration: underline;
 }
-/* line 248, ../../css_src/partials/_panel.scss */
+/* line 267, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools a.remove_it_please {
   background: url("/img/sprite.png") 0 -1817px no-repeat;
   filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=180, Strength=1);
@@ -1150,12 +1171,12 @@ div.right {
   padding: 7px 12px 14px 14px;
   margin-left: 5px;
 }
-/* line 255, ../../css_src/partials/_panel.scss */
+/* line 274, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools a.remove_it_please:hover {
   text-decoration: underline;
   color: white;
 }
-/* line 264, ../../css_src/partials/_panel.scss */
+/* line 283, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.no_content {
   width: 100%;
   height: 302px;
@@ -1164,11 +1185,11 @@ div.right {
   overflow: hidden;
   background: url("/img/sprite.png") -83px -1908px no-repeat;
 }
-/* line 272, ../../css_src/partials/_panel.scss */
+/* line 291, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.no_content div.inner {
   width: 300px;
 }
-/* line 275, ../../css_src/partials/_panel.scss */
+/* line 294, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.no_content div.inner span.title {
   display: inline-block;
   vertical-align: top;
@@ -1177,7 +1198,7 @@ div.right {
   width: 300px;
   padding: 192px 0 2px 0;
 }
-/* line 280, ../../css_src/partials/_panel.scss */
+/* line 299, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.no_content div.inner span.title h2 {
   width: auto;
   padding: 0;
@@ -1185,27 +1206,27 @@ div.right {
   font: bold 13px "WhitneyBold";
   color: #333333;
 }
-/* line 289, ../../css_src/partials/_panel.scss */
+/* line 308, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.no_content div.inner p {
   color: #666666;
   width: 300px;
 }
-/* line 289, ../../css_src/partials/_panel.scss */
+/* line 308, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.no_content div.inner p.margin {
   margin: 20px 0 0 0;
 }
-/* line 293, ../../css_src/partials/_panel.scss */
+/* line 312, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.no_content span.end {
   width: 312px;
   height: 5px;
   background: url("/img/sprite.png") 0 -785px no-repeat;
 }
-/* line 301, ../../css_src/partials/_panel.scss */
+/* line 320, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block {
   width: 100%;
   margin: 15px 0 0 0;
 }
-/* line 305, ../../css_src/partials/_panel.scss */
+/* line 324, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block span.title {
   float: left;
   width: 100%;
@@ -1213,7 +1234,7 @@ div.right {
   padding: 0;
   border-bottom: 2px solid #666666;
 }
-/* line 312, ../../css_src/partials/_panel.scss */
+/* line 331, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block span.title h2 {
   float: left;
   padding: 0;
@@ -1221,7 +1242,7 @@ div.right {
   font: bold 11px "WhitneyBold","Myriad Pro";
   color: #333333;
 }
-/* line 320, ../../css_src/partials/_panel.scss */
+/* line 339, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block span.title p {
   float: right;
   padding: 0;
@@ -1230,12 +1251,12 @@ div.right {
   letter-spacing: -1px;
   color: #333333;
 }
-/* line 328, ../../css_src/partials/_panel.scss */
+/* line 347, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block span.title p small {
   font-size: 13px;
   padding: 0 0 0 5px;
 }
-/* line 334, ../../css_src/partials/_panel.scss */
+/* line 353, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block .conservation_header {
   background-color: #C7C7C7;
   margin: 0;
@@ -1248,11 +1269,11 @@ div.right {
   text-transform: uppercase;
   border-bottom: 1px solid #B3B3B3;
 }
-/* line 345, ../../css_src/partials/_panel.scss */
+/* line 364, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block .conservation_header p {
   margin-left: 5px;
 }
-/* line 350, ../../css_src/partials/_panel.scss */
+/* line 369, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul {
   width: 100%;
   height: 100%;
@@ -1260,14 +1281,14 @@ div.right {
   padding: 0;
   margin: 0;
 }
-/* line 357, ../../css_src/partials/_panel.scss */
+/* line 376, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li {
   float: left;
   width: 100%;
   padding: 7px 0;
   border-bottom: 1px solid #CCCCCC;
 }
-/* line 363, ../../css_src/partials/_panel.scss */
+/* line 382, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li h5 {
   float: left;
   margin: 0;
@@ -1275,7 +1296,7 @@ div.right {
   font: normal 13px "Helvetica Neue",Arial;
   color: #666666;
 }
-/* line 370, ../../css_src/partials/_panel.scss */
+/* line 389, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li h5.stats {
   max-width: 45px;
   width: 45px;
@@ -1284,7 +1305,7 @@ div.right {
   overflow: hidden;
   white-space: nowrap;
 }
-/* line 379, ../../css_src/partials/_panel.scss */
+/* line 398, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li span.list_tooltip {
   display: none;
   position: absolute;
@@ -1299,35 +1320,35 @@ div.right {
   z-index: 100;
   background: url("/img/sprite.png") no-repeat -267px -1436px;
 }
-/* line 393, ../../css_src/partials/_panel.scss */
+/* line 412, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li span.list_tooltip h4 {
   font: bold 11px "WhitneyBold";
   color: #333333;
   padding: 0 0 8px;
   border-bottom: 2px solid #666666;
 }
-/* line 400, ../../css_src/partials/_panel.scss */
+/* line 419, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li span.list_tooltip span {
   float: left;
   padding: 0 0 0 10px;
   margin: 7px 0 0 0;
 }
-/* line 404, ../../css_src/partials/_panel.scss */
+/* line 423, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li span.list_tooltip span.blue {
   background: url("/img/sprite.png") no-repeat -464px -1452px;
 }
-/* line 405, ../../css_src/partials/_panel.scss */
+/* line 424, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li span.list_tooltip span.white {
   background: url("/img/sprite.png") no-repeat -464px -1536px;
 }
-/* line 407, ../../css_src/partials/_panel.scss */
+/* line 426, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li span.list_tooltip span h6 {
   margin: 0;
   padding: 0;
   font: bold 13px "Helvetica",Arial;
   color: #333333;
 }
-/* line 413, ../../css_src/partials/_panel.scss */
+/* line 432, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li span.list_tooltip span p {
   float: left;
   margin: 2px 0 0 0;
@@ -1335,7 +1356,7 @@ div.right {
   font: normal 10px "Helvetica",Arial;
   color: #666666;
 }
-/* line 417, ../../css_src/partials/_panel.scss */
+/* line 436, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li div.stats_bar {
   position: relative;
   float: left;
@@ -1345,14 +1366,14 @@ div.right {
   margin: 4px 0 0 0;
   background: url("/img/sprite.png") no-repeat 0 -904px;
 }
-/* line 426, ../../css_src/partials/_panel.scss */
+/* line 445, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li div.stats_bar span.r_bar {
   float: left;
   width: 100%;
   height: 100%;
   background: url("/img/sprite.png") no-repeat right -904px;
 }
-/* line 433, ../../css_src/partials/_panel.scss */
+/* line 452, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li div.stats_bar.inner {
   position: absolute;
   top: 2px;
@@ -1363,12 +1384,12 @@ div.right {
   height: 4px;
   background-position: 0 -868px;
 }
-/* line 442, ../../css_src/partials/_panel.scss */
+/* line 461, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li div.stats_bar.inner span.r_bar {
   height: 4px;
   background-position: right -868px;
 }
-/* line 449, ../../css_src/partials/_panel.scss */
+/* line 468, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li p {
   float: right;
   margin: 0;
@@ -1377,38 +1398,38 @@ div.right {
   color: #666666;
   line-height: 13px;
 }
-/* line 457, ../../css_src/partials/_panel.scss */
+/* line 476, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li p.ok {
   padding: 0 15px 0 0;
   background: url("/img/sprite.png") no-repeat right -384px;
 }
-/* line 458, ../../css_src/partials/_panel.scss */
+/* line 477, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li p.ko {
   padding: 0 15px 0 0;
   background: url("/img/sprite.png") no-repeat right -397px;
 }
-/* line 461, ../../css_src/partials/_panel.scss */
+/* line 480, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li.last {
   border: none;
 }
-/* line 462, ../../css_src/partials/_panel.scss */
+/* line 481, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li:last-child {
   border: none;
 }
-/* line 466, ../../css_src/partials/_panel.scss */
+/* line 485, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.tooltip li:hover {
   background-color: #EDEDED;
   cursor: pointer;
 }
-/* line 477, ../../css_src/partials/_panel.scss */
+/* line 496, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.inline li {
-  width: 77px;
+  width: 76px;
   height: 80px;
   padding: 0;
   border: none;
   border-right: 1px solid #E5E5E5;
 }
-/* line 484, ../../css_src/partials/_panel.scss */
+/* line 503, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.inline li h5 {
   float: left;
   width: 100%;
@@ -1421,7 +1442,7 @@ div.right {
   background: #EDEDED;
   border-bottom: 1px solid #CCCCCC;
 }
-/* line 497, ../../css_src/partials/_panel.scss */
+/* line 516, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.inline li p {
   float: right;
   width: 100%;
@@ -1433,71 +1454,71 @@ div.right {
   letter-spacing: -1px;
   text-align: center;
 }
-/* line 509, ../../css_src/partials/_panel.scss */
+/* line 528, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.inline li.last {
   border: none;
   width: 78px;
 }
-/* line 510, ../../css_src/partials/_panel.scss */
+/* line 529, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.inline li:last-child {
   border: none;
   width: 78px;
 }
-/* line 515, ../../css_src/partials/_panel.scss */
+/* line 534, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul {
   float: left;
   width: 100%;
   margin: 7px 0 0 0;
 }
-/* line 520, ../../css_src/partials/_panel.scss */
+/* line 539, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li {
   padding: 3px 0;
   border: none;
 }
-/* line 523, ../../css_src/partials/_panel.scss */
+/* line 542, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li.hst div.stats_bar {
   background-position: 0 -872px;
 }
-/* line 523, ../../css_src/partials/_panel.scss */
+/* line 542, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li.hst div.stats_bar span.r_bar {
   background-position: right -872px;
 }
-/* line 524, ../../css_src/partials/_panel.scss */
+/* line 543, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li.h div.stats_bar {
   background-position: 0 -880px;
 }
-/* line 524, ../../css_src/partials/_panel.scss */
+/* line 543, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li.h div.stats_bar span.r_bar {
   background-position: right -880px;
 }
-/* line 525, ../../css_src/partials/_panel.scss */
+/* line 544, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li.m div.stats_bar {
   background-position: 0 -888px;
 }
-/* line 525, ../../css_src/partials/_panel.scss */
+/* line 544, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li.m div.stats_bar span.r_bar {
   background-position: right -888px;
 }
-/* line 526, ../../css_src/partials/_panel.scss */
+/* line 545, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li.l div.stats_bar {
   background-position: 0 -896px;
 }
-/* line 526, ../../css_src/partials/_panel.scss */
+/* line 545, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li.l div.stats_bar span.r_bar {
   background-position: right -896px;
 }
-/* line 529, ../../css_src/partials/_panel.scss */
+/* line 548, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul h6 {
   float: left;
   width: 45px!important;
   font: normal 11px "Helvetica Neue",Arial;
   color: #999999;
 }
-/* line 536, ../../css_src/partials/_panel.scss */
+/* line 555, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul div.stats_bar {
   margin: 2px 0 0 0;
 }
-/* line 545, ../../css_src/partials/_panel.scss */
+/* line 564, ../../css_src/partials/_panel.scss */
 #panel div.loader {
   float: left;
   width: 312px;
