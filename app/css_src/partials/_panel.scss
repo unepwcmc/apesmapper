@@ -222,7 +222,7 @@
       @include background(0,-474px,no-repeat);
 
       h2 {float:left; padding:0; margin:0}
-      span.tools {float:right; margin:0; padding:0; }
+      span.tools {float:right; margin:0; padding:0;}
 
       p {
         float:left;
@@ -258,9 +258,13 @@
         width:16px;
         height:21px;
         margin:7px 0 0 0;
-        text-indent:-9999px;
-        font-size:0;
-        line-height:0;
+        text-indent:-999px;
+        display: block;
+        float: left;
+        text-transform: capitalize;
+        overflow: hidden;
+        /*font-size:0;*/
+        /*line-height:0;*/
         @include background(-22px,-453px,no-repeat);
       }
 
