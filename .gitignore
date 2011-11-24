@@ -45,3 +45,5 @@ frameworks/*
 tmp/**/*
 publish/*
 app/carbontool.db
+production
+env
