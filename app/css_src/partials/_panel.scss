@@ -480,8 +480,8 @@
             &.ko {padding:0 15px 0 0; @include background(no-repeat,right,-397px);}
           }
 
-          &.last {border:none}
-          &:last-child {border:none}
+          &.last {border:none; margin-bottom: 10px;}
+          &:last-child {border:none; margin-bottom: 10px;}
         }
 
         &.tooltip {
