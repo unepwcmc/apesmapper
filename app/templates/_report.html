@@ -10,10 +10,14 @@
     <% if(stats.carbon) { %>
     <ul class="normal list">
       <% if(stats.carbon.countries.length === 0) { %>
-        <ul><li></li></ul>
+        <ul><li class="last"></li></ul>
       <% } else { %>
-          <% _.each(stats.carbon.countries, function(ct) { %>
+          <% _.each(stats.carbon.countries, function(ct, idx) { %>
+          <% if( idx == (stats.carbon.countries.length - 1)) { %>
+          <li class="last">
+          <% } else { %>
           <li>
+          <% } %>
                 <h5><%= ct.name %></h5>
                 <p class="info"><% print(number_format(ct.qty)); %> T</p>
           </li>
@@ -149,8 +153,12 @@
         <p><% print(number_format(stats.carbon_sum.qty)); %><small>T</small></p>
     </span>
     <ul class="normal list tooltip">
-      <% _.each(stats.carbon_sum.polygons, function(p) { %>
+      <% _.each(stats.carbon_sum.polygons, function(p, idx) { %>
+        <% if( idx == (stats.carbon_sum.polygons.length - 1)) { %>
+        <li class="last">
+        <% } else { %>
         <li>
+        <% } %>
         <!-- tooltip -->
 
         <div class="list_tooltip_data">
