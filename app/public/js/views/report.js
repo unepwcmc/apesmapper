@@ -37,9 +37,13 @@ var Report = Backbone.View.extend({
         if(data.total) {
           s.css({top: 5});
         }
-        setTimeout(function() {
-            self.$('.report_stats').jScrollPane({autoReinitialise:true, contentWidth: 312});
-        }, 0);
+        if ($.browser.msie  && parseInt($.browser.version, 10) == 7) {
+            // jscrollpane does not want to work 
+        } else {
+            setTimeout(function() {
+                self.$('.report_stats').jScrollPane({autoReinitialise:true});//, autoReinitialiseDelay: 10000}); //, contentWidth: 312});
+            }, 0);
+        }
     },
 
     render: function(data) {
