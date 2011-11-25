@@ -48,12 +48,12 @@
 <% if(stats.covered_by_PA && stats.carbon_sequestration) { %>
 <div class="block">
     <span class="title">
-        <h2>COVERED BY PA'S</h2>
-        <p><%= (1e8*stats.covered_by_PA.km2/stats.carbon_sequestration.area).toFixed(1) %><small>%</small></p>
+        <h2>COVERED BY PAs</h2>
+        <p><%= (1e8*stats.covered_by_PA.km2/stats.carbon_sequestration.area).toFixed(0) %><small>%</small></p>
     </span>
     <ul class="normal list">
       <li>
-        Overlapping with <%= stats.covered_by_PA.num_overlap %> PA
+        Overlapping with <%= stats.covered_by_PA.num_overlap %> Protected Area(s)
       </li>
     </ul>
 </div>
@@ -62,12 +62,12 @@
 <% if(stats.covered_by_KBA) { %>
 <div class="block">
     <span class="title">
-        <h2>COVERED BY KBA'S</h2>
-        <p><%= stats.covered_by_KBA.percent.toFixed(1) %><small>%</small></p>
+        <h2>COVERED BY KBAs</h2>
+        <p><%= stats.covered_by_KBA.percent.toFixed(0) %><small>%</small></p>
     </span>
     <ul class="normal list">
       <li>
-        Overlapping with <%= stats.covered_by_KBA.num_overlap %> KBA
+        Overlapping with <%= stats.covered_by_KBA.num_overlap %> Key Biodiversity Area(s)
       </li>
   </ul> 
 </div>

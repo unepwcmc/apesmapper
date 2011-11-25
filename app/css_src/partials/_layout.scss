@@ -331,12 +331,12 @@
                 &.lifeweb {width:121px; height:48px; @include background(no-repeat,-150px,-1127px);}
                 &.unep-wcmc {width:96px; height:49px; @include background(no-repeat,-375px,-1123px);}
                 &.vizzuality {width:89px; height:47px; @include background(no-repeat,-280px,-1126px);}
-                &.federal_agency {width:211px; height:92px; @include background(no-repeat,left,-2312px);}
+                &.federal_agency {width:211px; height:92px; margin-left: -10px; @include background(no-repeat,left,-2312px);}
                 &.nature {
                   float:left;
                   width:53px;
                   height:57px;
-                  margin:0px 0 0;
+                  margin: -8px 0 0 12px;
                   @include background(no-repeat,0,-1369px);
                   text-indent:-9999px;
                   line-height:0;

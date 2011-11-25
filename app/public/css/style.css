@@ -2129,6 +2129,7 @@ body.out div.layout footer div.collab ul li a.vizzuality {
 body.out div.layout footer div.collab ul li a.federal_agency {
   width: 211px;
   height: 92px;
+  margin-left: -10px;
   background: url("/img/sprite.png") no-repeat left -2312px;
 }
 /* line 335, ../../css_src/partials/_layout.scss */
@@ -2136,7 +2137,7 @@ body.out div.layout footer div.collab ul li a.nature {
   float: left;
   width: 53px;
   height: 57px;
-  margin: 0px 0 0;
+  margin: -8px 0 0 12px;
   background: url("/img/sprite.png") no-repeat 0 -1369px;
   text-indent: -9999px;
   line-height: 0;
