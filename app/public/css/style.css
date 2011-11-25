@@ -2131,31 +2131,42 @@ body.out div.layout footer div.collab ul li a.federal_agency {
   height: 92px;
   background: url("/img/sprite.png") no-repeat left -2312px;
 }
-/* line 337, ../../css_src/partials/_layout.scss */
+/* line 335, ../../css_src/partials/_layout.scss */
+body.out div.layout footer div.collab ul li a.nature {
+  float: left;
+  width: 53px;
+  height: 57px;
+  margin: 0px 0 0;
+  background: url("/img/sprite.png") no-repeat 0 -1369px;
+  text-indent: -9999px;
+  line-height: 0;
+  font-size: 0;
+}
+/* line 347, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.collab ul li.last {
   margin: 0;
 }
-/* line 341, ../../css_src/partials/_layout.scss */
+/* line 351, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.collab p {
   padding: 75px 0 0 0;
   font: normal 15px "Helvetica",Arial;
   color: #B2B2B2;
 }
-/* line 345, ../../css_src/partials/_layout.scss */
+/* line 355, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.collab p a {
   color: #7F7F7F;
   text-decoration: none;
 }
-/* line 345, ../../css_src/partials/_layout.scss */
+/* line 355, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.collab p a:hover {
   text-decoration: underline;
 }
-/* line 349, ../../css_src/partials/_layout.scss */
+/* line 359, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.right {
   width: 333px;
   padding: 0;
 }
-/* line 353, ../../css_src/partials/_layout.scss */
+/* line 363, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.right a.nature {
   float: left;
   width: 240px;
