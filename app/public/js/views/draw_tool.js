@@ -149,6 +149,7 @@ var PolygonDrawTool = Backbone.View.extend({
         var marker = this._add_vertex(latLng);
         var self = this;
         if (this.vertex.length === 1) {
+            self.trigger('first_vertex');
             google.maps.event.addListener(marker, "click", function() {
                 if (self.vertex.length >= 3) {
                   self.create_polygon(self.vertex);

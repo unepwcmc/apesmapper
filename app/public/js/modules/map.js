@@ -194,6 +194,14 @@ App.modules.Map = function(app) {
             });
             this.show_controls(false);
 
+            // when first vertex is created the tool allows to
+            // click on a PA, in the next polygons is not allowed
+            this.polygon_edit.bind('first_vertex', function() {
+                setTimeout(function() {
+                    self.map.unbind('click', self.protected_area_click);
+                }, 500);
+            });
+
 
         },
 
@@ -214,9 +222,7 @@ App.modules.Map = function(app) {
             this.polygon_edit.editing_state(b);
             // always try to unbind to avoid bind twice
             this.map.unbind('click', this.protected_area_click);
-            if(!b) {
-                this.map.bind('click', this.protected_area_click);
-            }
+            this.map.bind('click', this.protected_area_click);
         },
 
         protected_area_click: function(e) {

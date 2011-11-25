@@ -13,10 +13,13 @@ App.modules.Data = function(app) {
         },
 
         initialize: function() {
+          _.bindAll(this, '_save');
           this.bind('change:polygons', this.fetch);
+          this.save = _.debounce(this._save, 800);
+
         },
 
-        save: function() {
+        _save: function() {
             return this.collection.save();
         },
 
