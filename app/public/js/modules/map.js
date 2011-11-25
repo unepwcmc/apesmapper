@@ -201,7 +201,14 @@ App.modules.Map = function(app) {
                     self.map.unbind('click', self.protected_area_click);
                 }, 500);
             });
-
+            $(document).keyup(function(e) {
+                if (e.keyCode == 27) {
+                    if(self._editing) {
+                        self.editing(false);
+                        self.editing(true);
+                    }
+                }
+            });
 
         },
 
@@ -219,6 +226,7 @@ App.modules.Map = function(app) {
         },
 
         editing: function(b) {
+            this._editing = b;
             this.polygon_edit.editing_state(b);
             // always try to unbind to avoid bind twice
             this.map.unbind('click', this.protected_area_click);
