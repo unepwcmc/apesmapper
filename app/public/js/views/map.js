@@ -16,8 +16,8 @@ var Layer = Class.extend({
 // google maps map
 var MapView = Backbone.View.extend({
     mapOptions: {
-            zoom: 5,
-            center: new google.maps.LatLng(-6.653695352486294, 58.743896484375),
+            zoom: 2,
+            center: new google.maps.LatLng(26.44106, 63.48967773437),
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             disableDefaultUI: true,
             //disableDoubleClickZoom: true,
@@ -51,7 +51,22 @@ var MapView = Backbone.View.extend({
        this.projector = new Projector(this.map);
        this.projector.draw = this.ready;
        this.signals_on = true;
-       this.map.setOptions({'styles':[ { featureType: "water", stylers: [ { hue: "#00eeff" }, { saturation: -44 }, { lightness: 40 } ] },{ featureType: "road", stylers: [ { saturation: -81 }, { visibility: "simplified" }, { lightness: 50 } ] },{ featureType: "road", elementType: "labels", stylers: [ { visibility: "off" } ] },{ featureType: "poi.business", stylers: [ { visibility: "off" } ] },{ featureType: "poi.school", elementType: "labels", stylers: [ { visibility: "off" } ] },{ featureType: "poi.medical", stylers: [ { visibility: "off" } ] },{ featureType: "administrative.neighborhood", stylers: [ { visibility: "off" } ] },{ featureType: "administrative.land_parcel", stylers: [ { visibility: "off" } ] },{ featureType: "administrative.locality", stylers: [ { visibility: "on" } ] } ]
+       this.map.setOptions({'styles':[ { featureType: "water", stylers: [ { hue: "#00eeff" }, { saturation: -44 }, { lightness: 40 } ] },{ featureType: "road", stylers: [ { saturation: -81 }, { visibility: "simplified" }, { lightness: 50 } ] },{ featureType: "road", elementType: "labels", stylers: [ { visibility: "off" } ] },{ featureType: "poi.business", stylers: [ { visibility: "off" } ] },{ featureType: "poi.school", elementType: "labels", stylers: [ { visibility: "off" } ] },{ featureType: "poi.medical", stylers: [ { visibility: "off" } ] },{ featureType: "administrative.neighborhood", stylers: [ { visibility: "off" } ] },{ featureType: "administrative.land_parcel", stylers: [ { visibility: "off" } ] },
+       { featureType: "administrative.locality", stylers: [ { visibility: "on" } ] },
+       {
+           featureType: "poi.park",
+           stylers: [
+             { visibility: "off" }
+           ]
+         },
+         {
+             featureType: "poi.attraction",
+             stylers: [
+               { visibility: "off" }
+             ]
+           }
+           
+        ]
        });
     },
 
