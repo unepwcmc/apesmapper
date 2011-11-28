@@ -30,7 +30,11 @@
             color:#333333;
             padding:0 0 5px;
             border-bottom:2px solid #323232;
+            a {
+            color:#333333;
+            }
           }
+
 
           p {
             margin:7px 0 0 0;
@@ -39,7 +43,7 @@
             color:#666666;
           }
 
-          a {
+          a.butt {
             float:left;
             width:auto;
             height:26px;

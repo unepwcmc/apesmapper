@@ -14,7 +14,10 @@ var Report = Backbone.View.extend({
         'click .removing .cancel': 'leave_edit',
         'click .removing .remove_it_please': 'remove_polygons',
         'mouseover .tooltip li': 'show_tooltip',
-        'mouseleave .tooltip li': 'hide_tooltip'
+        'mouseleave .tooltip li': 'hide_tooltip',
+
+        'mouseover .title h2': 'show_tooltip_help',
+        'mouseleave .title h2': 'hide_tooltip_help'
     },
 
     initialize: function() {
@@ -26,6 +29,7 @@ var Report = Backbone.View.extend({
         this.showing_loading = false;
         this.showing = false;
         this.render_stats = _.debounce(this._render_stats, 300);
+        this.tooltip_timer = undefined;
     },
 
     _render_stats: function(data) {
@@ -69,6 +73,30 @@ var Report = Backbone.View.extend({
         }
         this.loading(this.showing_loading);
         return this;
+    },
+
+    show_tooltip_help: function(e) {
+      var el = $(e.currentTarget);
+      var what = el.html().replace(/ /g, '_').replace('.','_')
+      var tooltip = $('#panel').find('.help_popup.' + what);
+      var _top = $(this.el).find('.jspPane').position().top
+      var pos = el.position();
+      var h = tooltip.outerHeight();
+      tooltip.css({top: pos.top + _top + 170 - h - 10 , left: 20});
+      //set html rendered previousl
+      clearTimeout(self.tooltip_timer)
+      $('#panel').find('.help_popup').hide();
+      self.tooltip_timer = setTimeout(function() {
+        tooltip.show();
+      }, 600);
+    },
+
+    hide_tooltip_help: function(e) {
+      clearTimeout(self.tooltip_timer)
+      var tooltip = $('#panel').find('.help_popup');
+      self.tooltip_timer = setTimeout(function() {
+        tooltip.hide();
+      },1000);
     },
 
     show_tooltip: function(e) {

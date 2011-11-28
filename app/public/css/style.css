@@ -612,7 +612,7 @@ div.right {
   margin-top: -7px;
 }
 /* line 103, ../../css_src/partials/_map.scss */
-.map_container #protected_popup {
+.map_container .popup_text {
   position: absolute;
   display: none;
   top: 100px;
@@ -621,21 +621,21 @@ div.right {
   height: 80px;
 }
 /* line 113, ../../css_src/partials/_map.scss */
-.map_container #protected_popup .top {
+.map_container .popup_text .top {
   padding: 18px 18px 0 18px;
   width: 100%;
   background: url("/img/sprite.png") left -1469px no-repeat;
   height: 0px;
 }
 /* line 120, ../../css_src/partials/_map.scss */
-.map_container #protected_popup .center {
+.map_container .popup_text .center {
   padding: 0px 18px 0 18px;
   width: 100%;
   background: url("/img/sprite.png") left -1480px no-repeat;
   float: left;
 }
 /* line 126, ../../css_src/partials/_map.scss */
-.map_container #protected_popup .bottom {
+.map_container .popup_text .bottom {
   padding: 0px 18px 18px 18px;
   width: 100%;
   background: url("/img/sprite.png") left -1515px no-repeat;
@@ -643,7 +643,7 @@ div.right {
   height: 48px;
 }
 /* line 134, ../../css_src/partials/_map.scss */
-.map_container #protected_popup h1.name {
+.map_container .popup_text h1.name {
   font: bold 13px "WhitneyBookRegular","Myriad Pro";
   color: #333333;
   text-transform: uppercase;
@@ -652,14 +652,14 @@ div.right {
   padding-bottom: 5px;
 }
 /* line 142, ../../css_src/partials/_map.scss */
-.map_container #protected_popup .close {
+.map_container .popup_text .close {
   float: right;
   width: 12px;
   height: 17px;
   background: url("/img/sprite.png") right -1258px no-repeat;
 }
 /* line 148, ../../css_src/partials/_map.scss */
-.map_container #protected_popup #add_protected {
+.map_container .popup_text #add_protected {
   float: left;
   width: auto;
   height: 30px;
@@ -675,7 +675,7 @@ div.right {
   text-decoration: none;
 }
 /* line 162, ../../css_src/partials/_map.scss */
-.map_container #protected_popup #add_protected span {
+.map_container .popup_text #add_protected span {
   float: left;
   width: auto;
   height: 14px;
@@ -683,7 +683,7 @@ div.right {
   background: url("/img/sprite.png") right -820px no-repeat;
 }
 /* line 170, ../../css_src/partials/_map.scss */
-.map_container #protected_popup #add_protected:hover {
+.map_container .popup_text #add_protected:hover {
   text-decoration: underline;
 }
 /* line 174, ../../css_src/partials/_map.scss */
@@ -929,7 +929,54 @@ div.right {
   margin-top: -1px;
   /* div.list_tooltip */
 }
-/* line 13, ../../css_src/partials/_panel.scss */
+/* line 14, ../../css_src/partials/_panel.scss */
+#panel .help_popup {
+  position: absolute;
+  display: none;
+  top: 100px;
+  left: 100px;
+  width: 193px;
+  /*height: 80px;*/
+  z-index: 150;
+}
+/* line 25, ../../css_src/partials/_panel.scss */
+#panel .help_popup h1.name {
+  font: bold 13px "WhitneyBookRegular","Myriad Pro";
+  color: #333333;
+  text-transform: uppercase;
+  border-bottom: 2px solid #333;
+  letter-spacing: -1px;
+  padding-bottom: 5px;
+  margin-top: 0px;
+}
+/* line 34, ../../css_src/partials/_panel.scss */
+#panel .help_popup a {
+  font: bold 11px "Helvetica Neue";
+  color: #333333;
+}
+/* line 39, ../../css_src/partials/_panel.scss */
+#panel .help_popup .top {
+  padding: 18px 18px 0 18px;
+  width: 100%;
+  background: url("/img/sprite.png") left -1469px no-repeat;
+  height: 0px;
+}
+/* line 46, ../../css_src/partials/_panel.scss */
+#panel .help_popup .center {
+  padding: 0px 18px 0 18px;
+  width: 100%;
+  background: url("/img/sprite.png") left -1480px no-repeat;
+  float: left;
+}
+/* line 52, ../../css_src/partials/_panel.scss */
+#panel .help_popup .bottom {
+  padding: 0px 18px 18px 18px;
+  width: 100%;
+  background: url("/img/sprite.png") left -1535px no-repeat;
+  float: left;
+  height: 37px;
+}
+/* line 61, ../../css_src/partials/_panel.scss */
 #panel div.list_tooltip {
   display: none;
   position: absolute;
@@ -940,35 +987,35 @@ div.right {
   z-index: 300;
   background: url("/img/sprite.png") no-repeat -267px -1436px;
 }
-/* line 23, ../../css_src/partials/_panel.scss */
+/* line 71, ../../css_src/partials/_panel.scss */
 #panel div.list_tooltip h4 {
   font: bold 11px "WhitneyBold";
   color: #333333;
   padding: 0 0 8px;
   border-bottom: 2px solid #666666;
 }
-/* line 30, ../../css_src/partials/_panel.scss */
+/* line 78, ../../css_src/partials/_panel.scss */
 #panel div.list_tooltip span {
   float: left;
   padding: 0 0 0 10px;
   margin: 7px 0 0 0;
 }
-/* line 34, ../../css_src/partials/_panel.scss */
+/* line 82, ../../css_src/partials/_panel.scss */
 #panel div.list_tooltip span.blue {
   background: url("/img/sprite.png") no-repeat -464px -1452px;
 }
-/* line 35, ../../css_src/partials/_panel.scss */
+/* line 83, ../../css_src/partials/_panel.scss */
 #panel div.list_tooltip span.white {
   background: url("/img/sprite.png") no-repeat -464px -1536px;
 }
-/* line 37, ../../css_src/partials/_panel.scss */
+/* line 85, ../../css_src/partials/_panel.scss */
 #panel div.list_tooltip span h6 {
   margin: 0;
   padding: 0;
   font: bold 13px "Helvetica",Arial;
   color: #333333;
 }
-/* line 43, ../../css_src/partials/_panel.scss */
+/* line 91, ../../css_src/partials/_panel.scss */
 #panel div.list_tooltip span p {
   float: left;
   margin: 2px 0 0 0;
@@ -976,7 +1023,7 @@ div.right {
   font: normal 10px "Helvetica",Arial;
   color: #666666;
 }
-/* line 47, ../../css_src/partials/_panel.scss */
+/* line 95, ../../css_src/partials/_panel.scss */
 #panel #tabs {
   display: inline-block;
   vertical-align: top;
@@ -984,7 +1031,7 @@ div.right {
   *display: inline;
   width: 100%;
 }
-/* line 51, ../../css_src/partials/_panel.scss */
+/* line 99, ../../css_src/partials/_panel.scss */
 #panel #tabs ul {
   width: 100%;
   height: 49px;
@@ -995,7 +1042,7 @@ div.right {
   margin: 0;
   background-color: #EDEDED;
 }
-/* line 61, ../../css_src/partials/_panel.scss */
+/* line 109, ../../css_src/partials/_panel.scss */
 #panel #tabs ul li {
   position: relative;
   float: left;
@@ -1005,7 +1052,7 @@ div.right {
   padding: 0;
   border-right: 1px solid #BBB;
 }
-/* line 71, ../../css_src/partials/_panel.scss */
+/* line 119, ../../css_src/partials/_panel.scss */
 #panel #tabs ul li a {
   display: block;
   width: 100%;
@@ -1018,7 +1065,7 @@ div.right {
   text-align: center;
   background-color: #EDEDED;
 }
-/* line 83, ../../css_src/partials/_panel.scss */
+/* line 131, ../../css_src/partials/_panel.scss */
 #panel #tabs ul li a.add, #panel #tabs ul li a#add_report {
   height: 100%;
   padding: 0;
@@ -1028,15 +1075,15 @@ div.right {
   font-size: 0;
   line-height: 0;
 }
-/* line 92, ../../css_src/partials/_panel.scss */
+/* line 140, ../../css_src/partials/_panel.scss */
 #panel #tabs ul li a.add:hover, #panel #tabs ul li a#add_report:hover {
   background-position: 15px -952px;
 }
-/* line 95, ../../css_src/partials/_panel.scss */
+/* line 143, ../../css_src/partials/_panel.scss */
 #panel #tabs ul li a:hover {
   color: black;
 }
-/* line 98, ../../css_src/partials/_panel.scss */
+/* line 146, ../../css_src/partials/_panel.scss */
 #panel #tabs ul li span.stats {
   position: absolute;
   display: none;
@@ -1055,7 +1102,7 @@ div.right {
   box-shadow: 3px -1px 2px 0 rgba(0, 0, 0, 0.05), -3px -1px 2px 0 rgba(0, 0, 0, 0.05);
   background: url("/img/sprite.png") no-repeat -61px -923px;
 }
-/* line 114, ../../css_src/partials/_panel.scss */
+/* line 162, ../../css_src/partials/_panel.scss */
 #panel #tabs ul li span.stats span.stats_inner {
   display: block;
   float: left;
@@ -1063,13 +1110,13 @@ div.right {
   padding: 20px 20px 12px 0;
   background: url("/img/sprite.png") no-repeat right -923px;
 }
-/* line 122, ../../css_src/partials/_panel.scss */
+/* line 170, ../../css_src/partials/_panel.scss */
 #panel #tabs ul li span.stats h5 {
   margin: 0;
   font: bold 15px "WhitneyBold","Myriad Pro";
   color: #333333;
 }
-/* line 128, ../../css_src/partials/_panel.scss */
+/* line 176, ../../css_src/partials/_panel.scss */
 #panel #tabs ul li span.stats p {
   width: auto;
   margin: 0;
@@ -1077,33 +1124,33 @@ div.right {
   font: normal 13px "Helvetica Neue",Arial;
   color: #666666;
 }
-/* line 138, ../../css_src/partials/_panel.scss */
+/* line 186, ../../css_src/partials/_panel.scss */
 #panel #tabs ul li.total {
   width: auto;
   border: none;
 }
-/* line 142, ../../css_src/partials/_panel.scss */
+/* line 190, ../../css_src/partials/_panel.scss */
 #panel #tabs ul li.total a {
   width: auto;
   padding: 17px 15px;
 }
-/* line 145, ../../css_src/partials/_panel.scss */
+/* line 193, ../../css_src/partials/_panel.scss */
 #panel #tabs ul li.total span.stats span.stats_inner {
   background-position: -221px -923px;
 }
-/* line 152, ../../css_src/partials/_panel.scss */
+/* line 200, ../../css_src/partials/_panel.scss */
 #panel #tabs ul li.enabled span.stats {
   display: block;
 }
-/* line 165, ../../css_src/partials/_panel.scss */
+/* line 213, ../../css_src/partials/_panel.scss */
 #panel p {
   margin: 5px 0;
 }
-/* line 168, ../../css_src/partials/_panel.scss */
+/* line 216, ../../css_src/partials/_panel.scss */
 #panel h2, #panel h1 {
   margin: 10px 0;
 }
-/* line 173, ../../css_src/partials/_panel.scss */
+/* line 221, ../../css_src/partials/_panel.scss */
 #panel #tab_content {
   display: block;
   width: 312px;
@@ -1116,61 +1163,61 @@ div.right {
   top: 51px;
   bottom: 0;
 }
-/* line 185, ../../css_src/partials/_panel.scss */
+/* line 233, ../../css_src/partials/_panel.scss */
 #panel #tab_content .tab_content_item {
   height: 100%;
   overflow: auto;
 }
-/* line 190, ../../css_src/partials/_panel.scss */
+/* line 238, ../../css_src/partials/_panel.scss */
 #panel #tab_content .stats_header {
   overflow: hidden;
   height: 44px;
 }
-/* line 194, ../../css_src/partials/_panel.scss */
+/* line 242, ../../css_src/partials/_panel.scss */
 #panel #tab_content .report_stats {
   position: absolute;
   width: 324px;
   top: 80px;
   bottom: 0;
 }
-/* line 199, ../../css_src/partials/_panel.scss */
+/* line 247, ../../css_src/partials/_panel.scss */
 #panel #tab_content .report_stats .jspVerticalBar {
   width: 7px;
   right: 0px;
   background: #BBD;
 }
-/* line 204, ../../css_src/partials/_panel.scss */
+/* line 252, ../../css_src/partials/_panel.scss */
 #panel #tab_content .report_stats .jspTrack {
   background: #FFF;
 }
-/* line 206, ../../css_src/partials/_panel.scss */
+/* line 254, ../../css_src/partials/_panel.scss */
 #panel #tab_content .report_stats .jspTrack .jspDrag {
   background-color: rgba(127, 127, 127, 0.9);
 }
-/* line 210, ../../css_src/partials/_panel.scss */
+/* line 258, ../../css_src/partials/_panel.scss */
 #panel #tab_content .report_stats .jspPane {
   width: 310px !important;
 }
-/* line 217, ../../css_src/partials/_panel.scss */
+/* line 265, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools {
   width: 100%;
   height: 34px;
   margin: 10px 0 0 0;
   background: url("/img/sprite.png") 0 -474px no-repeat;
 }
-/* line 223, ../../css_src/partials/_panel.scss */
+/* line 271, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools h2 {
   float: left;
   padding: 0;
   margin: 0;
 }
-/* line 224, ../../css_src/partials/_panel.scss */
+/* line 272, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools span.tools {
   float: right;
   margin: 0;
   padding: 0;
 }
-/* line 226, ../../css_src/partials/_panel.scss */
+/* line 274, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools p {
   float: left;
   width: auto;
@@ -1180,31 +1227,31 @@ div.right {
   font: normal 13px "Helvetica Neue",Arial;
   color: #666666;
 }
-/* line 235, ../../css_src/partials/_panel.scss */
+/* line 283, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools p a {
   font: bold 13px "Helvetica Neue",Arial;
   color: #333333;
   text-decoration: underline;
 }
-/* line 239, ../../css_src/partials/_panel.scss */
+/* line 287, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools p a:hover {
   color: black;
 }
-/* line 244, ../../css_src/partials/_panel.scss */
+/* line 292, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools.removing {
   background: none;
   background-color: #FFECE6;
 }
-/* line 247, ../../css_src/partials/_panel.scss */
+/* line 295, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools.removing p {
   padding: 10px 10px;
 }
-/* line 249, ../../css_src/partials/_panel.scss */
+/* line 297, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools.removing p.last {
   float: right;
   padding: 8px 1px 0 0;
 }
-/* line 255, ../../css_src/partials/_panel.scss */
+/* line 303, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools a.edit {
   display: inline-block;
   vertical-align: top;
@@ -1222,7 +1269,7 @@ div.right {
   /*line-height:0;*/
   background: url("/img/sprite.png") -22px -453px no-repeat;
 }
-/* line 270, ../../css_src/partials/_panel.scss */
+/* line 318, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools a.remove {
   display: inline-block;
   vertical-align: top;
@@ -1236,7 +1283,7 @@ div.right {
   line-height: 0;
   background: url("/img/sprite.png") -2px -453px no-repeat;
 }
-/* line 281, ../../css_src/partials/_panel.scss */
+/* line 329, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools a.finish {
   float: left;
   width: auto;
@@ -1251,7 +1298,7 @@ div.right {
   text-shadow: 0 1px 0 #3c7d7d;
   text-decoration: none;
 }
-/* line 294, ../../css_src/partials/_panel.scss */
+/* line 342, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools a.finish span {
   float: left;
   width: auto;
@@ -1259,11 +1306,11 @@ div.right {
   padding: 8px 12px 8px 0;
   background: url("/img/sprite.png") right -820px no-repeat;
 }
-/* line 302, ../../css_src/partials/_panel.scss */
+/* line 350, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools a.finish:hover {
   text-decoration: underline;
 }
-/* line 304, ../../css_src/partials/_panel.scss */
+/* line 352, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools a.remove_it_please {
   background: url("/img/sprite.png") 0 -1817px no-repeat;
   filter: progid:DXImageTransform.Microsoft.Shadow(color='#000000', Direction=180, Strength=1);
@@ -1275,12 +1322,12 @@ div.right {
   padding: 7px 12px 14px 14px;
   margin-left: 5px;
 }
-/* line 311, ../../css_src/partials/_panel.scss */
+/* line 359, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.tools a.remove_it_please:hover {
   text-decoration: underline;
   color: white;
 }
-/* line 320, ../../css_src/partials/_panel.scss */
+/* line 368, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.no_content {
   width: 100%;
   height: 302px;
@@ -1289,11 +1336,11 @@ div.right {
   overflow: hidden;
   background: url("/img/sprite.png") -83px -1908px no-repeat;
 }
-/* line 328, ../../css_src/partials/_panel.scss */
+/* line 376, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.no_content div.inner {
   width: 300px;
 }
-/* line 331, ../../css_src/partials/_panel.scss */
+/* line 379, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.no_content div.inner span.title {
   display: inline-block;
   vertical-align: top;
@@ -1302,7 +1349,7 @@ div.right {
   width: 300px;
   padding: 192px 0 2px 0;
 }
-/* line 336, ../../css_src/partials/_panel.scss */
+/* line 384, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.no_content div.inner span.title h2 {
   width: auto;
   padding: 0;
@@ -1310,27 +1357,27 @@ div.right {
   font: bold 13px "WhitneyBold";
   color: #333333;
 }
-/* line 345, ../../css_src/partials/_panel.scss */
+/* line 393, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.no_content div.inner p {
   color: #666666;
   width: 300px;
 }
-/* line 345, ../../css_src/partials/_panel.scss */
+/* line 393, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.no_content div.inner p.margin {
   margin: 20px 0 0 0;
 }
-/* line 349, ../../css_src/partials/_panel.scss */
+/* line 397, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.no_content span.end {
   width: 312px;
   height: 5px;
   background: url("/img/sprite.png") 0 -785px no-repeat;
 }
-/* line 357, ../../css_src/partials/_panel.scss */
+/* line 405, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block {
   width: 100%;
   margin: 25px 0 0 0;
 }
-/* line 361, ../../css_src/partials/_panel.scss */
+/* line 409, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block span.title {
   float: left;
   width: 100%;
@@ -1338,7 +1385,7 @@ div.right {
   padding: 0;
   border-bottom: 2px solid #666666;
 }
-/* line 368, ../../css_src/partials/_panel.scss */
+/* line 416, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block span.title h2 {
   float: left;
   padding: 0;
@@ -1346,7 +1393,7 @@ div.right {
   font: bold 11px "WhitneyBold","Myriad Pro";
   color: #333333;
 }
-/* line 376, ../../css_src/partials/_panel.scss */
+/* line 424, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block span.title p {
   float: right;
   padding: 0;
@@ -1355,12 +1402,12 @@ div.right {
   letter-spacing: -1px;
   color: #333333;
 }
-/* line 384, ../../css_src/partials/_panel.scss */
+/* line 432, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block span.title p small {
   font-size: 13px;
   padding: 0 0 0 5px;
 }
-/* line 390, ../../css_src/partials/_panel.scss */
+/* line 438, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block .conservation_header {
   background-color: #C7C7C7;
   margin: 0;
@@ -1373,15 +1420,15 @@ div.right {
   text-transform: uppercase;
   border-bottom: 1px solid #B3B3B3;
 }
-/* line 401, ../../css_src/partials/_panel.scss */
+/* line 449, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block .conservation_header p {
   margin-left: 5px;
 }
-/* line 406, ../../css_src/partials/_panel.scss */
+/* line 454, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block .list_tooltip_data {
   display: none;
 }
-/* line 410, ../../css_src/partials/_panel.scss */
+/* line 458, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul {
   width: 100%;
   height: 100%;
@@ -1389,14 +1436,14 @@ div.right {
   padding: 0;
   margin: 0;
 }
-/* line 417, ../../css_src/partials/_panel.scss */
+/* line 465, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li {
   float: left;
   width: 100%;
   padding: 7px 0;
   border-bottom: 1px solid #CCCCCC;
 }
-/* line 423, ../../css_src/partials/_panel.scss */
+/* line 471, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li h5 {
   float: left;
   margin: 0;
@@ -1404,7 +1451,7 @@ div.right {
   font: normal 13px "Helvetica Neue",Arial;
   color: #666666;
 }
-/* line 430, ../../css_src/partials/_panel.scss */
+/* line 478, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li h5.stats {
   max-width: 45px;
   width: 45px;
@@ -1413,7 +1460,7 @@ div.right {
   overflow: hidden;
   white-space: nowrap;
 }
-/* line 439, ../../css_src/partials/_panel.scss */
+/* line 487, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li div.stats_bar {
   position: relative;
   float: left;
@@ -1423,14 +1470,14 @@ div.right {
   margin: 4px 0 0 0;
   background: url("/img/sprite.png") no-repeat 0 -904px;
 }
-/* line 448, ../../css_src/partials/_panel.scss */
+/* line 496, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li div.stats_bar span.r_bar {
   float: left;
   width: 100%;
   height: 100%;
   background: url("/img/sprite.png") no-repeat right -904px;
 }
-/* line 455, ../../css_src/partials/_panel.scss */
+/* line 503, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li div.stats_bar.inner {
   position: absolute;
   top: 2px;
@@ -1441,12 +1488,12 @@ div.right {
   height: 4px;
   background-position: 0 -868px;
 }
-/* line 464, ../../css_src/partials/_panel.scss */
+/* line 512, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li div.stats_bar.inner span.r_bar {
   height: 4px;
   background-position: right -868px;
 }
-/* line 471, ../../css_src/partials/_panel.scss */
+/* line 519, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li p {
   float: right;
   margin: 0;
@@ -1455,32 +1502,32 @@ div.right {
   color: #666666;
   line-height: 13px;
 }
-/* line 479, ../../css_src/partials/_panel.scss */
+/* line 527, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li p.ok {
   padding: 0 15px 0 0;
   background: url("/img/sprite.png") no-repeat right -384px;
 }
-/* line 480, ../../css_src/partials/_panel.scss */
+/* line 528, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li p.ko {
   padding: 0 15px 0 0;
   background: url("/img/sprite.png") no-repeat right -397px;
 }
-/* line 483, ../../css_src/partials/_panel.scss */
+/* line 531, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li.last {
   border: none;
   margin-bottom: 10px;
 }
-/* line 484, ../../css_src/partials/_panel.scss */
+/* line 532, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul li:last-child {
   border: none;
   margin-bottom: 10px;
 }
-/* line 490, ../../css_src/partials/_panel.scss */
+/* line 538, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.tooltip li:hover {
   background-color: #EDEDED;
   cursor: pointer;
 }
-/* line 501, ../../css_src/partials/_panel.scss */
+/* line 549, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.inline li {
   width: 76px;
   height: 80px;
@@ -1488,7 +1535,7 @@ div.right {
   border: none;
   border-right: 1px solid #E5E5E5;
 }
-/* line 508, ../../css_src/partials/_panel.scss */
+/* line 556, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.inline li h5 {
   float: left;
   width: 100%;
@@ -1501,7 +1548,7 @@ div.right {
   background: #EDEDED;
   border-bottom: 1px solid #CCCCCC;
 }
-/* line 521, ../../css_src/partials/_panel.scss */
+/* line 569, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.inline li p {
   float: right;
   width: 100%;
@@ -1513,71 +1560,71 @@ div.right {
   letter-spacing: -1px;
   text-align: center;
 }
-/* line 533, ../../css_src/partials/_panel.scss */
+/* line 581, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.inline li.last {
   border: none;
   width: 78px;
 }
-/* line 534, ../../css_src/partials/_panel.scss */
+/* line 582, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.inline li:last-child {
   border: none;
   width: 78px;
 }
-/* line 539, ../../css_src/partials/_panel.scss */
+/* line 587, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul {
   float: left;
   width: 100%;
   margin: 7px 0 0 0;
 }
-/* line 544, ../../css_src/partials/_panel.scss */
+/* line 592, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li {
   padding: 3px 0;
   border: none;
 }
-/* line 547, ../../css_src/partials/_panel.scss */
+/* line 595, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li.hst div.stats_bar {
   background-position: 0 -872px;
 }
-/* line 547, ../../css_src/partials/_panel.scss */
+/* line 595, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li.hst div.stats_bar span.r_bar {
   background-position: right -872px;
 }
-/* line 548, ../../css_src/partials/_panel.scss */
+/* line 596, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li.h div.stats_bar {
   background-position: 0 -880px;
 }
-/* line 548, ../../css_src/partials/_panel.scss */
+/* line 596, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li.h div.stats_bar span.r_bar {
   background-position: right -880px;
 }
-/* line 549, ../../css_src/partials/_panel.scss */
+/* line 597, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li.m div.stats_bar {
   background-position: 0 -888px;
 }
-/* line 549, ../../css_src/partials/_panel.scss */
+/* line 597, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li.m div.stats_bar span.r_bar {
   background-position: right -888px;
 }
-/* line 550, ../../css_src/partials/_panel.scss */
+/* line 598, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li.l div.stats_bar {
   background-position: 0 -896px;
 }
-/* line 550, ../../css_src/partials/_panel.scss */
+/* line 598, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul li.l div.stats_bar span.r_bar {
   background-position: right -896px;
 }
-/* line 553, ../../css_src/partials/_panel.scss */
+/* line 601, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul h6 {
   float: left;
   width: 45px!important;
   font: normal 11px "Helvetica Neue",Arial;
   color: #999999;
 }
-/* line 560, ../../css_src/partials/_panel.scss */
+/* line 608, ../../css_src/partials/_panel.scss */
 #panel #tab_content div.block ul.down ul div.stats_bar {
   margin: 2px 0 0 0;
 }
-/* line 569, ../../css_src/partials/_panel.scss */
+/* line 617, ../../css_src/partials/_panel.scss */
 #panel div.loader {
   float: left;
   width: 312px;
@@ -1786,15 +1833,19 @@ body.out section.results div.inner table h6 {
   padding: 0 0 5px;
   border-bottom: 2px solid #323232;
 }
-/* line 35, ../../css_src/partials/_layout.scss */
+/* line 33, ../../css_src/partials/_layout.scss */
+body.out section.results div.inner table h6 a {
+  color: #333333;
+}
+/* line 39, ../../css_src/partials/_layout.scss */
 body.out section.results div.inner table p {
   margin: 7px 0 0 0;
   padding: 0 0 15px 0;
   font: normal 13px "Helvetica",Arial;
   color: #666666;
 }
-/* line 42, ../../css_src/partials/_layout.scss */
-body.out section.results div.inner table a {
+/* line 46, ../../css_src/partials/_layout.scss */
+body.out section.results div.inner table a.butt {
   float: left;
   width: auto;
   height: 26px;
@@ -1805,43 +1856,43 @@ body.out section.results div.inner table a {
   color: #66CCCC;
   text-decoration: none;
 }
-/* line 53, ../../css_src/partials/_layout.scss */
-body.out section.results div.inner table a span {
+/* line 57, ../../css_src/partials/_layout.scss */
+body.out section.results div.inner table a.butt span {
   float: left;
   width: auto;
   height: 11px;
   padding: 7px 8px 8px 4px;
   background: url("/img/sprite.png") no-repeat right -1337px;
 }
-/* line 61, ../../css_src/partials/_layout.scss */
-body.out section.results div.inner table a:hover {
+/* line 65, ../../css_src/partials/_layout.scss */
+body.out section.results div.inner table a.butt:hover {
   color: #3A7676;
 }
-/* line 67, ../../css_src/partials/_layout.scss */
+/* line 71, ../../css_src/partials/_layout.scss */
 body.out div.layout {
   width: 920px;
   margin: 0 auto;
 }
-/* line 71, ../../css_src/partials/_layout.scss */
+/* line 75, ../../css_src/partials/_layout.scss */
 body.out div.layout header {
   padding: 35px 0 45px;
   border-bottom: 2px solid #323232;
 }
-/* line 75, ../../css_src/partials/_layout.scss */
+/* line 79, ../../css_src/partials/_layout.scss */
 body.out div.layout header h1 {
   float: left;
 }
-/* line 77, ../../css_src/partials/_layout.scss */
+/* line 81, ../../css_src/partials/_layout.scss */
 body.out div.layout header h1 a {
   font: bold 13px "WhitneyBold","Myriad Pro";
   color: #333333;
   text-decoration: none;
 }
-/* line 81, ../../css_src/partials/_layout.scss */
+/* line 85, ../../css_src/partials/_layout.scss */
 body.out div.layout header h1 a:hover {
   color: black;
 }
-/* line 85, ../../css_src/partials/_layout.scss */
+/* line 89, ../../css_src/partials/_layout.scss */
 body.out div.layout header ul {
   float: right;
   width: auto;
@@ -1849,97 +1900,97 @@ body.out div.layout header ul {
   margin: 0;
   list-style: none;
 }
-/* line 92, ../../css_src/partials/_layout.scss */
+/* line 96, ../../css_src/partials/_layout.scss */
 body.out div.layout header ul li {
   float: left;
   width: auto;
   margin: 0 0 0 20px;
 }
-/* line 97, ../../css_src/partials/_layout.scss */
+/* line 101, ../../css_src/partials/_layout.scss */
 body.out div.layout header ul li a {
   font: bold 13px "WhitneyBold","Myriad Pro";
   color: #333333;
   text-decoration: none;
 }
-/* line 101, ../../css_src/partials/_layout.scss */
+/* line 105, ../../css_src/partials/_layout.scss */
 body.out div.layout header ul li a:hover {
   color: #66CCCC;
 }
-/* line 104, ../../css_src/partials/_layout.scss */
+/* line 108, ../../css_src/partials/_layout.scss */
 body.out div.layout header ul li.selected a {
   color: #66CCCC;
 }
-/* line 104, ../../css_src/partials/_layout.scss */
+/* line 108, ../../css_src/partials/_layout.scss */
 body.out div.layout header ul li.selected a:hover {
   cursor: default;
 }
-/* line 109, ../../css_src/partials/_layout.scss */
+/* line 113, ../../css_src/partials/_layout.scss */
 body.out div.layout h2 {
   margin: 45px 0 0 0;
   font: bold 47px "WhitneyBold","Myriad Pro";
   color: #333333;
   line-height: 47px;
 }
-/* line 116, ../../css_src/partials/_layout.scss */
+/* line 120, ../../css_src/partials/_layout.scss */
 body.out div.layout p.subtitle {
   padding: 10px 0 0 0;
   font: normal 17px "Helvetica",Arial;
   color: #999999;
 }
-/* line 123, ../../css_src/partials/_layout.scss */
+/* line 127, ../../css_src/partials/_layout.scss */
 body.out div.layout section.error {
   width: 600px;
   margin: 0 auto;
   padding: 220px 0;
   text-align: center;
 }
-/* line 128, ../../css_src/partials/_layout.scss */
+/* line 132, ../../css_src/partials/_layout.scss */
 body.out div.layout section.error a {
   color: #66CCCC;
 }
-/* line 128, ../../css_src/partials/_layout.scss */
+/* line 132, ../../css_src/partials/_layout.scss */
 body.out div.layout section.error a:hover {
   color: #66AAAA;
 }
-/* line 132, ../../css_src/partials/_layout.scss */
+/* line 136, ../../css_src/partials/_layout.scss */
 body.out div.layout article.data_sources {
   margin: 50px 0 0 0;
 }
-/* line 135, ../../css_src/partials/_layout.scss */
+/* line 139, ../../css_src/partials/_layout.scss */
 body.out div.layout article.data_sources h4 {
   margin-top: 20px;
   font: bold 27px "WhitneyBold","Myriad Pro";
   color: #333333;
   text-transform: capitalize;
 }
-/* line 142, ../../css_src/partials/_layout.scss */
+/* line 146, ../../css_src/partials/_layout.scss */
 body.out div.layout article.data_sources h6 {
   padding: 20px 0 5px 0;
   font: bold 13px "WhitneyBold","Myriad Pro";
   color: #333333;
   border-bottom: 2px solid #333333;
 }
-/* line 148, ../../css_src/partials/_layout.scss */
+/* line 152, ../../css_src/partials/_layout.scss */
 body.out div.layout article.data_sources p {
   padding: 5px 0;
   font: normal 16px "Helvetica",Arial;
   color: #000;
   margin: 10px 0;
 }
-/* line 155, ../../css_src/partials/_layout.scss */
+/* line 159, ../../css_src/partials/_layout.scss */
 body.out div.layout article.data_sources ul {
   list-style-image: url("/img/icons/list.png");
   width: 100%;
   margin: 0;
   padding: 5px 0 0 0;
 }
-/* line 161, ../../css_src/partials/_layout.scss */
+/* line 165, ../../css_src/partials/_layout.scss */
 body.out div.layout article.data_sources ul li {
   padding: 5px 0;
   font: normal 15px "Helvetica",Arial;
   color: #666666;
 }
-/* line 170, ../../css_src/partials/_layout.scss */
+/* line 174, ../../css_src/partials/_layout.scss */
 body.out div.layout section.start {
   position: relative;
   float: left;
@@ -1952,7 +2003,7 @@ body.out div.layout section.start {
   box-shadow: 0 0 4px 3px rgba(0, 0, 0, 0.08);
   background: url("/img/start.jpg") no-repeat 0 0;
 }
-/* line 182, ../../css_src/partials/_layout.scss */
+/* line 186, ../../css_src/partials/_layout.scss */
 body.out div.layout section.start div.mamufas {
   position: absolute;
   display: none;
@@ -1962,7 +2013,7 @@ body.out div.layout section.start div.mamufas {
   height: 402px;
   background: url("/img/mamufas.png") no-repeat 0 0;
 }
-/* line 191, ../../css_src/partials/_layout.scss */
+/* line 195, ../../css_src/partials/_layout.scss */
 body.out div.layout section.start div.mamufas a {
   position: absolute;
   width: 316px;
@@ -1973,19 +2024,19 @@ body.out div.layout section.start div.mamufas a {
   text-decoration: none;
   background: url("/img/sprite.png") no-repeat 0 -1181px;
 }
-/* line 200, ../../css_src/partials/_layout.scss */
+/* line 204, ../../css_src/partials/_layout.scss */
 body.out div.layout section.start div.mamufas a:hover {
   background-position: 0 -1259px;
 }
-/* line 200, ../../css_src/partials/_layout.scss */
+/* line 204, ../../css_src/partials/_layout.scss */
 body.out div.layout section.start div.mamufas a:hover span {
   cursor: pointer;
 }
-/* line 200, ../../css_src/partials/_layout.scss */
+/* line 204, ../../css_src/partials/_layout.scss */
 body.out div.layout section.start div.mamufas a:hover small {
   color: white;
 }
-/* line 202, ../../css_src/partials/_layout.scss */
+/* line 206, ../../css_src/partials/_layout.scss */
 body.out div.layout section.start div.mamufas a span {
   display: block;
   width: 225px;
@@ -1997,7 +2048,7 @@ body.out div.layout section.start div.mamufas a span {
   text-shadow: 0 1px 0 #3c7d7d;
   line-height: 17px;
 }
-/* line 212, ../../css_src/partials/_layout.scss */
+/* line 216, ../../css_src/partials/_layout.scss */
 body.out div.layout section.start div.mamufas a span small {
   padding: 0;
   font: normal 13px "Helvetica",Arial;
@@ -2005,11 +2056,11 @@ body.out div.layout section.start div.mamufas a span small {
   filter: none;
   color: #549A9A;
 }
-/* line 224, ../../css_src/partials/_layout.scss */
+/* line 228, ../../css_src/partials/_layout.scss */
 body.out div.layout section.start:hover div.mamufas {
   display: block;
 }
-/* line 228, ../../css_src/partials/_layout.scss */
+/* line 232, ../../css_src/partials/_layout.scss */
 body.out div.layout section.two_columns {
   width: 100%;
   margin: 50px 0 0 0;
@@ -2018,77 +2069,77 @@ body.out div.layout section.two_columns {
   zoom: 1;
   *display: inline;
 }
-/* line 233, ../../css_src/partials/_layout.scss */
+/* line 237, ../../css_src/partials/_layout.scss */
 body.out div.layout section.two_columns div.left {
   width: 550px;
 }
-/* line 234, ../../css_src/partials/_layout.scss */
+/* line 238, ../../css_src/partials/_layout.scss */
 body.out div.layout section.two_columns div.right {
   width: 333px;
 }
-/* line 236, ../../css_src/partials/_layout.scss */
+/* line 240, ../../css_src/partials/_layout.scss */
 body.out div.layout section.two_columns h4 {
   padding: 0 0 5px 0;
   font: bold 13px "WhitneyBold","Myriad Pro";
   color: #333333;
   border-bottom: 2px solid #333333;
 }
-/* line 243, ../../css_src/partials/_layout.scss */
+/* line 247, ../../css_src/partials/_layout.scss */
 body.out div.layout section.two_columns p {
   padding: 12px 0;
   font: normal 17px "Helvetica",Arial;
   color: #666666;
 }
-/* line 248, ../../css_src/partials/_layout.scss */
+/* line 252, ../../css_src/partials/_layout.scss */
 body.out div.layout section.two_columns p strong {
   font-weight: normal;
   color: #333333;
 }
-/* line 253, ../../css_src/partials/_layout.scss */
+/* line 257, ../../css_src/partials/_layout.scss */
 body.out div.layout section.two_columns p.orange {
   font-style: italic;
   color: #FBB986;
 }
-/* line 259, ../../css_src/partials/_layout.scss */
+/* line 263, ../../css_src/partials/_layout.scss */
 body.out div.layout section.two_columns ul {
   list-style-image: url("/img/icons/list_green.png");
   width: 100%;
   margin: 6px 0 0 0;
 }
-/* line 264, ../../css_src/partials/_layout.scss */
+/* line 268, ../../css_src/partials/_layout.scss */
 body.out div.layout section.two_columns ul li {
   padding: 7px 0;
   font: normal 15px "Helvetica",Arial;
   color: #666666;
 }
-/* line 272, ../../css_src/partials/_layout.scss */
+/* line 276, ../../css_src/partials/_layout.scss */
 body.out div.layout section.video {
   width: 920px;
   margin: 50px 0 0 0;
 }
-/* line 275, ../../css_src/partials/_layout.scss */
+/* line 279, ../../css_src/partials/_layout.scss */
 body.out div.layout section.video div.left {
   width: 441px;
 }
-/* line 276, ../../css_src/partials/_layout.scss */
+/* line 280, ../../css_src/partials/_layout.scss */
 body.out div.layout section.video div.right {
   width: 441px;
   padding: 50px 0 0 0;
 }
-/* line 278, ../../css_src/partials/_layout.scss */
+/* line 282, ../../css_src/partials/_layout.scss */
 body.out div.layout section.video h3 {
   font: bold 27px "WhitneyBold","Myriad Pro";
   color: #333333;
   padding: 0 0 5px 0;
 }
-/* line 284, ../../css_src/partials/_layout.scss */
+/* line 288, ../../css_src/partials/_layout.scss */
 body.out div.layout section.video p {
   padding: 10px 0;
   font: normal 15px "Helvetica",Arial;
   line-height: 20px;
   color: #666666;
 }
-/* line 292, ../../css_src/partials/_layout.scss */
+/* line 296, ../../css_src/partials/_layout.scss */
 body.out div.layout footer {
   display: inline-block;
   vertical-align: top;
@@ -2098,7 +2149,7 @@ body.out div.layout footer {
   margin: 80px 0 0 0;
   padding: 0 0 30px 0;
 }
-/* line 299, ../../css_src/partials/_layout.scss */
+/* line 303, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div h6 {
   width: 100%;
   padding: 0 0 5px 0;
@@ -2106,17 +2157,17 @@ body.out div.layout footer div h6 {
   font: bold 13px "WhitneyBold","Myriad Pro";
   color: #333333;
 }
-/* line 309, ../../css_src/partials/_layout.scss */
+/* line 313, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.collab {
   width: 100%;
 }
-/* line 312, ../../css_src/partials/_layout.scss */
+/* line 316, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.collab ul {
   list-style: none;
   margin: 0;
   padding: 20px 0 0 0;
 }
-/* line 317, ../../css_src/partials/_layout.scss */
+/* line 321, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.collab ul li {
   display: inline-block;
   vertical-align: top;
@@ -2126,45 +2177,45 @@ body.out div.layout footer div.collab ul li {
   margin: 0 27px 0 0;
   padding: 0;
 }
-/* line 323, ../../css_src/partials/_layout.scss */
+/* line 327, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.collab ul li a {
   float: left;
   text-indent: -9999px;
   line-height: 0;
   font-size: 0;
 }
-/* line 330, ../../css_src/partials/_layout.scss */
+/* line 334, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.collab ul li a.cbd {
   width: 145px;
   height: 48px;
   background: url("/img/sprite.png") no-repeat 0 -1126px;
 }
-/* line 331, ../../css_src/partials/_layout.scss */
+/* line 335, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.collab ul li a.lifeweb {
   width: 121px;
   height: 48px;
   background: url("/img/sprite.png") no-repeat -150px -1127px;
 }
-/* line 332, ../../css_src/partials/_layout.scss */
+/* line 336, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.collab ul li a.unep-wcmc {
   width: 96px;
   height: 49px;
   background: url("/img/sprite.png") no-repeat -375px -1123px;
 }
-/* line 333, ../../css_src/partials/_layout.scss */
+/* line 337, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.collab ul li a.vizzuality {
   width: 89px;
   height: 47px;
   background: url("/img/sprite.png") no-repeat -280px -1126px;
 }
-/* line 334, ../../css_src/partials/_layout.scss */
+/* line 338, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.collab ul li a.federal_agency {
   width: 211px;
   height: 92px;
   margin-left: -10px;
   background: url("/img/sprite.png") no-repeat left -2312px;
 }
-/* line 335, ../../css_src/partials/_layout.scss */
+/* line 339, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.collab ul li a.nature {
   float: left;
   width: 53px;
@@ -2175,31 +2226,31 @@ body.out div.layout footer div.collab ul li a.nature {
   line-height: 0;
   font-size: 0;
 }
-/* line 347, ../../css_src/partials/_layout.scss */
+/* line 351, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.collab ul li.last {
   margin: 0;
 }
-/* line 351, ../../css_src/partials/_layout.scss */
+/* line 355, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.collab p {
   padding: 75px 0 0 0;
   font: normal 15px "Helvetica",Arial;
   color: #B2B2B2;
 }
-/* line 355, ../../css_src/partials/_layout.scss */
+/* line 359, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.collab p a {
   color: #7F7F7F;
   text-decoration: none;
 }
-/* line 355, ../../css_src/partials/_layout.scss */
+/* line 359, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.collab p a:hover {
   text-decoration: underline;
 }
-/* line 359, ../../css_src/partials/_layout.scss */
+/* line 363, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.right {
   width: 333px;
   padding: 0;
 }
-/* line 363, ../../css_src/partials/_layout.scss */
+/* line 367, ../../css_src/partials/_layout.scss */
 body.out div.layout footer div.right a.nature {
   float: left;
   width: 240px;
