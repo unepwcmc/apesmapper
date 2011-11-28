@@ -1,7 +1,7 @@
 
 var Layer = Backbone.View.extend({
 
-    template: _.template('<%= name %>'),
+    template: _.template('<span class="color <%=normalized_name%>">&nbsp</span><%= name %>'),
 
     tagName: 'li',
 
@@ -27,8 +27,11 @@ var Layer = Backbone.View.extend({
 
     render: function() {
         var el = $(this.el);
+        var d = _.extend(this.layer, {
+            normalized_name: this.layer.name.replace(' ', '_')
+        });
         el.html(
-            this.template(this.layer)
+            this.template(d)
         ).addClass('sortable').attr('id', this.layer.name);
         if(this.layer.enabled) {
             el.addClass('enabled');

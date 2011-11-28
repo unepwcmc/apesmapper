@@ -276,7 +276,7 @@
         float:right;
         width:100%;
         height:12px;
-        @include background(no-repeat,right,-1911px);
+        @include background(no-repeat,right,-2311px);
       }
 
       ul {
@@ -299,6 +299,38 @@
           border-bottom: 1px solid #F2F2F2;
           font:normal 13px "Helvetica Neue";
           color:#333333;
+
+          span.color {
+            width: 7px;
+            height: 7px;
+            @include background(no-repeat,-224px,-2491px);
+            margin-right: 10px;
+            display: inline-block;
+          }
+
+          &.enabled {
+            span.color {
+              &.carbon {
+                 @include background(no-repeat,-224px,-2312px);
+              }
+              &.protected_areas{
+                 @include background(no-repeat,-224px,-2342px);
+              }
+              &.carbon_sequestration {
+                 @include background(no-repeat,-224px,-2372px);
+              }
+              &.restoration_potential {
+                 @include background(no-repeat,-224px,-2401px);
+              }
+              &.forest_status {
+                 @include background(no-repeat,-224px,-2432px);
+              }
+              &.KBA{
+                 @include background(no-repeat,-224px,-2462px);
+              }
+            }
+          }
+
 
 
           &.last {
