@@ -87,7 +87,7 @@ App.modules.Map = function(app) {
 
         show: function(at, protected_zone_info) {
             var self = this;
-            self.name_el.html(protected_zone_info.name);
+            self.name_el.html("<a target='_blank' href='http://protectedplanet.net/sites/" + protected_zone_info.slug + "'>" + protected_zone_info.name + "</a>");
             this.protected_zone = protected_zone_info;
             self.at = at;
             self.set_pos(at);
