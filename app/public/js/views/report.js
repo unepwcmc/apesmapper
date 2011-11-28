@@ -88,7 +88,7 @@ var Report = Backbone.View.extend({
       $('#panel').find('.help_popup').hide();
       self.tooltip_timer = setTimeout(function() {
         tooltip.show();
-      }, 600);
+      }, 300);
     },
 
     hide_tooltip_help: function(e) {

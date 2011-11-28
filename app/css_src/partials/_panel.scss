@@ -415,10 +415,15 @@
 
         h2 {
           float:left;
-          padding:0;
+          padding:0 12px 0 0;
           margin:27px 0 0 0;
           font:bold 11px "WhitneyBold","Myriad Pro";
           color:#333333;
+          background: url('/img/icons/help.png') no-repeat right 2px;
+          &.nohelp {
+            background: none;
+            padding: 0;
+          }
         }
 
         p {
