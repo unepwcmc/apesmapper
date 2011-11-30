@@ -33,7 +33,7 @@ var Searchbox = Backbone.View.extend({
         this.to_search = this.$('input');
         this.results.bind('reset', function() {
           var r = this.first().get('geometry').location;
-          self.trigger('goto', r, 10);
+          self.trigger('goto', r, 5);
         });
         $(document).bind('keydown', this.keyPress);
     },
