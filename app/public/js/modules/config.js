@@ -34,9 +34,14 @@ App.modules.Config = function(app) {
             enabled: false
           }, {
             name: 'KBA',
-            url: 'https://carbon-tool.cartodb.com/tiles/kba/{Z}/{X}/{Y}.png',
+            url: 'http://carbon-tool.cartodb.com/tiles/kba/{Z}/{X}/{Y}.png',
             opacity: 0.4,
             enabled: false
+          }, {
+              name: 'Gap Analysis',
+              url: 'http://carbon-tool.cartodb.com/tiles/gap_analysis/{Z}/{X}/{Y}.png',
+              opacity: 0.7,
+              enabled: false
           }
 
         ]
