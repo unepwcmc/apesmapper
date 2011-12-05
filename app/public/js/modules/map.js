@@ -188,9 +188,9 @@ App.modules.Map = function(app) {
             this.protectedzone_popup.bind('add_polygon', function(polygon) {
                 self.bus.emit('polygon', {paths: polygon});
             });
-            this.seachbox.bind('goto', function(latlng, zoom) {
+            this.seachbox.bind('goto', function(latlng, bounds) {
                 self.map.set_center(latlng);
-                self.map.set_zoom(zoom);
+                self.map.map.fitBounds(bounds);
             });
             this.show_controls(false);
 
