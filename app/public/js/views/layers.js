@@ -126,6 +126,7 @@ var LayerEditor = Backbone.View.extend({
         this.$('li').each(function(i, el) {
             order.push($(el).attr('id'));
         });
+        this.sort_by(order, true);
         this.bus.emit("map:reorder_layers", order);
     },
 
@@ -142,13 +143,18 @@ var LayerEditor = Backbone.View.extend({
         this.open = false;
     },
 
-    sort_by: function(layers_order) {
+    sort_by: function(layers_order, silent) {
         this.layers.sort(function(a, b) {
-          return _(layers_order).indexOf(a.name) -
-             _(layers_order).indexOf(b.name);
+          var ida = _(layers_order).indexOf(a.name);
+          var idb = _(layers_order).indexOf(b.name);
+          if(ida === -1) return 1;
+          if(idb === -1) return -1;
+          return ida - idb;
         });
-        this.open = true;
-        this.hiding();
+        if(!silent) {
+            this.open = true;
+            this.hiding();
+        }
     },
 
     hiding: function(e) {
@@ -163,6 +169,7 @@ var LayerEditor = Backbone.View.extend({
             return 0;
         });
         layers = _(this.layers).pluck('name');
+        //this.sort_by(layers);
         this.bus.emit("map:reorder_layers", layers);
         this.order = layers;
         this.render(3);
