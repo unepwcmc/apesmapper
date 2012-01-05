@@ -1,25 +1,14 @@
 
-Carbontool
+ApesMapper
 =========
 
 quick start
 -----------
 
-1.- checkout the code
 
-2.- install django1.2
-
-    $ pip install django==1.2.4
-
-3.- create the models
-
-    $ cd app && python manage.py syncdb
-
-4.- start the server
-    
-    $ cd app && python manage.py runserver
-
-5.- point your browser to http://localhost:8000
+app start
+----------
+1- Run: rackup
 
 *extra*
 
@@ -34,3 +23,8 @@ and then:
     $ cd app && compass watch
 
 it will compile every change you do in css_src folder css files
+
+
+
+
+
