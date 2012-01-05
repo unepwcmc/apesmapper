@@ -1,3 +1,4 @@
+require './app/models/database.rb'
 class ApesMapper < Sinatra::Base
 
   configure do
