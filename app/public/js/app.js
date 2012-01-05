@@ -6,10 +6,12 @@ function App() {
   config,
   i;
 
+  // allow function to be called without new
   if (!(this instanceof App)) {
     return new App(modules, callback);
   }
 
+  // If modules not set, or is *, add every App.module to modules
   if (!modules || modules === '*') {
     modules = [];
     for (i in App.modules) {
@@ -19,6 +21,7 @@ function App() {
     }
   }
 
+  // Initialise the modules with this
   for (i = 0; i < modules.length; i += 1) {
     App.modules[modules[i]](this);
   }
