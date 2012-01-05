@@ -1,1 +1,2 @@
-rvm use --create 1.9.2@imazon > /dev/null
+#rvm use --create 1.9.2@imazon > /dev/null
+rvm use 1.9.2
