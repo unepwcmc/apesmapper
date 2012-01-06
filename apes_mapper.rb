@@ -53,9 +53,9 @@ class ApesMapper < Sinatra::Base
   before '/api/v0/work/:work_hash' do
     content_type "application/json"
     if params[:work_hash] && params[:work_hash] != "undefined"
-      w = Work.find(params[:work_hash].alphadecimal - BASE_ID)
+      @w = Work.find(params[:work_hash].alphadecimal - BASE_ID)
     else
-      w = nil
+      @w = nil
     end
   end
 
@@ -66,16 +66,16 @@ class ApesMapper < Sinatra::Base
   end
 
   put '/api/v0/work/:work_hash' do
-    if w
-      w.json = params["data"]
-      w.save
+    if @w
+      @w.json = params["data"]
+      @w.save
       data = params["data"]
     end
   end
 
   get '/api/v0/work/:work_hash' do
-    if w
-      data = w.json
+    if @w
+      data = @w.json
     else
       data = '{"error": "does not exist"}'
       status = 404
@@ -83,8 +83,8 @@ class ApesMapper < Sinatra::Base
   end
 
   delete '/api/v0/work/:work_hash' do
-    if w
-      w.delete
+    if @w
+      @w.delete
       status = 204
       data = ''
     end
