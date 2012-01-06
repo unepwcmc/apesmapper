@@ -8,7 +8,11 @@ quick start
 
 app start
 ----------
-1- Run: rackup
+rackup
+
+run console
+-----------
+irb -r ./apes_mapper.rb
 
 *extra*
 
