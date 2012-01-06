@@ -132,7 +132,7 @@
             <!-- tooltip -->
             <div class="list_tooltip">
             </div>
-            {% include "_help_tooltips.html" %}
+            <%= erb :_help_tooltips %>
         </div>
 
         <div id="start_banner">
@@ -163,11 +163,11 @@
 
   <!-- templates -->
   <script type="text/template" id="report-tmpl">
-     {% include "_report.html" %}
+    <%= erb "_report.html" %>
   </script>
 
   <script type="text/template" id="report-tmpl-common">
-     {% include "_report_common.html" %}
+   <%= erb "_report_common.html" %>
   </script>
 
 
