@@ -8,3 +8,4 @@ gem 'rack_csrf', :require => "rack/csrf"
 gem 'rake'
 gem 'sqlite3'
 gem 'alphadecimal'
+gem 'sinatra-backbone', :require => 'sinatra/backbone'

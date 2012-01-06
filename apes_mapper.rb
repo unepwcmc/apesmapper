@@ -3,8 +3,11 @@ require "rubygems"
 require "bundler/setup"
 Bundler.require
 require './app/models/database.rb'
+require 'sinatra/jstpages'
 class ApesMapper < Sinatra::Base
 
+  register Sinatra::JstPages
+  serve_jst '/jst.tpl'
   BASE_ID = 111222333
 
   #Don't forget to check this :D
