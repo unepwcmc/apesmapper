@@ -1738,6 +1738,18 @@ html, body {
   float: right;
 }
 
+ul.selector {
+  float:left;
+  width: 150px;
+}
+
+ul.selector li {
+  list-style-type: none;
+  padding: 5px
+}
+ul.selector li {
+}
+
 @media print {
   /* line 10, ../../../../../../.rvm/gems/ruby-1.9.2-p180@imazon/gems/html5-boilerplate-1.0.0/stylesheets/html5-boilerplate/_media.scss */
   * {
