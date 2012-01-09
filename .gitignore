@@ -36,6 +36,12 @@ Thumbs.db
 # Editor files #
 ################
 *.swp
+*.swo
+*.un~
+
+# Vendored Gems #
+#################
+vendor/ruby
 
 # Compass
 .sass-cache
@@ -47,3 +53,4 @@ publish/*
 app/carbontool.db
 production
 env
+
