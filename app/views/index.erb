@@ -173,14 +173,14 @@
 
   <!-- templates -->
   <script type="text/template" id="report-tmpl">
-    JST['_report']();
+    <%= File.open('app/views/_report.jst.tpl').read %>
   </script>
 
   <script type="text/template" id="report-tmpl-common">
-    JST['_report_common']();
+    <%= File.open('app/views/_report_common.jst.tpl').read %>
   </script>
 
-   <script type="text/template" id="report-tmpl-no-content">
+  <script type="text/template" id="report-tmpl-no-content">
     <div class="no_content">
       <div class="inner">
           <span class="title">
