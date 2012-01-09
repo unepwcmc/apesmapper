@@ -38,6 +38,7 @@ App.modules.Carbon = function(app) {
             app.bus = this.bus;
             this.map = new app.Map(this.bus);
             this.work = new app.Work(this.bus);
+            this.apes = new app.Apes();
             this.panel = new app.Panel(this.bus);
             this.banner = new app.StartBanner(this.bus);
             this.header = new app.Header();
