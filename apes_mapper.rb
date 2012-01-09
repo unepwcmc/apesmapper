@@ -3,7 +3,8 @@ require "rubygems"
 require "bundler/setup"
 Bundler.require
 require './app/models/database.rb'
-require 'sinatra/jstpages'
+require 'sinatra/backbone'
+require 'net/http'
 class ApesMapper < Sinatra::Base
 
   register Sinatra::JstPages
@@ -28,6 +29,7 @@ class ApesMapper < Sinatra::Base
 
   set :views, Proc.new{ File.join(root, 'app', 'views') }
   enable :logging, :dump_errors, :raise_errors
+  enable :show_exceptions if development?
 
   get '/' do
     erb :home
@@ -78,7 +80,7 @@ class ApesMapper < Sinatra::Base
 
   get '/api/v0/work/:work_hash' do
     if @w
-      data = @w.json
+      @w.json
     else
       data = '{"error": "does not exist"}'
       status = 404
@@ -91,6 +93,22 @@ class ApesMapper < Sinatra::Base
       status = 204
       data = ''
     end
+  end
+
+  post %r{/api/v0/proxy/(.*)$} do
+    puts "###################V#################"
+    puts "THE HOST IS HEREEEEEE"
+    puts params[:captures][0]
+    puts params
+    puts "##################"
+    uri = URI.parse(params[:captures][0])
+    @proxy_page = Net::HTTP.get_response(uri)
+    puts @proxy_page.body
+  end
+
+  post '/api/v0/error' do
+    Error.create(:error => params)
+    "Logged, thanks!"
   end
 
   error do
