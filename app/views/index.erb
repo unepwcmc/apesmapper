@@ -38,7 +38,7 @@
 
   <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
   <script src="js/libs/modernizr-2.0.6.js"></script>
-
+  <script src="jst.tpl"></script>
 </head>
 
 <body class="tool">
@@ -132,7 +132,7 @@
             <!-- tooltip -->
             <div class="list_tooltip">
             </div>
-            {% include "_help_tooltips.html" %}
+            <%= erb :_help_tooltips %>
         </div>
 
         <div id="start_banner">
@@ -173,13 +173,12 @@
 
   <!-- templates -->
   <script type="text/template" id="report-tmpl">
-     {% include "_report.html" %}
+    JST['_report']();
   </script>
 
   <script type="text/template" id="report-tmpl-common">
-     {% include "_report_common.html" %}
+    JST['_report_common']();
   </script>
-
 
    <script type="text/template" id="report-tmpl-no-content">
     <div class="no_content">
