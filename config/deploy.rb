@@ -1,22 +1,55 @@
-set :application, "set your application name here"
-set :repository,  "set your repository location here"
+set :default_stage, 'staging'
+require 'capistrano/ext/multistage'
 
-set :scm, :subversion
-# Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
+## Generated with 'brightbox' on Thu Apr 21 11:12:49 +0100 2011
+gem 'brightbox', '>=2.3.8'
+require 'brightbox/recipes'
+require 'brightbox/passenger'
 
-role :web, "your web-server here"                          # Your HTTP server, Apache/etc
-role :app, "your app-server here"                          # This may be the same as your `Web` server
-role :db,  "your primary db-server here", :primary => true # This is where Rails migrations will run
-role :db,  "your slave db-server here"
+load 'deploy/assets'
+# The name of your application.  Used for deployment directory and filenames
+# and Apache configs. Should be unique on the Brightbox
+set :application, "apesmapper"
 
-# if you're still using the script/reaper helper you will need
-# these http://github.com/rails/irs_process_scripts
 
-# If you are using Passenger mod_rails uncomment this:
-# namespace :deploy do
-#   task :start do ; end
-#   task :stop do ; end
-#   task :restart, :roles => :app, :except => { :no_release => true } do
-#     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-#   end
-# end
+# Target directory for the application on the web and app servers.
+set(:deploy_to) { File.join("", "home", user, application) }
+
+# URL of your source repository. By default this will just upload
+# the local directory.  You should probably change this if you use
+# another repository, like git or subversion.
+
+#set :deploy_via, :copy
+set :repository, "git@github.com:unepwcmc/apesmapper.git"
+
+set :scm, :git
+set :branch, "master"
+set :scm_username, "unepwcmc-read"
+set :git_enable_submodules, 1
+default_run_options[:pty] = true # Must be set for the password prompt from git to work
+
+## Dependenciesg
+# Set the commands and gems that your application requires. e.g.
+# depend :remote, :gem, "will_paginate", ">=2.2.2"
+# depend :remote, :command, "brightbox"
+#
+# Specify your specific Rails version if it is not vendored
+#depend :remote, :gem, "rails", "=2.3.8"
+#depend :remote, :gem, "authlogic", "=2.1.4"
+#depend :remote, :gem, "faker", "=0.9.5"
+#depend :remote, :gem, "hashie", "=0.2.0"
+#depend :remote, :gem, "pg", "=0.11.0"
+
+## Local Shared Area
+# These are the list of files and directories that you want
+# to share between the releases of your application on a particular
+# server. It uses the same shared area as the log files.
+#
+# So if you have an 'upload' directory in public, add 'public/upload'
+# to the :local_shared_dirs array.
+# If you want to share the database.yml add 'config/database.yml'
+# to the :local_shared_files array.
+#
+# The shared area is prepared with 'deploy:setup' and all the shared
+# items are symlinked in when the code is updated.
+set :local_shared_files, %w(production.db)
