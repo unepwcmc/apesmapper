@@ -9,8 +9,15 @@ App.modules.Carbon = function(app) {
    // app router
    var Router = Backbone.Router.extend({
       routes: {
+        "":        "create_work",  // #work
         "w/:work":        "work",  // #work
         "w/:work/*state": "work"   // #work/state
+      },
+
+      create_work: function() {
+        // This triggers the route:create_work event,
+        // which actually does the scoped work in app.Carbon.create_work
+        app.Log.log("route: landing");
       },
 
       work: function() {
@@ -23,6 +30,7 @@ App.modules.Carbon = function(app) {
     app.Carbon = Class.extend({
 
         init: function() {
+            _.bindAll(this, 'create_work');
             _.bindAll(this, 'on_route');
             jQuery.ajaxSetup({
                 cache: false
@@ -45,33 +53,12 @@ App.modules.Carbon = function(app) {
 
             this.panel.hide();
 
-            // init routing
-            this.router = new Router();
+            // init routing and bind methods requiring this scope to routes
+            this.router = new Router({bus: this.bus});
+            this.router.bind('route:create_work', this.create_work);
             this.router.bind('route:work', this.on_route);
 
             this.bus.on('app:route_to', this.on_route_to);
-            this.bus.on('app:work_loaded', function() {
-                /*
- *        var default_pos = new google.maps.LatLng(28.488005204159457, 7.403798828124986);
-                self.map.map.set_center(default_pos);
-                self.map.map.set_zoom(2);
-
-                if(self.work.work.polygon_count() === 0) {
-                    self.map.editing(true);
-                } else {
-                    var polys = self.work.work.get_all_polygons();
-                    // I <3 my code
-                    var b = new google.maps.LatLngBounds();
-                    _.each(polys, function(p) {
-                        _.each(p, function(point) {
-                            var pos = new google.maps.LatLng(point[0], point[1]);
-                            b.extend(pos);
-                        });
-                    });
-                    self.map.map.map.fitBounds(b);
-                }
-                */
-            });
             this.bus.on('view:show_report', function(id, r) {
                 self.map.editing(r.polygons.length === 0);
             });
@@ -169,7 +156,7 @@ App.modules.Carbon = function(app) {
 
        on_route: function(work_id, state) {
             this.work_id = work_id;
-            this.banner.hide();
+            //this.banner.hide();
             this.map.work_mode();
             if(jQuery.browser.msie === undefined) {
                 clearInterval(this.animation);
@@ -183,6 +170,14 @@ App.modules.Carbon = function(app) {
             if(state) {
               this.set_state(this.decode_state(state));
             }
+        },
+
+        create_work: function() {
+            this.bus.emit('model:create_work');
+
+            // Since this is the first page load,
+            // we want to show the species selection page
+            this.featureEditView.show();
         },
 
         on_route_to: function(route) {

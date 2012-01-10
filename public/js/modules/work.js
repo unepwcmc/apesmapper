@@ -3,6 +3,7 @@
 App.modules.Data = function(app) {
 
 
+    // Set of filters and stat responses
     var Report = Backbone.Model.extend({
 
         defaults: function() {
@@ -89,6 +90,7 @@ App.modules.Data = function(app) {
 
     });
 
+    // NOT A MODEL, collection of user reports
     var WorkModel = Backbone.Collection.extend({
 
         API_URL: app.config.API_URL,
@@ -165,6 +167,7 @@ App.modules.Data = function(app) {
         },
 
         on_add: function(r) {
+            //Setup change binding and bus
             r.bind('change', this.on_report_change);
             if(this.bus) {
                 r.bus = this.bus;

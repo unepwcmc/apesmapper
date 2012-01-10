@@ -1,5 +1,6 @@
-
-
+/*
+ * Message passing/event binding object, short cuts much of Backbone.js' binding functionality
+ */
 App.modules.Bus = function(app) {
 
     app.Bus = Class.extend({
