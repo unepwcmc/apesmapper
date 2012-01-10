@@ -12,7 +12,7 @@ App.modules.Apes = function(app) {
 
     app.Apes = Class.extend({
       init: function() {
-        // Initialise the apes collection
+        // Initialise the apes collections
         this.allApes = new AllApes();
         // create the species selector view
         this.speciesSelector = new SpeciesSelector({collection: this.allApes});
