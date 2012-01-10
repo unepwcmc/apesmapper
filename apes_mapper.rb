@@ -102,11 +102,11 @@ class ApesMapper < Sinatra::Base
     url = params[:captures][0].sub(/(http|https)(:\/)/, '\1\2/')
     uri = URI.parse(url)
     if params[:q]
-      @proxy_page = Net::HTTP.get_response(uri.host, uri.path+"?q=#{params[:q]}")
+      proxy_page = Net::HTTP.get_response(uri.host, uri.path+"?q=#{params[:q]}")
     else
-      @proxy_page = Net::HTTP.get_response(uri)
+      proxy_page = Net::HTTP.get_response(uri)
     end
-    puts @proxy_page.body
+    proxy_page
   end
 
   post '/api/v0/error' do
