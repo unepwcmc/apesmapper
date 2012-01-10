@@ -96,13 +96,16 @@ class ApesMapper < Sinatra::Base
   end
 
   post %r{/api/v0/proxy/(.*)$} do
-    puts "###################V#################"
-    puts "THE HOST IS HEREEEEEE"
-    puts params[:captures][0]
-    puts params
-    puts "##################"
-    uri = URI.parse(params[:captures][0])
-    @proxy_page = Net::HTTP.get_response(uri)
+    #due to the protection against path traversal provided by Rack::Protection
+    #the URLs that are matched with (.*) are sanitized and they lose the double forward-slash.
+    #the following line is to fix that. =)
+    url = params[:captures][0].sub(/(http|https)(:\/)/, '\1\2/')
+    uri = URI.parse(url)
+    if params[:q]
+      @proxy_page = Net::HTTP.get_response(uri.host, uri.path+"?q=#{params[:q]}")
+    else
+      @proxy_page = Net::HTTP.get_response(uri)
+    end
     puts @proxy_page.body
   end
 
