@@ -140,15 +140,7 @@
                 <div class="help">
                     <h1>Welcome to the Apes Mapper tool</h1>
                     <h2>Select Species of interest</h2>
-                    <ul id='family_list' class='selector'>
-                      <li><input type="checkbox"/><label>Gibbon</label></li>
-                      <li><input type="checkbox"/><label>Gorilla</label></li>
-                      <li><input type="checkbox"/><label>Chimp</label></li>
-                    </ul>
-                    <ul id='species_list' class='selector'>
-                      <li><input type="checkbox"/><label>Hylobates lar ssp. lar (Malaysian lar)</label></li>
-                      <li><input type="checkbox"/><label>Nomascus gabriellae (Yellow-cheeked gibbon)</label></li>
-                      <li><input type="checkbox"/><label>Hylobates lar ssp. lar (Malaysian lar)</label></li>
+                    <ul id='species_selector' class='selector'>
                     </ul>
                     <button id="create_work"><span class="button_info">create an AOI</span></button>
                 </div> <!-- help -->
@@ -178,6 +170,10 @@
 
   <script type="text/template" id="report-tmpl-common">
     <%= File.open('app/views/_report_common.jst.tpl').read %>
+  </script>
+
+  <script type="text/template" id="species-selector-tmpl">
+    <%= File.open('app/views/_species_selector.jst.tpl').read %>
   </script>
 
   <script type="text/template" id="report-tmpl-no-content">
@@ -236,6 +232,7 @@
   <script src="js/views/layers.js"></script>
   <script src="js/views/sharepopup.js"></script>
   <script src="js/views/searchbox.js"></script>
+  <script src="js/views/species_selector.js"></script>
 
 
   <!-- main -->
