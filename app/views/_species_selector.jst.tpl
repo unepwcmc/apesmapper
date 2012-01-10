@@ -7,4 +7,3 @@
     <label for="ape_select_<%= apes[i].code %>"><%= apes[i].taxa %><br/>
   <% } %>
 </div>
-<button id="create_work"><span class="button_info">Search</span></button>

@@ -1659,6 +1659,7 @@ html, body {
 /* Carbon tool mixins */
 /* line 3, ../../css_src/partials/_start_banner.scss */
 #filter_edit {
+  display:none;
   position: absolute;
   top: 50%;
   left: 0;

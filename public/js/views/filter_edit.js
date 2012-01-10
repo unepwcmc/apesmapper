@@ -1,5 +1,5 @@
 /*
- * Code for species and country editing views
+ * Filter edit view, contains species and country selector
  */
 
 App.views.FilterEdit = Backbone.View.extend({
@@ -18,13 +18,7 @@ App.views.FilterEdit = Backbone.View.extend({
     },
 
     update_filter: function(e) {
-        var self = this;
-        if(e) e.preventDefault();
-        if(!this.creating) {
-          self.bus.emit('model:create_work');
-          this.$('.button_info').html("creating...");
-        }
-        this.creating = true;
+      alert('clicked');
     },
 
     show: function() {
