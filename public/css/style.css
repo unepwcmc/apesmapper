@@ -1658,7 +1658,7 @@ html, body {
 
 /* Carbon tool mixins */
 /* line 3, ../../css_src/partials/_start_banner.scss */
-#start_banner {
+#filter_edit {
   position: absolute;
   top: 50%;
   left: 0;
@@ -1673,21 +1673,21 @@ html, body {
   -webkit-box-shadow: 0 -10px 10px 0 rgba(0, 0, 0, 0.1), 0 10px 10px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 -10px 10px 0 rgba(0, 0, 0, 0.1), 0 10px 10px 0 rgba(0, 0, 0, 0.1);
 }
-/* line 17, ../../css_src/partials/_start_banner.scss */
-#start_banner .inner {
+/* line 17, ../../css_src/partials/_filter_edit.scss */
+#filter_edit .inner {
   width: 765px;
   height: 324px;
   margin: 0 auto;
   text-align: left;
   background: url("/img/sprite.png") right -56px no-repeat;
 }
-/* line 24, ../../css_src/partials/_start_banner.scss */
-#start_banner .inner .help {
+/* line 24, ../../css_src/partials/_filter_edit.scss */
+#filter_edit .inner .help {
   width: 385px;
   padding: 58px 0 0 0;
 }
-/* line 28, ../../css_src/partials/_start_banner.scss */
-#start_banner .inner .help h1 {
+/* line 28, ../../css_src/partials/_filter_edit.scss */
+#filter_edit .inner .help h1 {
   display: block;
   width: 100%;
   padding: 0 0 10px 0;
@@ -1696,18 +1696,18 @@ html, body {
   font: bold 11px "WhitneyBold","Myriad Pro";
   color: #333333;
 }
-/* line 38, ../../css_src/partials/_start_banner.scss */
-#start_banner .inner .help p {
+/* line 38, ../../css_src/partials/_filter_edit.scss */
+#filter_edit .inner .help p {
   margin: 12px 0 0 0;
   font: normal 15px "Helvetica Neue",Arial;
   color: #333333;
 }
-/* line 42, ../../css_src/partials/_start_banner.scss */
-#start_banner .inner .help p.margin {
+/* line 42, ../../css_src/partials/_filter_edit.scss */
+#filter_edit .inner .help p.margin {
   margin: 20px 0 0 0;
 }
-/* line 45, ../../css_src/partials/_start_banner.scss */
-#start_banner .inner .help button {
+/* line 45, ../../css_src/partials/_filter_edit.scss */
+#filter_edit .inner .help button {
   float: right;
   width: auto;
   height: 47px;
@@ -1718,8 +1718,8 @@ html, body {
   font: bold 15px "WhitneyBold","Myriad Pro";
   color: #333333;
 }
-/* line 56, ../../css_src/partials/_start_banner.scss */
-#start_banner .inner .help button span {
+/* line 56, ../../css_src/partials/_filter_edit.scss */
+#filter_edit .inner .help button span {
   float: right;
   min-width: 150px\9;
   height: 15px;
@@ -1728,13 +1728,13 @@ html, body {
   line-height: 15px;
   text-transform: uppercase;
 }
-/* line 67, ../../css_src/partials/_start_banner.scss */
-#start_banner .inner .help button:hover span {
+/* line 67, ../../css_src/partials/_filter_edit.scss */
+#filter_edit .inner .help button:hover span {
   color: black;
   text-decoration: underline;
 }
-/* line 73, ../../css_src/partials/_start_banner.scss */
-#start_banner button {
+/* line 73, ../../css_src/partials/_filter_edit.scss */
+#filter_edit button {
   float: right;
 }
 

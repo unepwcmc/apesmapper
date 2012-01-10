@@ -39,8 +39,8 @@ App.modules.Carbon = function(app) {
             this.map = new app.Map(this.bus);
             this.work = new app.Work(this.bus);
             this.apes = new app.Apes();
+            this.filterEditView = new App.views.FilterEdit({bus:this.bus, apes: this.apes.allApes});
             this.panel = new app.Panel(this.bus);
-            this.banner = new app.StartBanner(this.bus);
             this.header = new app.Header();
 
             this.panel.hide();
@@ -86,7 +86,7 @@ App.modules.Carbon = function(app) {
             this.bus.on('map:reorder_layers', this.state_url);
 
             if(location.hash === '') {
-                this.banner.show();
+                this.filterEditView.show();
                 if(jQuery.browser.msie === undefined) {
                     this.banner_animation();
                 }

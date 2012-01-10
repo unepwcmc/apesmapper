@@ -31,3 +31,4 @@ function App() {
 }
 
 App.modules = {};
+App.views = {};
