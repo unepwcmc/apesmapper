@@ -9,3 +9,8 @@ gem 'rake'
 gem 'sqlite3'
 gem 'alphadecimal'
 gem 'sinatra-backbone', :require => 'sinatra/backbone'
+group :development, :test do
+  gem 'capistrano'
+  gem 'capistrano-ext'
+  gem 'brightbox'
+end
