@@ -8,6 +8,8 @@ App.modules.Data = function(app) {
         defaults: function() {
             return {
                 "polygons": new Array(),
+                "species": new Array(),
+                "countries": new Array(),
                 'stats': new Object()
             };
         },
