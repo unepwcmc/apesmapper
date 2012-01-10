@@ -2288,3 +2288,11 @@ body.out div.layout footer div.right a.nature {
   line-height: 0;
   font-size: 0;
 }
+
+#species_selector div.multiselect_box {
+  height:100px;
+  overflow:scroll;
+  border: 1px solid #CCC;
+  padding: 2px;
+}
+
