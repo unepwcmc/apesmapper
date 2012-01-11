@@ -20,13 +20,14 @@ App.views.SelectedFilters = Backbone.View.extend({
     },
 
     render: function() {
-        var selections = {
+        // selections contains only the selected elements
+        var renderedContent, selections = {
             apes: _.map(this.apes.selected(), function(ape){
                ape.toJSON();
             })
         }
         // render the template
-        var renderedContent = this.template(selections);
+        renderedContent = this.template(selections);
         $(this.el).html(renderedContent);
         return this;
     },
