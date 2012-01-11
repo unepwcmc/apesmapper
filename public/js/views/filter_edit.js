@@ -11,15 +11,30 @@ App.views.FilterEdit = Backbone.View.extend({
     },
 
     initialize: function() {
+        _.bindAll(this, 'render');
         this.bus = this.options.bus;
         this.apes = this.options.apes;
         this.bus.on('app:work_loaded', this.enable_select);
-        // create the species selector view
-        this.speciesSelector = new App.views.SpeciesSelector({collection: this.apes});
+
+        this.apes.bind('reset', this.render);
+    },
+
+    render: function() {
+        // get the object to load the species views into
+        var $species = this.$('#species_selector');
+        $species.empty();
+        // Create a species view inside $species for each species
+        this.apes.each(function(species) {
+            var view = new App.views.SpeciesSelector({
+                model: species
+            });
+            $species.append(view.render().el);
+        });
+        return this;
     },
 
     update_filter: function(e) {
-      alert('clicked');
+        
     },
 
     show: function() {
@@ -31,8 +46,9 @@ App.views.FilterEdit = Backbone.View.extend({
     },
 
     enable_select: function() {
-      // Enables saving the filter changes
-      $('#save_filter span.button_info').text('Filter');
+        // Enables saving the filter changes
+        $('#save_filter span.button_info').text('Filter');
+        $('#save_filter').removeAttr('disabled');
     }
 });
 
@@ -40,14 +56,16 @@ App.views.FilterEdit = Backbone.View.extend({
  * Species selection view
  */
 App.views.SpeciesSelector = Backbone.View.extend({
-    el: $('#species_selector'),
 
     initialize: function() {
-      this.collection.bind('reset', this.render, this);
+        _.bindAll(this, 'render');
+
+        this.template = _.template( $("#species-selector-tmpl").html() );
     },
     render: function( event ){
-      var compiled_template = _.template( $("#species-selector-tmpl").html() );
-      this.el.html( compiled_template({apes:this.collection.toJSON()}));
-      return this;
+        // render the template
+        var renderedContent = this.template(this.model.toJSON());
+        $(this.el).html(renderedContent);
+        return this;
     },
 });
