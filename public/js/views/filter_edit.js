@@ -7,7 +7,7 @@ App.views.FilterEdit = Backbone.View.extend({
     el: $('#filter_edit'),
 
     events: {
-        'click #save_filter': 'update_filter'
+        'click #save_filter': 'hide'
     },
 
     initialize: function() {
@@ -33,10 +33,6 @@ App.views.FilterEdit = Backbone.View.extend({
         return this;
     },
 
-    update_filter: function(e) {
-        
-    },
-
     show: function() {
         this.el.show();
     },
@@ -58,9 +54,12 @@ App.views.FilterEdit = Backbone.View.extend({
 App.views.SpeciesSelector = Backbone.View.extend({
 
     initialize: function() {
-        _.bindAll(this, 'render');
+        _.bindAll(this, 'render', 'toggleSelected');
 
         this.template = _.template( $("#species-selector-tmpl").html() );
+    },
+    events: {
+      'click input': 'toggleSelected'
     },
     render: function( event ){
         // render the template
@@ -68,4 +67,9 @@ App.views.SpeciesSelector = Backbone.View.extend({
         $(this.el).html(renderedContent);
         return this;
     },
+    toggleSelected: function() {
+        var state = this.model.get('selected');
+        state = !state;
+        this.model.set({selected: state});
+    }
 });
