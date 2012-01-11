@@ -174,10 +174,6 @@ App.modules.Carbon = function(app) {
 
         create_work: function() {
             this.bus.emit('model:create_work');
-
-            // Since this is the first page load,
-            // we want to show the species selection page
-            this.featureEditView.show();
         },
 
         on_route_to: function(route) {

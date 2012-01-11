@@ -13,6 +13,7 @@ App.views.FilterEdit = Backbone.View.extend({
     initialize: function() {
         this.bus = this.options.bus;
         this.apes = this.options.apes;
+        this.bus.on('app:work_loaded', this.enable_select);
         // create the species selector view
         this.speciesSelector = new App.views.SpeciesSelector({collection: this.apes});
     },
@@ -27,9 +28,12 @@ App.views.FilterEdit = Backbone.View.extend({
 
     hide: function() {
         this.el.hide();
+    },
+
+    enable_select: function() {
+      // Enables saving the filter changes
+      $('#save_filter span.button_info').text('Filter');
     }
-
-
 });
 
 /*
