@@ -14,13 +14,7 @@ App.modules.Apes = function(app) {
         model: Ape,
         url: 'json/apes.json',
         selected: function() {
-            var selection = [];
-            this.each(function(ape) {
-                if (ape.get('selected')){
-                    selection.push(ape);
-                }
-            });
-            return selection;
+            return this.filter(function(ape){ return ape.get('selected'); });
         }
     });
 

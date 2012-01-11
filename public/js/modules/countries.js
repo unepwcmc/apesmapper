@@ -12,7 +12,10 @@ App.modules.Countries = function(app) {
 
     var AllCountries = Backbone.Collection.extend({
         model: Country,
-        url: 'json/countries.json'
+        url: 'json/countries.json',
+        selected: function() {
+            return this.filter(function(country){ return country.get('selected'); });
+        }
     });
 
     app.Countries = Class.extend({
