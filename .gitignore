@@ -39,6 +39,7 @@ Thumbs.db
 *.swp
 *.swo
 *.un~
+nbproject
 
 # Vendored Gems #
 #################

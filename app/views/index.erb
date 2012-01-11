@@ -143,7 +143,12 @@
                 <div class="help">
                     <h1>Welcome to the Apes Mapper tool</h1>
                     <h2>Select Species</h2>
-                    <div id='species_selector' class='multiselect_box'>Loading species...</div>
+                    <div class="selector" id='species_selector'>Loading species...</div>
+                </div> <!-- help -->
+
+                <div class="help">
+                    <h2>Select Countries</h2>
+                    <div class="selector" id='countries_selector'>Loading countries...</div>
                     <button id="save_filter" disabled='true'><span class="button_info">Initialising app...</span></button>
                 </div> <!-- help -->
             </div> <!-- inner -->
@@ -176,6 +181,10 @@
 
   <script type="text/template" id="species-selector-tmpl">
     <%= File.open('app/views/_species_selector.jst.tpl').read %>
+  </script>
+
+  <script type="text/template" id="countries-selector-tmpl">
+    <%= File.open('app/views/_countries_selector.jst.tpl').read %>
   </script>
 
   <script type="text/template" id="selected-filters-tmpl">
@@ -222,6 +231,7 @@
   <script src="js/modules/map.js"></script>
   <script src="js/modules/work.js"></script>
   <script src="js/modules/apes.js"></script>
+  <script src="js/modules/countries.js"></script>
   <script src="js/modules/panel.js"></script>
   <script src="js/modules/ws.js"></script>
   <script src="js/modules/header.js"></script>
