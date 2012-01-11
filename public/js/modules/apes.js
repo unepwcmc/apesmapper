@@ -12,7 +12,16 @@ App.modules.Apes = function(app) {
 
     var AllApes = Backbone.Collection.extend({
         model: Ape,
-        url: 'json/apes.json'
+        url: 'json/apes.json',
+        selected: function() {
+            var selection = [];
+            this.each(function(ape) {
+                if (ape.get('selected')){
+                    selection.push(ape);
+                }
+            });
+            return selection;
+        }
     });
 
     app.Apes = Class.extend({

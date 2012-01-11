@@ -47,6 +47,8 @@ App.modules.Carbon = function(app) {
             this.map = new app.Map(this.bus);
             this.work = new app.Work(this.bus);
             this.apes = new app.Apes();
+            this.selectedFiltersView = new App.views.SelectedFilters({bus:this.bus, apes: this.apes.allApes});
+            this.selectedFiltersView.render();
             this.filterEditView = new App.views.FilterEdit({bus:this.bus, apes: this.apes.allApes});
             this.panel = new app.Panel(this.bus);
             this.header = new app.Header();

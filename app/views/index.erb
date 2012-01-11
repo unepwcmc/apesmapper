@@ -135,12 +135,15 @@
             <%= erb :_help_tooltips %>
         </div>
 
+        <div id="selected_filters">
+        </div>
+
         <div id="filter_edit">
             <div class="inner">
                 <div class="help">
                     <h1>Welcome to the Apes Mapper tool</h1>
                     <h2>Select Species</h2>
-                    <div id='species_selector'>Loading species...</div>
+                    <div id='species_selector' class='multiselect_box'>Loading species...</div>
                     <button id="save_filter" disabled='true'><span class="button_info">Initialising app...</span></button>
                 </div> <!-- help -->
             </div> <!-- inner -->
@@ -173,6 +176,10 @@
 
   <script type="text/template" id="species-selector-tmpl">
     <%= File.open('app/views/_species_selector.jst.tpl').read %>
+  </script>
+
+  <script type="text/template" id="selected-filters-tmpl">
+    <%= File.open('app/views/_selected_filters.jst.tpl').read %>
   </script>
 
   <script type="text/template" id="report-tmpl-no-content">
@@ -231,6 +238,7 @@
   <script src="js/views/sharepopup.js"></script>
   <script src="js/views/searchbox.js"></script>
   <script src="js/views/filter_edit.js"></script>
+  <script src="js/views/selected_filters.js"></script>
 
 
   <!-- main -->
