@@ -1680,12 +1680,16 @@ html, body {
   height: 324px;
   margin: 0 auto;
   text-align: left;
-  background: url("/img/sprite.png") right -56px no-repeat;
 }
 /* line 24, ../../css_src/partials/_filter_edit.scss */
 #filter_edit .inner .help {
-  width: 385px;
+  width: 370px;
   padding: 58px 0 0 0;
+  float: left;
+}
+#filter_edit .inner .help + .help {
+  padding-left: 10px;
+  padding-top: 83px;
 }
 /* line 28, ../../css_src/partials/_filter_edit.scss */
 #filter_edit .inner .help h1 {
@@ -2290,10 +2294,9 @@ body.out div.layout footer div.right a.nature {
   font-size: 0;
 }
 
-#species_selector {
+.selector {
   height:100px;
   overflow:scroll;
   border: 1px solid #CCC;
   padding: 2px;
 }
-

@@ -5,7 +5,7 @@ App.modules.Apes = function(app) {
     var Ape = Backbone.Model.extend({
         defaults: function() {
             return {
-              selected:  false,
+              selected:  false
             };
         }
     });

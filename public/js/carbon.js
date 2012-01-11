@@ -47,7 +47,8 @@ App.modules.Carbon = function(app) {
             this.map = new app.Map(this.bus);
             this.work = new app.Work(this.bus);
             this.apes = new app.Apes();
-            this.filterEditView = new App.views.FilterEdit({bus:this.bus, apes: this.apes.allApes});
+            this.countries = new app.Countries();
+            this.filterEditView = new App.views.FilterEdit({bus:this.bus, apes: this.apes.allApes, countries: this.countries.allCountries});
             this.panel = new app.Panel(this.bus);
             this.header = new app.Header();
 

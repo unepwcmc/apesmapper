@@ -14,9 +14,11 @@ App.views.FilterEdit = Backbone.View.extend({
         _.bindAll(this, 'render');
         this.bus = this.options.bus;
         this.apes = this.options.apes;
+        this.countries = this.options.countries;
         this.bus.on('app:work_loaded', this.enable_select);
 
         this.apes.bind('reset', this.render);
+        this.countries.bind('reset', this.render);
     },
 
     render: function() {
@@ -29,6 +31,17 @@ App.views.FilterEdit = Backbone.View.extend({
                 model: species
             });
             $species.append(view.render().el);
+        });
+
+        // get the object to load the species views into
+        var $countries = this.$('#countries_selector');
+        $countries.empty();
+        // Create a species view inside $species for each species
+        this.countries.each(function(countries) {
+            var view = new App.views.CountriesSelector({
+                model: countries
+            });
+            $countries.append(view.render().el);
         });
         return this;
     },
@@ -57,6 +70,32 @@ App.views.SpeciesSelector = Backbone.View.extend({
         _.bindAll(this, 'render', 'toggleSelected');
 
         this.template = _.template( $("#species-selector-tmpl").html() );
+    },
+    events: {
+      'click input': 'toggleSelected'
+    },
+    render: function( event ){
+        // render the template
+        var renderedContent = this.template(this.model.toJSON());
+        $(this.el).html(renderedContent);
+        return this;
+    },
+    toggleSelected: function() {
+        var state = this.model.get('selected');
+        state = !state;
+        this.model.set({selected: state});
+    }
+});
+
+/*
+ * Countries selection view
+ */
+App.views.CountriesSelector = Backbone.View.extend({
+
+    initialize: function() {
+        _.bindAll(this, 'render', 'toggleSelected');
+
+        this.template = _.template( $("#countries-selector-tmpl").html() );
     },
     events: {
       'click input': 'toggleSelected'
