@@ -49,7 +49,7 @@ class ApesMapper < Sinatra::Base
       "/js/app.js",
       "/js/modules/log.js",
       "/js/modules/config.js",
-      "/js/mdules/bus.js",
+      "/js/modules/bus.js",
       "/js/modules/map.js",
       "/js/modules/work.js",
       "/js/modules/apes.js",

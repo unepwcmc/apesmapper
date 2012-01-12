@@ -1,6 +1,7 @@
 @import "base";
 
-#start_banner {
+#filter_edit {
+  display: none;
   $height: 324px;
   position: absolute;
   top: 50%;
@@ -19,11 +20,16 @@
     height:324px;
     margin: 0 auto;
     text-align: left;
-    @include background(right,-56px,no-repeat);
 
     .help {
-      width: 385px;
+      width: 370px;
       padding:58px 0 0 0;
+      float: left;
+
+      & + .help {
+        padding-left: 10px;
+        padding-top: 83px;
+      }
 
       h1 {
         display:block;

@@ -37,6 +37,31 @@ html, body {
   height: 100%;
 }
 
+ul.selector {
+  float:left;
+  width: 150px;
+
+  li {
+    list-style-type: none;
+    padding: 5px
+  }
+}
+
+#selected_filters {
+  position: absolute;
+  top: 123px;
+  right: 0;
+  width: 312px;
+  padding: 20px;
+}
+
+.selector {
+  height:100px;
+  overflow:scroll;
+  border: 1px solid #CCC;
+  padding: 2px;
+}
+
 /* Carbon tool mixins */
 
 // Text shadow
