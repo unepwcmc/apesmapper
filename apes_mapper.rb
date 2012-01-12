@@ -4,6 +4,7 @@ require "bundler/setup"
 Bundler.require
 require './app/models/database.rb'
 require 'sinatra/backbone'
+require 'sinatra/assetpack'
 require 'net/http'
 class ApesMapper < Sinatra::Base
 
@@ -17,6 +18,59 @@ class ApesMapper < Sinatra::Base
   #  use Rack::Csrf, :raise => true
   #end
 
+  # Assetpack
+  set :root, File.dirname(__FILE__)
+  register Sinatra::AssetPack
+
+  assets {
+    serve '/js',     from: 'app/assets/js'        # Optional
+    serve '/css',    from: 'app/assets/css'       # Optional
+    serve '/img', from: 'app/assets/img'          # Optional
+
+    # The second parameter defines where the compressed version will be served.
+    # (Note: that parameter is optional, AssetPack will figure it out.)
+    js :main_app, '/js/main_app.js', [
+      '/js/libs/jquery.mousewheel.js',
+      '/js/libs/jquery.jscrollpane.js',
+      '/js/libs/underscore-min.js',
+      '/js/libs/class.js',
+      '/js/libs/backbone-min.js',
+
+      "/js/app.js",
+      "/js/modules/log.js",
+      "/js/modules/config.js",
+      "/js/modules/bus.js",
+      "/js/modules/map.js",
+      "/js/modules/work.js",
+      "/js/modules/apes.js",
+      "/js/modules/countries.js",
+      "/js/modules/panel.js",
+      "/js/modules/ws.js",
+      "/js/modules/header.js",
+      "/js/modules/cartodb.js",
+      "/js/modules/error.js",
+
+      "/js/views/draw_tool.js",
+      "/js/views/projector.js",
+      "/js/views/map.js",
+      "/js/views/report.js",
+      "/js/views/polygon.js",
+      "/js/views/layers.js",
+      "/js/views/sharepopup.js",
+      "/js/views/searchbox.js",
+      "/js/views/filter_edit.js",
+      "/js/views/selected_filters.js",
+      '/js/carbon.js'
+    ]
+
+    css :application, '/css/application.css', [
+      '/css/style.css'
+    ]
+
+    js_compression  :uglify      # Optional
+    css_compression :sass        # Optional
+  }
+  
   helpers do
     def csrf_token
       Rack::Csrf.csrf_token(env)
