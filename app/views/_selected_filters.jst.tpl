@@ -8,7 +8,7 @@
 <!-- Countries enable/disable input -->
 <h1>Selected countries</h1>
 <ul class='selected'>
-  <% for(country in countries) { %>
-    <li><%= name %></li>
+  <% for(i in countries) { %>
+    <li><%= countries[i].name %></li>
   <% } %>
 </ul>

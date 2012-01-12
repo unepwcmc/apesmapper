@@ -14,6 +14,7 @@ App.views.SelectedFilters = Backbone.View.extend({
 
         this.bus = this.options.bus;
         this.apes = this.options.apes;
+        this.countries = this.options.countries;
         this.template = _.template( $("#selected-filters-tmpl").html() );
         
         // TODO change bindings
@@ -24,6 +25,9 @@ App.views.SelectedFilters = Backbone.View.extend({
         var renderedContent, selections = {
             apes: _.map(this.apes.selected(), function(ape){
                return ape.toJSON();
+            }),
+            countries: _.map(this.countries.selected(), function(country){
+               return country.toJSON();
             })
         }
         // render the template
