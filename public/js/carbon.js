@@ -80,7 +80,7 @@ App.modules.Carbon = function(app) {
                     this.banner_animation();
                 }
             }
-            // ready, luanch
+            // ready, launch
             Backbone.history.start();
             //this.router.navigate('w/work_test');
         },

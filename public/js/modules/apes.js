@@ -7,6 +7,9 @@ App.modules.Apes = function(app) {
             return {
               selected:  false
             };
+        },
+        toggle: function() {
+          this.set({selected: !this.get("selected")});
         }
     });
 

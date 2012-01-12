@@ -2,51 +2,55 @@
  * View the currently selected filters (apes and countries)
  */
 App.views.SelectedFilters = Backbone.View.extend({
+  el: $('#selected_filters'),
 
-    el: $('#selected_filters'),
+  events: {
+    'click #edit_filter': 'hide'
+  },
 
-    events: {
-        'click #save_filter': 'hide'
-    },
+  initialize: function() {
+    _.bindAll(this, 'render');
 
-    initialize: function() {
-        _.bindAll(this, 'render');
+    this.bus = this.options.bus;
+    this.apes = this.options.apes;
+    this.countries = this.options.countries;
+    this.template = _.template( $("#selected-filters-tmpl").html() );
+    this.bus.on('save_filter:click', this.render);
 
-        this.bus = this.options.bus;
-        this.apes = this.options.apes;
-        this.countries = this.options.countries;
-        this.template = _.template( $("#selected-filters-tmpl").html() );
-        
-        // TODO change bindings
-    },
+    this.apes.bind("change", this.render);
+    this.countries.bind("change", this.render);
 
-    render: function() {
-        // selections contains only the selected elements
-        var renderedContent, selections = {
-            apes: _.map(this.apes.selected(), function(ape){
-               return ape.toJSON();
-            }),
-            countries: _.map(this.countries.selected(), function(country){
-               return country.toJSON();
-            })
-        }
-        // render the template
-        renderedContent = this.template(selections);
-        $(this.el).html(renderedContent);
-        return this;
-    },
+    // TODO change bindings
+  },
 
-    show: function() {
-        this.el.show();
-    },
-
-    hide: function() {
-        this.el.hide();
-    },
-
-    enable_select: function() {
-        // Enables saving the filter changes
-        $('#save_filter span.button_info').text('Filter');
-        $('#save_filter').removeAttr('disabled');
+  render: function() {
+    // selections contains only the selected elements
+    var renderedContent, selections = {
+      apes: _.map(this.apes.selected(), function(ape){
+        return ape.toJSON();
+      }),
+      countries: _.map(this.countries.selected(), function(country){
+        return country.toJSON();
+      })
     }
+    // render the template
+    renderedContent = this.template(selections);
+    $(this.el).html(renderedContent);
+    return this;
+  },
+
+  show: function() {
+    this.el.show();
+  },
+
+  hide: function() {
+    //this.el.hide();
+    this.bus.emit('edit_filter:click');
+  },
+
+  enable_select: function() {
+    // Enables saving the filter changes
+    $('#save_filter span.button_info').text('Filter');
+    $('#save_filter').removeAttr('disabled');
+  }
 });

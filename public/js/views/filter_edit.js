@@ -16,6 +16,7 @@ App.views.FilterEdit = Backbone.View.extend({
         this.apes = this.options.apes;
         this.countries = this.options.countries;
         this.bus.on('app:work_loaded', this.enable_select);
+        this.bus.on('edit_filter:click', this.show);
 
         this.apes.bind('reset', this.render);
         this.countries.bind('reset', this.render);
@@ -47,11 +48,12 @@ App.views.FilterEdit = Backbone.View.extend({
     },
 
     show: function() {
-        this.el.show();
+        $('#filter_edit').show();
     },
 
     hide: function() {
         this.el.hide();
+        this.bus.emit('save_filter:click');
     },
 
     enable_select: function() {
@@ -81,9 +83,7 @@ App.views.SpeciesSelector = Backbone.View.extend({
         return this;
     },
     toggleSelected: function() {
-        var state = this.model.get('selected');
-        state = !state;
-        this.model.set({selected: state});
+      this.model.toggle();
     }
 });
 
@@ -107,8 +107,6 @@ App.views.CountriesSelector = Backbone.View.extend({
         return this;
     },
     toggleSelected: function() {
-        var state = this.model.get('selected');
-        state = !state;
-        this.model.set({selected: state});
+      this.model.toggle();
     }
 });

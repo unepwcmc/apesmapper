@@ -1757,8 +1757,10 @@ ul.selector li {
 
 #selected_filters {
   position: absolute;
-  top: 30%;
-  left: 0;
+  top: 123px;
+  right: 0;
+  width: 312px;
+  padding: 20px;
 }
 
 @media print {

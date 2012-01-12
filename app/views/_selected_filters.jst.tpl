@@ -12,3 +12,4 @@
     <li><%= countries[i].name %></li>
   <% } %>
 </ul>
+<button id="edit_filter">Change filters</button>
