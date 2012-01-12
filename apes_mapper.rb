@@ -5,12 +5,22 @@ Bundler.require
 require './app/models/database.rb'
 require 'sinatra/backbone'
 require 'sinatra/assetpack'
+require "compass"
+require 'sinatra/support'
 require 'net/http'
 class ApesMapper < Sinatra::Base
+  set :sass, Compass.sass_engine_options
+  set :sass, { :load_paths => sass[:load_paths] + [ "#{ApesMapper.root}/app/assets/css" ] }
+
+  set :scss, sass
 
   register Sinatra::JstPages
   serve_jst '/jst.tpl'
   BASE_ID = 111222333
+
+    # This is a convenient way of setting up Compass in a Sinatra
+  # project without mucking around with load paths and such.
+  register Sinatra::CompassSupport
 
   #Don't forget to check this :D
   #configure do
@@ -39,7 +49,7 @@ class ApesMapper < Sinatra::Base
       "/js/app.js",
       "/js/modules/log.js",
       "/js/modules/config.js",
-      "/js/modules/bus.js",
+      "/js/mdules/bus.js",
       "/js/modules/map.js",
       "/js/modules/work.js",
       "/js/modules/apes.js",
@@ -63,9 +73,7 @@ class ApesMapper < Sinatra::Base
       '/js/carbon.js'
     ]
 
-    css :application, '/css/application.css', [
-      '/css/style.css'
-    ]
+    css :application, [ '/css/style.css' ]
 
     js_compression  :uglify      # Optional
     css_compression :sass        # Optional
