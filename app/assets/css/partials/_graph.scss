@@ -1,6 +1,17 @@
 @import "base";
 
 div#graph_container {
-  position:absolute;
   z-index:1;
+  overflow:hidden;
+
+  div#graph {
+    padding: 15px;
+    float:left;
+    width: 45%
+  }
+
+  div#filter_pane {
+    float:left;
+    width: 45%
+  }
 }
