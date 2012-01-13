@@ -7,11 +7,38 @@ div#graph_container {
   div#graph {
     padding: 15px;
     float:left;
-    width: 45%
+    width: 480px;
+
+    background: black url('/img/matt_black.png') repeat;
   }
 
   div#filter_pane {
     float:left;
-    width: 45%
+    width: 450px;
+
+    ul#filters {
+      list-style-type:none;
+      font-size: 15px;
+      margin-left: 0;
+
+      li {
+        padding: 10px;
+        border-bottom: 1px solid #CCC;
+
+        @include border-top-right-radius(7px);
+        @include border-bottom-right-radius(7px);
+      }
+
+      li.active {
+        color:white;
+        background: black url('/img/matt_black.png') repeat;
+      }
+    }
+
+    span#result_strip {
+      padding: 10px;
+      float:right;
+      font-size: 18px;
+    }
   }
 }
