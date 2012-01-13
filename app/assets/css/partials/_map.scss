@@ -1,21 +1,6 @@
 
-
-.ie7 .map_container {
-  height: 100%;
-}
-
-.ie7 .main {
-  height: 100%;
-}
-
 .map_container {
-  position: absolute;
-  top:72px;
-  //width:100%;
-  left:0;
-  //right:352px;
-  right:0;
-  bottom:0;
+  height: 300px;
 
   .map {
     width: 100%;

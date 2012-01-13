@@ -87,7 +87,7 @@ var Report = Backbone.View.extend({
       clearTimeout(self.tooltip_timer)
       $('#panel').find('.help_popup').hide();
       self.tooltip_timer = setTimeout(function() {
-        tooltip.show();
+        //tooltip.show();
       }, 300);
     },
 
@@ -106,7 +106,7 @@ var Report = Backbone.View.extend({
       tooltip.css({top: pos.top - 80, left: 120});
       //set html rendered previously
       tooltip.html(el.find('.list_tooltip_data').html());
-      tooltip.show();
+      //tooltip.show();
     },
 
     hide_tooltip: function(e) {
@@ -147,7 +147,7 @@ var Report = Backbone.View.extend({
 
     show: function() {
         this.showing = true;
-        $(this.el).show();
+        //$(this.el).show();
     },
 
     hide: function() {
@@ -346,7 +346,7 @@ var Panel = Backbone.View.extend({
     },
 
     show: function() {
-        this.el.show();
+        //this.el.show();
     }
 
 });
