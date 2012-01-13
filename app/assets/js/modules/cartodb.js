@@ -1,3 +1,74 @@
+/*
+
+-- For one site and one specie:
+
+-- STATE:
+
+SELECT
+  100 * ( COUNT(1) / AVG(state.c) ) AS state_e,
+  AVG(state.q) AS state_q
+FROM
+  stats,
+  ( SELECT AVG(vcf) AS q, COUNT(1) AS c FROM stats WHERE country_id = 1 AND specie1 = true ) AS state
+WHERE
+  country_id = 1 AND
+  specie1 = true AND
+  vcf > state.q;
+
+-- PRESSURE:
+
+SELECT
+  AVG(deforestation) AS deforestation_mean,
+  AVG(pct) AS pct_mean,
+  AVG(pch) AS pch_mean
+FROM
+  stats
+WHERE
+  country_id = 1 AND
+  specie1 = true;
+
+SELECT
+  COUNT(1) AS n_occurences,
+  AVG(hii) AS hii_mean,
+  AVG(human_influence.majority) AS majority
+FROM
+  stats,
+  ( SELECT hii AS majority FROM stats WHERE country_id = 1 AND specie1 = true GROUP BY majority ORDER BY COUNT(1) DESC, majority DESC LIMIT 1 ) AS human_influence
+WHERE
+  country_id = 1 AND
+  specie1 = true;
+
+-- RESPONSE:
+
+SELECT
+  SUM(CASE WHEN protection > 1 THEN 1.0 ELSE 0.0 END) / COUNT(protection) * 100 AS percentage_protected
+  AVG(pc.majority) AS majority
+FROM
+  stats,
+  ( SELECT protection AS majority FROM stats WHERE country_id = 1 GROUP BY majority ORDER BY COUNT(1) DESC, majority DESC LIMIT 1 ) AS pc
+WHERE
+  country_id = 1;
+
+-- BIODIVERSITY:
+
+SELECT
+  ( MAX(thspp_rich) / MAX(spp_rich) ) AS percentage_threat,
+  SUM(carbon) AS total_carbon
+FROM
+  stats
+WHERE
+  country_id = 1;
+
+-- UNCERTAINTY:
+
+SELECT
+  COUNT(1) AS area
+FROM
+  stats
+WHERE
+  country_id = 1;
+
+ */
 
 App.modules.Cartodb = function(app) {
 
