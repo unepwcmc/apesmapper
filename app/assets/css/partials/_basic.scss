@@ -1,0 +1,81 @@
+html{padding:0px;margin:0px;height:100%;}
+body{font-family:Arial, Verdana, Helvetica,sans-serif;font-size:12px;color:#666666;text-decoration:none;padding:0px;margin:0px;background-color:#fff;}
+form{margin:0px;padding:0px;}
+p{margin-top:10px;line-height:155%;}
+a{color:#0071bc;text-decoration:none;}
+a:hover{color:#069;text-decoration:none;}
+img{border:0px;}
+h1{color:#0071bc;font-size:16pt;line-height:30px;}
+h2{color:#0071bc;font-size:13pt;font-weight:normal;}
+h3{color:#0071bc;font-size:13pt;font-weight:normal;margin-bottom:5px;margin-top:9px;}
+h4{color:#bababa;font-size:13pt;font-weight:normal;}
+h9{font-size:12pt;text-decoration:underline;font-weight:normal;}
+h9 a{color:#666666;}
+#wrapper{overflow:hidden;position:relative;top:0px;margin:0 auto;width:996px;}
+#head{width:960px;position:relative;top:0px;background:#fff url(/img/header/blue.png) no-repeat top;height:146px;left:18px;right:18px;}
+#content{font-family:Arial, Verdana, Helvetica,sans-serif;font-size:10pt;background:transparent url(/images/navigation/bottom.png) no-repeat top;padding-top:25px;line-height:145%;min-height:520px;}
+.left_content{width:460px;margin-left:17px;padding-left:8px;float:left;}
+.right_content{position:relative;top:0;float:left;left:10px;width:461px;padding-left:15px;}
+.content_image{float:left;position:relative;left:-10px;top:10px;}
+.headline{color:#0071bc;font-size:13pt;padding-bottom:3px;padding-left:10px;background:transparent url(/images/content/headline_dotted.png) no-repeat 220px bottom;}
+.news_right{float:left;margin-left:10px;padding-left:10px;}
+.species_content{margin-left:40px;margin-top:40px;padding-left:10px;float:left;}
+.species_content div{width:580px;margin-left:45px;float:right;}
+#sponsors{clear:left;width:960px;margin:0 auto;margin-top:15px;border-top:2px solid #e8e8e8;height:80px;}
+#sponsors ul{list-style:none;margin:0;margin-top:20px;}
+#sponsors li{display:inline;}
+#sponsors a{margin-left:15px;}
+#footer{width:996px;background:transparent url(/images/footer/footer.png) no-repeat top left;height:83px;padding:60px 10px 10px 20px;}
+.breadcrump{position:relative;top:-10px;font-size:9pt;margin-left:25px;}
+.breadcrump a{color:#000;}
+.breadcrump a.activ{color:#0071bc;}
+.breadcrump a.activ_g{color:#7bb722;}
+.breadcrump a.activ_b{color:#2FB4E6;}
+.breadcrump a.activ_y{color:#f39f01;}
+.sub_content{position:relative;top:0px;left:5px;float:left;width:725px;}
+.sub_content_database{position:relative;top:0px;left:20px;float:left;width:100%;}
+.content_geography{position:relative;top:25px;left:5px;float:left;width:100%;}
+.content_report, .content_wiki{position:relative;top:5px;left:20px;float:left;width:700px;}
+.seperator{position:relative;width:700px;left:0px;border-top:1px solid #ccc;}
+.seperator_portal{position:relative;width:960px;left:12px;border-top:1px solid #ccc;}
+.seperator_archive{position:relative;width:620px;left:80px;border-top:1px solid #ccc;}
+.seperator div, .seperator_archive div{float:right;margin-right:20px;}
+.seperator img, .seperator_archive img{margin-top:-1px;margin-left:10px;}
+.left{position:relative;left:20px;float:left;width:250px;}
+.openinfo{list-style:none;margin:0;padding:0;margin-top:25px;margin-bottom:20px;}
+.openinfo li{background:#ccc;padding:7px 0px 7px 0px;background:transparent url(/images/content/openinfo.png) repeat-x 0px 0px;}
+.trigger_more_info{font-size:10pt;padding-left:35px;margin:0;cursor:pointer;background:transparent url(/images/content/arrow_right.png) no-repeat 10px 1px;color:#666666;}
+.trigger_more_info:hover, .trigger_more_info_open:hover{color:#0071bc;}
+.active_more_info{background:transparent url(/images/content/arrow_down.png) no-repeat 10px 1px;color:#0071bc;}
+.toggle_container_more_info p, .toggle_container_more_info_open p{padding:10px 15px 0px 35px;}
+.references{padding:0px 15px 5px 0px;color:#b3b3b3;}
+.species{margin:0 auto;}
+.species ul{list-style:none;margin:0;}
+.species ul li{display:inline;float:left;margin:5px;}
+.species ul li a{display:block;width:162px;height:70px;background-color:#e6e6e6;color:#000;padding-left:10px;padding-top:10px;}
+.species ul li a span{color:#0071bc;}
+.geography{position:relative;left:-20px;margin:0 auto;}
+.geography ul{list-style:none;margin:0;}
+.geography ul li{display:inline;float:left;margin:5px;margin-left:5px;margin-right:2px;text-align:center;}
+.geography ul li a{display:block;width:184px;height:40px;background-color:#e5e5e5;color:#4d4d4d;font-size:110%;padding-top:15px;font-weight:bold;}
+#form_selection{width:920px;height:280px;margin:0 auto;margin-top:50px;background:transparent url(/images/background/select.png) no-repeat top left;}
+#form_selection h4{margin:10px 0px 0px 25px;padding-top:70px;color:#999;}
+#form_selection form{width:750px;margin:0 auto;}
+#form_selection select{margin-left:20px;margin-top:40px;font-size:130%;padding:5px 2px 5px 5px;width:130px;margin-bottom:25px;}
+#form_selection select:first-child{margin-left:0;}
+.species_navigation{position:relative;width:900px;top:5px;left:15px;height:130px;}
+.underline{clear:left;position:relative;top:-20px;left:0px;width:960px;border-bottom:1px solid #ccc;}
+.headline_species{margin-left:260px;}
+.headline_data{color:#f39f01;}
+.headline_report{color:#7bb722;}
+.headline_wiki{color:#2FB4E6;}
+.geo_table{margin-left:22px;margin-bottom:25px;}
+.geo_table td{padding:5px 2px;background:#fff url(/images/content/divider_table.png) no-repeat left bottom;}
+.geo_table td.empty{background:none;}
+.geo_table td a{display:block;color:#333;padding-left:10px;font-weight:bold;height:20px;}
+.geo_table td a:hover{border-left:4px solid #0071bc;padding-left:6px;color:#0071bc;}
+.archive_content{position:relative;top:-25px;width:700px;margin-left:auto;margin-right:auto;display:block;overflow:auto;}
+.archive_year{width:60px;height:45px;background:transparent url(/images/background/archive_headline.png) no-repeat top left;color:#7bb722;font-weight:bold;padding:5px 0px 0px 10px;float:left;}
+.archive_inner{position:relative;left:10px;width:600px;float:left;}
+.archive_content h4{color:#7bb722;}
+.database_archive_content{margin-left:15px;margin-bottom:25px;}

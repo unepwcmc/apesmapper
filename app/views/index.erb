@@ -17,7 +17,7 @@
        Remove this if you use the .htaccess -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>Carbon Calculator</title>
+  <title>A.P.E.S.</title>
   <meta name="description" content="">
   <meta name="author" content="">
 
@@ -41,29 +41,61 @@
   <script src="jst.tpl"></script>
 </head>
 
-<body class="tool">
+<body class="tool ">
 
-  <div id="container">
-    <header>
-      <div class="left">
-        <h1>CARBON CALCULATOR</h1>
-        <p>a joint product of The CBD Secretariat, LifeWeb and UNEP-WCMC</p>
-      </div>
-      <div class="right">
+  <div id="wrapper">
+    <header id="head">
+      <div class="head_nav">
         <ul>
-          <li><a class="no_bkg" href="/about">ABOUT</a></li>
-          <li><a href="#share" class='share_button'><span><strong>SHARE</strong> THIS REPORT</span></a></li>
+          <li><a href="/about" title="">about</a></li>
+          <li><a href="/contact" title="">contact</a></li>
+          <li><a href="#" title="">language</a></li>
         </ul>
-        <div class="share_tooltip">
-            <a href='#' class="close"></a>
-            <h1>share your report using this link</h1>
-            <input class="link" value=""  readonly="readonly"></input>
-        </div>
       </div>
     </header>
+    <div class="menu_subpage">
+      <ul>
+        <li><a class="sub_portal" id="portal_activ" href="#">Portal</a>
+        <ul>
+          <li><a class="por" href="portal/species">Species</a></li>
+          <li><a class="por" href="portal/topic">Topic</a></li>
+          <li><a class="por" href="portal/geography">Geography</a></li>
+          <li><a class="por" href="portal/tools">Tools</a></li>
+        </ul>
+        </li>
+        <li><a class="sub_data" href="#">Database</a>
+        <ul>
+          <li><a class="dat" href="database/archiveTable">Data Archive</a></li>
+          <li><a class="dat" href="database/literature">Literature</a></li>
+          <li><a class="dat" href="database/policy">Policy</a></li>
+          <li><a class="dat" href="database/surveyGuidelines">Survey Guidelines</a></li>
+        </ul>
+        </li>
+        <li><a class="sub_report" href="#">Report</a>
+        <ul>
+          <li><a class="rep" href="report/annual">Annual Report</a></li>
+          <li><a class="rep" href="report/archive">Archive</a></li>
+        </ul>
+        </li>
+        <li><a class="sub_wiki" href="http://apes.eva.mpg.de/apeswiki/index.php/Main_Page" target="_blank">Wiki</a></li>
+      </ul>
+    </div>
 
     <div id="main" role="main">
 
+        <div id='graph_container'>
+            <div id='graph'>
+                <%= img 'img/lovely_map.png' %>
+            </div>
+            <div id='filter_pane'>
+                <ul id='filters'>
+                    <li>Filter 1</li>
+                    <li>Filter 2</li>
+                    <li>Filter 3</li>
+                    <li>Filter 4</li>
+                </ul>
+            </div>
+        </div>
         <div class="map_container" id="main_map">
             <div class="map"></div>
             <!-- zoom-control -->
@@ -162,11 +194,30 @@
           <a id="ok" href="#">ok</a>
         </div>
       </div>
-
     </div>
 
+    <div id="sponsors">
+      <ul style="padding-left:40px;">
+        <li><a href="#" style="margin-left:0px;" title=""><img src="css/images/sponsors/arcus.gif" alt="" /></a></li>
+        <li><a href="#" title=""><img src="css/images/sponsors/unep.gif" alt="" /></a></li>
+        <li><a href="#" title=""><img src="css/images/sponsors/wcmc.gif" alt="" /></a></li>
+        <li><a href="#" title=""><img src="css/images/sponsors/wild.gif" alt="" /></a></li>
+        <li><a href="#" title=""><img src="css/images/sponsors/esri.gif" alt="" /></a></li>
+        <li><a href="#" title=""><img src="css/images/sponsors/wwf.gif" alt="" /></a></li>
+        <li><a href="#" title=""><img src="css/images/sponsors/iucn.gif" alt="" /></a></li>
+        <li><a href="#" title=""><img src="css/images/sponsors/jane.gif" alt="" /></a></li>
+        <li><a href="#" title=""><img src="css/images/sponsors/mpg.gif" alt="" /></a></li>
+      </ul>
+    </div>
 
-    <footer>
+    <footer id="footer">
+      <img src="css/images/footer/footer-logo.png" style="float:left;" alt="Logo-Footer" />
+      <ul class="footer_nav">
+        <li><a class="contact" href="/partners" title="">Partners</a></li>
+        <li><a class="imprint" href="#" title="">Philosophy</a></li>
+        <li><a class="faq" href="#" title="">FAQ</a></li>
+        <li><a class="support" href="#" title="">Support A.P.E.S.</a></li>
+      </ul>
     </footer>
   </div> <!--! end of #container -->
 
