@@ -14,7 +14,7 @@ App.modules.WS = function(app) {
          * is called with null if thereis no info
          */
         info_at: function(latLng, callback) {
-            $.getJSON(this.URL + 'api/sites_by_point/' + latLng[1] + '/' + latLng[0] + '?callback=?')
+            jQuery.getJSON(this.URL + 'api/sites_by_point/' + latLng[1] + '/' + latLng[0] + '?callback=?')
             .success(function(data) {
                 if(data && data.length) {
                     callback(data[0]);
@@ -26,7 +26,7 @@ App.modules.WS = function(app) {
         },
 
         PA_polygon: function(pa_id, callback) {
-            $.getJSON(this.URL + 'api2/sites/' + pa_id + '/geom' + '?callback=?')
+            jQuery.getJSON(this.URL + 'api2/sites/' + pa_id + '/geom' + '?callback=?')
             .success(function(data) {
                 if(data) {
                     callback(data);
@@ -38,7 +38,7 @@ App.modules.WS = function(app) {
         },
 
         PA_coverage: function(polygon, callback) {
-          $.ajax({
+          jQuery.ajax({
             url: '/api/v0/proxy/' + this.URL + 'api2/geo_searches',
             type: 'POST',
             data: {data: JSON.stringify([{id: 1, the_geom: polygon}])},

@@ -34,7 +34,7 @@ var MapView = Backbone.View.extend({
             'click .zoom_in': 'zoom_in',
             'click .zoom_out': 'zoom_out'
     },
-    //el: $("#map"),
+    //el: jQuery("#map"),
 
     initialize: function() {
         _.bindAll(this, 'center_changed', 'ready', 'click', 'set_center', 'zoom_changed', 'zoom_in', 'zoom_out', 'adjustSize', 'set_zoom_silence', 'set_center_silence');

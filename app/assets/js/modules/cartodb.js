@@ -90,7 +90,7 @@ GROUP BY priority, country";
             crossDomain = false;
         }
         if(sql.length > 1500) {
-            $.ajax({
+            jQuery.ajax({
               url: url,
               crossDomain: crossDomain,
               type: 'POST',
@@ -110,7 +110,7 @@ GROUP BY priority, country";
         } else {
              //OK, if the server returns 400 none of the callbacks are called
              // :(
-             $.getJSON(resource_url + '?q=' + encodeURIComponent(sql) + '&callback=?')
+             jQuery.getJSON(resource_url + '?q=' + encodeURIComponent(sql) + '&callback=?')
              .success(callback)
              .fail(function(){ 
                     callback(); 

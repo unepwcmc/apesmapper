@@ -36,7 +36,7 @@ var Searchbox = Backbone.View.extend({
           var bounds = this.first().get('geometry').bounds;
           self.trigger('goto', r, bounds);
         });
-        $(document).bind('keydown', this.keyPress);
+        jQuery(document).bind('keydown', this.keyPress);
     },
 
     typing: function(e) {

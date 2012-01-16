@@ -127,7 +127,7 @@ App.modules.Data = function(app) {
                 });
             }
             if(!app.config.LOCAL_STORAGE) {
-                $.ajax({
+                jQuery.ajax({
                     url: this.API_URL,
                     type: 'POST'})
                 .done(_done)

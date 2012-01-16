@@ -39,6 +39,9 @@
   <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
   <script src="js/libs/modernizr-2.0.6.js"></script>
   <script src="jst.tpl"></script>
+
+  <script src="js/mootools-1.2.5-core-nc.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/moochart-0.1b1.js" type="text/javascript" charset="utf-8"></script>
 </head>
 
 <body class="tool ">
@@ -84,9 +87,7 @@
     <div id="main" role="main">
 
         <div id='graph_container'>
-            <div id='graph'>
-                <%= img 'img/lovely_map.png', :width => '350px;' %>
-            </div>
+            <div id='graph'></div>
             <div id='filter_pane'>
                 <ul id='filters'>
                     <li>Filter 1</li>
@@ -285,23 +286,45 @@
 
   <!-- end scripts-->
   <script>
-      function init() {
-          // use timeout trick to avoid jquery catch the exceptions thrown
-          setTimeout(function() {
-              App(function(app) {
-                  var carbon = new app.Carbon();
-                  carbon.run();
-                  //debug
-                  window.carbon = carbon;
-                  window._app= app;
-              });
-          }, 100);
-      }
-      $(document).ready(function() {
-      //$(function() {
-            init();
+    jQuery.noConflict();
+    function init() {
+      // use timeout trick to avoid jquery catch the exceptions thrown
+      setTimeout(function() {
+        App(function(app) {
+          var carbon = new app.Carbon();
+          carbon.run();
+          //debug
+          window.carbon = carbon;
+          window._app= app;
+        });
+      }, 100);
+    }
+    jQuery(document).ready(function() {
+      init();
+    });
 
+    window.addEvent('domready', function() {
+      // Graph
+      var chart1 = new Chart.Bubble('graph', {
+        width: 480,
+        height: 350,
+        lineColor: '#3f3f3f',
+        zmin: 0, zmax: 100,
+        bubbleSize: 40
       });
+
+      chart1.bubbles = [
+        {x: 82, y: 70, z: 90, color: '#318bd6', tip: '<b>HTML</b> is allowed in <span style="color: #71a8d6;">tooltips</span>'},
+        {x: 21, y: 11, z: 0, color: '#000', tip: 'This bubble is the minimum size'},
+        {x: 0, y: 0, z: 100, color: '#319344', tip: 'Bubbles can <u>never</u> fall outside the grid'},
+        {x: 10, y: 100, z: 50, color: '#959300', tip: 'Behind'},
+        {x: 12, y: 92, z: 40, color: '#802b60', tip: 'Smaller bubbles will render above bigger ones'},
+        {x: 100, y: 100, z: 100, color: '#1727a3', tip: '<i>Top</i> <b>Big</b> <u>Left</u>'},
+        {x: 50, y: 50, z: 50, color: '#1727a3', tip: 'Tooltips can have<br />multiple lines. Like this<br />And this'},
+      ];
+
+      chart1.redraw();
+    });
   </script>
 
 

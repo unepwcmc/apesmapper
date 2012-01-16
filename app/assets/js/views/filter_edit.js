@@ -4,7 +4,7 @@
 
 App.views.FilterEdit = Backbone.View.extend({
 
-    el: $('#filter_edit'),
+    el: jQuery('#filter_edit'),
 
     events: {
         'click #save_filter': 'hide'
@@ -48,7 +48,7 @@ App.views.FilterEdit = Backbone.View.extend({
     },
 
     show: function() {
-        $('#filter_edit').show();
+        jQuery('#filter_edit').show();
     },
 
     hide: function() {
@@ -58,8 +58,8 @@ App.views.FilterEdit = Backbone.View.extend({
 
     enable_select: function() {
         // Enables saving the filter changes
-        $('#save_filter span.button_info').text('Filter');
-        $('#save_filter').removeAttr('disabled');
+        jQuery('#save_filter span.button_info').text('Filter');
+        jQuery('#save_filter').removeAttr('disabled');
     }
 });
 
@@ -71,7 +71,7 @@ App.views.SpeciesSelector = Backbone.View.extend({
     initialize: function() {
         _.bindAll(this, 'render', 'toggleSelected');
 
-        this.template = _.template( $("#species-selector-tmpl").html() );
+        this.template = _.template( jQuery("#species-selector-tmpl").html() );
     },
     events: {
       'click input': 'toggleSelected'
@@ -79,7 +79,7 @@ App.views.SpeciesSelector = Backbone.View.extend({
     render: function( event ){
         // render the template
         var renderedContent = this.template(this.model.toJSON());
-        $(this.el).html(renderedContent);
+        jQuery(this.el).html(renderedContent);
         return this;
     },
     toggleSelected: function() {
@@ -95,7 +95,7 @@ App.views.CountriesSelector = Backbone.View.extend({
     initialize: function() {
         _.bindAll(this, 'render', 'toggleSelected');
 
-        this.template = _.template( $("#countries-selector-tmpl").html() );
+        this.template = _.template( jQuery("#countries-selector-tmpl").html() );
     },
     events: {
       'click input': 'toggleSelected'
@@ -103,7 +103,7 @@ App.views.CountriesSelector = Backbone.View.extend({
     render: function( event ){
         // render the template
         var renderedContent = this.template(this.model.toJSON());
-        $(this.el).html(renderedContent);
+        jQuery(this.el).html(renderedContent);
         return this;
     },
     toggleSelected: function() {

@@ -1,6 +1,6 @@
 
 var SharePopup = Backbone.View.extend({
-    el: $('.share_tooltip'),
+    el: jQuery('.share_tooltip'),
 
     events: {
         'click .close': 'close',
