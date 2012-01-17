@@ -1,5 +1,23 @@
 @import "base";
 
+.btn {
+  border-radius: 6px;
+  border: 1px solid gainsboro;
+  border-image: initial;
+  display: inline-block;
+  color: #777;
+  font-size: 15px;
+  font-weight: normal;
+  padding: 3px 5px;
+  text-decoration: none;
+  text-shadow: 1px 1px 5px white;
+  @include background-image(linear-gradient(#EDEDED, #DFDFDF));
+  -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
+  box-shadow: inset 0px 1px 0px 0px #ffffff;
+  @include border-radius(4px);
+}
+
 div#graph_container {
   z-index:1;
   overflow:hidden;
@@ -18,10 +36,11 @@ div#graph_container {
     @include border-bottom-right-radius(7px);
     @include background-image(linear-gradient(left, #6EB225, #5EAA26));
 
-    ul#filters {
+    ul.filters {
       list-style-type:none;
       font-size: 15px;
       margin-left: 0;
+      margin-bottom: 15px;
       background-color: white;
       border: 1px solid #999;
       @include border-radius(7px);
@@ -42,7 +61,12 @@ div#graph_container {
       li.active {
         color:white;
         @include background-image(linear-gradient(#0091D7, #0480C2));
-        
+      }
+
+      span.btn {
+        float:right;
+        position:relative;
+        top: -4px;
       }
     }
 

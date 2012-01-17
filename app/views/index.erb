@@ -88,11 +88,23 @@
 
         <div id='graph_container'>
             <div id='filter_pane'>
-                <ul id='filters'>
+                <ul class='filters' id='filter-selector'>
+                    <li>
+                      Species: <i>All</i> <span class='btn'>Edit</span>
+                      <ul class='selected-list'></ul>
+                    </li>
+                    <li>
+                      Countries: <i>GB, FR, ES...</i> <span class='btn'>Edit</span>
+                    </li>
+                </ul>
+                <ul class='filters'>
                     <li>Filter 1<div class='filter-slider'></div></li>
                     <li class='active'>Filter 2<div class='filter-slider'></div></li>
                     <li>Filter 3<div class='filter-slider'></div></li>
                     <li>Filter 4<div class='filter-slider'></div></li>
+                </ul>
+                <ul class='filters'>
+                    <li>Size<div class='filter-slider'></div></li>
                 </ul>
                 <span id='result_strip'><span id='result_count'>50</span> sites</span>
             </div>
