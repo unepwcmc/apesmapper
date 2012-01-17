@@ -9,36 +9,54 @@ div#graph_container {
     float:left;
     width: 480px;
 
-    background: black url('/img/matt_black.png') repeat;
   }
 
   div#filter_pane {
     float:left;
-    width: 450px;
+    width: 430px;
+    padding: 10px;
+    @include border-bottom-right-radius(7px);
+    @include background-image(linear-gradient(left, #6EB225, #5EAA26));
 
     ul#filters {
       list-style-type:none;
       font-size: 15px;
       margin-left: 0;
+      background-color: white;
+      border: 1px solid #999;
+      @include border-radius(7px);
 
       li {
         padding: 10px;
-        border-bottom: 1px solid #CCC;
+        border-top: 1px solid #999;
 
-        @include border-top-right-radius(7px);
-        @include border-bottom-right-radius(7px);
+        .filter-slider {
+          width: 200px;
+          float:right;
+        }
+      }
+      li:first-child {
+        border-top: 0;
       }
 
       li.active {
         color:white;
-        background: black url('/img/matt_black.png') repeat;
+        @include background-image(linear-gradient(#0091D7, #0480C2));
+        
       }
     }
 
     span#result_strip {
       padding: 10px;
       float:right;
-      font-size: 18px;
+      font-size: 24px;
+      color: #EEE;
+
+      span#result_count {
+        font-size: 30px;
+        font-weight: bold;
+        color:white;
+      }
     }
   }
 }

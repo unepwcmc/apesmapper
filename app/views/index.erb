@@ -87,16 +87,16 @@
     <div id="main" role="main">
 
         <div id='graph_container'>
-            <div id='graph'></div>
             <div id='filter_pane'>
                 <ul id='filters'>
-                    <li>Filter 1</li>
-                    <li class='active'>Filter 2</li>
-                    <li>Filter 3</li>
-                    <li>Filter 4</li>
+                    <li>Filter 1<div class='filter-slider'></div></li>
+                    <li class='active'>Filter 2<div class='filter-slider'></div></li>
+                    <li>Filter 3<div class='filter-slider'></div></li>
+                    <li>Filter 4<div class='filter-slider'></div></li>
                 </ul>
                 <span id='result_strip'><span id='result_count'>50</span> sites</span>
             </div>
+            <div id='graph'></div>
         </div>
         <div class="map_container" id="main_map">
             <div class="map"></div>
@@ -301,6 +301,18 @@
     }
     jQuery(document).ready(function() {
       init();
+
+      var $ = jQuery;
+      $("div.filter-slider").slider({
+        range: true,
+        min: 0,
+        max: 500,
+        values: [ 75, 300 ],
+        slide: function( event, ui ) {
+          $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+        }
+      });
+      $( "#amount" ).val( "$" + $( "div.filter-slider" ).slider( "values", 0 ) + " - $" + $( "div.filter-slider" ).slider( "values", 1 ) );
     });
 
     window.addEvent('domready', function() {
