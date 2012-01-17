@@ -86,83 +86,83 @@
 
     <div id="main" role="main">
 
-        <div id='graph_container'>
-            <div id='filter_pane'>
-                <ul class='filters' id='filter-selector'>
-                    <li>
-                      Species: <i>All</i> <span class='btn'>Edit</span>
-                      <ul class='selected-list'></ul>
-                    </li>
-                    <li>
-                      Countries: <i>GB, FR, ES...</i> <span class='btn'>Edit</span>
-                    </li>
-                </ul>
-                <ul class='filters'>
-                    <li>Filter 1<div class='filter-slider'></div></li>
-                    <li class='active'>Filter 2<div class='filter-slider'></div></li>
-                    <li>Filter 3<div class='filter-slider'></div></li>
-                    <li>Filter 4<div class='filter-slider'></div></li>
-                </ul>
-                <ul class='filters'>
-                    <li>Size<div class='filter-slider'></div></li>
-                </ul>
-                <span id='result_strip'><span id='result_count'>50</span> sites</span>
-            </div>
+        <div id='results_container'>
             <div id='graph'></div>
+            <div class="map_container" id="main_map">
+                <div class="map"></div>
+                <!-- zoom-control -->
+                <div class="zoom_control">
+                  <a href="#zoom_in" class="zoom_in">zoom_in</a>
+                  <a href="#zoom_out" class="zoom_out">zoom_out</a>
+                </div>
+                <!-- end zoom control -->
+                <!--
+                <div class="layer_editor">
+                    <a href="#" class="layer_raster"></a>
+                    <a href="#" class="layer_google_maps"></a>
+                </div>
+                -->
+                <div class="crosshair">
+                    <img src="/img/icons/crosshair_map.png" />
+                </div>
+                <div class="tiles_info"><span></span></div>
+                <div class="layers">
+                    <a href="#view" class="view"><span>VIEWING <b class="layer_number">3 LAYERS</b></span></a>
+                    <div class="show">
+                        <span class="top"></span>
+                        <ul class="dropdown">
+                            <a class="expand" href="#expand">expand</a>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- search box -->
+                <div class="search">
+                  <h1>search</h1>
+                  <input type='text' placeholder='............................' />
+                  <a href="#search">&nbsp;&nbsp;</a>
+                </div>
+
+                <div id="polygon_popup">
+                    <a id='done' href="">done</a>
+                    <a id='delete' href="">delete</a>
+                </div> <!-- polygon_popup -->
+
+                <div id="protected_popup" class="popup_text">
+                    <div class="top"></div>
+                    <div class="center">
+                      <a href='#' class="close"></a>
+                      <h1 class="name">name</h1>
+                    </div>
+                    <div class="bottom">
+                      <a id='add_protected' href="#"><span>add this to the analisys</span></a>
+                    </div>
+                </div> <!-- polygon_popup -->
+
+
+                <a class="cartodb_logo" href="http://cartodb.com"></a>
+            </div>
         </div>
-        <div class="map_container" id="main_map">
-            <div class="map"></div>
-            <!-- zoom-control -->
-            <div class="zoom_control">
-              <a href="#zoom_in" class="zoom_in">zoom_in</a>
-              <a href="#zoom_out" class="zoom_out">zoom_out</a>
-            </div>
-            <!-- end zoom control -->
-            <!--
-            <div class="layer_editor">
-                <a href="#" class="layer_raster"></a>
-                <a href="#" class="layer_google_maps"></a>
-            </div>
-            -->
-            <div class="crosshair">
-                <img src="/img/icons/crosshair_map.png" />
-            </div>
-            <div class="tiles_info"><span></span></div>
-            <div class="layers">
-                <a href="#view" class="view"><span>VIEWING <b class="layer_number">3 LAYERS</b></span></a>
-                <div class="show">
-                    <span class="top"></span>
-                    <ul class="dropdown">
-                        <a class="expand" href="#expand">expand</a>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- search box -->
-            <div class="search">
-              <h1>search</h1>
-              <input type='text' placeholder='............................' />
-              <a href="#search">&nbsp;&nbsp;</a>
-            </div>
-
-            <div id="polygon_popup">
-                <a id='done' href="">done</a>
-                <a id='delete' href="">delete</a>
-            </div> <!-- polygon_popup -->
-
-            <div id="protected_popup" class="popup_text">
-                <div class="top"></div>
-                <div class="center">
-                  <a href='#' class="close"></a>
-                  <h1 class="name">name</h1>
-                </div>
-                <div class="bottom">
-                  <a id='add_protected' href="#"><span>add this to the analisys</span></a>
-                </div>
-            </div> <!-- polygon_popup -->
-
-
-            <a class="cartodb_logo" href="http://cartodb.com"></a>
+        <div id='filter_pane'>
+            <ul class='filters' id='filter-selector'>
+                <li>
+                  Species: <i>All</i> <span class='btn'>Edit</span>
+                  <ul class='selected-list'></ul>
+                </li>
+                <li>
+                  Countries: <i>GB, FR, ES...</i> <span class='btn'>Edit</span>
+                </li>
+            </ul>
+            <ul class='filters'>
+                <li>Filter 1<div class='filter-slider'></div></li>
+                <li class='active'>Filter 2<div class='filter-slider'></div></li>
+                <li>Filter 3<div class='filter-slider'></div></li>
+                <li>Filter 4<div class='filter-slider'></div></li>
+            </ul>
+            <ul class='filters'>
+                <li>Size<div class='filter-slider'></div></li>
+            </ul>
+            <span id='result_strip'><span id='result_count'>50</span> sites</span>
         </div>
 
 
@@ -330,8 +330,8 @@
     window.addEvent('domready', function() {
       // Graph
       var chart1 = new Chart.Bubble('graph', {
-        width: 480,
-        height: 350,
+        width: 630,
+        height: 500,
         lineColor: '#3f3f3f',
         zmin: 0, zmax: 100,
         bubbleSize: 40
