@@ -33,6 +33,8 @@ class ApesMapper < Sinatra::Base
   register Sinatra::AssetPack
 
   assets {
+    js_compression :uglify
+    
     serve '/js',     from: 'app/assets/js'        # Optional
     serve '/css',    from: 'app/assets/css'       # Optional
     serve '/img', from: 'app/assets/img'          # Optional
@@ -40,7 +42,6 @@ class ApesMapper < Sinatra::Base
     # The second parameter defines where the compressed version will be served.
     # (Note: that parameter is optional, AssetPack will figure it out.)
     js :main_app, '/js/main_app.js', [
-      '/js/libs/jquery-ui-1.8.17.custom.min.js',
       '/js/libs/jquery.mousewheel.js',
       '/js/libs/jquery.jscrollpane.js',
       '/js/libs/underscore-min.js',
