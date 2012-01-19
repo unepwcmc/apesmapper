@@ -71,7 +71,8 @@ div#filter_pane {
 
   div#result-area {
     background-image: url('/img/matt_black.png');
-    height:190px;
+    height:90px;
+    margin-top: 114px;
     overflow:hidden;
 
     span#result-strip {
@@ -86,6 +87,7 @@ div#filter_pane {
         color:white;
       }
     }
+
     div#view-selector {
       float:right;
       margin-top: 20px;
@@ -106,6 +108,15 @@ div#filter_pane {
         @include border-bottom-left-radius(4px);
         border-left: 0;
       }
+    }
+
+    a.share_button {
+      color:white;
+      padding: 5px;
+      margin-left: 10px;
+      margin-top: 5px;
+      border: 1px solid black;
+      @include border-radius(3px);
     }
   }
 }
