@@ -8,7 +8,7 @@ App.modules.Map = function(app) {
 
     // edit, delete popup shown when user is editing a poly
     var Popup = Backbone.View.extend({
-        el: $('#polygon_popup'),
+        el: jQuery('#polygon_popup'),
 
         events: {
             'click #delete': 'remove',
@@ -71,7 +71,7 @@ App.modules.Map = function(app) {
 
     //TODO: refactor base popup
     var ProtectedZonePopup = Backbone.View.extend({
-        el: $('#protected_popup'),
+        el: jQuery('#protected_popup'),
 
         events: {
             'click .close': 'hide',
@@ -142,8 +142,8 @@ App.modules.Map = function(app) {
         init: function(bus) {
             _.bindAll(this, 'show_report', 'start_edit_polygon', 'end_edit_polygon', 'remove_polygon', 'disable_editing', 'enable_editing', 'enable_layer', 'reoder_layers', 'protected_area_click','reorder_layers', 'update_report', 'remove_all', 'clear');
             var self = this;
-            this.map = new MapView({el: $('.map_container')});
-            this.seachbox = new Searchbox({el: $('.map_container .search')});
+            this.map = new MapView({el: jQuery('.map_container')});
+            this.seachbox = new Searchbox({el: jQuery('.map_container .search')});
             this.report_polygons = {};
             // add layers to the map
             _(app.config.MAP_LAYERS).each(function(layer) {
@@ -154,7 +154,7 @@ App.modules.Map = function(app) {
             this.popup = new Popup({mapview: this.map});
             this.protectedzone_popup = new ProtectedZonePopup({mapview: this.map});
             this.layer_editor = new LayerEditor({
-                el: $('.layers'),
+                el: jQuery('.layers'),
                 bus: bus,
                 layers: this.map.get_layers()
             });
@@ -201,7 +201,7 @@ App.modules.Map = function(app) {
                     self.map.unbind('click', self.protected_area_click);
                 }, 500);
             });
-            $(document).keyup(function(e) {
+            jQuery(document).keyup(function(e) {
                 if (e.keyCode == 27) {
                     if(self._editing) {
                         self.editing(false);
@@ -213,7 +213,7 @@ App.modules.Map = function(app) {
         },
 
         work_mode: function() {
-            $('.map_container').css({right: '352px'});
+            jQuery('.map_container').css({right: '352px'});
         },
 
         enable_layer: function(name, enable) {
@@ -349,12 +349,12 @@ App.modules.Map = function(app) {
         show_controls: function(show) {
             if(show) {
                 this.map.show_controls();
-                $('.layers').show();
-                $('.search').show();
+                jQuery('.layers').show();
+                jQuery('.search').show();
             } else {
                 this.map.hide_controls();
-                $('.layers').hide();
-                $('.search').hide();
+                jQuery('.layers').hide();
+                jQuery('.search').hide();
             }
         }
     });

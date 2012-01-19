@@ -17,7 +17,7 @@
        Remove this if you use the .htaccess -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>Carbon Calculator</title>
+  <title>A.P.E.S.</title>
   <meta name="description" content="">
   <meta name="author" content="">
 
@@ -39,84 +39,139 @@
   <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
   <script src="js/libs/modernizr-2.0.6.js"></script>
   <script src="jst.tpl"></script>
+
+  <script src="js/mootools-1.2.5-core-nc.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/moochart-0.1b1.js" type="text/javascript" charset="utf-8"></script>
 </head>
 
-<body class="tool">
+<body class="tool ">
 
-  <div id="container">
-    <header>
-      <div class="left">
-        <h1>CARBON CALCULATOR</h1>
-        <p>a joint product of The CBD Secretariat, LifeWeb and UNEP-WCMC</p>
-      </div>
-      <div class="right">
+  <div id="wrapper">
+    <header id="head" class='horizontal_box_shadow'>
+      <div class="head_nav">
         <ul>
-          <li><a class="no_bkg" href="/about">ABOUT</a></li>
-          <li><a href="#share" class='share_button'><span><strong>SHARE</strong> THIS REPORT</span></a></li>
+          <li><a href="/about" title="">about</a></li>
+          <li><a href="/contact" title="">contact</a></li>
+          <li><a href="#" title="">language</a></li>
         </ul>
-        <div class="share_tooltip">
-            <a href='#' class="close"></a>
-            <h1>share your report using this link</h1>
-            <input class="link" value=""  readonly="readonly"></input>
-        </div>
       </div>
     </header>
+    <div class="menu_subpage">
+      <ul>
+        <li><a class="sub_portal" id="portal_activ" href="#">Portal</a>
+        <ul>
+          <li><a class="por" href="portal/species">Species</a></li>
+          <li><a class="por" href="portal/topic">Topic</a></li>
+          <li><a class="por" href="portal/geography">Geography</a></li>
+          <li><a class="por" href="portal/tools">Tools</a></li>
+        </ul>
+        </li>
+        <li><a class="sub_data" href="#">Database</a>
+        <ul>
+          <li><a class="dat" href="database/archiveTable">Data Archive</a></li>
+          <li><a class="dat" href="database/literature">Literature</a></li>
+          <li><a class="dat" href="database/policy">Policy</a></li>
+          <li><a class="dat" href="database/surveyGuidelines">Survey Guidelines</a></li>
+        </ul>
+        </li>
+        <li><a class="sub_report" href="#">Report</a>
+        <ul>
+          <li><a class="rep" href="report/annual">Annual Report</a></li>
+          <li><a class="rep" href="report/archive">Archive</a></li>
+        </ul>
+        </li>
+        <li><a class="sub_wiki" href="http://apes.eva.mpg.de/apeswiki/index.php/Main_Page" target="_blank">Wiki</a></li>
+      </ul>
+    </div>
 
-    <div id="main" role="main">
+    <div id="main" role="main" class='horizontal_box_shadow'>
 
-        <div class="map_container" id="main_map">
-            <div class="map"></div>
-            <!-- zoom-control -->
-            <div class="zoom_control">
-              <a href="#zoom_in" class="zoom_in">zoom_in</a>
-              <a href="#zoom_out" class="zoom_out">zoom_out</a>
-            </div>
-            <!-- end zoom control -->
-            <!--
-            <div class="layer_editor">
-                <a href="#" class="layer_raster"></a>
-                <a href="#" class="layer_google_maps"></a>
-            </div>
-            -->
-            <div class="crosshair">
-                <img src="/img/icons/crosshair_map.png" />
-            </div>
-            <div class="tiles_info"><span></span></div>
-            <div class="layers">
-                <a href="#view" class="view"><span>VIEWING <b class="layer_number">3 LAYERS</b></span></a>
-                <div class="show">
-                    <span class="top"></span>
-                    <ul class="dropdown">
-                        <a class="expand" href="#expand">expand</a>
-                    </ul>
+        <div id='filter_pane'>
+            <ul class='filters' id='filter-selector'>
+                <li>
+                  Species: <i>All</i> <span class='btn'>Edit</span>
+                  <ul class='selected-list'></ul>
+                </li>
+                <li>
+                  Countries: <i>GB, FR, ES...</i> <span class='btn'>Edit</span>
+                </li>
+            </ul>
+            <ul class='filters'>
+                <li>Filter 1<div class='filter-slider'></div></li>
+                <li class='active'>Filter 2<div class='filter-slider'></div></li>
+                <li>Filter 3<div class='filter-slider'></div></li>
+                <li>Filter 4<div class='filter-slider'></div></li>
+            </ul>
+            <ul class='filters'>
+                <li>Size<div class='filter-slider'></div></li>
+            </ul>
+            <div id='result-area'>
+                <div class='clear'>
+                  <span id='result-strip'><span id='result-count'>50</span> sites</span>
+                  <div id='view-selector'>
+                      <a href='#graph'>Graph</a><a href='#main_map'>Map</a><a href='#table'>Table</a>
+                  </div>
                 </div>
+                <a href="#share" class="share_button"><span><strong>SHARE</strong> THIS REPORT</span></a>
             </div>
+        </div>
 
-            <!-- search box -->
-            <div class="search">
-              <h1>search</h1>
-              <input type='text' placeholder='............................' />
-              <a href="#search">&nbsp;&nbsp;</a>
+        <div id='results_container'>
+            <div id='graph'></div>
+            <div class="map_container" id="main_map">
+                <div class="map"></div>
+                <!-- zoom-control -->
+                <div class="zoom_control">
+                  <a href="#zoom_in" class="zoom_in">zoom_in</a>
+                  <a href="#zoom_out" class="zoom_out">zoom_out</a>
+                </div>
+                <!-- end zoom control -->
+                <!--
+                <div class="layer_editor">
+                    <a href="#" class="layer_raster"></a>
+                    <a href="#" class="layer_google_maps"></a>
+                </div>
+                -->
+                <div class="crosshair">
+                    <img src="/img/icons/crosshair_map.png" />
+                </div>
+                <div class="tiles_info"><span></span></div>
+                <div class="layers">
+                    <a href="#view" class="view"><span>VIEWING <b class="layer_number">3 LAYERS</b></span></a>
+                    <div class="show">
+                        <span class="top"></span>
+                        <ul class="dropdown">
+                            <a class="expand" href="#expand">expand</a>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- search box -->
+                <div class="search">
+                  <h1>search</h1>
+                  <input type='text' placeholder='............................' />
+                  <a href="#search">&nbsp;&nbsp;</a>
+                </div>
+
+                <div id="polygon_popup">
+                    <a id='done' href="">done</a>
+                    <a id='delete' href="">delete</a>
+                </div> <!-- polygon_popup -->
+
+                <div id="protected_popup" class="popup_text">
+                    <div class="top"></div>
+                    <div class="center">
+                      <a href='#' class="close"></a>
+                      <h1 class="name">name</h1>
+                    </div>
+                    <div class="bottom">
+                      <a id='add_protected' href="#"><span>add this to the analisys</span></a>
+                    </div>
+                </div> <!-- polygon_popup -->
+
+
+                <a class="cartodb_logo" href="http://cartodb.com"></a>
             </div>
-
-            <div id="polygon_popup">
-                <a id='done' href="">done</a>
-                <a id='delete' href="">delete</a>
-            </div> <!-- polygon_popup -->
-
-            <div id="protected_popup" class="popup_text">
-                <div class="top"></div>
-                <div class="center">
-                  <a href='#' class="close"></a>
-                  <h1 class="name">name</h1>
-                </div>
-                <div class="bottom">
-                  <a id='add_protected' href="#"><span>add this to the analisys</span></a>
-                </div>
-            </div> <!-- polygon_popup -->
-
-
-            <a class="cartodb_logo" href="http://cartodb.com"></a>
         </div>
 
 
@@ -162,11 +217,30 @@
           <a id="ok" href="#">ok</a>
         </div>
       </div>
-
     </div>
 
+    <div id="sponsors" class='horizontal_box_shadow'>
+      <ul style="padding-left:40px;">
+        <li><a href="#" style="margin-left:0px;" title=""><img src="/img/sponsors/arcus.gif" alt="" /></a></li>
+        <li><a href="#" title=""><img src="/img/sponsors/unep.gif" alt="" /></a></li>
+        <li><a href="#" title=""><img src="/img/sponsors/wcmc.gif" alt="" /></a></li>
+        <li><a href="#" title=""><img src="/img/sponsors/wild.gif" alt="" /></a></li>
+        <li><a href="#" title=""><img src="/img/sponsors/esri.gif" alt="" /></a></li>
+        <li><a href="#" title=""><img src="/img/sponsors/wwf.gif" alt="" /></a></li>
+        <li><a href="#" title=""><img src="/img/sponsors/iucn.gif" alt="" /></a></li>
+        <li><a href="#" title=""><img src="/img/sponsors/jane.gif" alt="" /></a></li>
+        <li><a href="#" title=""><img src="/img/sponsors/mpg.gif" alt="" /></a></li>
+      </ul>
+    </div>
 
-    <footer>
+    <footer id="footer">
+      <img src="/img/footer/footer-logo.png" style="float:left;" alt="Logo-Footer" />
+      <ul class="footer_nav">
+        <li><a class="contact" href="/partners" title="">Partners</a></li>
+        <li><a class="imprint" href="#" title="">Philosophy</a></li>
+        <li><a class="faq" href="#" title="">FAQ</a></li>
+        <li><a class="support" href="#" title="">Support A.P.E.S.</a></li>
+      </ul>
     </footer>
   </div> <!--! end of #container -->
 
@@ -233,23 +307,57 @@
 
   <!-- end scripts-->
   <script>
-      function init() {
-          // use timeout trick to avoid jquery catch the exceptions thrown
-          setTimeout(function() {
-              App(function(app) {
-                  var carbon = new app.Carbon();
-                  carbon.run();
-                  //debug
-                  window.carbon = carbon;
-                  window._app= app;
-              });
-          }, 100);
-      }
-      $(document).ready(function() {
-      //$(function() {
-            init();
+    jQuery.noConflict();
+    function init() {
+      // use timeout trick to avoid jquery catch the exceptions thrown
+      setTimeout(function() {
+        App(function(app) {
+          var carbon = new app.Carbon();
+          carbon.run();
+          //debug
+          window.carbon = carbon;
+          window._app= app;
+        });
+      }, 100);
+    }
+    jQuery(document).ready(function() {
+      init();
 
+      var $ = jQuery;
+      $("div.filter-slider").slider({
+        range: true,
+        min: 0,
+        max: 500,
+        values: [ 75, 300 ],
+        slide: function( event, ui ) {
+          $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+        }
       });
+      $( "#amount" ).val( "$" + $( "div.filter-slider" ).slider( "values", 0 ) + " - $" + $( "div.filter-slider" ).slider( "values", 1 ) );
+    });
+
+    window.addEvent('domready', function() {
+      // Graph
+      var chart1 = new Chart.Bubble('graph', {
+        width: 639,
+        height: 500,
+        lineColor: '#3f3f3f',
+        zmin: 0, zmax: 100,
+        bubbleSize: 40
+      });
+
+      chart1.bubbles = [
+        {x: 82, y: 70, z: 90, color: '#318bd6', tip: '<b>HTML</b> is allowed in <span style="color: #71a8d6;">tooltips</span>'},
+        {x: 21, y: 11, z: 0, color: '#000', tip: 'This bubble is the minimum size'},
+        {x: 0, y: 0, z: 100, color: '#319344', tip: 'Bubbles can <u>never</u> fall outside the grid'},
+        {x: 10, y: 100, z: 50, color: '#959300', tip: 'Behind'},
+        {x: 12, y: 92, z: 40, color: '#802b60', tip: 'Smaller bubbles will render above bigger ones'},
+        {x: 100, y: 100, z: 100, color: '#1727a3', tip: '<i>Top</i> <b>Big</b> <u>Left</u>'},
+        {x: 50, y: 50, z: 50, color: '#1727a3', tip: 'Tooltips can have<br />multiple lines. Like this<br />And this'},
+      ];
+
+      chart1.redraw();
+    });
   </script>
 
 

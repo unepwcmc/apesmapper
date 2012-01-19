@@ -35,7 +35,6 @@ App.modules.Carbon = function(app) {
             jQuery.ajaxSetup({
                 cache: false
             });
-            $('html,body').css({overflow: 'hidden'});
         },
 
         run: function() {

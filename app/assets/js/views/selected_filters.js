@@ -2,7 +2,7 @@
  * View the currently selected filters (apes and countries)
  */
 App.views.SelectedFilters = Backbone.View.extend({
-  el: $('#selected_filters'),
+  el: jQuery('#selected_filters'),
 
   events: {
     'click #edit_filter': 'hide'
@@ -14,7 +14,7 @@ App.views.SelectedFilters = Backbone.View.extend({
     this.bus = this.options.bus;
     this.apes = this.options.apes;
     this.countries = this.options.countries;
-    this.template = _.template( $("#selected-filters-tmpl").html() );
+    this.template = _.template( jQuery("#selected-filters-tmpl").html() );
     this.bus.on('save_filter:click', this.render);
 
     this.apes.bind("change", this.render);
@@ -35,7 +35,7 @@ App.views.SelectedFilters = Backbone.View.extend({
     }
     // render the template
     renderedContent = this.template(selections);
-    $(this.el).html(renderedContent);
+    jQuery(this.el).html(renderedContent);
     return this;
   },
 
@@ -50,7 +50,7 @@ App.views.SelectedFilters = Backbone.View.extend({
 
   enable_select: function() {
     // Enables saving the filter changes
-    $('#save_filter span.button_info').text('Filter');
-    $('#save_filter').removeAttr('disabled');
+    jQuery('#save_filter span.button_info').text('Filter');
+    jQuery('#save_filter').removeAttr('disabled');
   }
 });

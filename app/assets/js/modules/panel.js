@@ -17,13 +17,13 @@ App.modules.Panel = function(app) {
 
         show: function() {
             app.Log.log("loading");
-            var el = $('.loader');
+            var el = jQuery('.loader');
             el.show();
             this.count++;
             if(this.count === 1) {
                 app.bus.emit("loading_started");
                 /*this.interval = setInterval(function() {
-                   var el = $('.loader');
+                   var el = jQuery('.loader');
                    el.show();
                 }, 400);
                 */
@@ -32,7 +32,7 @@ App.modules.Panel = function(app) {
 
         hide: function() {
             if(this.count === 0) return;
-            //var el = $('.loader');
+            //var el = jQuery('.loader');
             this.count--;
             if(this.count === 0) {
                 app.bus.emit("loading_finished");
