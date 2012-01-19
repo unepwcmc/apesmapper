@@ -72,7 +72,7 @@ WHERE
 
 App.modules.Cartodb = function(app) {
 
-ar SQL_CARBON= "SELECT SUM(ST_Value(rast, 1, x, y)) AS total, " +
+var SQL_CARBON= "SELECT SUM(ST_Value(rast, 1, x, y)) AS total, " +
 "ST_Area(ST_GeomFromText('<%= polygon %>', 4326)::geography) as area " +
 "FROM carbonsequestration CROSS JOIN " +
 "generate_series(1,10) As x CROSS JOIN generate_series(1,10) As y " +
