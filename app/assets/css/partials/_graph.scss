@@ -1,7 +1,6 @@
 @import "base";
 
 .btn {
-  border-radius: 6px;
   border: 1px solid gainsboro;
   border-image: initial;
   display: inline-block;
@@ -23,21 +22,20 @@ div#results_container {
   overflow:scroll;
   width: 639px;
   height: 520px;
-  border-right: 1px solid #CCC;
+  border-left: 1px solid #CCC;
   float:left;
 }
 
 div#filter_pane {
-  float: right;
+  float: left;
   width: 300px;
-  padding: 10px;
-  @include border-bottom-right-radius(7px);
-  @include background-image(linear-gradient(left, #6EB225, #5EAA26));
+  height: 500px;
+  background-image: url('/img/matt_light_green.png');
 
   ul.filters {
     list-style-type:none;
     font-size: 15px;
-    margin-left: 0;
+    margin: 10px;
     margin-bottom: 15px;
     background-color: white;
     border: 1px solid #999;
@@ -71,16 +69,43 @@ div#filter_pane {
     }
   }
 
-  span#result_strip {
-    padding: 10px;
-    float:right;
-    font-size: 24px;
-    color: #EEE;
+  div#result-area {
+    background-image: url('/img/matt_black.png');
+    height:190px;
+    overflow:hidden;
 
-    span#result_count {
-      font-size: 30px;
-      font-weight: bold;
-      color:white;
+    span#result-strip {
+      padding: 10px;
+      float:left;
+      font-size: 24px;
+      color: #EEE;
+
+      span#result-count {
+        font-size: 30px;
+        font-weight: bold;
+        color:white;
+      }
+    }
+    div#view-selector {
+      float:right;
+      margin-top: 20px;
+      a {
+        width:70px;
+        text-align:center;
+        padding: 5px;
+        margin:0;
+        color:white;
+        border-left: 1px solid #666;
+        @include background-image(linear-gradient(#FFBB00, #AD4308));
+      }
+      a:active {
+        @include background-image(linear-gradient(#AD4308, #FFBB00));
+      }
+      a:first-child {
+        @include border-top-left-radius(4px);
+        @include border-bottom-left-radius(4px);
+        border-left: 0;
+      }
     }
   }
 }

@@ -48,8 +48,9 @@ ul.selector {
 }
 
 div#main {
-  padding: 0 18px;
+  margin: 1px 18px;
   overflow:hidden;
+  background:#FFF;
 }
 
 #selected_filters {
@@ -109,4 +110,6 @@ div#main {
   *display: inline;
 }
 
-
+.horizontal_box_shadow {
+  @include box-shadow(#333, 0, 0, 20px, 0);
+}

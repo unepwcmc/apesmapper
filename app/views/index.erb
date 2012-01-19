@@ -47,7 +47,7 @@
 <body class="tool ">
 
   <div id="wrapper">
-    <header id="head">
+    <header id="head" class='horizontal_box_shadow'>
       <div class="head_nav">
         <ul>
           <li><a href="/about" title="">about</a></li>
@@ -84,7 +84,34 @@
       </ul>
     </div>
 
-    <div id="main" role="main">
+    <div id="main" role="main" class='horizontal_box_shadow'>
+
+        <div id='filter_pane'>
+            <ul class='filters' id='filter-selector'>
+                <li>
+                  Species: <i>All</i> <span class='btn'>Edit</span>
+                  <ul class='selected-list'></ul>
+                </li>
+                <li>
+                  Countries: <i>GB, FR, ES...</i> <span class='btn'>Edit</span>
+                </li>
+            </ul>
+            <ul class='filters'>
+                <li>Filter 1<div class='filter-slider'></div></li>
+                <li class='active'>Filter 2<div class='filter-slider'></div></li>
+                <li>Filter 3<div class='filter-slider'></div></li>
+                <li>Filter 4<div class='filter-slider'></div></li>
+            </ul>
+            <ul class='filters'>
+                <li>Size<div class='filter-slider'></div></li>
+            </ul>
+            <div id='result-area'>
+                <span id='result-strip'><span id='result-count'>50</span> sites</span>
+                <div id='view-selector'>
+                    <a href='#graph'>Graph</a><a href='#main_map'>Map</a><a href='#table'>Table</a>
+                </div>
+            </div>
+        </div>
 
         <div id='results_container'>
             <div id='graph'></div>
@@ -143,27 +170,6 @@
                 <a class="cartodb_logo" href="http://cartodb.com"></a>
             </div>
         </div>
-        <div id='filter_pane'>
-            <ul class='filters' id='filter-selector'>
-                <li>
-                  Species: <i>All</i> <span class='btn'>Edit</span>
-                  <ul class='selected-list'></ul>
-                </li>
-                <li>
-                  Countries: <i>GB, FR, ES...</i> <span class='btn'>Edit</span>
-                </li>
-            </ul>
-            <ul class='filters'>
-                <li>Filter 1<div class='filter-slider'></div></li>
-                <li class='active'>Filter 2<div class='filter-slider'></div></li>
-                <li>Filter 3<div class='filter-slider'></div></li>
-                <li>Filter 4<div class='filter-slider'></div></li>
-            </ul>
-            <ul class='filters'>
-                <li>Size<div class='filter-slider'></div></li>
-            </ul>
-            <span id='result_strip'><span id='result_count'>50</span> sites</span>
-        </div>
 
 
         <div id="panel">
@@ -210,7 +216,7 @@
       </div>
     </div>
 
-    <div id="sponsors">
+    <div id="sponsors" class='horizontal_box_shadow'>
       <ul style="padding-left:40px;">
         <li><a href="#" style="margin-left:0px;" title=""><img src="/img/sponsors/arcus.gif" alt="" /></a></li>
         <li><a href="#" title=""><img src="/img/sponsors/unep.gif" alt="" /></a></li>
@@ -330,7 +336,7 @@
     window.addEvent('domready', function() {
       // Graph
       var chart1 = new Chart.Bubble('graph', {
-        width: 630,
+        width: 639,
         height: 500,
         lineColor: '#3f3f3f',
         zmin: 0, zmax: 100,
