@@ -72,83 +72,83 @@ WHERE
 
 App.modules.Cartodb = function(app) {
 
-var SQL_CARBON= "SELECT SUM(ST_Value(rast, 1, x, y)) AS total, \
-ST_Area(ST_GeomFromText('<%= polygon %>', 4326)::geography) as area \
-FROM carbonsequestration CROSS JOIN \
-generate_series(1,10) As x CROSS JOIN generate_series(1,10) As y \
-WHERE rid in ( SELECT rid FROM carbonsequestration WHERE ST_Intersects(rast, ST_GeomFromText('<%= polygon %>',4326)) ) \
-AND \
-ST_Intersects( \
-  ST_Translate(ST_SetSRID(ST_Point(ST_UpperLeftX(rast), ST_UpperLeftY(rast)), 4326), ST_ScaleX(rast)*x, ST_ScaleY(rast)*y), \
-  ST_GeomFromText('<%= polygon %>',4326) \
-);";
+ar SQL_CARBON= "SELECT SUM(ST_Value(rast, 1, x, y)) AS total, " +
+"ST_Area(ST_GeomFromText('<%= polygon %>', 4326)::geography) as area " +
+"FROM carbonsequestration CROSS JOIN " +
+"generate_series(1,10) As x CROSS JOIN generate_series(1,10) As y " +
+"WHERE rid in ( SELECT rid FROM carbonsequestration WHERE ST_Intersects(rast, ST_GeomFromText('<%= polygon %>',4326)) ) " +
+"AND " +
+"ST_Intersects( " +
+  "ST_Translate(ST_SetSRID(ST_Point(ST_UpperLeftX(rast), ST_UpperLeftY(rast)), 4326), ST_ScaleX(rast)*x, ST_ScaleY(rast)*y), " +
+  "ST_GeomFromText('<%= polygon %>',4326) " +
+");";
 
-var SQL_CARBON_COUNTRIES = "\
-SELECT country, SUM(ST_Value(rast, 1, x, y)) AS total, \
-ST_Area(ST_GeomFromText('<%= polygon %>', 4326)::geography) as area \
-FROM carbonintersection CROSS JOIN \
-generate_series(1,10) As x CROSS JOIN generate_series(1,10) As y CROSS JOIN countries \
-WHERE rid IN ( SELECT rid FROM carbonintersection WHERE ST_Intersects(rast, ST_GeomFromText('<%= polygon %>',4326)) ) \
-AND \
-objectid IN ( SELECT objectid FROM countries WHERE ST_Intersects(the_geom, ST_GeomFromText('<%= polygon %>',4326)) ) \
-AND \
-ST_Intersects( \
-  ST_Translate(ST_SetSRID(ST_Point(ST_UpperLeftX(rast) + (ST_ScaleX(rast)/2), ST_UpperLeftY(rast) + (ST_ScaleY(rast)/2)), 4326), ST_ScaleX(rast)*x, ST_ScaleY(rast)*y), \
-  ST_GeomFromText('<%= polygon %>',4326) \
-) \
-AND \
-ST_Intersects( \
-  ST_Translate(ST_SetSRID(ST_Point(ST_UpperLeftX(rast) + (ST_ScaleX(rast)/2), ST_UpperLeftY(rast) + (ST_ScaleY(rast)/2)), 4326), ST_ScaleX(rast)*x, ST_ScaleY(rast)*y), \
-  the_geom \
-) \
-GROUP BY country;";
+var SQL_CARBON_COUNTRIES = ""+
+"SELECT country, SUM(ST_Value(rast, 1, x, y)) AS total, " +
+"ST_Area(ST_GeomFromText('<%= polygon %>', 4326)::geography) as area " +
+"FROM carbonintersection CROSS JOIN " +
+"generate_series(1,10) As x CROSS JOIN generate_series(1,10) As y CROSS JOIN countries " +
+"WHERE rid IN ( SELECT rid FROM carbonintersection WHERE ST_Intersects(rast, ST_GeomFromText('<%= polygon %>',4326)) ) " +
+"AND " +
+"objectid IN ( SELECT objectid FROM countries WHERE ST_Intersects(the_geom, ST_GeomFromText('<%= polygon %>',4326)) ) " +
+"AND " +
+"ST_Intersects( " +
+  "ST_Translate(ST_SetSRID(ST_Point(ST_UpperLeftX(rast) + (ST_ScaleX(rast)/2), ST_UpperLeftY(rast) + (ST_ScaleY(rast)/2)), 4326), ST_ScaleX(rast)*x, ST_ScaleY(rast)*y), " +
+  "ST_GeomFromText('<%= polygon %>',4326) " +
+") " +
+"AND " +
+"ST_Intersects( " +
+  "ST_Translate(ST_SetSRID(ST_Point(ST_UpperLeftX(rast) + (ST_ScaleX(rast)/2), ST_UpperLeftY(rast) + (ST_ScaleY(rast)/2)), 4326), ST_ScaleX(rast)*x, ST_ScaleY(rast)*y), " +
+  "the_geom " +
+") " +
+"GROUP BY country;";
 
-var SQL_RESTORATION ="  \
-SELECT band, AVG(ST_Value(rast, band, x, y)) AS percentage \
-FROM restorationpotencial CROSS JOIN \
-generate_series(1,10) As x CROSS JOIN generate_series(1,10) As y CROSS JOIN generate_series(1,4) As band \
-WHERE rid in ( SELECT rid FROM restorationpotencial WHERE ST_Intersects(rast, ST_GeomFromText('<%= polygon %>',4326)) ) \
-AND \
-ST_Intersects( \
-  ST_Translate(ST_SetSRID(ST_Point(ST_UpperLeftX(rast), ST_UpperLeftY(rast)), 4326), ST_ScaleX(rast)*x, ST_ScaleY(rast)*y), \
-  ST_GeomFromText('<%= polygon %>',4326) \
-) \
-GROUP BY band;"
+var SQL_RESTORATION ="  "+
+"SELECT band, AVG(ST_Value(rast, band, x, y)) AS percentage " +
+"FROM restorationpotencial CROSS JOIN " +
+"generate_series(1,10) As x CROSS JOIN generate_series(1,10) As y CROSS JOIN generate_series(1,4) As band " +
+"WHERE rid in ( SELECT rid FROM restorationpotencial WHERE ST_Intersects(rast, ST_GeomFromText('<%= polygon %>',4326)) ) " +
+"AND " +
+"ST_Intersects( " +
+  "ST_Translate(ST_SetSRID(ST_Point(ST_UpperLeftX(rast), ST_UpperLeftY(rast)), 4326), ST_ScaleX(rast)*x, ST_ScaleY(rast)*y), " +
+  "ST_GeomFromText('<%= polygon %>',4326) " +
+") " +
+"GROUP BY band;"
 
 
-var SQL_FOREST = " \
-SELECT band, SUM(ST_Value(rast, band, x, y)) AS total \
-FROM forestintactness CROSS JOIN \
-generate_series(1,10) As x CROSS JOIN generate_series(1,10) As y CROSS JOIN generate_series(1,4) As band \
-WHERE rid in ( SELECT rid FROM forestintactness WHERE ST_Intersects(rast, ST_GeomFromText('<%= polygon %>',4326)) ) \
-AND \
-ST_Intersects( \
-  ST_Translate(ST_SetSRID(ST_Point(ST_UpperLeftX(rast), ST_UpperLeftY(rast)), 4326), ST_ScaleX(rast)*x, ST_ScaleY(rast)*y), \
-  ST_GeomFromText('<%= polygon %>',4326) \
-) \
-GROUP BY band;"
+var SQL_FOREST = " " +
+"SELECT band, SUM(ST_Value(rast, band, x, y)) AS total " +
+"FROM forestintactness CROSS JOIN " +
+"generate_series(1,10) As x CROSS JOIN generate_series(1,10) As y CROSS JOIN generate_series(1,4) As band " +
+"WHERE rid in ( SELECT rid FROM forestintactness WHERE ST_Intersects(rast, ST_GeomFromText('<%= polygon %>',4326)) ) " +
+"AND " +
+"ST_Intersects( " +
+  "ST_Translate(ST_SetSRID(ST_Point(ST_UpperLeftX(rast), ST_UpperLeftY(rast)), 4326), ST_ScaleX(rast)*x, ST_ScaleY(rast)*y), " +
+  "ST_GeomFromText('<%= polygon %>',4326) " +
+") " +
+"GROUP BY band;"
 
 //var SQL_COVERED_KBA = "SELECT (overlapped_area / ( SELECT ST_Area(ST_GeomFromText('<%= polygon %>', 4326)) LIMIT 1 )) * 100 AS kba_percentage, count FROM ( SELECT COUNT(1), ST_Area( ST_Intersection( ST_Union(the_geom), ST_GeomFromText('<%= polygon %>',4326))) AS overlapped_area FROM kba WHERE ST_Intersects( ST_GeomFromText('<%= polygon %>',4326), the_geom) ) foo";
 
-var SQL_COVERED_KBA = " \
-SELECT (overlapped_area / ( SELECT ST_Area( ST_MakeValid(ST_GeomFromText('<%= polygon %>', 4326)) \
-) LIMIT 1 )) * 100 AS kba_percentage, count FROM ( SELECT COUNT(1), ST_Area( ST_Intersection( ST_Union(the_geom), \
-ST_MakeValid(ST_GeomFromText('<%= polygon %>',4326)) \
-)) AS overlapped_area FROM kba WHERE ST_Intersects( \
-ST_MakeValid(ST_GeomFromText('<%= polygon %>',4326)) \
-, the_geom) ) foo"
+var SQL_COVERED_KBA = " " +
+"SELECT (overlapped_area / ( SELECT ST_Area( ST_MakeValid(ST_GeomFromText('<%= polygon %>', 4326)) " +
+") LIMIT 1 )) * 100 AS kba_percentage, count FROM ( SELECT COUNT(1), ST_Area( ST_Intersection( ST_Union(the_geom), " +
+"ST_MakeValid(ST_GeomFromText('<%= polygon %>',4326)) " +
+")) AS overlapped_area FROM kba WHERE ST_Intersects( " +
+"ST_MakeValid(ST_GeomFromText('<%= polygon %>',4326)) " +
+", the_geom) ) foo"
 
 
-var SQL_COUNTRIES = " \
-SELECT priority, country, ST_Area(ST_Intersection( \
- ST_Union(mg.the_geom)::geography, \
- ST_GeographyFromText('<%= polygon %>') \
-))/1000 AS covered_area \
-FROM gaps_merged mg \
-WHERE ST_Intersects(mg.the_geom, \
- ST_GeometryFromText('<%= polygon %>', 4326) \
-) \
-GROUP BY priority, country";
+var SQL_COUNTRIES = " " +
+"SELECT priority, country, ST_Area(ST_Intersection( " +
+ "ST_Union(mg.the_geom)::geography, " +
+ "ST_GeographyFromText('<%= polygon %>') " +
+"))/1000 AS covered_area " +
+"FROM gaps_merged mg " +
+"WHERE ST_Intersects(mg.the_geom, " +
+ "ST_GeometryFromText('<%= polygon %>', 4326) " +
+") " +
+"GROUP BY priority, country";
 
     var resource_path= 'carbon-tool.cartodb.com/api/v1/sql';
     var resource_url = 'https://' + resource_path;
