@@ -3,9 +3,9 @@ var Report = Backbone.View.extend({
 
     tagName:  "div",
 
-    template: _.template($('#report-tmpl').html()),
-    template_no_content: _.template($('#report-tmpl-no-content').html()),
-    template_header: _.template($('#report-tmpl-common').html()),
+    template: _.template(jQuery('#report-tmpl').html()),
+    template_no_content: _.template(jQuery('#report-tmpl-no-content').html()),
+    template_header: _.template(jQuery('#report-tmpl-common').html()),
 
     events: {
         'click .non_editing .go_edit': 'go_edit',
@@ -22,7 +22,7 @@ var Report = Backbone.View.extend({
 
     initialize: function() {
         _.bindAll(this, 'show', 'hide', 'render', '_render_stats');
-        $(this.el).addClass('tab_content_item');
+        jQuery(this.el).addClass('tab_content_item');
         this.bus = this.options.bus;
         this.rid = this.options.rid;
         this.header = null;
@@ -35,13 +35,13 @@ var Report = Backbone.View.extend({
     _render_stats: function(data) {
         var self = this;
         this.$('.report_stats').remove();
-        $(this.el).append(this.template(data));
+        jQuery(this.el).append(this.template(data));
         var s = this.$('.report_stats');
         s.hide().fadeIn();
         if(data.total) {
           s.css({top: 5});
         }
-        if ($.browser.msie  && parseInt($.browser.version, 10) == 7) {
+        if (jQuery.browser.msie  && parseInt(jQuery.browser.version, 10) == 7) {
             // jscrollpane does not want to work 
         } else {
             setTimeout(function() {
@@ -60,14 +60,14 @@ var Report = Backbone.View.extend({
                 this.header.find('.polygon_num').html(data.polygons.length);
             } else {
                 if(!data.total) {
-                    $(this.el).html(this.template_header(data));
+                    jQuery(this.el).html(this.template_header(data));
                 }
                 this.render_stats(data);
                 this.header = this.$('.stats_header');
             }
             this.leave_edit();
         } else {
-            $(this.el).html(this.template_no_content(data));
+            jQuery(this.el).html(this.template_no_content(data));
             this.header = null;
             this.go_edit();
         }
@@ -76,42 +76,42 @@ var Report = Backbone.View.extend({
     },
 
     show_tooltip_help: function(e) {
-      var el = $(e.currentTarget);
+      var el = jQuery(e.currentTarget);
       var what = el.html().replace(/ /g, '_').replace('.','_')
-      var tooltip = $('#panel').find('.help_popup.' + what);
-      var _top = $(this.el).find('.jspPane').position().top
+      var tooltip = jQuery('#panel').find('.help_popup.' + what);
+      var _top = jQuery(this.el).find('.jspPane').position().top
       var pos = el.position();
       var h = tooltip.outerHeight();
       tooltip.css({top: pos.top + _top + 170 - h - 10 , left: 20});
       //set html rendered previousl
       clearTimeout(self.tooltip_timer)
-      $('#panel').find('.help_popup').hide();
+      jQuery('#panel').find('.help_popup').hide();
       self.tooltip_timer = setTimeout(function() {
-        tooltip.show();
+        //tooltip.show();
       }, 300);
     },
 
     hide_tooltip_help: function(e) {
       clearTimeout(self.tooltip_timer)
-      var tooltip = $('#panel').find('.help_popup');
+      var tooltip = jQuery('#panel').find('.help_popup');
       self.tooltip_timer = setTimeout(function() {
         tooltip.hide();
       },1000);
     },
 
     show_tooltip: function(e) {
-      var el = $(e.currentTarget);
-      var tooltip = $('#panel').find('.list_tooltip');
+      var el = jQuery(e.currentTarget);
+      var tooltip = jQuery('#panel').find('.list_tooltip');
       var pos = el.position();
       tooltip.css({top: pos.top - 80, left: 120});
       //set html rendered previously
       tooltip.html(el.find('.list_tooltip_data').html());
-      tooltip.show();
+      //tooltip.show();
     },
 
     hide_tooltip: function(e) {
-      //var el = $(e.target);
-      var tooltip = $('#panel').find('.list_tooltip');
+      //var el = jQuery(e.target);
+      var tooltip = jQuery('#panel').find('.list_tooltip');
       tooltip.hide();
     },
 
@@ -147,12 +147,12 @@ var Report = Backbone.View.extend({
 
     show: function() {
         this.showing = true;
-        $(this.el).show();
+        //jQuery(this.el).show();
     },
 
     hide: function() {
         this.showing = false;
-        $(this.el).hide();
+        jQuery(this.el).hide();
     },
 
     loading: function(b) {
@@ -170,7 +170,7 @@ var Report = Backbone.View.extend({
     },
 
     remove: function() {
-        $(this.el).remove();
+        jQuery(this.el).remove();
     }
 
 
@@ -197,12 +197,12 @@ var Tabs = Backbone.View.extend({
             area =  (data.stats.carbon_sum.area/1000000).toFixed(0);
         }
         if(data.total) {
-            var li = $("<li class='total'><a class='tab' href='#" + cid + "'>summary</a><span class='stats'><span class='stats_inner'><h5>AOIs SUMMARY</h5><p><span class='area'>"+ area +"</span> km<sup>2</sup> in total</p></span></span></li>");
+            var li = jQuery("<li class='total'><a class='tab' href='#" + cid + "'>summary</a><span class='stats'><span class='stats_inner'><h5>AOIs SUMMARY</h5><p><span class='area'>"+ area +"</span> km<sup>2</sup> in total</p></span></span></li>");
             this.tab_el.append(li);
             el = li;
         } else {
             this.tab_count++;
-            var li = $("<li><a class='tab' href='#" + cid + "'>#"+this.tab_count+"</a><span class='stats'><span class='stats_inner'><h5>AOI #"+this.tab_count+"</h5><p><span class='area'>"+ area +"</span> km<sup>2</sup></p></span></span></li>");
+            var li = jQuery("<li><a class='tab' href='#" + cid + "'>#"+this.tab_count+"</a><span class='stats'><span class='stats_inner'><h5>AOI #"+this.tab_count+"</h5><p><span class='area'>"+ area +"</span> km<sup>2</sup></p></span></span></li>");
             li.insertBefore(this.$('#add_report').parent());
             el = li;
         }
@@ -214,12 +214,12 @@ var Tabs = Backbone.View.extend({
 
         if(el) {
             var self = this;
-            if ($.browser.msie  && parseInt($.browser.version, 10) == 7) {
+            if (jQuery.browser.msie  && parseInt(jQuery.browser.version, 10) == 7) {
               setTimeout(function() {
-                self.set_enabled($(el));
+                self.set_enabled(jQuery(el));
               }, 500);
             } else {
-                self.set_enabled($(el));
+                self.set_enabled(jQuery(el));
             }
         }
     },
@@ -243,35 +243,35 @@ var Tabs = Backbone.View.extend({
 
     click_activate: function(e) {
         e.preventDefault();
-        //this.trigger('enable', $(e.target).attr('href').slice(1));
+        //this.trigger('enable', jQuery(e.target).attr('href').slice(1));
         //IE7 love
-        this.trigger('enable', $(e.target).attr('href').split('#')[1]);
-        this.set_enabled($(e.target).parent());
+        this.trigger('enable', jQuery(e.target).attr('href').split('#')[1]);
+        this.set_enabled(jQuery(e.target).parent());
     },
 
     show_tab: function(rid) {
       var el = this.tab_el.find("a[href$=#" + rid +"]").parent();
-      this.set_enabled($(el));
+      this.set_enabled(jQuery(el));
     },
 
     set_enabled: function(el) {
         this.$('li').removeClass('enabled').removeAttr('style');
-        $(el).addClass('enabled');
-        if ($(el).hasClass('total')) {
+        jQuery(el).addClass('enabled');
+        if (jQuery(el).hasClass('total')) {
             var li_w = 0;
-            this.tab_el.find('li').each(function(i,li){li_w += $(li).width()});
+            this.tab_el.find('li').each(function(i,li){li_w += jQuery(li).width()});
             var width = this.tab_el.width() - li_w + 66;
-            $(el).find('span.stats').width(width);
+            jQuery(el).find('span.stats').width(width);
         } else {
-            var width = $(el).find('span.stats').width();
-            $(el).width(width+38);
+            var width = jQuery(el).find('span.stats').width();
+            jQuery(el).width(width+38);
         }
     }
 });
 
 
 var Panel = Backbone.View.extend({
-    el : $('#panel'),
+    el : jQuery('#panel'),
 
     events: {
         'click #add_report': 'create_report'
@@ -346,7 +346,7 @@ var Panel = Backbone.View.extend({
     },
 
     show: function() {
-        this.el.show();
+        //this.el.show();
     }
 
 });

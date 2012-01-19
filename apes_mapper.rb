@@ -40,6 +40,7 @@ class ApesMapper < Sinatra::Base
     # The second parameter defines where the compressed version will be served.
     # (Note: that parameter is optional, AssetPack will figure it out.)
     js :main_app, '/js/main_app.js', [
+      '/js/libs/jquery-ui-1.8.17.custom.min.js',
       '/js/libs/jquery.mousewheel.js',
       '/js/libs/jquery.jscrollpane.js',
       '/js/libs/underscore-min.js',
@@ -54,6 +55,7 @@ class ApesMapper < Sinatra::Base
       "/js/modules/work.js",
       "/js/modules/apes.js",
       "/js/modules/countries.js",
+      "/js/modules/sites.js",
       "/js/modules/panel.js",
       "/js/modules/ws.js",
       "/js/modules/header.js",
@@ -73,7 +75,10 @@ class ApesMapper < Sinatra::Base
       '/js/carbon.js'
     ]
 
-    css :application, [ '/css/style.css' ]
+    css :application, [
+      '/css/jquery-ui-1.8.17.custom.css',
+      '/css/style.css'
+    ]
 
     js_compression  :uglify      # Optional
     css_compression :sass        # Optional

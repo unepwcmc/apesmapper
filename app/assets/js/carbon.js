@@ -35,7 +35,6 @@ App.modules.Carbon = function(app) {
             jQuery.ajaxSetup({
                 cache: false
             });
-            $('html,body').css({overflow: 'hidden'});
         },
 
         run: function() {
@@ -48,6 +47,7 @@ App.modules.Carbon = function(app) {
             this.work = new app.Work(this.bus);
             this.apes = new app.Apes();
             this.countries = new app.Countries();
+            this.sites = new app.Sites();
             this.selectedFiltersView = new App.views.SelectedFilters({bus:this.bus, apes: this.apes.allApes, countries: this.countries.allCountries});
             this.filterEditView = new App.views.FilterEdit({bus:this.bus, apes: this.apes.allApes, countries: this.countries.allCountries});
             this.panel = new app.Panel(this.bus);

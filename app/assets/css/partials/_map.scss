@@ -1,21 +1,7 @@
 
-
-.ie7 .map_container {
-  height: 100%;
-}
-
-.ie7 .main {
-  height: 100%;
-}
-
 .map_container {
-  position: absolute;
-  top:72px;
-  //width:100%;
-  left:0;
-  //right:352px;
-  right:0;
-  bottom:0;
+  height: 500px;
+  width: 639px;
 
   .map {
     width: 100%;
@@ -57,8 +43,8 @@
 
   div.zoom_control {
     display: none;
-    position: absolute;
-    top: 20px;
+    position: relative;
+    top: -285px;
     left: 20px;
     width: 26px;
     height: 50px;
@@ -205,9 +191,9 @@
 
   .search {
       display: none;
-      position: absolute;
-      top: 25px;
-      right: 190px;
+      position: relative;
+      top: -285px;
+      right: -570px;
       width: 192px;
       height: 25px;
       z-index:10;
@@ -236,9 +222,9 @@
 
   .layers {
     display: none;
-    position: absolute;
-    top: 20px;
-    right: 375px - 352px;
+    position: relative;
+    top: -290px;
+    right: -720px;
     width:224px;
     z-index:100;
 

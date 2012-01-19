@@ -1,3 +1,4 @@
+jQuery.noConflict();
 
 function App() {
   var args = Array.prototype.slice.call(arguments),

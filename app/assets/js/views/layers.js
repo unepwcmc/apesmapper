@@ -23,10 +23,10 @@ var Layer = Backbone.View.extend({
         this.bus.on('map:enable_layer', function(name, enabled) {
             if(name === self.layer.name) {
                 if(enabled) {
-                    $(self.el).addClass('enabled');
+                    jQuery(self.el).addClass('enabled');
                 }
                 else {
-                    $(self.el).removeClass('enabled');
+                    jQuery(self.el).removeClass('enabled');
                 }
             }
         });
@@ -34,7 +34,7 @@ var Layer = Backbone.View.extend({
 
     render: function() {
         var leg;
-        var el = $(this.el);
+        var el = jQuery(this.el);
         var d = _.extend(this.layer, {
             normalized_name: this.layer.name.replace(' ', '_')
         });
@@ -84,7 +84,7 @@ var LayerEditor = Backbone.View.extend({
         howmany = howmany || 3;
         var self = this;
         var el = this.$('.dropdown');
-        el.find('li').each(function(i,el){$(el).remove()});
+        el.find('li').each(function(i,el){jQuery(el).remove()});
         _(this.layers.slice(0, howmany)).each(function(layer) {
             var v = self.views[layer.name];
             if (v) {
@@ -109,14 +109,14 @@ var LayerEditor = Backbone.View.extend({
           axis: 'y',
           cursor: 'pointer',
           stop:function(event,ui){
-            $(ui.item).removeClass('moving');
+            jQuery(ui.item).removeClass('moving');
             //
             //DONT CALL THIS FUNCTION ON beforeStop event, it will crash :D
             //
             self.sortLayers();
           },
           start:function(event,ui){
-            $(ui.item).addClass('moving');
+            jQuery(ui.item).addClass('moving');
           }
         });
         this.updateLayerNumber();
@@ -134,7 +134,7 @@ var LayerEditor = Backbone.View.extend({
     sortLayers: function() {
         var order = [];
         this.$('li').each(function(i, el) {
-            order.push($(el).attr('id'));
+            order.push(jQuery(el).attr('id'));
         });
         this.sort_by(order, true);
         this.bus.emit("map:reorder_layers", order);
