@@ -90,6 +90,13 @@
             <ul class='filters' id='apes-countries-selected'>
                 Loading...
             </ul>
+
+            <div id="species_filter_edit" class='filter_editor'>
+                <h2>Select Species</h2>
+                <div class="selector" id='species_selector'>Loading species...</div>
+                <button id='finish-species-edit'>Done</button>
+            </div>
+
             <div id="slide_filters">
                 <ul class='filters'>
                     <li>Filter 1<div class='filter-slider response'></div></li>
@@ -348,13 +355,9 @@
             <%= erb :_help_tooltips %>
         </div>
 
-        <div id="selected_filters">
-        </div>
-
         <div id="filter_edit">
             <div class="inner">
                 <div class="help">
-                    <h1>Welcome to the Apes Mapper tool</h1>
                     <h2>Select Species</h2>
                     <div class="selector" id='species_selector'>Loading species...</div>
                 </div> <!-- help -->

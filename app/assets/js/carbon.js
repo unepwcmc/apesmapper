@@ -49,8 +49,8 @@ App.modules.Carbon = function(app) {
             this.countries = new app.Countries();
             this.sites = new app.Sites();
             $ = jQuery;
-            this.selectedFiltersView = new App.views.SelectedApesCountries({bus:this.bus, apes: this.apes.allApes, countries: this.countries.allCountries});
-            this.filterEditView = new App.views.FilterEdit({bus:this.bus, apes: this.apes.allApes, countries: this.countries.allCountries});
+            this.selectedFilterView = new App.views.SelectedApesCountries({bus:this.bus, apes: this.apes.allApes, countries: this.countries.allCountries});
+            this.speciesFilterEdit = new App.views.SpeciesFilterEdit({bus:this.bus, apes: this.apes.allApes});
             this.panel = new app.Panel(this.bus);
             this.header = new app.Header();
 
