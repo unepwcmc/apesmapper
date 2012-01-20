@@ -96,15 +96,17 @@
                   Countries: <i>GB, FR, ES...</i> <span class='btn'>Edit</span>
                 </li>
             </ul>
-            <ul class='filters'>
-                <li>Filter 1<div class='filter-slider'></div></li>
-                <li class='active'>Filter 2<div class='filter-slider'></div></li>
-                <li>Filter 3<div class='filter-slider'></div></li>
-                <li>Filter 4<div class='filter-slider'></div></li>
-            </ul>
-            <ul class='filters'>
-                <li>Size<div class='filter-slider'></div></li>
-            </ul>
+            <div id="slide_filters">
+                <ul class='filters'>
+                    <li>Filter 1<div class='filter-slider response'></div></li>
+                    <li class='active'>Filter 2<div class='filter-slider biodiversity'></div></li>
+                    <li>Filter 3<div class='filter-slider uncertainity'></div></li>
+                    <li>Filter 4<div class='filter-slider'></div></li>
+                </ul>
+                <ul class='filters'>
+                    <li>Size<div class='filter-slider size'></div></li>
+                </ul>
+            </div>
             <div id='result-area'>
                 <div class='clear'>
                   <span id='result-strip'><span id='result-count'>50</span> sites</span>
@@ -527,10 +529,6 @@
     <%= File.open('app/views/_countries_selector.jst.tpl').read %>
   </script>
 
-  <script type="text/template" id="selected-filters-tmpl">
-    <%= File.open('app/views/_selected_filters.jst.tpl').read %>
-  </script>
-
   <script type="text/template" id="report-tmpl-no-content">
     <div class="no_content">
       <div class="inner">
@@ -586,21 +584,9 @@
         });
       }, 100);
     }
-    jQuery(document).ready(function() {
+    jQuery(function($) {
       init();
-
-      var $ = jQuery;
-      $("div.filter-slider").slider({
-        range: true,
-        min: 0,
-        max: 500,
-        values: [ 75, 300 ],
-        slide: function( event, ui ) {
-          $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-        }
-      });
-      $( "#amount" ).val( "$" + $( "div.filter-slider" ).slider( "values", 0 ) + " - $" + $( "div.filter-slider" ).slider( "values", 1 ) );
-    });
+    }(jQuery));
 
     window.addEvent('domready', function() {
       // Graph

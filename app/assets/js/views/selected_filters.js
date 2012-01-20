@@ -2,40 +2,36 @@
  * View the currently selected filters (apes and countries)
  */
 App.views.SelectedFilters = Backbone.View.extend({
-  el: jQuery('#selected_filters'),
+  el: 'div#slide_filters',
 
   events: {
-    'click #edit_filter': 'hide'
+    'click #edit_filter': 'hide',
+    'slidestop div.filter-slider': 'stop_slider'
   },
 
   initialize: function() {
-    _.bindAll(this, 'render');
+    _.bindAll(this, 'render', 'stop_slider');
 
     this.bus = this.options.bus;
     this.apes = this.options.apes;
     this.countries = this.options.countries;
-    this.template = _.template( jQuery("#selected-filters-tmpl").html() );
+    this.sites = this.options.sites;
     this.bus.on('save_filter:click', this.render);
 
     this.apes.bind("change", this.render);
     this.countries.bind("change", this.render);
 
+    // Sliders
+    jQuery("div.filter-slider").slider({
+      range: true,
+      min: 0,
+      max: 100,
+      values: [0, 100]
+    });
     // TODO change bindings
   },
 
   render: function() {
-    // selections contains only the selected elements
-    var renderedContent, selections = {
-      apes: _.map(this.apes.selected(), function(ape){
-        return ape.toJSON();
-      }),
-      countries: _.map(this.countries.selected(), function(country){
-        return country.toJSON();
-      })
-    }
-    // render the template
-    renderedContent = this.template(selections);
-    jQuery(this.el).html(renderedContent);
     return this;
   },
 
@@ -52,5 +48,17 @@ App.views.SelectedFilters = Backbone.View.extend({
     // Enables saving the filter changes
     jQuery('#save_filter span.button_info').text('Filter');
     jQuery('#save_filter').removeAttr('disabled');
+  },
+  
+  stop_slider: function(event, ui) {
+    if(jQuery(event.target).hasClass("response")) {
+      this.sites.filterByResponse(ui.values[0], ui.values[1])
+    } else if(jQuery(event.target).hasClass("biodiversity")) {
+      this.sites.filterByBiodiversity(ui.values[0], ui.values[1])
+    } else if(jQuery(event.target).hasClass("uncertainity")) {
+      this.sites.filterByUncertainity(ui.values[0], ui.values[1])
+    } else if(jQuery(event.target).hasClass("size")) {
+      this.sites.filterBySize(ui.values[0], ui.values[1])
+    }
   }
 });

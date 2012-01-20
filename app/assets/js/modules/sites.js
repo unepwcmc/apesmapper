@@ -25,7 +25,7 @@ App.modules.Sites = function(app) {
     },
     url: function() {
       params = {};
-      if(typeof this.size !== "undefined" && this.size !== null) {
+      if(typeof this.size.min !== undefined && this.size !== null) {
         params.size_min = this.size.min;
         params.size_max = this.size.max;
       }
@@ -51,6 +51,7 @@ App.modules.Sites = function(app) {
     },
     resetSize: function() {
       this.size = {};
+      this.fetch({add: false});
     },
     filterByResponse: function(min, max) {
       if(this.response.min === min && this.response.max === max) {
@@ -63,6 +64,7 @@ App.modules.Sites = function(app) {
     },
     resetResponse: function() {
       this.response = {};
+      this.fetch({add: false});
     },
     filterByBiodiversity: function(min, max) {
       if(this.biodiversity.min === min && this.biodiversity.max === max) {
@@ -75,6 +77,7 @@ App.modules.Sites = function(app) {
     },
     resetBiodiversity: function() {
       this.biodiversity = {};
+      this.fetch({add: false});
     },
     filterByUncertainity: function(min, max) {
       if(this.uncertainity.min === min && this.uncertainity.max === max) {
@@ -87,6 +90,7 @@ App.modules.Sites = function(app) {
     },
     resetUncertainity: function() {
       this.uncertainity = {};
+      this.fetch({add: false});
     }
   });
 
