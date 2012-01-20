@@ -56,6 +56,7 @@ class ApesMapper < Sinatra::Base
       "/js/modules/work.js",
       "/js/modules/apes.js",
       "/js/modules/countries.js",
+      "/js/modules/sites.js",
       "/js/modules/panel.js",
       "/js/modules/ws.js",
       "/js/modules/header.js",
