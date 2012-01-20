@@ -26,9 +26,25 @@ div#results_container {
   float:left;
 
   table#results-table {
+    display: block;
     width: 639px;
     overflow:scroll;
-    padding: 3px;
+
+    tr:nth-child(odd){
+      background-color: #EEE;
+    }
+
+    td, th {
+      text-align:left;
+      padding: 5px;
+      border: 1px solid black;
+    }
+    th {
+      background-color: #474747;
+      color: white;
+    }
+    td:odd {
+    }
   }
 }
 
