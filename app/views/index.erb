@@ -87,14 +87,8 @@
     <div id="main" role="main" class='horizontal_box_shadow'>
 
         <div id='filter_pane'>
-            <ul class='filters' id='filter-selector'>
-                <li>
-                  Species: <i>All</i> <span class='btn'>Edit</span>
-                  <ul class='selected-list'></ul>
-                </li>
-                <li>
-                  Countries: <i>GB, FR, ES...</i> <span class='btn'>Edit</span>
-                </li>
+            <ul class='filters' id='apes-countries-selected'>
+                Loading...
             </ul>
             <div id="slide_filters">
                 <ul class='filters'>
@@ -415,6 +409,10 @@
 
   <script type="text/template" id="report-tmpl-common">
     <%= File.open('app/views/_report_common.jst.tpl').read %>
+  </script>
+
+  <script type="text/template" id="apes-countries-selected-tmpl">
+    <%= File.open('app/views/_apes_countries_selected.jst.tpl').read %>
   </script>
 
   <script type="text/template" id="species-selector-tmpl">
