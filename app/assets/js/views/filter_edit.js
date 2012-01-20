@@ -69,7 +69,6 @@ App.views.SpeciesSelector = Backbone.View.extend({
  * Countries selection view
  */
 App.views.CountriesSelector = Backbone.View.extend({
-
     initialize: function() {
         _.bindAll(this, 'render', 'toggleSelected');
 
