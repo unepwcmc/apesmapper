@@ -5,13 +5,27 @@ App.modules.Sites = function(app) {
   var Site = Backbone.Model.extend({
     defaults: function() {
       return {
-        selected:  false
-      };
-    },
-    toggle: function() {
-      this.set({
-        selected: !this.get("selected")
-        });
+        name: null,
+        area: null,
+        centre_point_x: null,
+        centre_point_y: null,
+        polygon: null,
+        state: null,
+        mean_canopy_cover: null,
+        pressure: null,
+        mean_deforestation: null,
+        mean_population_count: null,
+        population_change: null,
+        mean_human_influence_index: null,
+        response: null,
+        protected_area: null,
+        mean_protection_category: null,
+        biodiversity: null,
+        species_richness: null,
+        proportion_threatened_species: null,
+        carbon_storage: null,
+        uncertainity: null
+      }
     }
   });
 

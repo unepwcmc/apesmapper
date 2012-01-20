@@ -18,8 +18,7 @@ App.views.SelectedFilters = Backbone.View.extend({
     this.sites = this.options.sites;
     this.bus.on('save_filter:click', this.render);
 
-    this.apes.bind("change", this.render);
-    this.countries.bind("change", this.render);
+    this.sites.bind("all", this.render);
 
     // Sliders
     jQuery("div.filter-slider").slider({
@@ -28,10 +27,22 @@ App.views.SelectedFilters = Backbone.View.extend({
       max: 100,
       values: [0, 100]
     });
-    // TODO change bindings
+  },
+
+  addAll: function() {
+    this.sites.each(this.addOne);
+  },
+
+  addOne: function(site) {
+    var colors = ['#F5F5DC', '#0000FF', '#0095B6', '#8A2BE2', '#CD7F32', '#964B00', '#702963', '#960018', '#DE3163', '#007BA7', '#F7E7CE', '#7FFF00', '#6F4E37', '#B87333', '#F88379', '#DC143C', '#00FFFF', '#EDC9AF'];
+    window.bubbleChart.addBubble(site.get('centre_point_x'), site.get('centre_point_y'), site.get('area'), colors[Math.floor(Math.random()*colors.length)], site.get('name'));
   },
 
   render: function() {
+    window.bubbleChart.empty();
+    this.addAll();
+    window.bubbleChart.redraw();
+
     return this;
   },
 
