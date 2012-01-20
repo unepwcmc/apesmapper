@@ -24,6 +24,11 @@ div#results_container {
   height: 520px;
   border-left: 1px solid #CCC;
   float:left;
+
+  table#results-table {
+    width: 639px;
+    overflow:scroll;
+  }
 }
 
 div#filter_pane {
