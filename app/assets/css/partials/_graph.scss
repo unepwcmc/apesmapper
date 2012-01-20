@@ -20,14 +20,31 @@
 div#results_container {
   z-index:1;
   overflow:scroll;
-  width: 639px;
+  width: 659px;
   height: 520px;
   border-left: 1px solid #CCC;
   float:left;
 
   table#results-table {
-    width: 639px;
+    display: block;
+    width: 659px;
     overflow:scroll;
+
+    tr:nth-child(odd){
+      background-color: #EEE;
+    }
+
+    td, th {
+      text-align:left;
+      padding: 5px;
+      border: 1px solid black;
+    }
+    th {
+      background-color: #474747;
+      color: white;
+    }
+    td:odd {
+    }
   }
 }
 
