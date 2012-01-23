@@ -20,8 +20,8 @@
 div#results_container {
   z-index:1;
   overflow:scroll;
+  height:100%;
   width: 659px;
-  height: 520px;
   border-left: 1px solid #CCC;
   float:left;
 
@@ -51,7 +51,7 @@ div#results_container {
 div#filter_pane {
   float: left;
   width: 300px;
-  height: 500px;
+  height: 100%;
   background-image: url('/img/matt_light_green.png');
 
   ul.filters {
@@ -94,7 +94,7 @@ div#filter_pane {
   div#result-area {
     background-image: url('/img/matt_black.png');
     height:90px;
-    margin-top: 114px;
+    margin-top: 214px;
     overflow:hidden;
 
     span#result-strip {
