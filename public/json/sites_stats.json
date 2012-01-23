@@ -25,7 +25,7 @@
   {
     "id": 2,
     "name": "Gamba Complex",
-    "area": 30.00,
+    "area": 60.00,
     "centre_point_x": 0.00,
     "centre_point_y": 0.00,
     "polygon": "MULTIPOLYGON()",
@@ -48,7 +48,7 @@
   {
     "id": 3,
     "name": "Belinga-Djoua",
-    "area": 30.00,
+    "area": 60.50,
     "centre_point_x": 0.00,
     "centre_point_y": 0.00,
     "polygon": "MULTIPOLYGON()",
@@ -71,7 +71,7 @@
   {
     "id": 4,
     "name": "Lake telle",
-    "area": 30.00,
+    "area": 75.50,
     "centre_point_x": 0.00,
     "centre_point_y": 0.00,
     "polygon": "MULTIPOLYGON()",
