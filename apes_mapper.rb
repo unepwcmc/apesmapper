@@ -73,6 +73,7 @@ class ApesMapper < Sinatra::Base
       "/js/views/searchbox.js",
       "/js/views/filter_edit.js",
       "/js/views/selected_apes_countries.js",
+      "/js/views/slide_filters.js",
       '/js/carbon.js'
     ]
 

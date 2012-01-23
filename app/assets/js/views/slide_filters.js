@@ -1,7 +1,7 @@
 /*
  * View the currently selected filters (apes and countries)
  */
-App.views.SelectedFilters = Backbone.View.extend({
+App.views.SlideFilters = Backbone.View.extend({
   el: 'div#slide_filters',
 
   events: {

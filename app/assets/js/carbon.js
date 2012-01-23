@@ -52,6 +52,7 @@ App.modules.Carbon = function(app) {
             this.selectedFilterView = new App.views.SelectedApesCountries({bus:this.bus, apes: this.apes.allApes, countries: this.countries.allCountries});
             this.speciesFilterEdit = new App.views.SpeciesFilterEdit({bus:this.bus, apes: this.apes.allApes});
             this.countriesFilterEdit = new App.views.CountriesFilterEdit({bus:this.bus, countries: this.countries.allCountries});
+            this.slideFilters = new App.views.SlideFilters({bus:this.bus, apes: this.apes.allApes, countries: this.countries.allCountries, sites: this.sites.allSites});
             this.panel = new app.Panel(this.bus);
             this.header = new app.Header();
 
