@@ -12,6 +12,7 @@ div#filter_pane {
     position: absolute;
     top: 0;
     display:none;
+    z-index: 5;
 
     div.selector {
       height:100px;
