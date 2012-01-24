@@ -350,21 +350,6 @@
         </div>
 
 
-        <div id="panel">
-            <div id="tabs">
-                <ul>
-                   <li class="add"><a href="#add_new_one" class="add">+</a></li>
-                   <li class="total last"><a href="#summary">summary</a></li>
-                </ul>
-            </div>
-            <div id="tab_content">
-            </div>
-            <!-- tooltip -->
-            <div class="list_tooltip">
-            </div>
-            <%= erb :_help_tooltips %>
-        </div>
-
       <div id="error_dialog">
         <div class="error_wrapper">
           <!--<a href='#' class="close"></a>-->
@@ -464,6 +449,7 @@
   <!-- end scripts-->
   <script>
     jQuery.noConflict();
+    mooTools = $; // Store mooTools
     function init() {
       // use timeout trick to avoid jquery catch the exceptions thrown
       setTimeout(function() {
@@ -476,20 +462,10 @@
         });
       }, 100);
     }
+    // On jquery page load, pass mooTools as $
     jQuery(function($) {
       init();
-    }(jQuery));
-
-    window.addEvent('domready', function() {
-      // Graph
-      window.bubbleChart = new Chart.Bubble('graph', {
-        width: 659,
-        height: 580,
-        lineColor: '#3f3f3f',
-        zmin: 0, zmax: 100,
-        bubbleSize: 40
-      });
-    });
+    }(mooTools));
   </script>
 
 

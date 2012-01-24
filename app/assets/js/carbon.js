@@ -40,23 +40,23 @@ App.modules.Carbon = function(app) {
         run: function() {
             _.bindAll(this, 'on_route_to', '_state_url');
             var self = this;
+
+            // init Models
             this.bus = new app.Bus();
-            // set a global bus
-            app.bus = this.bus;
+            app.bus = this.bus; // set a global bus
             this.map = new app.Map(this.bus);
             this.work = new app.Work(this.bus);
             this.apes = new app.Apes();
             this.countries = new app.Countries();
             this.sites = new app.Sites();
-            $ = jQuery;
+
+            // init Views
             this.selectedFilterView = new App.views.SelectedApesCountries({bus:this.bus, apes: this.apes.allApes, countries: this.countries.allCountries});
             this.speciesFilterEdit = new App.views.SpeciesFilterEdit({bus:this.bus, apes: this.apes.allApes});
             this.countriesFilterEdit = new App.views.CountriesFilterEdit({bus:this.bus, countries: this.countries.allCountries});
             this.slideFilters = new App.views.SlideFilters({bus:this.bus, apes: this.apes.allApes, countries: this.countries.allCountries, sites: this.sites.allSites});
-            this.panel = new app.Panel(this.bus);
+            this.graph = new App.views.Graph({sites: this.sites.allSites});
             this.header = new app.Header();
-
-            this.panel.hide();
 
             // init routing and bind methods requiring this scope to routes
             this.router = new Router({bus: this.bus});
@@ -77,12 +77,6 @@ App.modules.Carbon = function(app) {
             this.map.map.bind('zoom_changed', this.state_url);
             this.bus.on('map:reorder_layers', this.state_url);
 
-            if(location.hash === '') {
-                this.filterEditView.show();
-                if(jQuery.browser.msie === undefined) {
-                    this.banner_animation();
-                }
-            }
             // ready, launch
             Backbone.history.start();
             //this.router.navigate('w/work_test');
@@ -167,7 +161,6 @@ App.modules.Carbon = function(app) {
                 clearInterval(this.animation);
             }
             // show the panel and set mode to adding polys
-            this.panel.show();
             this.map.show_controls(true);
 
             app.Log.debug("route: work => ", work_id);
