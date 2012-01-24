@@ -65,13 +65,3 @@ App.views.SlideFilters = Backbone.View.extend({
   }
 });
 
-App.views.FilterView = Backbone.View.extend({
-  template: JST["site"],
-
-  tagName: "tr",
-
-  render: function() {
-    jQuery(this.el).html(this.template(this.model.toJSON() ));
-    return this;
-  }
-});
