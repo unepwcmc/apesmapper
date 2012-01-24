@@ -56,6 +56,7 @@ App.modules.Carbon = function(app) {
             this.countriesFilterEdit = new App.views.CountriesFilterEdit({bus:this.bus, countries: this.countries.allCountries});
             this.slideFilters = new App.views.SlideFilters({bus:this.bus, apes: this.apes.allApes, countries: this.countries.allCountries, sites: this.sites.allSites});
             this.graph = new App.views.Graph({sites: this.sites.allSites});
+            this.resultTable = new App.views.ResultTable({sites: this.sites.allSites});
             this.header = new app.Header();
 
             // init routing and bind methods requiring this scope to routes

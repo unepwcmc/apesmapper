@@ -1,11 +1,11 @@
 /*
- * Render the sites as a graph
+ * Render the sites as a table
  */
 App.views.ResultTable = Backbone.View.extend({
-  el: 'div#results-table',
+  el: 'table#results-table',
 
   initialize: function() {
-    _.bindAll(this, 'render');
+    _.bindAll(this, 'render', 'addOne');
 
     this.sites = this.options.sites;
     this.sites.bind("all", this.render);
@@ -18,12 +18,12 @@ App.views.ResultTable = Backbone.View.extend({
 
   addOne: function(site) {
     var view = new App.views.ResultTableRow({model : site});
-    jQuery("#results-table tbody").append(view.render().el);
+    jQuery(this.el).find("tbody").append(view.render().el);
   },
 
   render: function() {
+    jQuery(this.el).find("tbody").empty();
     this.addAll();
-
     return this;
   }
 });
