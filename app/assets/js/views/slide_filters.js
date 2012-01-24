@@ -17,8 +17,6 @@ App.views.SlideFilters = Backbone.View.extend({
     this.sites = this.options.sites;
     this.bus.on('save_filter:click', this.render);
 
-    this.sites.bind("all", this.render);
-
     // Sliders
     jQuery("div.filter-slider").slider({
       range: true,
@@ -26,24 +24,6 @@ App.views.SlideFilters = Backbone.View.extend({
       max: 100,
       values: [0, 100]
     });
-  },
-
-  addAll: function() {
-    jQuery("#results-table tbody").empty();
-    this.sites.each(this.addOne);
-  },
-
-  addOne: function(site) {
-    var view = new App.views.FilterView({model : site});
-    jQuery("#results-table tbody").append(view.render().el);
-  },
-
-  render: function() {
-    jQuery("#results-table tbody").html("");
-
-    this.addAll();
-
-    return this;
   },
 
   enable_select: function() {
