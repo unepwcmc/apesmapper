@@ -73,7 +73,11 @@ App.modules.Sites = function(app) {
       }
 
       this.response = {min: min, max: max};
-      this.fetch({add: false});
+      this.fetch({add: false, success: function(e) {
+        debugger;
+      }, error: function(e) {
+        debugger;
+      }});
       return true;
     },
     resetResponse: function() {

@@ -5,7 +5,6 @@ App.views.SlideFilters = Backbone.View.extend({
   el: 'div#slide_filters',
 
   events: {
-    'click #edit_filter': 'hide',
     'slidestop div.filter-slider': 'stop_slider'
   },
 
@@ -35,31 +34,16 @@ App.views.SlideFilters = Backbone.View.extend({
   },
 
   addOne: function(site) {
-    var colors = ['#F5F5DC', '#0000FF', '#0095B6', '#8A2BE2', '#CD7F32', '#964B00', '#702963', '#960018', '#DE3163', '#007BA7', '#F7E7CE', '#7FFF00', '#6F4E37', '#B87333', '#F88379', '#DC143C', '#00FFFF', '#EDC9AF'];
-    window.bubbleChart.addBubble(site.get('state')*100, site.get('pressure')*100, site.get('area'), colors[Math.floor(Math.random()*colors.length)], site.get('name'));
-
     var view = new App.views.FilterView({model : site});
     jQuery("#results-table tbody").append(view.render().el);
   },
 
   render: function() {
     jQuery("#results-table tbody").html("");
-    window.bubbleChart.empty();
 
     this.addAll();
 
-    window.bubbleChart.redraw();
-
     return this;
-  },
-
-  show: function() {
-    this.el.show();
-  },
-
-  hide: function() {
-    //this.el.hide();
-    this.bus.emit('edit_filter:click');
   },
 
   enable_select: function() {
