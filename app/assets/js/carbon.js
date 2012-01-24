@@ -45,6 +45,7 @@ App.modules.Carbon = function(app) {
             this.bus = new app.Bus();
             app.bus = this.bus; // set a global bus
             this.map = new app.Map(this.bus);
+            this.map.show_controls(true); // Get rid of this method
             this.work = new app.Work(this.bus);
             this.apes = new app.Apes();
             this.countries = new app.Countries();
@@ -162,7 +163,6 @@ App.modules.Carbon = function(app) {
                 clearInterval(this.animation);
             }
             // show the panel and set mode to adding polys
-            this.map.show_controls(true);
 
             app.Log.debug("route: work => ", work_id);
             this.bus.emit('work', work_id);

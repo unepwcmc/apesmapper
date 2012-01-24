@@ -44,8 +44,8 @@
   div.zoom_control {
     display: none;
     position: relative;
-    top: -285px;
-    left: 20px;
+    top: -590px;
+    left: 10px;
     width: 26px;
     height: 50px;
     z-index: 10;
@@ -190,10 +190,10 @@
   }
 
   .search {
-      display: none;
+      float:left;
       position: relative;
-      top: -285px;
-      right: -570px;
+      top: -641px;
+      right: -287px;
       width: 192px;
       height: 25px;
       z-index:10;
@@ -221,11 +221,10 @@
    }
 
   .layers {
-    display: none;
+    float:left;
     position: relative;
-    top: -290px;
-    right: -720px;
-    width:224px;
+    top: -646px;
+    right: -286px;
     z-index:100;
 
     a.view {
