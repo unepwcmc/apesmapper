@@ -12,9 +12,9 @@ App.views.SpeciesFilterEdit = Backbone.View.extend({
     initialize: function() {
         _.bindAll(this, 'render', 'show', 'hide');
         this.bus = this.options.bus;
-        this.apes = this.options.apes;
+        this.species = this.options.species;
 
-        this.apes.bind('reset', this.render);
+        this.species.bind('reset', this.render);
         this.bus.on('show_species_editor', this.show);
     },
 
@@ -23,7 +23,7 @@ App.views.SpeciesFilterEdit = Backbone.View.extend({
         var $species = this.$('div#species_selector');
         $species.empty();
         // Create a species view inside $species for each species
-        this.apes.each(function(species) {
+        this.species.each(function(species) {
             var view = new App.views.SpeciesSelector({
                 model: species
             });

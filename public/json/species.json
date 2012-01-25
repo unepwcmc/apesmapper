@@ -1,175 +1,210 @@
 [
   {
+    "category": "Other Apes",
     "taxa": "Hylobates lar ssp. lar (Malaysian lar)",
     "ape": "Gibbon",
     "code": "hll"
   },
   {
+    "category": "Other Apes",
     "taxa": "Hylobates lar ssp. entelloides (Central lar)",
     "ape": "Gibbon",
     "code": "hle"
   },
   {
+    "category": "Other Apes",
     "taxa": "Hylobates lar ssp. carpenteri (Carpenter's lar)",
     "ape": "Gibbon",
     "code": "hlc"
   },
   {
+    "category": "Other Apes",
     "taxa": "Hylobates lar ssp. yunnanensis (Yunnan lar)",
     "ape": "Gibbon",
     "code": "hly"
   },
   {
+    "category": "Other Apes",
     "taxa": "Hylobates lar ssp. vestitus (Sumatran lar)",
     "ape": "Gibbon",
     "code": "hlv"
   },
   {
+    "category": "Other Apes",
     "taxa": "Hylobates agilis (Agile gibbon, Black-handed gibbon)",
     "ape": "Gibbon",
     "code": "ha"
   },
   {
+    "category": "Other Apes",
     "taxa": "Hylobates muelleri ssp. funereus (Northern gray gibbon)",
     "ape": "Gibbon",
     "code": "hmf"
   },
   {
+    "category": "Other Apes",
     "taxa": "Hylobates muelleri ssp. abbotti (Abbott's gray gibbon)",
     "ape": "Gibbon",
     "code": "hma"
   },
   {
+    "category": "Other Apes",
     "taxa": "Hylobates muelleri ssp. muelleri (Southern gray gibbon)",
     "ape": "Gibbon",
     "code": "hmm"
   },
   {
+    "category": "Other Apes",
     "taxa": "Hylobates moloch (Silvery gibbon)",
     "ape": "Gibbon",
     "code": "hmo"
   },
   {
+    "category": "Other Apes",
     "taxa": "Hylobates pileatus (Pileated gibbon, capped gibbon)",
     "ape": "Gibbon",
     "code": "hp"
   },
   {
+    "category": "Other Apes",
       "taxa": "Hylobates albibarbis (Bornean agile gibbon)",
       "ape": "Gibbon",
       "code": "hal"
   },
   {
+    "category": "Other Apes",
     "taxa": "Hylobates klossii (Kloss's gibbon, Mentawai gibbon, Bilou)",
     "ape": "Gibbon",
     "code": "hk"
   },
   {
+    "category": "Other Apes",
     "taxa": "Hoolock hoolock (Western hoolock gibbon)",
     "ape": "Gibbon",
     "code": "hh"
   },
   {
+    "category": "Other Apes",
     "taxa": "Hoolock leuconedys (Eastern hoolock gibbon)",
     "ape": "Gibbon",
     "code": "hle"
   },
   {
+    "category": "Other Apes",
     "taxa": "Symphalangus syndactylus (Siamang)",
     "ape": "Gibbon",
     "code": "ss"
   },
   {
+    "category": "Other Apes",
     "taxa": "Nomascus concolor ssp. lu (Laotian black crested gibbon)",
     "ape": "Gibbon",
     "code": "ncl"
   },
   {
+    "category": "Other Apes",
     "taxa": "Nomascus concolor ssp. concolor (Tonkin blackcrested gibbon)",
     "ape": "Gibbon",
     "code": "ncc"
   },
   {
+    "category": "Other Apes",
     "taxa": "Nomascus concolor ssp. furvogaster (West Yunnan black crested gibbon)",
     "ape": "Gibbon",
     "code": "ncf"
   },
   {
+    "category": "Other Apes",
     "taxa": "Nomascus concolor ssp. jingdongensis (Central Yunnan black crested gibbon)",
     "ape": "Gibbon",
     "code": "ncj"
   },
   {
+    "category": "Other Apes",
     "taxa": "Nomascus nasutus (Eastern black crested gibbon)",
     "ape": "Gibbon",
     "code": "nn"
   },
   {
+    "category": "Other Apes",
     "taxa": "Nomascus leucogenys (White-cheeked crested gibbon)",
     "ape": "Gibbon",
     "code": "nl"
   },
   {
+    "category": "Other Apes",
     "taxa": "Nomascus siki (Souhtern white-cheecked gibbon)",
     "ape": "Gibbon",
     "code": "ns"
   },
   {
+    "category": "Other Apes",
     "taxa": "Nomascus hainanus (Hainan black crested gibbon)",
     "ape": "Gibbon",
     "code": "nh"
   },
   {
+    "category": "Other Apes",
     "taxa": "Nomascus gabriellae (Yellow-cheeked gibbon)",
     "ape": "Gibbon",
     "code": "ng"
   },
   {
+    "category": "Great Apes",
     "taxa": "Pongo pygmaeus (Bornean orangutan)",
     "ape": "Orangutan",
     "code": "ppy"
   },
   {
+    "category": "Great Apes",
     "taxa": "Pongo abelii (Sumatran orangutan)",
     "ape": "Orangutan",
     "code": "pa"
   },
   {
+    "category": "Great Apes",
     "taxa": "Gorilla gorilla ssp. gorilla (Western lowland gorilla)",
     "ape": "Gorilla",
     "code": "ggg"
   },
   {
+    "category": "Great Apes",
     "taxa": "Gorilla gorilla ssp. diehli (Cross River gorilla)",
     "ape": "Gorilla",
     "code": "ggd"
   },
   {
+    "category": "Great Apes",
     "taxa": "Gorilla beringei (Eastern gorilla)",
     "ape": "Gorilla",
     "code": "gb"
   },
   {
+    "category": "Great Apes",
     "taxa": "Pan troglodytes ssp. verus (Western chimpanzee)",
     "ape": "Chimpanzee",
     "code": "ptv"
   },
   {
+    "category": "Great Apes",
     "taxa": "Pan troglodytes ssp. ellioti (Nigerian-Cameroon chimpanzee)",
     "ape": "Chimpanzee",
     "code": "pte"
   },
   {
+    "category": "Great Apes",
     "taxa": "Pan troglodytes troglodytes (Central chimpanzee)",
     "ape": "Chimpanzee",
     "code": "ptt"
   },
   {
+    "category": "Great Apes",
     "taxa": "Pan troglodytes ssp. schweinfurthii (Eastern chimpanzee)",
     "ape": "Chimpanzee",
     "code": "pts"
   },
   {
+    "category": "Great Apes",
     "taxa": "Pan paniscus (Bonobo)",
     "ape": "Bonobo",
     "code": "pp"

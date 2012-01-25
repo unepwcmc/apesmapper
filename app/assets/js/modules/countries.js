@@ -23,7 +23,7 @@ App.modules.Countries = function(app) {
 
     app.Countries = Class.extend({
         init: function() {
-            // Initialise the apes collections
+            // Initialise the species collections
             this.allCountries = new AllCountries();
             this.allCountries.fetch();
         }

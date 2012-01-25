@@ -1,8 +1,8 @@
 /*
- * View the currently selected filters (apes and countries)
+ * View the currently selected filters (species and countries)
  */
-App.views.SelectedApesCountries = Backbone.View.extend({
-  el: 'ul#apes-countries-selected',
+App.views.SelectedSpeciesCountries = Backbone.View.extend({
+  el: 'ul#species-countries-selected',
 
   events: {
     'click span#edit-selected-species': 'showSpeciesEditor',
@@ -13,13 +13,13 @@ App.views.SelectedApesCountries = Backbone.View.extend({
     _.bindAll(this, 'render', 'showSpeciesEditor');
 
     this.bus = this.options.bus;
-    this.apes = this.options.apes;
+    this.species = this.options.species;
     this.countries = this.options.countries;
 
-    this.apes.bind("change", this.render);
+    this.species.bind("change", this.render);
     this.countries.bind("change", this.render);
 
-    this.template = _.template( jQuery("script#apes-countries-selected-tmpl").html() );
+    this.template = _.template( jQuery("script#species-countries-selected-tmpl").html() );
 
     this.render();
   },
@@ -27,7 +27,7 @@ App.views.SelectedApesCountries = Backbone.View.extend({
   render: function() {
     // render the template
     var renderedContent = this.template({
-      apes_count: this.apes.selected().length,
+      species_count: this.species.selected().length,
       countries_count: this.countries.selected().length
     });
     jQuery(this.el).html(renderedContent);

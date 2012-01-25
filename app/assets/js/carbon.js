@@ -47,15 +47,15 @@ App.modules.Carbon = function(app) {
             this.map = new app.Map(this.bus);
             this.map.show_controls(true); // Get rid of this method
             this.work = new app.Work(this.bus);
-            this.apes = new app.Apes();
+            this.species = new app.Species();
             this.countries = new app.Countries();
             this.sites = new app.Sites();
 
             // init Views
-            this.selectedFilterView = new App.views.SelectedApesCountries({bus:this.bus, apes: this.apes.allApes, countries: this.countries.allCountries});
-            this.speciesFilterEdit = new App.views.SpeciesFilterEdit({bus:this.bus, apes: this.apes.allApes});
+            this.selectedFilterView = new App.views.SelectedSpeciesCountries({bus:this.bus, species: this.species.allSpecies, countries: this.countries.allCountries});
+            this.speciesFilterEdit = new App.views.SpeciesFilterEdit({bus:this.bus, species: this.species.allSpecies});
             this.countriesFilterEdit = new App.views.CountriesFilterEdit({bus:this.bus, countries: this.countries.allCountries});
-            this.slideFilters = new App.views.SlideFilters({bus:this.bus, apes: this.apes.allApes, countries: this.countries.allCountries, sites: this.sites.allSites});
+            this.slideFilters = new App.views.SlideFilters({bus:this.bus, species: this.species.allSpecies, countries: this.countries.allCountries, sites: this.sites.allSites});
             this.graph = new App.views.Graph({sites: this.sites.allSites});
             this.resultTable = new App.views.ResultTable({sites: this.sites.allSites});
             this.header = new app.Header();
@@ -182,5 +182,4 @@ App.modules.Carbon = function(app) {
 
     });
 };
-
 

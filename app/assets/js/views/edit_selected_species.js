@@ -1,7 +1,7 @@
 /*
- * View the currently selected filters (apes and countries)
+ * View the currently selected filters (species and countries)
  */
-App.views.EditSelectedApesView = Backbone.View.extend({
+App.views.EditSelectedSpeciesView = Backbone.View.extend({
   el: 'div#slide_filters',
 
   events: {
@@ -13,12 +13,12 @@ App.views.EditSelectedApesView = Backbone.View.extend({
     _.bindAll(this, 'render', 'stop_slider');
 
     this.bus = this.options.bus;
-    this.apes = this.options.apes;
+    this.species = this.options.species;
     this.countries = this.options.countries;
     this.sites = this.options.sites;
     this.bus.on('save_filter:click', this.render);
 
-    this.apes.bind("change", this.render);
+    this.species.bind("change", this.render);
     this.countries.bind("change", this.render);
 
     // Sliders
