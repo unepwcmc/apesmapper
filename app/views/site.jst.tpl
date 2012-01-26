@@ -1,4 +1,4 @@
-<td><%= id %></td>
+<td><%= ial_id %></td>
 <td><%= name %></td>
 <td><%= area %></td>
 <td><%= state %></td>

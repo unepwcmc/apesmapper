@@ -166,28 +166,6 @@ class ApesMapper < Sinatra::Base
     end
   end
 
-  post %r{/api/v0/proxy/(.*)$} do
-    #due to the protection against path traversal provided by Rack::Protection
-    #the URLs that are matched with (.*) are sanitized and they lose the double forward-slash.
-    #the following line is to fix that. =)
-    url = params[:captures][0].sub(/(http|https)(:\/)/, '\1\2/')
-    uri = URI.parse(url)
-    if params[:q]
-      proxy_page = Net::HTTP.get_response(uri.host, uri.path+"?q=#{params[:q]}")
-    else
-      proxy_page = Net::HTTP.get_response(uri)
-    end
-    proxy_page
-  end
-
-  get %r{/carto_proxy(.*)$} do
-    cartodb_host = "carbon-tool.cartodb.com"
-    carto_path = "/api/v1/sql"
-    proxy_page = Net::HTTP.get_response(cartodb_host, carto_path+"?q=#{params[:q]}")
-    puts "request: #{cartodb_host + carto_path+"?q=#{params[:q]}"}:- #{proxy_page.body}"
-    proxy_page.body
-  end
-
   post '/api/v0/error' do
     Error.create(:error => params)
     "Logged, thanks!"

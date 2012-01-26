@@ -26,7 +26,8 @@ App.modules.Sites = function(app) {
         carbon_storage: null,
         uncertainity: null
       }
-    }
+    },
+    idAttribute: 'ial_id'
   });
 
   var AllSites = Backbone.Collection.extend({
@@ -36,6 +37,12 @@ App.modules.Sites = function(app) {
       this.response = {};
       this.biodiversity = {};
       this.uncertainity = {};
+    },
+    parse: function(response) {
+      // CartoDB returns results in rows field
+      response || (response = {});
+      response = response.rows;
+      return Backbone.Collection.prototype.parse.call(this, response);
     },
     url: function() {
       params = {};
@@ -52,9 +59,8 @@ App.modules.Sites = function(app) {
         params.biodiversity_max = this.biodiversity.max;
       }
 
-      //return "json/sites_stats.json?" + jQuery.param(params);
       var sqlQuery = "SELECT * FROM ials";
-      return "carto_proxy?q=" + sqlQuery;
+      return "https://carbon-tool.cartodb.com/api/v1/sql?q=" + sqlQuery;
     },
     filterBySize: function(min, max) {
       if(this.size.min === min && this.size.max === max) {
