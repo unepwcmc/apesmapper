@@ -52,7 +52,9 @@ App.modules.Sites = function(app) {
         params.biodiversity_max = this.biodiversity.max;
       }
 
-      return "json/sites_stats.json?" + jQuery.param(params);
+      //return "json/sites_stats.json?" + jQuery.param(params);
+      var sqlQuery = "SELECT * FROM ials";
+      return "carto_proxy?q=" + sqlQuery;
     },
     filterBySize: function(min, max) {
       if(this.size.min === min && this.size.max === max) {

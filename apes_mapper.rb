@@ -180,6 +180,14 @@ class ApesMapper < Sinatra::Base
     proxy_page
   end
 
+  get %r{/carto_proxy(.*)$} do
+    cartodb_host = "carbon-tool.cartodb.com"
+    carto_path = "/api/v1/sql"
+    proxy_page = Net::HTTP.get_response(cartodb_host, carto_path+"?q=#{params[:q]}")
+    puts "request: #{cartodb_host + carto_path+"?q=#{params[:q]}"}:- #{proxy_page.body}"
+    proxy_page.body
+  end
+
   post '/api/v0/error' do
     Error.create(:error => params)
     "Logged, thanks!"

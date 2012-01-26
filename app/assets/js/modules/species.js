@@ -50,4 +50,4 @@ App.modules.Species = function(app) {
             this.allSpecies.fetch();
         }
     });
-}
+};
