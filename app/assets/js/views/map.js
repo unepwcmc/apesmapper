@@ -37,7 +37,7 @@ App.views.MapView = Backbone.View.extend({
        this.layers_order = [];
        // hide controls until map is ready
        this.hide_controls();
-       this.map = new google.maps.Map(this.$('.map')[0], this.mapOptions);
+       this.map = new google.maps.Map(this.$('#map')[0], this.mapOptions);
        google.maps.event.addListener(this.map, 'center_changed', this.center_changed);
        google.maps.event.addListener(this.map, 'zoom_changed', this.zoom_changed);
        google.maps.event.addListener(this.map, 'click', this.click);
@@ -68,16 +68,16 @@ App.views.MapView = Backbone.View.extend({
 
     addCartoDbLayer: function() {
         // Add the carto db generated layer
-        /** this.cartodb_gmapsv3 = new google.maps.CartoDBLayer({
-          map_canvas: '.map',
+        this.species_ials_layer = new google.maps.CartoDBLayer({
+          map_canvas: 'map',
           map: this.map,
           user_name:"carbon-tool",
           table_name: 'species_ials',
           query: "SELECT * FROM species_ials",
           auto_bound: true
-        }); */
-        var cartodb1_gmapsv3 = new google.maps.CartoDBLayer({
-          map_canvas: 'map_canvas',
+        });
+        this.test_layer = new google.maps.CartoDBLayer({
+          map_canvas: 'map',
           map: this.map,
           user_name:'xavijam',
           table_name: 'test',
