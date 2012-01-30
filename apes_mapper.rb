@@ -68,7 +68,6 @@ class ApesMapper < Sinatra::Base
       "/js/views/projector.js",
       "/js/views/map.js",
       "/js/views/report.js",
-      "/js/views/polygon.js",
       "/js/views/layers.js",
       "/js/views/sharepopup.js",
       "/js/views/searchbox.js",
