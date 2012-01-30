@@ -10,7 +10,7 @@ App.modules.Map = function(app) {
         init: function(bus) {
             _.bindAll(this, 'enable_layer', 'reoder_layers', 'reorder_layers', 'remove_all', 'clear');
             var self = this;
-            this.map = new MapView({el: jQuery('.map_container')});
+            this.map = new App.views.MapView({el: jQuery('.map_container')});
             this.seachbox = new Searchbox({el: jQuery('.map_container .search')});
 
             // add layers to the map
