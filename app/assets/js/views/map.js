@@ -276,7 +276,7 @@ App.views.MapView = Backbone.View.extend({
         var order = _.clone(this.layers_order).reverse();
         _(order).each(function(name) {
             var layer = self.layers[name];
-            if(layer.enabled || !(layer.disableable)) {
+            if(layer.enabled ) {
                 self.map.overlayMapTypes.setAt(idx, layer.layer);
             }
             idx++;
