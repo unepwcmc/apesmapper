@@ -5,7 +5,9 @@ App.modules.SpeciesIals = function(app) {
   var SpeciesIal = Backbone.Model.extend({
     defaults: function() {
       return {
-        area_km: null
+        area_km: null,
+        state_score: null,
+        pressure_score: null
       }
     },
     idAttribute: 'cartodb_id'
