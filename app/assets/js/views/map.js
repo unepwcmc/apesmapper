@@ -14,27 +14,21 @@ var Layer = Class.extend({
 */
 
 // google maps map
-var MapView = Backbone.View.extend({
+App.views.MapView = Backbone.View.extend({
     mapOptions: {
-            zoom: 2,
-            center: new google.maps.LatLng(26.44106, 63.48967773437),
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-            disableDefaultUI: true,
-            //disableDoubleClickZoom: true,
-            draggableCursor:'default',
-            scrollwheel: false,
-            mapTypeControl:false
-            /*mapTypeControlOptions: {
-                style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
-                position: google.maps.ControlPosition.BOTTOM_LEFT
-            }*/
+        zoom: 2,
+        center: new google.maps.LatLng(26.44106, 63.48967773437),
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        disableDefaultUI: true,
+        draggableCursor:'default',
+        scrollwheel: false,
+        mapTypeControl:false
     },
 
     events: {
-            'click .zoom_in': 'zoom_in',
-            'click .zoom_out': 'zoom_out'
+        'click .zoom_in': 'zoom_in',
+        'click .zoom_out': 'zoom_out'
     },
-    //el: jQuery("#map"),
 
     initialize: function() {
         _.bindAll(this, 'center_changed', 'ready', 'click', 'set_center', 'zoom_changed', 'zoom_in', 'zoom_out', 'adjustSize', 'set_zoom_silence', 'set_center_silence');
@@ -68,6 +62,30 @@ var MapView = Backbone.View.extend({
            
         ]
        });
+
+       this.addCartoDbLayer();
+    },
+
+    addCartoDbLayer: function() {
+        // Add the carto db generated layer
+        /** this.cartodb_gmapsv3 = new google.maps.CartoDBLayer({
+          map_canvas: '.map',
+          map: this.map,
+          user_name:"carbon-tool",
+          table_name: 'species_ials',
+          query: "SELECT * FROM species_ials",
+          auto_bound: true
+        }); */
+        var cartodb1_gmapsv3 = new google.maps.CartoDBLayer({
+          map_canvas: 'map_canvas',
+          map: this.map,
+          user_name:'xavijam',
+          table_name: 'test',
+          query: "SELECT * FROM test",
+          map_style: true,
+          infowindow: true,
+          auto_bound: true
+        });
     },
 
     adjustSize: function() {
@@ -164,41 +182,41 @@ var MapView = Backbone.View.extend({
     // called when map is ready
     // its a helper method to avoid calling getProjection whiout map loaded
     ready: function() {
-            this.projector.draw = function(){};
-            //this.show_controls();
-            this.trigger('ready');
+        this.projector.draw = function(){};
+        //this.show_controls();
+        this.trigger('ready');
     },
 
     // add a new tiled layer
     add_layer: function(name, layer_info) {
-          var opacity = 1.0;
-          if(layer_info.opacity !== undefined) {
+        var opacity = 1.0;
+        if(layer_info.opacity !== undefined) {
             opacity = layer_info.opacity;
-          }
-          var layer = new google.maps.ImageMapType({
-              getTileUrl: function(tile, zoom) {
-                var y = tile.y;
-                var tileRange = 1 << zoom;
-                if (y < 0 || y  >= tileRange) {
-                  return null;
-                }
-                var x = tile.x;
-                if (x < 0 || x >= tileRange) {
-                  x = (x % tileRange + tileRange) % tileRange;
-                }
-                return this.urlPattern.replace("{X}",x).replace("{Y}",y).replace("{Z}",zoom);
-              },
-              tileSize: new google.maps.Size(256, 256),
-              opacity: opacity,
-              isPng: true,
-              urlPattern:layer_info.url
-         });
-         this.layers[name] = {
-            layer: layer,
-            name: name
-         };
-         this.layers_order.push(name);
-         this.reorder_layers();
+        }
+        var layer = new google.maps.ImageMapType({
+            getTileUrl: function(tile, zoom) {
+              var y = tile.y;
+              var tileRange = 1 << zoom;
+              if (y < 0 || y  >= tileRange) {
+                return null;
+              }
+              var x = tile.x;
+              if (x < 0 || x >= tileRange) {
+                x = (x % tileRange + tileRange) % tileRange;
+              }
+              return this.urlPattern.replace("{X}",x).replace("{Y}",y).replace("{Z}",zoom);
+            },
+            tileSize: new google.maps.Size(256, 256),
+            opacity: opacity,
+            isPng: true,
+            urlPattern:layer_info.url
+       });
+       this.layers[name] = {
+          layer: layer,
+          name: name
+       };
+       this.layers_order.push(name);
+       this.reorder_layers();
     },
 
     get_layers: function() {

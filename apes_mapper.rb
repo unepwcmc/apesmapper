@@ -47,6 +47,8 @@ class ApesMapper < Sinatra::Base
       '/js/libs/underscore-min.js',
       '/js/libs/class.js',
       '/js/libs/backbone-min.js',
+      '/js/libs/wax.g.js',
+      '/js/libs/cartodb-gmapsv3.js',
 
       "/js/app.js",
       "/js/modules/log.js",
@@ -80,6 +82,7 @@ class ApesMapper < Sinatra::Base
 
     css :application, [
       '/css/jquery-ui-1.8.17.custom.css',
+      '/css/cartodb.css',
       '/css/style.css'
     ]
 
