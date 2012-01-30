@@ -63,62 +63,31 @@ App.views.MapView = Backbone.View.extend({
         ]
        });
 
-       this.addCartoDbLayer();
+       this.addCartoDbResultsLayer();
     },
 
-    addCartoDbLayer: function() {
-        // Add the carto db generated layer
-        var map = new google.maps.Map(document.getElementById('map2'), {
-          zoom: 2,
-          center: new google.maps.LatLng(26.44106, 63.48967773437),
-          mapTypeId: google.maps.MapTypeId.ROADMAP,
-          disableDefaultUI: true,
-          draggableCursor:'default',
-          scrollwheel: false,
-          mapTypeControl:false
-            
-        });
+    addCartoDbResultsLayer: function() {
 
-        /**
         this.species_ials_layer = new google.maps.CartoDBLayer({
-            map_canvas: 'map2',
-            map: map,
+            map_canvas: 'map',
+            map: this.map,
             user_name:"carbon-tool",
             table_name: 'species_ials',
             query: "SELECT * FROM species_ials",
-            auto_bound: true
-        });
-        */
-        this.test_layer = new google.maps.CartoDBLayer({
-            map_canvas: 'map',
-            map: this.map,
-            user_name:'xavijam',
-            table_name: 'test',
-            query: "SELECT * FROM test",
             map_style: true,
             infowindow: true,
             auto_bound: true
         });
         var name = 'IALs';
+        // Add the just added layer to the layer list
         this.layers[name] = {
-           layer: this.map.overlayMapTypes.getAt(0), 
+           layer: this.map.overlayMapTypes.getAt(this.map.overlayMapTypes.getLength()-1), 
            disableable: false,
            enabled: true,
            name: name
         };
         this.layers_order.push(name);
         this.reorder_layers();
-
-        this.other_test_layer = new google.maps.CartoDBLayer({
-            map_canvas: 'map2',
-            map: map,
-            user_name:'xavijam',
-            table_name: 'test',
-            query: "SELECT * FROM test",
-            map_style: true,
-            infowindow: true,
-            auto_bound: true
-        });
     },
 
     adjustSize: function() {
@@ -269,9 +238,6 @@ App.views.MapView = Backbone.View.extend({
         var idx = 0;
         this.layers_order = names || this.layers_order;
 
-        // Remove all layers except cartodblayer of results
-        self.map.overlayMapTypes.forEach(function(layer) {
-        });
         self.map.overlayMapTypes.clear();
         var order = _.clone(this.layers_order).reverse();
         _(order).each(function(name) {

@@ -11,12 +11,12 @@ App.modules.Config = function(app) {
              name: 'protected areas',
              url: 'http://184.73.201.235/blue/{Z}/{X}/{Y}',
              opacity: 0.7,
-             enabled: true
+             enabled: false
           }, {
              name: 'carbon',
              opacity: 0.7,
              url: 'http://lifeweb-maps.unep-wcmc.org/ArcGIS/rest/services/lifeweb/carbon/MapServer/tile/{Z}/{Y}/{X}',
-             enabled: true 
+             enabled: false 
           }, {
             name: 'carbon sequestration',
             opacity: 0.7,
