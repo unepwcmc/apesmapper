@@ -68,23 +68,56 @@ App.views.MapView = Backbone.View.extend({
 
     addCartoDbLayer: function() {
         // Add the carto db generated layer
-        this.species_ials_layer = new google.maps.CartoDBLayer({
-          map_canvas: 'map',
-          map: this.map,
-          user_name:"carbon-tool",
-          table_name: 'species_ials',
-          query: "SELECT * FROM species_ials",
-          auto_bound: true
+        var map = new google.maps.Map(document.getElementById('map2'), {
+          zoom: 2,
+          center: new google.maps.LatLng(26.44106, 63.48967773437),
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          disableDefaultUI: true,
+          draggableCursor:'default',
+          scrollwheel: false,
+          mapTypeControl:false
+            
         });
+
+        /**
+        this.species_ials_layer = new google.maps.CartoDBLayer({
+            map_canvas: 'map2',
+            map: map,
+            user_name:"carbon-tool",
+            table_name: 'species_ials',
+            query: "SELECT * FROM species_ials",
+            auto_bound: true
+        });
+        */
         this.test_layer = new google.maps.CartoDBLayer({
-          map_canvas: 'map',
-          map: this.map,
-          user_name:'xavijam',
-          table_name: 'test',
-          query: "SELECT * FROM test",
-          map_style: true,
-          infowindow: true,
-          auto_bound: true
+            map_canvas: 'map',
+            map: this.map,
+            user_name:'xavijam',
+            table_name: 'test',
+            query: "SELECT * FROM test",
+            map_style: true,
+            infowindow: true,
+            auto_bound: true
+        });
+        var name = 'IALs';
+        this.layers[name] = {
+           layer: this.map.overlayMapTypes.getAt(0), 
+           disableable: false,
+           enabled: true,
+           name: name
+        };
+        this.layers_order.push(name);
+        this.reorder_layers();
+
+        this.other_test_layer = new google.maps.CartoDBLayer({
+            map_canvas: 'map2',
+            map: map,
+            user_name:'xavijam',
+            table_name: 'test',
+            query: "SELECT * FROM test",
+            map_style: true,
+            infowindow: true,
+            auto_bound: true
         });
     },
 
@@ -235,11 +268,15 @@ App.views.MapView = Backbone.View.extend({
         var self = this;
         var idx = 0;
         this.layers_order = names || this.layers_order;
+
+        // Remove all layers except cartodblayer of results
+        self.map.overlayMapTypes.forEach(function(layer) {
+        });
         self.map.overlayMapTypes.clear();
         var order = _.clone(this.layers_order).reverse();
         _(order).each(function(name) {
             var layer = self.layers[name];
-            if(layer.enabled) {
+            if(layer.enabled || !(layer.disableable)) {
                 self.map.overlayMapTypes.setAt(idx, layer.layer);
             }
             idx++;
