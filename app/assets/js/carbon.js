@@ -68,9 +68,6 @@ App.modules.Carbon = function(app) {
             this.router.bind('route:work', this.on_route);
 
             this.bus.on('app:route_to', this.on_route_to);
-            this.bus.on('view:show_report', function(id, r) {
-                self.map.editing(r.polygons.length === 0);
-            });
 
             this.bus.on('view:show_error', function(error) {
               app.Error.show(error);
