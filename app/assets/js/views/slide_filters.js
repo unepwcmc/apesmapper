@@ -15,6 +15,7 @@ App.views.SlideFilters = Backbone.View.extend({
     this.species = this.options.species;
     this.countries = this.options.countries;
     this.sites = this.options.sites;
+    this.species_ials = this.options.species_ials;
     this.bus.on('save_filter:click', this.render);
 
     // Sliders
@@ -34,14 +35,13 @@ App.views.SlideFilters = Backbone.View.extend({
   
   stop_slider: function(event, ui) {
     if(jQuery(event.target).hasClass("response")) {
-      this.sites.filterByResponse(ui.values[0], ui.values[1])
+      this.species_ials.filterByResponse(ui.values[0], ui.values[1])
     } else if(jQuery(event.target).hasClass("biodiversity")) {
-      this.sites.filterByBiodiversity(ui.values[0], ui.values[1])
+      this.species_ials.filterByBiodiversity(ui.values[0], ui.values[1])
     } else if(jQuery(event.target).hasClass("uncertainity")) {
-      this.sites.filterByUncertainity(ui.values[0], ui.values[1])
+      this.species_ials.filterByUncertainity(ui.values[0], ui.values[1])
     } else if(jQuery(event.target).hasClass("size")) {
-      this.sites.filterBySize(ui.values[0], ui.values[1])
+      this.species_ials.filterBySize(ui.values[0], ui.values[1])
     }
   }
 });
-

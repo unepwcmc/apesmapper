@@ -28,21 +28,26 @@ App.modules.SpeciesIals = function(app) {
       return Backbone.Collection.prototype.parse.call(this, response);
     },
     url: function() {
-      params = {};
-      if(typeof this.size.min !== undefined && this.size !== null) {
-        params.size_min = this.size.min;
-        params.size_max = this.size.max;
+      var sqlQuery = "SELECT * FROM species_ials",
+        params = [];
+
+      if(typeof this.size.min !== undefined && this.size.max !== undefined) {
+        params = params.concat("(area_km >= " + this.size.min * 1000 + " AND area_km <= " + this.size.max * 1000 + ")");
       }
-      if(typeof this.response !== "undefined" && this.response !== null) {
-        params.response_min = this.response.min;
-        params.response_max = this.response.max;
+      if(typeof this.response.min !== undefined && this.response.max !== undefined) {
+        params = params.concat("(response_score >= " + (this.response.min / 100) + " AND response_score <= " + (this.response.max / 100) + ")");
       }
-      if(typeof this.biodiversity !== "undefined" && this.biodiversity !== null) {
-        params.biodiversity_min = this.biodiversity.min;
-        params.biodiversity_max = this.biodiversity.max;
+      if(typeof this.biodiversity.min !== undefined && this.biodiversity.max !== undefined) {
+        params = params.concat("(biodiversity_score >= " + (this.biodiversity.min / 100) + " AND biodiversity_score <= " + (this.biodiversity.max / 100) + ")");
+      }
+      if(typeof this.uncertainity.min !== undefined && this.uncertainity.max !== undefined) {
+        params = params.concat("(uncertainity >= " + (this.uncertainity.min / 100) + " AND uncertainity <= " + (this.uncertainity.max / 100) + ")");
       }
 
-      var sqlQuery = "SELECT * FROM species_ials";
+      if(params.length > 0) {
+        sqlQuery = sqlQuery + " WHERE " + params.join(" AND ");
+      }
+
       return "https://carbon-tool.cartodb.com/api/v1/sql?q=" + sqlQuery;
     },
     filterBySize: function(min, max) {
@@ -64,9 +69,7 @@ App.modules.SpeciesIals = function(app) {
       }
 
       this.response = {min: min, max: max};
-      this.fetch({add: false, success: function(e) {
-      }, error: function(e) {
-      }});
+      this.fetch({add: false});
       return true;
     },
     resetResponse: function() {
