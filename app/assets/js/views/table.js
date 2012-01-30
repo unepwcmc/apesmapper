@@ -10,14 +10,16 @@ App.views.ResultTable = Backbone.View.extend({
     this.sites = this.options.sites;
     this.sites.bind("all", this.render);
 
+    this.species_ials_table = this.options.species_ials_table;
+    this.species_ials_table.bind("all", this.render);
   },
 
   addAll: function() {
-    this.sites.each(this.addOne);
+    this.species_ials_table.each(this.addOne);
   },
 
-  addOne: function(site) {
-    var view = new App.views.ResultTableRow({model : site});
+  addOne: function(species_ials_table) {
+    var view = new App.views.ResultTableRow({model : species_ials_table});
     jQuery(this.el).find("tbody").append(view.render().el);
   },
 
