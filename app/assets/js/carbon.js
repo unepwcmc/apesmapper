@@ -48,13 +48,14 @@ App.modules.Carbon = function(app) {
             this.map.show_controls(true); // Get rid of this method
             this.work = new app.Work(this.bus);
             this.species = new app.Species();
+            this.categories = new app.Categories();
             this.countries = new app.Countries();
             this.sites = new app.Sites();
             this.species_ials = new app.SpeciesIals();
 
             // init Views
             this.selectedFilterView = new App.views.SelectedSpeciesCountries({bus:this.bus, species: this.species.allSpecies, countries: this.countries.allCountries});
-            this.speciesFilterEdit = new App.views.SpeciesFilterEdit({bus:this.bus, species: this.species.allSpecies});
+            this.speciesFilterEdit = new App.views.SpeciesFilterEdit({bus:this.bus, species: this.species.allSpecies, categories: this.categories.allCategories});
             this.countriesFilterEdit = new App.views.CountriesFilterEdit({bus:this.bus, countries: this.countries.allCountries});
             this.slideFilters = new App.views.SlideFilters({bus:this.bus, species: this.species.allSpecies, countries: this.countries.allCountries, sites: this.sites.allSites, species_ials: this.species_ials.allSpeciesIals});
             this.graph = new App.views.Graph({species_ials: this.species_ials.allSpeciesIals});

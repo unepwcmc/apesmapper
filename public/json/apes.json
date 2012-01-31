@@ -1,0 +1,13 @@
+[
+  {
+    "category_id": 1,
+    "ape_id": 1,
+    "name": "Gibbon"
+  },
+  {
+    "category_id": 2,
+    "ape_id": 2,
+    "name": "Chimpanzee"
+  }
+]
+

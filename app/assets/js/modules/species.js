@@ -5,7 +5,7 @@ App.modules.Species = function(app) {
     var Species = Backbone.Model.extend({
         defaults: function() {
             return {
-              selected:  false
+              selected:  false,
             };
         },
         toggle: function() {
