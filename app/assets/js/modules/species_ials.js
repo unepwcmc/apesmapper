@@ -27,10 +27,20 @@ App.modules.SpeciesIals = function(app) {
       response = response.rows;
       return Backbone.Collection.prototype.parse.call(this, response);
     },
-    selectQuery: function() {
-      // Build the SQL query to filter species_ials
-      var sqlQuery = "SELECT * FROM species_ials",
-        params = [];
+    aggregateScoresSql: function() {
+      // Returns the SQL from string to get the aggregated scores for the site_ials
+      var selectSql = " MAX(species_ials.site) as ial_id,"
+      selectSql = selectSql + " MIN(species_ials.state_score) as state_score,"
+      selectSql = selectSql + " MIN(species_ials.biodiversity_score) as biodiversity_score,"
+      selectSql = selectSql + " MIN(species_ials.pressure_score) as pressure_score,"
+      selectSql = selectSql + " MIN(species_ials.response_score) as response_score,"
+      selectSql = selectSql + " MAX(species_ials.area_km) as area_km,"
+      selectSql = selectSql + " string_agg(species_ials.species, ', ') as species "
+      return selectSql;
+    },
+    filterConditionsSql: function (){
+      // Where clause based on the current filtering
+      var params = [], conditionsSql = "";
 
       if(typeof this.size.min !== undefined && this.size.max !== undefined) {
         params = params.concat("(area_km >= " + this.size.min * 1000 + " AND area_km <= " + this.size.max * 1000 + ")");
@@ -46,10 +56,31 @@ App.modules.SpeciesIals = function(app) {
       }
 
       if(params.length > 0) {
-        sqlQuery = sqlQuery + " WHERE " + params.join(" AND ");
+        conditionsSql = " WHERE " + params.join(" AND ");
       }
 
-      return sqlQuery
+      return conditionsSql;
+    },
+    selectQuery: function() {
+      // Build the SQL query to filter species_ials
+      var sqlQuery = "SELECT ";
+      sqlQuery = sqlQuery + this.aggregateScoresSql();
+      sqlQuery = sqlQuery + " FROM species_ials";
+      sqlQuery = sqlQuery + " GROUP BY species_ials.site";
+      
+      sqlQuery = sqlQuery + this.filterConditionsSql();
+
+      console.log('select query:' + sqlQuery);
+      return sqlQuery;
+    },
+    geoQuery: function() {
+      // returns the SQL query to be used for the maps
+      var sqlQuery = "SELECT ";
+      sqlQuery = sqlQuery + " * ";
+      sqlQuery = sqlQuery + " FROM ials";
+
+      console.log('geo query:' + sqlQuery);
+      return sqlQuery;
     },
     url: function() {
       // cartoDB query used by fetch
