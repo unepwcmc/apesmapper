@@ -27,7 +27,8 @@ App.modules.SpeciesIals = function(app) {
       response = response.rows;
       return Backbone.Collection.prototype.parse.call(this, response);
     },
-    url: function() {
+    selectQuery: function() {
+      // Build the SQL query to filter species_ials
       var sqlQuery = "SELECT * FROM species_ials",
         params = [];
 
@@ -48,7 +49,11 @@ App.modules.SpeciesIals = function(app) {
         sqlQuery = sqlQuery + " WHERE " + params.join(" AND ");
       }
 
-      return "https://carbon-tool.cartodb.com/api/v1/sql?q=" + sqlQuery;
+      return sqlQuery
+    },
+    url: function() {
+      // cartoDB query used by fetch
+      return "https://carbon-tool.cartodb.com/api/v1/sql?q=" + this.selectQuery();
     },
     filterBySize: function(min, max) {
       if(this.size.min === min && this.size.max === max) {

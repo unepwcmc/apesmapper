@@ -17,7 +17,12 @@ App.modules.Config = function(app) {
              opacity: 0.7,
              url: 'http://lifeweb-maps.unep-wcmc.org/ArcGIS/rest/services/lifeweb/carbon/MapServer/tile/{Z}/{Y}/{X}',
              enabled: false 
-          }, {
+          }
+        ]
+    };
+
+}
+/**, {
             name: 'carbon sequestration',
             opacity: 0.7,
             url: 'http://lifeweb-maps.unep-wcmc.org/ArcGIS/rest/services/lifeweb/carb_seq/MapServer/tile/{Z}/{Y}/{X}',
@@ -43,8 +48,4 @@ App.modules.Config = function(app) {
               opacity: 0.7,
               enabled: false
           }
-
-        ]
-    };
-
-}
+*/

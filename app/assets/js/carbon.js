@@ -44,13 +44,12 @@ App.modules.Carbon = function(app) {
             // init Models
             this.bus = new app.Bus();
             app.bus = this.bus; // set a global bus
-            this.map = new app.Map(this.bus);
-            this.map.show_controls(true); // Get rid of this method
             this.work = new app.Work(this.bus);
             this.species = new app.Species();
             this.countries = new app.Countries();
             this.sites = new app.Sites();
             this.species_ials = new app.SpeciesIals();
+            this.map = new app.Map({bus:this.bus, species_ials: this.species_ials.allSpeciesIals}); // This actually contains the map view...
 
             // init Views
             this.selectedFilterView = new App.views.SelectedSpeciesCountries({bus:this.bus, species: this.species.allSpecies, countries: this.countries.allCountries});

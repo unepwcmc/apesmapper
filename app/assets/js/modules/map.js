@@ -7,10 +7,10 @@
 App.modules.Map = function(app) {
 
     app.Map = Class.extend({
-        init: function(bus) {
+        init: function(options) {
             _.bindAll(this, 'enable_layer', 'reoder_layers', 'reorder_layers', 'remove_all', 'clear');
             var self = this;
-            this.map = new App.views.MapView({el: jQuery('.map_container')});
+            this.map = new App.views.MapView({el: jQuery('.map_container'), species_ials: options['species_ials']});
             this.seachbox = new Searchbox({el: jQuery('.map_container .search')});
 
             // add layers to the map
@@ -19,14 +19,14 @@ App.modules.Map = function(app) {
                 self.map.enable_layer(layer.name, layer.enabled);
             });
 
+            this.bus = options['bus'];
             this.layer_editor = new LayerEditor({
                 el: jQuery('.layers'),
-                bus: bus,
+                bus: this.bus,
                 layers: this.map.get_layers()
             });
-            this.bus = bus;
 
-            bus.link(this, {
+            this.bus.link(this, {
                 'map:enable_layer': 'enable_layer',
                 'map:reorder_layers':'reorder_layers'
             });
