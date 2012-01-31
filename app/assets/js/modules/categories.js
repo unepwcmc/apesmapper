@@ -6,6 +6,7 @@ App.modules.Categories = function(app) {
         defaults: function() {
             return {
               selected:  false,
+              the_type: "category"
             };
         },
         toggle: function() {
@@ -17,10 +18,8 @@ App.modules.Categories = function(app) {
     var AllCategories = Backbone.Collection.extend({
         model: Category,
         url: 'json/categories.json',
-        initialize: function(){
-        },
         selected: function() {
-            //return this.filter(function(species){ return species.get('selected'); });
+            return this.filter(function(category){ return category.get('selected'); });
         }
     });
 

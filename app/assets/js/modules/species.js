@@ -6,6 +6,8 @@ App.modules.Species = function(app) {
         defaults: function() {
             return {
               selected:  false,
+              the_type: "species",
+              hidden: false
             };
         },
         toggle: function() {
@@ -13,36 +15,24 @@ App.modules.Species = function(app) {
         },
         toTemplateJson: function(){
 
-        }
+        },
+        idAttribute: 'species_id'
     });
 
     var AllSpecies = Backbone.Collection.extend({
         model: Species,
-        url: 'json/species.json',
-        initialize: function(){
-          _.bindAll(this, 'createCategories');
-          this.bind('reset', this.createCategories);
-
-          this.apes = {};
-        },
+        url: 'json/species_t.json',
         selected: function() {
             return this.filter(function(species){ return species.get('selected'); });
         },
-        createCategories: function() {
-          // Build categories and family collections
-          var that = this;
-          this.each(function(species) {
-            if (!that.apes[species.get('ape')]){
-              that.apes[species.get('ape')] = 2;
-            }
-          });
+        filterByApe: function(ape_id){
+          return this.ape_id == ape_id;
+        },
+        visible: function() {
+          return this.filter(function(species) { return species.get('hidden') == false; })
         }
     });
 
-    var SpeciesCategories = Backbone.Collection.extend({
-    });
-    var SpeciesApes = Backbone.Collection.extend({
-    });
     app.Species = Class.extend({
         init: function() {
             // Initialise the species collections

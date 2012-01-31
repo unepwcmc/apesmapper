@@ -5,12 +5,12 @@ App.views.SelectedSpeciesCountries = Backbone.View.extend({
   el: 'ul#species-countries-selected',
 
   events: {
-    'click span#edit-selected-species': 'showSpeciesEditor',
+    'click span#edit-selected-species': 'showCategoriesEditor',
     'click span#edit-selected-countries': 'showCountriesEditor'
   },
 
   initialize: function() {
-    _.bindAll(this, 'render', 'showSpeciesEditor');
+    _.bindAll(this, 'render', 'showCategoriesEditor');
 
     this.bus = this.options.bus;
     this.species = this.options.species;
@@ -34,9 +34,9 @@ App.views.SelectedSpeciesCountries = Backbone.View.extend({
     return this;
   },
 
-  showSpeciesEditor: function() {
+  showCategoriesEditor: function() {
     // Show the species edit view
-    this.bus.emit('show_species_editor');
+    this.bus.emit('show_categories_editor');
   },
   showCountriesEditor: function() {
     // Show the countries edit view

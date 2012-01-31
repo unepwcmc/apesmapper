@@ -45,8 +45,9 @@ App.modules.Carbon = function(app) {
             this.bus = new app.Bus();
             app.bus = this.bus; // set a global bus
             this.work = new app.Work(this.bus);
-            this.species = new app.Species();
             this.categories = new app.Categories();
+            this.apes = new app.Apes();
+            this.species = new app.Species();
             this.countries = new app.Countries();
             this.sites = new app.Sites();
             this.species_ials = new app.SpeciesIals();
@@ -55,7 +56,11 @@ App.modules.Carbon = function(app) {
 
             // init Views
             this.selectedFilterView = new App.views.SelectedSpeciesCountries({bus:this.bus, species: this.species.allSpecies, countries: this.countries.allCountries});
-            this.speciesFilterEdit = new App.views.SpeciesFilterEdit({bus:this.bus, species: this.species.allSpecies, categories: this.categories.allCategories});
+
+            this.categoriesFilterEdit = new App.views.CategoriesFilterEdit({bus:this.bus, categories: this.categories.allCategories});
+            this.apesFilterEdit = new App.views.ApesFilterEdit({bus:this.bus, categories: this.categories.allCategories, apes: this.apes.allApes});
+            this.speciesFilterEdit = new App.views.SpeciesFilterEdit({bus:this.bus, species: this.species.allSpecies, categories: this.categories.allCategories, apes: this.apes.allApes});
+
             this.countriesFilterEdit = new App.views.CountriesFilterEdit({bus:this.bus, countries: this.countries.allCountries});
             this.slideFilters = new App.views.SlideFilters({bus:this.bus, species: this.species.allSpecies, countries: this.countries.allCountries, sites: this.sites.allSites, species_ials: this.species_ials.allSpeciesIals, species_ials_table: this.species_ials_table.allSpeciesIalsTable});
             this.graph = new App.views.Graph({species_ials: this.species_ials.allSpeciesIals});

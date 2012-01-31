@@ -6,7 +6,12 @@ App.modules.Apes = function(app) {
         defaults: function() {
             return {
               selected:  false,
+              the_type: "ape",
+              hidden: false
             };
+        },
+        toggle: function() {
+          this.set({selected: !this.get("selected")});
         },
         idAttribute: 'ape_id'
     });
@@ -14,11 +19,15 @@ App.modules.Apes = function(app) {
     var AllApes = Backbone.Collection.extend({
         model: Ape,
         url: 'json/apes.json',
-        initialize: function(){
-        },
         selected: function() {
-            //return this.filter(function(species){ return species.get('selected'); });
+            return this.filter(function(ape){ return ape.get('selected'); });
         },
+        filterByCategory: function(category_id){
+          return this.filter(function(apes){ return apes.get('category_id') == category_id;})
+        },
+        visible: function() {
+          return this.filter(function(ape) { return ape.get('hidden') == false; })
+        }
     });
 
     app.Apes = Class.extend({
