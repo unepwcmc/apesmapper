@@ -1,20 +1,34 @@
 /**
  * Site model and collection
 */
-App.modules.SpeciesIals = function(app) {
-  var SpeciesIal = Backbone.Model.extend({
+App.modules.SpeciesIalsTable = function(app) {
+  var SpeciesIalTable = Backbone.Model.extend({
     defaults: function() {
       return {
+        name: null,
         area_km: null,
         state_score: null,
-        pressure_score: null
+        mean_canopy_cover: null,
+        pressure_score: null,
+        mean_deforestation: null,
+        mean_population_count: null,
+        population_change: null,
+        mean_human_influence_index: null,
+        response: null,
+        protected_area: null,
+        mean_protection_category: null,
+        biodiversity: null,
+        species_richness: null,
+        proportion_threatened_species: null,
+        carbon_storage: null,
+        uncertainity: null
       }
     },
     idAttribute: 'cartodb_id'
   });
 
-  var AllSpeciesIals = Backbone.Collection.extend({
-    model: SpeciesIal,
+  var AllSpeciesIalsTable = Backbone.Collection.extend({
+    model: SpeciesIalTable,
     initialize: function() {
       this.size = {};
       this.response = {};
@@ -27,8 +41,7 @@ App.modules.SpeciesIals = function(app) {
       response = response.rows;
       return Backbone.Collection.prototype.parse.call(this, response);
     },
-    selectQuery: function() {
-      // Build the SQL query to filter species_ials
+    url: function() {
       var sqlQuery = "SELECT * FROM species_ials",
         params = [];
 
@@ -49,11 +62,7 @@ App.modules.SpeciesIals = function(app) {
         sqlQuery = sqlQuery + " WHERE " + params.join(" AND ");
       }
 
-      return sqlQuery
-    },
-    url: function() {
-      // cartoDB query used by fetch
-      return "https://carbon-tool.cartodb.com/api/v1/sql?q=" + this.selectQuery();
+      return "https://carbon-tool.cartodb.com/api/v1/sql?q=" + sqlQuery;
     },
     filterBySize: function(min, max) {
       if(this.size.min === min && this.size.max === max) {
@@ -109,11 +118,11 @@ App.modules.SpeciesIals = function(app) {
     }
   });
 
-  app.SpeciesIals = Class.extend({
+  app.SpeciesIalsTable = Class.extend({
     init: function() {
       // Initialise the sites collections
-      this.allSpeciesIals = new AllSpeciesIals();
-      this.allSpeciesIals.fetch();
+      this.allSpeciesIalsTable = new AllSpeciesIalsTable();
+      this.allSpeciesIalsTable.fetch();
     }
   });
 }

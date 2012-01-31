@@ -44,22 +44,22 @@ App.modules.Carbon = function(app) {
             // init Models
             this.bus = new app.Bus();
             app.bus = this.bus; // set a global bus
-            this.map = new app.Map(this.bus);
-            this.map.show_controls(true); // Get rid of this method
             this.work = new app.Work(this.bus);
             this.species = new app.Species();
             this.categories = new app.Categories();
             this.countries = new app.Countries();
             this.sites = new app.Sites();
             this.species_ials = new app.SpeciesIals();
+            this.map = new app.Map({bus:this.bus, species_ials: this.species_ials.allSpeciesIals}); // This actually contains the map view...
+            this.species_ials_table = new app.SpeciesIalsTable();
 
             // init Views
             this.selectedFilterView = new App.views.SelectedSpeciesCountries({bus:this.bus, species: this.species.allSpecies, countries: this.countries.allCountries});
             this.speciesFilterEdit = new App.views.SpeciesFilterEdit({bus:this.bus, species: this.species.allSpecies, categories: this.categories.allCategories});
             this.countriesFilterEdit = new App.views.CountriesFilterEdit({bus:this.bus, countries: this.countries.allCountries});
-            this.slideFilters = new App.views.SlideFilters({bus:this.bus, species: this.species.allSpecies, countries: this.countries.allCountries, sites: this.sites.allSites, species_ials: this.species_ials.allSpeciesIals});
+            this.slideFilters = new App.views.SlideFilters({bus:this.bus, species: this.species.allSpecies, countries: this.countries.allCountries, sites: this.sites.allSites, species_ials: this.species_ials.allSpeciesIals, species_ials_table: this.species_ials_table.allSpeciesIalsTable});
             this.graph = new App.views.Graph({species_ials: this.species_ials.allSpeciesIals});
-            this.resultTable = new App.views.ResultTable({sites: this.sites.allSites});
+            this.resultTable = new App.views.ResultTable({sites: this.sites.allSites, species_ials_table: this.species_ials_table.allSpeciesIalsTable});
             this.header = new app.Header();
 
             // init routing and bind methods requiring this scope to routes
@@ -68,9 +68,6 @@ App.modules.Carbon = function(app) {
             this.router.bind('route:work', this.on_route);
 
             this.bus.on('app:route_to', this.on_route_to);
-            this.bus.on('view:show_report', function(id, r) {
-                self.map.editing(r.polygons.length === 0);
-            });
 
             this.bus.on('view:show_error', function(error) {
               app.Error.show(error);
