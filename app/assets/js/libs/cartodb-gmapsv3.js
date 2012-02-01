@@ -64,7 +64,6 @@ if (typeof(google.maps.CartoDBLayer) === "undefined") {
 			// If the table is private you can't auto zoom without being authenticated
 			if (!params.map_key) {
                           var extentQuery = 'select ST_Extent(' + params.table_name + '.the_geom) from '+ params.table_name + ' ' + params.bounds_filter_query;
-                          console.log(extentQuery);
         jQuery.getJSON('http://'+params.user_name+'.cartodb.com/api/v1/sql/?q='+escape(extentQuery)+'&callback=?', function(result) {
 
           if (result.rows[0].st_extent!=null) {
