@@ -7,7 +7,10 @@ App.modules.SpeciesIals = function(app) {
       return {
         area_km: null,
         state_score: null,
-        pressure_score: null
+        pressure_score: null,
+        response_score: 0,
+        biodiversity_score: 0,
+        uncertainity_score: 0
       }
     },
     idAttribute: 'cartodb_id'
@@ -20,6 +23,7 @@ App.modules.SpeciesIals = function(app) {
       this.response = {};
       this.biodiversity = {};
       this.uncertainity = {};
+      this.filter_selected = 'biodiversity';
     },
     parse: function(response) {
       // CartoDB returns results in rows field
@@ -34,6 +38,7 @@ App.modules.SpeciesIals = function(app) {
       selectSql = selectSql + " MIN(species_ials.biodiversity_score) as biodiversity_score,"
       selectSql = selectSql + " MIN(species_ials.pressure_score) as pressure_score,"
       selectSql = selectSql + " MIN(species_ials.response_score) as response_score,"
+      selectSql = selectSql + " MIN(species_ials.uncertainity) as uncertainity_score,"
       selectSql = selectSql + " MAX(species_ials.area_km) as area_km,"
       selectSql = selectSql + " string_agg(species_ials.species, ', ') as species "
       return selectSql;
@@ -141,6 +146,15 @@ App.modules.SpeciesIals = function(app) {
     resetUncertainity: function() {
       this.uncertainity = {};
       this.fetch({add: false});
+    },
+    selectFilter: function(filter_selected) {
+      if(this.filter_selected == filter_selected) {
+        return false;
+      }
+
+      this.filter_selected = filter_selected;
+      this.trigger("change:filter");
+      return true;
     }
   });
 

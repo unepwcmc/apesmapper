@@ -5,7 +5,8 @@ App.views.SlideFilters = Backbone.View.extend({
   el: 'div#slide_filters',
 
   events: {
-    'slidestop div.filter-slider': 'stop_slider'
+    'slidestop div.filter-slider': 'stop_slider',
+    'click ul.filters li': 'select_filter'
   },
 
   initialize: function() {
@@ -47,6 +48,28 @@ App.views.SlideFilters = Backbone.View.extend({
     } else if(jQuery(event.target).hasClass("size")) {
       this.species_ials.filterBySize(ui.values[0], ui.values[1])
       this.species_ials_table.filterBySize(ui.values[0], ui.values[1])
+    }
+  },
+
+  select_filter: function(event) {
+    if(jQuery(event.target).hasClass("response")) {
+
+      this.species_ials.selectFilter("response")
+      jQuery(event.target).siblings('li').removeClass("active");
+      jQuery(event.target).addClass("active");
+
+    } else if(jQuery(event.target).hasClass("biodiversity")) {
+
+      this.species_ials.selectFilter("biodiversity")
+      jQuery(event.target).siblings('li').removeClass("active");
+      jQuery(event.target).addClass("active");
+
+    } else if(jQuery(event.target).hasClass("uncertainity")) {
+
+      this.species_ials.selectFilter("uncertainity")
+      jQuery(event.target).siblings('li').removeClass("active");
+      jQuery(event.target).addClass("active");
+
     }
   }
 });
