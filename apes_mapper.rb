@@ -129,9 +129,27 @@ class ApesMapper < Sinatra::Base
   get '/nojavascript' do
     erb :nojs
   end
-
+  
   get '/ie6' do
     erb :ie6
+  end
+
+  get '/csv' do
+    require 'net/http'
+    require 'uri'
+
+    headers "Content-Disposition" => "attachment;filename=download.csv", "Content-Type" => "application/octet-stream"
+
+    url = URI.escape 'http://carbon-tool.cartodb.com/api/v1/sql?q=SELECT * FROM species_ials LIMIT 2'
+    uri = URI.parse url
+    res = Net::HTTP.get_response(uri)
+    body = JSON.parse(res.body)
+
+    result = ""
+    body['rows'].each do |row|
+      result << "#{row['area_km']},#{row['biodiversity_score']},#{row['pressure_score']},#{row['response_score']},#{row['site']}\n"
+    end
+    result
   end
 
   before '/api/v0/work/:work_hash' do
