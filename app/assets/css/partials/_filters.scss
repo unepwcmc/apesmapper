@@ -20,6 +20,21 @@ div#filter_pane {
       border: 1px solid #CCC;
       padding: 2px;
       margin-bottom: 5px;
+
+      label.select_species {
+        display: block;
+        overflow:hidden;
+        border-bottom: 1px solid #EEE;
+
+        div {
+          float:left;
+          padding: 6px 0;
+        }
+        input {
+          float:right;
+          position:static;
+        }
+      }
     }
 
     button#finish-species-edit {
