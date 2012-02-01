@@ -66,9 +66,10 @@ App.modules.SpeciesIals = function(app) {
       var sqlQuery = "SELECT ";
       sqlQuery = sqlQuery + this.aggregateScoresSql();
       sqlQuery = sqlQuery + " FROM species_ials";
-      sqlQuery = sqlQuery + " GROUP BY species_ials.site";
       
       sqlQuery = sqlQuery + this.filterConditionsSql();
+
+      sqlQuery = sqlQuery + " GROUP BY species_ials.site";
       return sqlQuery;
     },
     geoQuery: function() {
