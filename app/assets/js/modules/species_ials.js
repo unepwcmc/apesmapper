@@ -27,29 +27,63 @@ App.modules.SpeciesIals = function(app) {
       response = response.rows;
       return Backbone.Collection.prototype.parse.call(this, response);
     },
-    selectQuery: function() {
-      // Build the SQL query to filter species_ials
-      var sqlQuery = "SELECT * FROM species_ials",
-        params = [];
+    aggregateScoresSql: function() {
+      // Returns the SQL from string to get the aggregated scores for the site_ials
+      var selectSql = " MAX(species_ials.site) as ial_id,"
+      selectSql = selectSql + " MIN(species_ials.state_score) as state_score,"
+      selectSql = selectSql + " MIN(species_ials.biodiversity_score) as biodiversity_score,"
+      selectSql = selectSql + " MIN(species_ials.pressure_score) as pressure_score,"
+      selectSql = selectSql + " MIN(species_ials.response_score) as response_score,"
+      selectSql = selectSql + " MAX(species_ials.area_km) as area_km,"
+      selectSql = selectSql + " string_agg(species_ials.species, ', ') as species "
+      return selectSql;
+    },
+    filterConditionsSql: function (){
+      // Where clause based on the current filtering
+      var params = [], conditionsSql = "";
 
       if(typeof this.size.min !== undefined && this.size.max !== undefined) {
-        params = params.concat("(area_km >= " + this.size.min * 1000 + " AND area_km <= " + this.size.max * 1000 + ")");
+        params = params.concat("(species_ials.area_km >= " + this.size.min * 1000 + " AND species_ials.area_km <= " + this.size.max * 1000 + ")");
       }
       if(typeof this.response.min !== undefined && this.response.max !== undefined) {
-        params = params.concat("(response_score >= " + (this.response.min / 100) + " AND response_score <= " + (this.response.max / 100) + ")");
+        params = params.concat("(species_ials.response_score >= " + (this.response.min / 100) + " AND species_ials.response_score <= " + (this.response.max / 100) + ")");
       }
       if(typeof this.biodiversity.min !== undefined && this.biodiversity.max !== undefined) {
-        params = params.concat("(biodiversity_score >= " + (this.biodiversity.min / 100) + " AND biodiversity_score <= " + (this.biodiversity.max / 100) + ")");
+        params = params.concat("(species_ials.biodiversity_score >= " + (this.biodiversity.min / 100) + " AND species_ials.biodiversity_score <= " + (this.biodiversity.max / 100) + ")");
       }
       if(typeof this.uncertainity.min !== undefined && this.uncertainity.max !== undefined) {
-        params = params.concat("(uncertainity >= " + (this.uncertainity.min / 100) + " AND uncertainity <= " + (this.uncertainity.max / 100) + ")");
+        params = params.concat("(species_ials.uncertainity >= " + (this.uncertainity.min / 100) + " AND species_ials.uncertainity <= " + (this.uncertainity.max / 100) + ")");
       }
 
       if(params.length > 0) {
-        sqlQuery = sqlQuery + " WHERE " + params.join(" AND ");
+        conditionsSql = " WHERE " + params.join(" AND ");
       }
 
-      return sqlQuery
+      return conditionsSql;
+    },
+    selectQuery: function() {
+      // Build the SQL query to filter species_ials
+      var sqlQuery = "SELECT ";
+      sqlQuery = sqlQuery + this.aggregateScoresSql();
+      sqlQuery = sqlQuery + " FROM species_ials";
+      sqlQuery = sqlQuery + " GROUP BY species_ials.site";
+      
+      sqlQuery = sqlQuery + this.filterConditionsSql();
+      return sqlQuery;
+    },
+    geoQuery: function() {
+      // returns the SQL query to be used for the maps
+      var sqlQuery = "SELECT ";
+      sqlQuery = sqlQuery + " ials.the_geom_webmercator, ials.cartodb_id ";
+      sqlQuery = sqlQuery + " FROM ials";
+      sqlQuery = sqlQuery + " INNER JOIN species_ials ON ials.ial_id = species_ials.site";
+
+      sqlQuery = sqlQuery + this.filterConditionsSql();
+
+      sqlQuery = sqlQuery + " GROUP BY ials.the_geom_webmercator, ials.cartodb_id";
+
+      console.log('geo query:' + sqlQuery);
+      return sqlQuery;
     },
     url: function() {
       // cartoDB query used by fetch

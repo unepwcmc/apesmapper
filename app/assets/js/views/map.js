@@ -72,25 +72,18 @@ App.views.MapView = Backbone.View.extend({
     },
 
     addCartoDbResultsLayer: function() {
-
-      console.log(this.species_ials.selectQuery());
         this.species_ials_layer = new google.maps.CartoDBLayer({
             map_canvas: 'map',
             map: this.map,
             user_name:"carbon-tool",
             table_name: 'species_ials',
-            query: this.species_ials.selectQuery(),
+            query: this.species_ials.geoQuery(),
             map_style: true,
             infowindow: true,
             auto_bound: true
         });
         var name = 'IALs';
-        if (typeof(this.layers[name]) !== 'undefined'){
-            if (this.layers[name].layer === this.map.overlayMapTypes.getAt(this.map.overlayMapTypes.getLength()-1)) {
-                console.log('layers are the same');
-            }
-        }
-        // Add the just added layer to the layer list
+        // Add this layer to the list
         this.layers[name] = {
            layer: this.species_ials_layer.params.layer,
            disableable: false,
