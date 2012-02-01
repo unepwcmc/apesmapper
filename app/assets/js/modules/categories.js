@@ -12,7 +12,7 @@ App.modules.Categories = function(app) {
         toggle: function() {
           this.set({selected: !this.get("selected")});
         },
-        idAttribute: 'category_id'
+        idAttribute: 'id'
     });
 
     var AllCategories = Backbone.Collection.extend({
