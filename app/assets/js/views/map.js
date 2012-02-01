@@ -128,7 +128,6 @@ App.views.MapView = Backbone.View.extend({
     },
 
     center_changed: function() {
-      console.log('center_changed method');
         if(this.signals_on) {
             this.trigger('center_changed', this.map.getCenter());
         }
@@ -151,19 +150,16 @@ App.views.MapView = Backbone.View.extend({
     },
 
     set_center: function(c, s) {
-      console.log('set_center method');
         this.signals_on = s === undefined? true: s;
         this.map.setCenter(c);
         this.signals_on = true;
     },
 
     set_center_silence: function(c) {
-      console.log('set_center_silence method');
         this.set_center(c, false);
     },
 
     get_center: function() {
-      console.log('get_center method');
         return this.map.getCenter();
     },
 
@@ -249,7 +245,6 @@ App.views.MapView = Backbone.View.extend({
         var idx = 0;
         //this.layers_order = names || this.layers_order; // disabled reordering for now
 
-        console.log(this.layers_order);
         self.map.overlayMapTypes.clear();
         var order = _.clone(this.layers_order).reverse();
         _(order).each(function(name) {
