@@ -43,16 +43,16 @@ App.modules.SpeciesIals = function(app) {
       var params = [], conditionsSql = "";
 
       if(typeof this.size.min !== undefined && this.size.max !== undefined) {
-        params = params.concat("(area_km >= " + this.size.min * 1000 + " AND area_km <= " + this.size.max * 1000 + ")");
+        params = params.concat("(species_ials.area_km >= " + this.size.min * 1000 + " AND species_ials.area_km <= " + this.size.max * 1000 + ")");
       }
       if(typeof this.response.min !== undefined && this.response.max !== undefined) {
-        params = params.concat("(response_score >= " + (this.response.min / 100) + " AND response_score <= " + (this.response.max / 100) + ")");
+        params = params.concat("(species_ials.response_score >= " + (this.response.min / 100) + " AND species_ials.response_score <= " + (this.response.max / 100) + ")");
       }
       if(typeof this.biodiversity.min !== undefined && this.biodiversity.max !== undefined) {
-        params = params.concat("(biodiversity_score >= " + (this.biodiversity.min / 100) + " AND biodiversity_score <= " + (this.biodiversity.max / 100) + ")");
+        params = params.concat("(species_ials.biodiversity_score >= " + (this.biodiversity.min / 100) + " AND species_ials.biodiversity_score <= " + (this.biodiversity.max / 100) + ")");
       }
       if(typeof this.uncertainity.min !== undefined && this.uncertainity.max !== undefined) {
-        params = params.concat("(uncertainity >= " + (this.uncertainity.min / 100) + " AND uncertainity <= " + (this.uncertainity.max / 100) + ")");
+        params = params.concat("(species_ials.uncertainity >= " + (this.uncertainity.min / 100) + " AND species_ials.uncertainity <= " + (this.uncertainity.max / 100) + ")");
       }
 
       if(params.length > 0) {
@@ -69,15 +69,18 @@ App.modules.SpeciesIals = function(app) {
       sqlQuery = sqlQuery + " GROUP BY species_ials.site";
       
       sqlQuery = sqlQuery + this.filterConditionsSql();
-
-      console.log('select query:' + sqlQuery);
       return sqlQuery;
     },
     geoQuery: function() {
       // returns the SQL query to be used for the maps
       var sqlQuery = "SELECT ";
-      sqlQuery = sqlQuery + " * ";
+      sqlQuery = sqlQuery + " ials.the_geom_webmercator, ials.cartodb_id ";
       sqlQuery = sqlQuery + " FROM ials";
+      sqlQuery = sqlQuery + " INNER JOIN species_ials ON ials.ial_id = species_ials.site";
+
+      sqlQuery = sqlQuery + this.filterConditionsSql();
+
+      sqlQuery = sqlQuery + " GROUP BY ials.the_geom_webmercator, ials.cartodb_id";
 
       console.log('geo query:' + sqlQuery);
       return sqlQuery;
