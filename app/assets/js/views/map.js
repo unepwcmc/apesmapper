@@ -79,7 +79,7 @@ App.views.MapView = Backbone.View.extend({
             table_name: 'species_ials',
             query: this.species_ials.geoQuery(),
             map_style: true,
-            infowindow: false,
+            infowindow: true,
             auto_bound: true
         });
         var name = 'IALs';

@@ -397,7 +397,7 @@ if (typeof(google.maps.CartoDBLayer) === "undefined") {
 	  if (pixPosition) {
 		  div.style.width = this.width_ + 'px';
 		  div.style.left = (pixPosition.x - 49) + 'px';
-		  var actual_height = - Jquery(div).height();
+		  var actual_height = - jQuery(div).height();
 		  div.style.top = (pixPosition.y + actual_height + 5) + 'px';
 	  }
 	};
