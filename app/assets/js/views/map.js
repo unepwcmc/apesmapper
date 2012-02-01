@@ -76,7 +76,7 @@ App.views.MapView = Backbone.View.extend({
             map_canvas: 'map',
             map: this.map,
             user_name:"carbon-tool",
-            table_name: 'species_ials',
+            table_name: 'ials',
             query: this.species_ials.geoQuery(),
             map_style: true,
             infowindow: true,

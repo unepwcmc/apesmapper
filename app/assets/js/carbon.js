@@ -97,7 +97,7 @@ App.modules.Carbon = function(app) {
             this.animation = setInterval(function() {
                 var m = self.map.map;
                 var c = m.get_center();
-                m.set_center(new google.maps.LatLng(c.lat(), c.lng() + update_vel));
+                //m.set_center(new google.maps.LatLng(c.lat(), c.lng() + update_vel));
             }, 20);
         },
 
@@ -125,8 +125,8 @@ App.modules.Carbon = function(app) {
 
         set_state: function(st) {
           var self = this;
-          self.map.map.set_center(new google.maps.LatLng(st.lat,st.lon));
-          self.map.map.set_zoom(st.zoom);
+          //self.map.map.set_center(new google.maps.LatLng(st.lat,st.lon));
+          //self.map.map.set_zoom(st.zoom);
           _.each(st.layers, function(layer) {
             self.map.enable_layer(layer.name, layer.enabled);
           });
