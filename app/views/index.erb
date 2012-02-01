@@ -91,8 +91,22 @@
                 Loading...
             </ul>
 
+            <div id="categories_filter_edit" class='filter_editor'>
+                <h2>Select categories</h2>
+                <div class="selector" id='categories_selector'>Loading categories...</div>
+                <button id='next-categories-selection'>Next</button>
+                <button id='finish-categories-edit'>Done</button>
+            </div>
+
+            <div id="apes_filter_edit" class='filter_editor'>
+                <h2>Select Apes</h2>
+                <div class="selector" id='apes_selector'>Loading Apes...</div>
+                <button id='next-apes-selection'>Next</button>
+                <button id='finish-apes-edit'>Done</button>
+            </div>
+
             <div id="species_filter_edit" class='filter_editor'>
-                <h2>Select Species</h2>
+                <h2>Select species</h2>
                 <div class="selector" id='species_selector'>Loading species...</div>
                 <button id='finish-species-edit'>Done</button>
             </div>
@@ -445,10 +459,11 @@
         });
       }, 100);
     }
-    // On jquery page load, pass mooTools as $
+    // We want to use jQuery,not mootools
+    $ = jQuery;
     jQuery(function($) {
       init();
-    }(mooTools));
+    }(jQuery));
   </script>
 
 

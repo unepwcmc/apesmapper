@@ -44,18 +44,23 @@ App.modules.Carbon = function(app) {
             // init Models
             this.bus = new app.Bus();
             app.bus = this.bus; // set a global bus
-            this.map = new app.Map(this.bus);
-            this.map.show_controls(true); // Get rid of this method
             this.work = new app.Work(this.bus);
+            this.categories = new app.Categories();
+            this.apes = new app.Apes();
             this.species = new app.Species();
             this.countries = new app.Countries();
             this.sites = new app.Sites();
             this.species_ials = new app.SpeciesIals();
+            this.map = new app.Map({bus:this.bus, species_ials: this.species_ials.allSpeciesIals}); // This actually contains the map view...
             this.species_ials_table = new app.SpeciesIalsTable();
 
             // init Views
             this.selectedFilterView = new App.views.SelectedSpeciesCountries({bus:this.bus, species: this.species.allSpecies, countries: this.countries.allCountries});
-            this.speciesFilterEdit = new App.views.SpeciesFilterEdit({bus:this.bus, species: this.species.allSpecies});
+
+            this.categoriesFilterEdit = new App.views.CategoriesFilterEdit({bus:this.bus, categories: this.categories.allCategories});
+            this.apesFilterEdit = new App.views.ApesFilterEdit({bus:this.bus, categories: this.categories.allCategories, apes: this.apes.allApes});
+            this.speciesFilterEdit = new App.views.SpeciesFilterEdit({bus:this.bus, species: this.species.allSpecies, categories: this.categories.allCategories, apes: this.apes.allApes});
+
             this.countriesFilterEdit = new App.views.CountriesFilterEdit({bus:this.bus, countries: this.countries.allCountries});
             this.slideFilters = new App.views.SlideFilters({bus:this.bus, species: this.species.allSpecies, countries: this.countries.allCountries, sites: this.sites.allSites, species_ials: this.species_ials.allSpeciesIals, species_ials_table: this.species_ials_table.allSpeciesIalsTable});
             this.graph = new App.views.Graph({species_ials: this.species_ials.allSpeciesIals});
@@ -92,7 +97,7 @@ App.modules.Carbon = function(app) {
             this.animation = setInterval(function() {
                 var m = self.map.map;
                 var c = m.get_center();
-                m.set_center(new google.maps.LatLng(c.lat(), c.lng() + update_vel));
+                //m.set_center(new google.maps.LatLng(c.lat(), c.lng() + update_vel));
             }, 20);
         },
 
@@ -120,8 +125,8 @@ App.modules.Carbon = function(app) {
 
         set_state: function(st) {
           var self = this;
-          self.map.map.set_center(new google.maps.LatLng(st.lat,st.lon));
-          self.map.map.set_zoom(st.zoom);
+          //self.map.map.set_center(new google.maps.LatLng(st.lat,st.lon));
+          //self.map.map.set_zoom(st.zoom);
           _.each(st.layers, function(layer) {
             self.map.enable_layer(layer.name, layer.enabled);
           });

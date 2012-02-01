@@ -1,3 +1,5 @@
 <!-- Species enable/disable input -->
-<input name="species" type="checkbox" '<% if(selected){%> checked='true' <%}%>' value="<%= code %>" id="ape_select_<%= code %>">
-<label for="ape_select_<%= code %>"><%= taxa %><br/>
+<label for="<%= the_type %>_<%= id %>" class='select_species'>
+  <input name="species" type="checkbox" <% if(selected){%> checked='true' <%}%> value="<%= id %>" id="<%= the_type %>_<%= id %>">
+  <%= name %>
+</label>

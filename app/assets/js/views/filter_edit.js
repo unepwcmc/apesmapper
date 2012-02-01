@@ -1,33 +1,34 @@
 /*
- * Species edit view
+ * Categories edit view
  */
-App.views.SpeciesFilterEdit = Backbone.View.extend({
+App.views.CategoriesFilterEdit = Backbone.View.extend({
 
-    el: jQuery('#species_filter_edit'),
+    el: jQuery('#categories_filter_edit'),
 
     events: {
-        'click #finish-species-edit': 'hide'
+        'click #finish-categories-edit': 'hide',
+        'click #next-categories-selection': 'next'
     },
 
     initialize: function() {
         _.bindAll(this, 'render', 'show', 'hide');
         this.bus = this.options.bus;
-        this.species = this.options.species;
+        this.categories = this.options.categories;
 
-        this.species.bind('reset', this.render);
-        this.bus.on('show_species_editor', this.show);
+        this.categories.bind('reset', this.render);
+        this.bus.on('show_categories_editor', this.show);
     },
 
     render: function() {
-        // get the object to load the species views into
-        var $species = this.$('div#species_selector');
-        $species.empty();
-        // Create a species view inside $species for each species
-        this.species.each(function(species) {
-            var view = new App.views.SpeciesSelector({
-                model: species
+        // get the object to load the categories views into
+        var $container = this.$('div#categories_selector');
+        $container.empty();
+        // Create a categories view inside $categories for each categories
+        this.categories.each(function(categories) {
+            var view = new App.views.CategoriesSelector({
+                model: categories
             });
-            $species.append(view.render().el);
+            $container.append(view.render().el);
         });
         return this;
     },
@@ -35,20 +36,23 @@ App.views.SpeciesFilterEdit = Backbone.View.extend({
     show: function() {
         this.el.slideDown();
     },
-
     hide: function() {
-        this.el.slideUp();
+      this.el.slideUp();
+    },
+    next: function() {
+      this.bus.emit('update_list_of_apes');
+      this.bus.emit('show_apes_selector');
+      this.hide();
     }
 });
 
 /*
- * Species selection view
+ * Categories selection view
  */
-App.views.SpeciesSelector = Backbone.View.extend({
+App.views.CategoriesSelector = Backbone.View.extend({
 
     initialize: function() {
         _.bindAll(this, 'render', 'toggleSelected');
-
         this.template = _.template( jQuery("#species-selector-tmpl").html() );
     },
     events: {
