@@ -128,6 +128,7 @@ App.views.MapView = Backbone.View.extend({
     },
 
     center_changed: function() {
+      console.log('center_changed method');
         if(this.signals_on) {
             this.trigger('center_changed', this.map.getCenter());
         }
@@ -150,16 +151,19 @@ App.views.MapView = Backbone.View.extend({
     },
 
     set_center: function(c, s) {
+      console.log('set_center method');
         this.signals_on = s === undefined? true: s;
         this.map.setCenter(c);
         this.signals_on = true;
     },
 
     set_center_silence: function(c) {
+      console.log('set_center_silence method');
         this.set_center(c, false);
     },
 
     get_center: function() {
+      console.log('get_center method');
         return this.map.getCenter();
     },
 

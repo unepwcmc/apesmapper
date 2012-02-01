@@ -459,10 +459,11 @@
         });
       }, 100);
     }
-    // On jquery page load, pass mooTools as $
+    // We want to use jQuery,not mootools
+    $ = jQuery;
     jQuery(function($) {
       init();
-    }(mooTools));
+    }(jQuery));
   </script>
 
 
