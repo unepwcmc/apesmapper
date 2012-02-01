@@ -63,7 +63,9 @@ if (typeof(google.maps.CartoDBLayer) === "undefined") {
 			// Zoom to your geometries
 			// If the table is private you can't auto zoom without being authenticated
 			if (!params.map_key) {
-        jQuery.getJSON('http://'+params.user_name+'.cartodb.com/api/v1/sql/?q='+escape('select ST_Extent(the_geom) from '+ params.table_name)+'&callback=?', function(result) {
+                          var extentQuery = 'select ST_Extent(' + params.table_name + '.the_geom) from '+ params.table_name + ' ' + params.bounds_filter_query;
+        jQuery.getJSON('http://'+params.user_name+'.cartodb.com/api/v1/sql/?q='+escape(extentQuery)+'&callback=?', function(result) {
+
           if (result.rows[0].st_extent!=null) {
             var coordinates = result.rows[0].st_extent.replace('BOX(','').replace(')','').split(',');
       

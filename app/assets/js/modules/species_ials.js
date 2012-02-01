@@ -88,7 +88,15 @@ App.modules.SpeciesIals = function(app) {
 
       sqlQuery = sqlQuery + " GROUP BY ials.the_geom_webmercator, ials.cartodb_id";
 
-      console.log('geo query:' + sqlQuery);
+      return sqlQuery;
+    },
+    ialsJoinAndFilterConditions: function() {
+      // returns the join and conditions SQL
+      var sqlQuery = ""
+      sqlQuery = sqlQuery + " INNER JOIN species_ials ON ials.ial_id = species_ials.site";
+
+      sqlQuery = sqlQuery + this.filterConditionsSql();
+
       return sqlQuery;
     },
     url: function() {

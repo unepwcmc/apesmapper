@@ -78,6 +78,7 @@ App.views.MapView = Backbone.View.extend({
             user_name:"carbon-tool",
             table_name: 'ials',
             query: this.species_ials.geoQuery(),
+            bounds_filter_query: this.species_ials.ialsJoinAndFilterConditions(),
             map_style: true,
             infowindow: true,
             auto_bound: true
