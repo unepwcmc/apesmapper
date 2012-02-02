@@ -67,6 +67,7 @@ App.modules.Carbon = function(app) {
             this.slideFilters = new App.views.SlideFilters({bus:this.bus, species: this.species.allSpecies, countries: this.countries.allCountries, sites: this.sites.allSites, species_ials: this.species_ials.allSpeciesIals, species_ials_table: this.species_ials_table.allSpeciesIalsTable});
             this.graph = new App.views.Graph({species_ials: this.species_ials.allSpeciesIals});
             this.resultTable = new App.views.ResultTable({sites: this.sites.allSites, species_ials_table: this.species_ials_table.allSpeciesIalsTable});
+            this.resultSummary = new App.views.ResultSummary({species_ials: this.species_ials.allSpeciesIals});
             this.header = new app.Header();
 
             // init routing and bind methods requiring this scope to routes
