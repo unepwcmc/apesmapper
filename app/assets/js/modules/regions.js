@@ -5,7 +5,8 @@ App.modules.Regions = function(app) {
     var Region = Backbone.Model.extend({
         defaults: function() {
             return {
-              selected:  false
+              selected:  false,
+              the_type: "regions"
             };
         },
         toggle: function() {
@@ -18,7 +19,7 @@ App.modules.Regions = function(app) {
         model: Region,
         url: 'json/regions.json',
         selected: function() {
-            return this.filter(function(country){ return country.get('selected'); });
+            return this.filter(function(region){ return region.get('selected'); });
         }
     });
 

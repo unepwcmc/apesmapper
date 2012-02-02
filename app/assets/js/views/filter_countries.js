@@ -10,12 +10,14 @@ App.views.CountriesFilterEdit = Backbone.View.extend({
     },
 
     initialize: function() {
-        _.bindAll(this, 'render', 'show', 'hide');
+        _.bindAll(this, 'render', 'show', 'hide', 'filterByRegion');
         this.bus = this.options.bus;
+        this.regions = this.options.regions;
         this.countries = this.options.countries;
 
         this.countries.bind('reset', this.render);
-        this.bus.on('show_countries_editor', this.show);
+        this.bus.on('show_countries_selector', this.show);
+        this.bus.on('update_list_of_countries', this.filterByRegion);
     },
 
     render: function() {
@@ -23,7 +25,7 @@ App.views.CountriesFilterEdit = Backbone.View.extend({
         var $countries = this.$('div#countries_selector');
         $countries.empty();
         // Create a countries view inside $countries for each countries
-        this.countries.each(function(countries) {
+        this.countries.visible().each(function(countries) {
             var view = new App.views.CountriesSelector({
                 model: countries
             });
@@ -46,6 +48,15 @@ App.views.CountriesFilterEdit = Backbone.View.extend({
         this.bus.emit('countries:change', countries);
 
         this.el.slideUp();
+    },
+    filterByRegion: function() {
+      var selected_regions = this.regions.selected();
+      this.countries.each(function(country) {
+        if(_.map(selected_regions, function(region){return region.get('id')}).indexOf(country.get('region_id')) === -1){
+            country.set({hidden: true});
+          }
+      });
+      this.render();
     }
 });
 

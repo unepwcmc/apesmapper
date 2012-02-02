@@ -1,33 +1,33 @@
 /*
- * Countries edit view
+ * Regions edit view
  */
-App.views.CountriesFilterEdit = Backbone.View.extend({
+App.views.RegionsFilterEdit = Backbone.View.extend({
 
-    el: jQuery('#countries_filter_edit'),
+    el: jQuery('#regions_filter_edit'),
 
     events: {
-        'click #finish-countries-edit': 'hide'
+        'click #finish-regions-edit': 'hide',
+        'click #next-regions-selection': 'next'
     },
 
     initialize: function() {
-        _.bindAll(this, 'render', 'show', 'hide');
+        _.bindAll(this, 'render', 'show', 'hide', 'next');
         this.bus = this.options.bus;
-        this.countries = this.options.countries;
-
-        this.countries.bind('reset', this.render);
-        this.bus.on('show_countries_editor', this.show);
+        this.regions = this.options.regions;
+        this.regions.bind('reset', this.render);
+        this.bus.on('show_regions_selector', this.show);
     },
 
     render: function() {
-        // get the object to load the countries views into
-        var $countries = this.$('div#countries_selector');
-        $countries.empty();
-        // Create a countries view inside $countries for each countries
-        this.countries.each(function(countries) {
-            var view = new App.views.CountriesSelector({
-                model: countries
+        // get the object to load the regions views into
+        var $regions = this.$('div#regions_selector');
+        $regions.empty();
+        // Create a regions view inside $regions for each regions
+        this.regions.each(function(regions) {
+            var view = new App.views.RegionsSelector({
+                model: regions
             });
-            $countries.append(view.render().el);
+            $regions.append(view.render().el);
         });
         return this;
     },
@@ -38,13 +38,18 @@ App.views.CountriesFilterEdit = Backbone.View.extend({
 
     hide: function() {
         this.el.slideUp();
+    },
+    next: function() {
+      this.bus.emit('update_list_of_countries');
+      this.bus.emit('show_countries_selector');
+      this.hide();
     }
 });
 
 /*
- * Countries selection view
+ * Regions selection view
  */
-App.views.CountriesSelector = Backbone.View.extend({
+App.views.RegionsSelector = Backbone.View.extend({
     initialize: function() {
         _.bindAll(this, 'render', 'toggleSelected');
 

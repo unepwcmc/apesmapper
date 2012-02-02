@@ -6,7 +6,8 @@ App.modules.Countries = function(app) {
         defaults: function() {
             return {
               selected:  false,
-              hidden: false
+              hidden: false,
+              the_type: "countries"
             };
         },
         toggle: function() {
