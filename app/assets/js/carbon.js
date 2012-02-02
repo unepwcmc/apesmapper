@@ -97,19 +97,6 @@ App.modules.Carbon = function(app) {
             //this.router.navigate('w/work_test');
         },
 
-        banner_animation: function() {
-            var self = this;
-            var update_vel = 0.01;
-            this.bus.on('model:create_work', function() {
-              update_vel = 0.2;
-            });
-            this.animation = setInterval(function() {
-                var m = self.map.map;
-                var c = m.get_center();
-                //m.set_center(new google.maps.LatLng(c.lat(), c.lng() + update_vel));
-            }, 20);
-        },
-
         _state_url: function() {
             var self = this;
             if(self.work_id === undefined) return;
@@ -170,7 +157,6 @@ App.modules.Carbon = function(app) {
 
        on_route: function(work_id, state) {
             this.work_id = work_id;
-            //this.banner.hide();
             this.map.work_mode();
             if(jQuery.browser.msie === undefined) {
                 clearInterval(this.animation);
