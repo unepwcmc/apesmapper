@@ -19,7 +19,7 @@ App.modules.SpeciesIals = function(app) {
   var AllSpeciesIals = Backbone.Collection.extend({
     model: SpeciesIal,
     initialize: function() {
-      _.bindAll(this, 'selectCountries');
+      _.bindAll(this, 'selectCountries', 'selectSpecies');
 
       this.size = {};
       this.response = {};
@@ -27,6 +27,7 @@ App.modules.SpeciesIals = function(app) {
       this.uncertainity = {};
       this.filter_selected = 'biodiversity';
       this.countries = [];
+      this.species = [];
     },
     parse: function(response) {
       // CartoDB returns results in rows field
@@ -65,7 +66,9 @@ App.modules.SpeciesIals = function(app) {
       if(this.countries.length > 0) {
         params = params.concat("(site IN (" + this.countries.join(",") + "))");
       }
-
+      if(this.species.length > 0) {
+        params = params.concat("(species IN ('" + this.species.join("','") + "'))");
+      }
 
       if(params.length > 0) {
         conditionsSql = " WHERE " + params.join(" AND ");
@@ -173,6 +176,11 @@ App.modules.SpeciesIals = function(app) {
     },
     selectCountries: function(countries) {
       this.countries = countries;
+      this.fetch({add: false});
+      return true;
+    },
+    selectSpecies: function(species) {
+      this.species = species;
       this.fetch({add: false});
       return true;
     }

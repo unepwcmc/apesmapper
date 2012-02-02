@@ -6,7 +6,7 @@ App.views.SpeciesFilterEdit = Backbone.View.extend({
     el: jQuery('#species_filter_edit'),
 
     events: {
-        'click #finish-species-edit': 'hide',
+        'click #finish-species-edit': 'hide'
     },
 
     initialize: function() {
@@ -38,6 +38,14 @@ App.views.SpeciesFilterEdit = Backbone.View.extend({
         this.el.slideDown();
     },
     hide: function() {
+      var species = [];
+
+      _.each($(this.el).find("input[name=species]:checked"), function(s) {
+        species.push($(s).val());
+      });
+
+      this.bus.emit('species:change', species);
+
       this.el.slideUp();
     },
     next: function() {
