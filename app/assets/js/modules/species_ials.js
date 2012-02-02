@@ -19,11 +19,15 @@ App.modules.SpeciesIals = function(app) {
   var AllSpeciesIals = Backbone.Collection.extend({
     model: SpeciesIal,
     initialize: function() {
+      _.bindAll(this, 'selectCountries', 'selectSpecies');
+
       this.size = {};
       this.response = {};
       this.biodiversity = {};
       this.uncertainity = {};
       this.filter_selected = 'biodiversity';
+      this.countries = [];
+      this.species = [];
     },
     parse: function(response) {
       // CartoDB returns results in rows field
@@ -58,6 +62,12 @@ App.modules.SpeciesIals = function(app) {
       }
       if(typeof this.uncertainity.min !== undefined && this.uncertainity.max !== undefined) {
         params = params.concat("(species_ials.uncertainity >= " + (this.uncertainity.min / 100) + " AND species_ials.uncertainity <= " + (this.uncertainity.max / 100) + ")");
+      }
+      if(this.countries.length > 0) {
+        params = params.concat("(site IN (" + this.countries.join(",") + "))");
+      }
+      if(this.species.length > 0) {
+        params = params.concat("(species IN ('" + this.species.join("','") + "'))");
       }
 
       if(params.length > 0) {
@@ -162,6 +172,16 @@ App.modules.SpeciesIals = function(app) {
 
       this.filter_selected = filter_selected;
       this.trigger("change:filter");
+      return true;
+    },
+    selectCountries: function(countries) {
+      this.countries = countries;
+      this.fetch({add: false});
+      return true;
+    },
+    selectSpecies: function(species) {
+      this.species = species;
+      this.fetch({add: false});
       return true;
     }
   });

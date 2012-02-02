@@ -68,4 +68,3 @@ App.views.CategoriesSelector = Backbone.View.extend({
       this.model.toggle();
     }
 });
-
