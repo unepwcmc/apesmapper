@@ -59,6 +59,7 @@ class ApesMapper < Sinatra::Base
       "/js/modules/species.js",
       "/js/modules/apes.js",
       "/js/modules/categories.js",
+      "/js/modules/regions.js",
       "/js/modules/countries.js",
       "/js/modules/sites.js",
       "/js/modules/species_ials.js",
@@ -79,9 +80,12 @@ class ApesMapper < Sinatra::Base
       "/js/views/filter_edit.js",
       "/js/views/filter_apes.js",
       "/js/views/filter_species.js",
+      "/js/views/filter_regions.js",
+      "/js/views/filter_countries.js",
       "/js/views/selected_species_countries.js",
       "/js/views/slide_filters.js",
       "/js/views/graph.js",
+      "/js/views/result_summary.js",
       "/js/views/table.js",
       '/js/carbon.js'
     ]

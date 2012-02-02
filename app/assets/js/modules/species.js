@@ -16,7 +16,7 @@ App.modules.Species = function(app) {
         toTemplateJson: function(){
 
         },
-        idAttribute: 'species_id'
+        idAttribute: 'id'
     });
 
     var AllSpecies = Backbone.Collection.extend({

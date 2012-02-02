@@ -25,7 +25,7 @@ App.modules.SpeciesIals = function(app) {
       this.response = {};
       this.biodiversity = {};
       this.uncertainity = {};
-      this.filter_selected = 'biodiversity';
+      this.filter_selected = 'response';
       this.countries = [];
       this.species = [];
     },

@@ -111,6 +111,13 @@
                 <button id='finish-species-edit'>Done</button>
             </div>
 
+            <div id="regions_filter_edit" class='filter_editor'>
+                <h2>Select Regions</h2>
+                <div class="selector" id='regions_selector'>Loading regions...</div>
+                <button id='next-regions-selection'>Next</button>
+                <button id='finish-regions-edit'>Done</button>
+            </div>
+
             <div id="countries_filter_edit" class='filter_editor'>
                 <h2>Select Countries</h2>
                 <div class="selector" id='countries_selector'>Loading countries...</div>
@@ -119,8 +126,8 @@
 
             <div id="slide_filters">
                 <ul class='filters'>
-                    <li class="response">Reso.<div class='filter-slider response'></div></li>
-                    <li class='biodiversity active'>Biodiv.<div class='filter-slider biodiversity'></div></li>
+                    <li class="response active">Reso.<div class='filter-slider response'></div></li>
+                    <li class='biodiversity'>Biodiv.<div class='filter-slider biodiversity'></div></li>
                     <li class="uncertainity">Uncert.<div class='filter-slider uncertainity'></div></li>
                 </ul>
                 <ul class='filters'>
@@ -129,7 +136,7 @@
             </div>
             <div id='result-area'>
                 <div class='clear'>
-                  <span id='result-strip'><span id='result-count'>50</span> sites</span>
+                  <span id='result-strip'>...</span>
                   <div id='view-selector'>
                       <a href='#graph'>Graph</a><a href='#main_map'>Map</a><a href='#results-table'>Table</a>
                   </div>
@@ -402,6 +409,10 @@
 
   <script type="text/template" id="countries-selector-tmpl">
     <%= File.open('app/views/_countries_selector.jst.tpl').read %>
+  </script>
+
+  <script type="text/template" id="result-summary-tmpl">
+    <%= File.open('app/views/_result_summary.jst.tpl').read %>
   </script>
 
   <script type="text/template" id="report-tmpl-no-content">

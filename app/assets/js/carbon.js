@@ -48,6 +48,7 @@ App.modules.Carbon = function(app) {
             this.categories = new app.Categories();
             this.apes = new app.Apes();
             this.species = new app.Species();
+            this.regions = new app.Regions();
             this.countries = new app.Countries();
             this.sites = new app.Sites();
             this.species_ials = new app.SpeciesIals();
@@ -61,10 +62,12 @@ App.modules.Carbon = function(app) {
             this.apesFilterEdit = new App.views.ApesFilterEdit({bus:this.bus, categories: this.categories.allCategories, apes: this.apes.allApes});
             this.speciesFilterEdit = new App.views.SpeciesFilterEdit({bus:this.bus, species: this.species.allSpecies, categories: this.categories.allCategories, apes: this.apes.allApes});
 
-            this.countriesFilterEdit = new App.views.CountriesFilterEdit({bus:this.bus, countries: this.countries.allCountries});
+            this.regionsFilterEdit = new App.views.RegionsFilterEdit({bus:this.bus, regions: this.regions.allRegions});
+            this.countriesFilterEdit = new App.views.CountriesFilterEdit({bus:this.bus, countries: this.countries.allCountries, regions: this.regions.allRegions});
             this.slideFilters = new App.views.SlideFilters({bus:this.bus, species: this.species.allSpecies, countries: this.countries.allCountries, sites: this.sites.allSites, species_ials: this.species_ials.allSpeciesIals, species_ials_table: this.species_ials_table.allSpeciesIalsTable});
             this.graph = new App.views.Graph({species_ials: this.species_ials.allSpeciesIals});
             this.resultTable = new App.views.ResultTable({sites: this.sites.allSites, species_ials_table: this.species_ials_table.allSpeciesIalsTable});
+            this.resultSummary = new App.views.ResultSummary({species_ials: this.species_ials.allSpeciesIals});
             this.header = new app.Header();
 
             // init routing and bind methods requiring this scope to routes
@@ -172,7 +175,6 @@ App.modules.Carbon = function(app) {
 
        on_route: function(work_id, state) {
             this.work_id = work_id;
-            //this.banner.hide();
             this.map.work_mode();
             if(jQuery.browser.msie === undefined) {
                 clearInterval(this.animation);

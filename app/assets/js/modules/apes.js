@@ -13,7 +13,7 @@ App.modules.Apes = function(app) {
         toggle: function() {
           this.set({selected: !this.get("selected")});
         },
-        idAttribute: 'ape_id'
+        idAttribute: 'id'
     });
 
     var AllApes = Backbone.Collection.extend({
@@ -23,7 +23,7 @@ App.modules.Apes = function(app) {
             return this.filter(function(ape){ return ape.get('selected'); });
         },
         filterByCategory: function(category_id){
-          return this.filter(function(apes){ return apes.get('category_id') == category_id;})
+          return this.filter(function(ape){ return ape.get('category_id') == category_id;})
         },
         visible: function() {
           return this.filter(function(ape) { return ape.get('hidden') == false; })
@@ -32,7 +32,7 @@ App.modules.Apes = function(app) {
 
     app.Apes = Class.extend({
         init: function() {
-            // Initialise the species collections
+            // Initialise the apes collections
             this.allApes = new AllApes();
             this.allApes.fetch();
         }
