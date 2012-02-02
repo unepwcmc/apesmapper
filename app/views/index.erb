@@ -129,7 +129,7 @@
             </div>
             <div id='result-area'>
                 <div class='clear'>
-                  <span id='result-strip'><span id='result-count'>...</span> sites</span>
+                  <span id='result-strip'>...</span>
                   <div id='view-selector'>
                       <a href='#graph'>Graph</a><a href='#main_map'>Map</a><a href='#results-table'>Table</a>
                   </div>
@@ -401,6 +401,10 @@
 
   <script type="text/template" id="countries-selector-tmpl">
     <%= File.open('app/views/_countries_selector.jst.tpl').read %>
+  </script>
+
+  <script type="text/template" id="result-summary-tmpl">
+    <%= File.open('app/views/_result_summary.jst.tpl').read %>
   </script>
 
   <script type="text/template" id="report-tmpl-no-content">
