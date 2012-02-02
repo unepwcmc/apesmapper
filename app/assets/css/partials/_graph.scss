@@ -72,6 +72,7 @@ div#filter_pane {
         float: right;
         margin-right: 7px;
       }
+
     }
     li:first-child {
       border-top: 0;
@@ -79,6 +80,21 @@ div#filter_pane {
     }
     li:last-child {
       @include border-radius(0 0 5px 5px);
+    }
+    li.response {
+      .ui-widget-header {
+        @include background-image(linear-gradient(left, #443333, #FF0000)); 
+      }
+    }
+    li.biodiversity {
+      .ui-widget-header {
+        @include background-image(linear-gradient(left, #334433, #00FF00)); 
+      }
+    }
+    li.uncertainity {
+      .ui-widget-header {
+        @include background-image(linear-gradient(left, #333344, #0000FF)); 
+      }
     }
 
     li.active {
