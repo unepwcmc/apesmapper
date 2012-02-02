@@ -108,6 +108,14 @@ App.views.CountriesFilterEdit = Backbone.View.extend({
     },
 
     hide: function() {
+        var countries = [];
+
+        _.each($(this.el).find("input[name=countries]:checked"), function(country) {
+          countries.push($(country).val());
+        });
+        
+        this.bus.emit('countries:change', countries);
+        
         this.el.slideUp();
     }
 });

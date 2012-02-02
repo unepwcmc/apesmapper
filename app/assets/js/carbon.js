@@ -83,6 +83,9 @@ App.modules.Carbon = function(app) {
             this.map.map.bind('zoom_changed', this.state_url);
             this.bus.on('map:reorder_layers', this.state_url);
 
+            this.bus.on('countries:change', this.species_ials.allSpeciesIals.selectCountries);
+            this.bus.on('countries:change', this.species_ials_table.allSpeciesIalsTable.selectCountries);
+
             // ready, launch
             Backbone.history.start();
             //this.router.navigate('w/work_test');
