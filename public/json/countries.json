@@ -1,12 +1,38 @@
 [
   {
     "id": 1,
+    "region_id": 3,
     "name": "United Kingdom",
     "iso": "UK"
   },
   {
     "id": 2,
+    "region_id": 3,
     "name": "Portugal",
     "iso": "PT"
+  },
+  {
+    "id": 3,
+    "region_id": 2,
+    "name": "China",
+    "iso": "CN"
+  },
+  {
+    "id": 4,
+    "region_id": 2,
+    "name": "India",
+    "iso": "IN"
+  },
+  {
+    "id": 5,
+    "region_id": 1,
+    "name": "Mozambique",
+    "iso": "MZ"
+  },
+  {
+    "id": 6,
+    "region_id": 1,
+    "name": "Angola",
+    "iso": "AO"
   }
 ]
