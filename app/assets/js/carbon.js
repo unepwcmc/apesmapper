@@ -9,15 +9,7 @@ App.modules.Carbon = function(app) {
    // app router
    var Router = Backbone.Router.extend({
       routes: {
-        "":        "create_work",  // #work
-        "w/:work":        "work",  // #work
-        "w/:work/*state": "work"   // #work/state
-      },
-
-      create_work: function() {
-        // This triggers the route:create_work event,
-        // which actually does the scoped work in app.Carbon.create_work
-        app.Log.log("route: landing");
+        "/*state": "work"   // #work/state
       },
 
       work: function() {
@@ -30,7 +22,6 @@ App.modules.Carbon = function(app) {
     app.Carbon = Class.extend({
 
         init: function() {
-            _.bindAll(this, 'create_work');
             _.bindAll(this, 'on_route');
             jQuery.ajaxSetup({
                 cache: false
@@ -72,7 +63,6 @@ App.modules.Carbon = function(app) {
 
             // init routing and bind methods requiring this scope to routes
             this.router = new Router({bus: this.bus});
-            this.router.bind('route:create_work', this.create_work);
             this.router.bind('route:work', this.on_route);
 
             this.bus.on('app:route_to', this.on_route_to);
@@ -106,18 +96,6 @@ App.modules.Carbon = function(app) {
         download_table: function() {
           window.location.href = "/csv?" + this.species_ials_table.allSpeciesIalsTable.url().split("?")[1];
           return false;
-        },
-        banner_animation: function() {
-            var self = this;
-            var update_vel = 0.01;
-            this.bus.on('model:create_work', function() {
-              update_vel = 0.2;
-            });
-            this.animation = setInterval(function() {
-                var m = self.map.map;
-                var c = m.get_center();
-                //m.set_center(new google.maps.LatLng(c.lat(), c.lng() + update_vel));
-            }, 20);
         },
 
         _state_url: function() {
@@ -204,10 +182,6 @@ App.modules.Carbon = function(app) {
             if(state) {
               this.set_state(this.decode_state(state));
             }
-        },
-
-        create_work: function() {
-            this.bus.emit('model:create_work');
         },
 
         on_route_to: function(route) {
