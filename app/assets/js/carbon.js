@@ -35,7 +35,6 @@ App.modules.Carbon = function(app) {
             // init Models
             this.bus = new app.Bus();
             app.bus = this.bus; // set a global bus
-            this.work = new app.Work(this.bus);
             this.categories = new app.Categories();
             this.apes = new app.Apes();
             this.species = new app.Species();
@@ -59,7 +58,6 @@ App.modules.Carbon = function(app) {
             this.graph = new App.views.Graph({species_ials: this.species_ials.allSpeciesIals});
             this.resultTable = new App.views.ResultTable({sites: this.sites.allSites, species_ials_table: this.species_ials_table.allSpeciesIalsTable});
             this.resultSummary = new App.views.ResultSummary({species_ials: this.species_ials.allSpeciesIals});
-            this.header = new app.Header();
 
             // init routing and bind methods requiring this scope to routes
             this.router = new Router({bus: this.bus});
