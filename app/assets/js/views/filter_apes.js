@@ -64,10 +64,9 @@ App.views.ApesFilterEdit = Backbone.View.extend({
  * Apes selection view
  */
 App.views.ApesSelector = Backbone.View.extend({
-
+    template: JST['_species_selector'],
     initialize: function() {
         _.bindAll(this, 'render', 'toggleSelected');
-        this.template = _.template( jQuery("#species-selector-tmpl").html() );
     },
     events: {
       'click input': 'toggleSelected'

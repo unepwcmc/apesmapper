@@ -69,10 +69,9 @@ App.views.SpeciesFilterEdit = Backbone.View.extend({
  * Species selection view
  */
 App.views.SpeciesSelector = Backbone.View.extend({
-
+    template: JST['_species_selector'],
     initialize: function() {
         _.bindAll(this, 'render', 'toggleSelected');
-        this.template = _.template( jQuery("#species-selector-tmpl").html() );
     },
     events: {
       'click input': 'toggleSelected'

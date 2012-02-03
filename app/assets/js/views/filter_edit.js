@@ -50,10 +50,9 @@ App.views.CategoriesFilterEdit = Backbone.View.extend({
  * Categories selection view
  */
 App.views.CategoriesSelector = Backbone.View.extend({
-
+    template: JST['_species_selector'],
     initialize: function() {
         _.bindAll(this, 'render', 'toggleSelected');
-        this.template = _.template( jQuery("#species-selector-tmpl").html() );
     },
     events: {
       'click input': 'toggleSelected'

@@ -67,10 +67,9 @@ App.views.CountriesFilterEdit = Backbone.View.extend({
  * Countries selection view
  */
 App.views.CountriesSelector = Backbone.View.extend({
+    template: JST['_countries_selector'],
     initialize: function() {
         _.bindAll(this, 'render', 'toggleSelected');
-
-        this.template = _.template( jQuery("#countries-selector-tmpl").html() );
     },
     events: {
       'click input': 'toggleSelected'
