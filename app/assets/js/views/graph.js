@@ -43,15 +43,15 @@ App.views.Graph = Backbone.View.extend({
       tooltip = 'Uncertainity: ' + species_ial.get('uncertainity_score');
     }
 
-    if(typeof(this.bubbleChart) !== 'undefined') {
-      this.bubbleChart.addBubble(species_ial.get('state_score')*100, species_ial.get('pressure_score')*100, species_ial.get('area_km')/this.max_area_km*this.bubbleSize, color, tooltip);
-    }
+    this.bubbleChart.addBubble(species_ial.get('state_score')*100, species_ial.get('pressure_score')*100, species_ial.get('area_km')/this.max_area_km*this.bubbleSize, color, tooltip);
   },
 
   render: function() {
-    this.bubbleChart.empty();
-    this.addAll();
-    this.bubbleChart.redraw();
+    if(typeof(this.bubbleChart) !== 'undefined') {
+      this.bubbleChart.empty();
+      this.addAll();
+      this.bubbleChart.redraw();
+    }
 
     return this;
   },
