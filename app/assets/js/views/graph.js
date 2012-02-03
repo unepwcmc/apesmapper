@@ -14,7 +14,7 @@ App.views.Graph = Backbone.View.extend({
   },
   createGraph: function(data) {
     // Create the graph
-    this.bubbleSize = 100;
+    this.bubbleSize = 60;
     this.max_area_km = data.rows[0].max_area_km;
     this.bubbleChart = new Chart.Bubble('graph', {
       width: 659,
@@ -32,13 +32,13 @@ App.views.Graph = Backbone.View.extend({
   addOne: function(species_ial) {
     var color = "#000000", tooltip = '';
 
-    if(this.species_ials.filter_selected == "response") {
+    if(this.species_ials.filter_selected === "response") {
       color = "#" + this.color(species_ial, 'response_score') + "0000";
       tooltip = 'Response: ' + species_ial.get('response_score');
-    } else if(this.species_ials.filter_selected == "biodiversity") {
+    } else if(this.species_ials.filter_selected === "biodiversity") {
       color = "#00" + this.color(species_ial, 'biodiversity_score') + "00";
       tooltip = 'Biodiversity: ' + species_ial.get('biodiversity_score');
-    } else if(this.species_ials.filter_selected == "uncertainity") {
+    } else if(this.species_ials.filter_selected === "uncertainity") {
       color = "#0000" + this.color(species_ial, 'uncertainity_score');
       tooltip = 'Uncertainity: ' + species_ial.get('uncertainity_score');
     }
