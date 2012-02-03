@@ -122,6 +122,8 @@ App.modules.Carbon = function(app) {
             data.push(this.species.allSpecies.toUrl());
             data.push(this.regions.allRegions.toUrl());
             data.push(this.countries.allCountries.toUrl());
+            data.push(this.slideFilters.toUrl());
+            data = _.flatten(data);
             self.router.navigate('/' + data.join('|'));
         },
 
