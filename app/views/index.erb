@@ -149,18 +149,10 @@
             <div id='graph'></div>
             <div class="map_container" id="main_map">
                 <div id="map" class="map"></div>
-                <!-- zoom-control -->
                 <div class="zoom_control">
                   <a href="#zoom_in" class="zoom_in">zoom_in</a>
                   <a href="#zoom_out" class="zoom_out">zoom_out</a>
                 </div>
-                <!-- end zoom control -->
-                <!--
-                <div class="layer_editor">
-                    <a href="#" class="layer_raster"></a>
-                    <a href="#" class="layer_google_maps"></a>
-                </div>
-                -->
                 <div class="crosshair">
                     <img src="/img/icons/crosshair_map.png" />
                 </div>
@@ -175,7 +167,6 @@
                     </div>
                 </div>
 
-                <!-- search box -->
                 <div class="search">
                   <h1>search</h1>
                   <input type='text' placeholder='............................' />
@@ -196,7 +187,7 @@
                     <tr>
                       <th>IAL_ ID</th>
                       <th>IAL_NAME</th>
-                      <th>Area (KM2)</th>
+                      <th>Area (KM<sup>2</sup>)</th>
                       <th>State</th>
                       <th>Mean Canopy Cover</th>
                       <th>Pressure</th>
@@ -214,160 +205,9 @@
                       <th>Uncertainity</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Mengame Gorilla Sanctuary</td>
-                      <td>30.00</td>
-                      <td>0.00</td>
-                      <td>20.00</td>
-                      <td>0.00</td>
-                      <td>0.24</td>
-                      <td>354.09</td>
-                      <td>12.73</td>
-                      <td>21.00</td>
-                      <td>0.18</td>
-                      <td>0.00</td>
-                      <td>0.36</td>
-                      <td>0.23</td>
-                      <td>36.00</td>
-                      <td>44.44</td>
-                      <td>100.30</td>
-                      <td>0.30</td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>Gamba Complex</td>
-                      <td>60.00</td>
-                      <td>0.17</td>
-                      <td>25.00</td>
-                      <td>0.31</td>
-                      <td>0.23</td>
-                      <td>145.90</td>
-                      <td>13.15</td>
-                      <td>21.00</td>
-                      <td>0.18</td>
-                      <td>23.00</td>
-                      <td>0.36</td>
-                      <td>0.35</td>
-                      <td>60.00</td>
-                      <td>58.33</td>
-                      <td>105.60</td>
-                      <td>0.24</td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Belinga-Djoua</td>
-                      <td>60.50</td>
-                      <td>0.48</td>
-                      <td>36.60</td>
-                      <td>0.42</td>
-                      <td>0.33</td>
-                      <td>350.19</td>
-                      <td>13.08</td>
-                      <td>18.00</td>
-                      <td>0.18</td>
-                      <td>35.00</td>
-                      <td>0.36</td>
-                      <td>0.36</td>
-                      <td>37.00</td>
-                      <td>51.35</td>
-                      <td>10036.20</td>
-                      <td>0.36</td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>Lake telle</td>
-                      <td>75.50</td>
-                      <td>0.44</td>
-                      <td>35.50</td>
-                      <td>0.42</td>
-                      <td>0.62</td>
-                      <td>10.29</td>
-                      <td>29.87</td>
-                      <td>21.00</td>
-                      <td>0.18</td>
-                      <td>89.00</td>
-                      <td>0.36</td>
-                      <td>0.76</td>
-                      <td>37.00</td>
-                      <td>51.35</td>
-                      <td>1003.00</td>
-                      <td>0.37</td>
-                    </tr>
-                    <tr>
-                      <td>200</td>
-                      <td>Pikounda</td>
-                      <td>10000.00</td>
-                      <td>0.44</td>
-                      <td>56.50</td>
-                      <td>0.49</td>
-                      <td>0.22</td>
-                      <td>55.46</td>
-                      <td>29.55</td>
-                      <td>14.00</td>
-                      <td>0.18</td>
-                      <td>64.00</td>
-                      <td>0.36</td>
-                      <td>0.56</td>
-                      <td>17.00</td>
-                      <td>35.29</td>
-                      <td>1255.00</td>
-                      <td>1.00</td>
-                    </tr>
-                    <tr>
-                      <td>201</td>
-                      <td>Ngombe</td>
-                      <td>20000.00</td>
-                      <td>0.44</td>
-                      <td>79.50</td>
-                      <td>0.68</td>
-                      <td>0.35</td>
-                      <td>33.70</td>
-                      <td>28.99</td>
-                      <td>13.00</td>
-                      <td>0.18</td>
-                      <td>100.00</td>
-                      <td>0.36</td>
-                      <td>0.75</td>
-                      <td>29.00</td>
-                      <td>51.72</td>
-                      <td>1365.00</td>
-                      <td>0.36</td>
-                    </tr>
-                    <tr>
-                      <td>600</td>
-                      <td>Odzala-Koukoua Complex</td>
-                      <td>70.00</td>
-                      <td>1.00</td>
-                      <td>80.00</td>
-                      <td>1.00</td>
-                      <td>1.58</td>
-                      <td>29.20</td>
-                      <td>29.62</td>
-                      <td>18.00</td>
-                      <td>0.18</td>
-                      <td>78.00</td>
-                      <td>0.36</td>
-                      <td>1.00</td>
-                      <td>17.00</td>
-                      <td>35.29</td>
-                      <td>456.23</td>
-                      <td>0.45</td>
-                    </tr>
-                </tbody>
+                <tbody></tbody>
             </table>
         </div>
-
-
-      <div id="error_dialog">
-        <div class="error_wrapper">
-          <!--<a href='#' class="close"></a>-->
-          <!--<h1 id="title">ERROR</h1>-->
-          <p id="error_text">An error ocurred</p>
-          <a id="ok" href="#">ok</a>
-        </div>
-      </div>
     </div>
 
     <div id="sponsors" class='horizontal_box_shadow'>

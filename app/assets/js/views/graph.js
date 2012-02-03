@@ -10,12 +10,12 @@ App.views.Graph = Backbone.View.extend({
     this.species_ials = this.options.species_ials;
     this.species_ials.bind("all", this.render);
 
-    $.get('http://carbon-tool.cartodb.com/api/v1/sql?q=SELECT MAX(area_km) AS max_area_km FROM species_ials', this.createGraph);
+    $.getJSON('http://carbon-tool.cartodb.com/api/v1/sql?q=SELECT MAX(area_km) AS max_area_km FROM species_ials', this.createGraph);
   },
   createGraph: function(data) {
     // Create the graph
     this.bubbleSize = 60;
-    this.max_area_km = $.parseJSON(data).rows[0].max_area_km;
+    this.max_area_km = data.rows[0].max_area_km;
     this.bubbleChart = new Chart.Bubble('graph', {
       width: 659,
       height: 580,
