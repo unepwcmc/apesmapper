@@ -11,7 +11,7 @@ App.modules.SpeciesIals = function(app) {
         response_score: 0,
         biodiversity_score: 0,
         uncertainity_score: 0
-      }
+      };
     },
     idAttribute: 'cartodb_id'
   });
@@ -37,14 +37,14 @@ App.modules.SpeciesIals = function(app) {
     },
     aggregateScoresSql: function() {
       // Returns the SQL from string to get the aggregated scores for the site_ials
-      var selectSql = " MAX(species_ials.site) as ial_id,"
-      selectSql = selectSql + " MIN(species_ials.state_score) as state_score,"
-      selectSql = selectSql + " MIN(species_ials.biodiversity_score) as biodiversity_score,"
-      selectSql = selectSql + " MIN(species_ials.pressure_score) as pressure_score,"
-      selectSql = selectSql + " MIN(species_ials.response_score) as response_score,"
-      selectSql = selectSql + " MIN(species_ials.uncertainity) as uncertainity_score,"
-      selectSql = selectSql + " MAX(species_ials.area_km) as area_km,"
-      selectSql = selectSql + " string_agg(species_ials.species, ', ') as species "
+      var selectSql = " MAX(species_ials.site) as ial_id,";
+      selectSql = selectSql + " MIN(species_ials.state_score) as state_score,";
+      selectSql = selectSql + " MIN(species_ials.biodiversity_score) as biodiversity_score,";
+      selectSql = selectSql + " MIN(species_ials.pressure_score) as pressure_score,";
+      selectSql = selectSql + " MIN(species_ials.response_score) as response_score,";
+      selectSql = selectSql + " MIN(species_ials.uncertainity) as uncertainity_score,";
+      selectSql = selectSql + " MAX(species_ials.area_km) as area_km,";
+      selectSql = selectSql + " string_agg(species_ials.species, ', ') as species ";
       return selectSql;
     },
     filterConditionsSql: function (){
@@ -102,7 +102,7 @@ App.modules.SpeciesIals = function(app) {
     },
     ialsJoinAndFilterConditions: function() {
       // returns the join and conditions SQL
-      var sqlQuery = ""
+      var sqlQuery = "";
       sqlQuery = sqlQuery + " INNER JOIN species_ials ON ials.ial_id = species_ials.site";
 
       sqlQuery = sqlQuery + this.filterConditionsSql();
