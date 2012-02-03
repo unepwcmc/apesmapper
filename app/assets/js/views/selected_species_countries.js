@@ -3,6 +3,7 @@
  */
 App.views.SelectedSpeciesCountries = Backbone.View.extend({
   el: 'ul#species-countries-selected',
+  template: JST['_species_countries_selected'],
 
   events: {
     'click span#edit-selected-species': 'showCategoriesEditor',
@@ -18,8 +19,6 @@ App.views.SelectedSpeciesCountries = Backbone.View.extend({
 
     this.species.bind("change", this.render);
     this.countries.bind("change", this.render);
-
-    this.template = _.template( jQuery("script#species-countries-selected-tmpl").html() );
 
     this.render();
   },
