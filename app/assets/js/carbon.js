@@ -123,35 +123,48 @@ App.modules.Carbon = function(app) {
           var self = this;
           //self.map.map.set_center(new google.maps.LatLng(st.lat,st.lon));
           //self.map.map.set_zoom(st.zoom);
-          _.each(st.layers, function(layer) {
-            self.map.enable_layer(layer.name, layer.enabled);
-          });
-          self.map.layer_editor.sort_by(st.layers.reverse());
-          self.bus.emit('map:reorder_layers', _.pluck(st.layers, 'name'));
+          //_.each(st.layers, function(layer) {
+          //  self.map.enable_layer(layer.name, layer.enabled);
+          //});
+          //self.map.layer_editor.sort_by(st.layers.reverse());
+          //self.bus.emit('map:reorder_layers', _.pluck(st.layers, 'name'));
+          self.speciespecies.setSelectedFromIds(st.species);
        },
 
+       //State expected format:
+       //#categories_ids|apes_ids|species_ids|region_id|countries_ids|ResoSelected,min,max|BioSelected,min,max|UncertSelected,min,max|SizeSelected,min,max
+       //categories_ids= comma spearated integers or -1
+       //apes_ids= comma spearated integers or -1
+       //species_ids= comma separated integers or -1
+       //region_id= an integer or -1
+       //countries_ids= comma separated integers or -1
+       //ResoSelected= 1 is selected, 0 is not selected - slider min-max
+       //BioSelected= 1 is selected, 0 is not selected - slider min-max
+       //UncertSelected= 1 is selected, 0 is not selected - slider min-max
+       //SizeSelected= 1 is selected, 0 is not selected - slider min-max
+       //Only one of Reso, Bio, Uncert, or Size can be selected at a time
        decode_state: function(state) {
           var states = state.split('|');
-          var maps = states[0];
-          var tk = maps.split(',');
+          var categories = states[0];
+          var apes = states[1];
+          var species = states[2];
+          var region = states[3];
+          var countries = states[4];
+          var resoDetails = states[5];
+          var bioDetails = states[6];
+          var uncertDetails = states[7];
+          var sizeDetails = states[8];
 
-          // layers
-          var layers = states[1].split(',');
-          var layers_state = [];
-          var layer_indexes = _.pluck(app.config.MAP_LAYERS,'name');
-          for(var i = 0; i < layers.length/2; ++i) {
-            var idx = layers[i*2];
-            var enabled = layers[i*2 + 1];
-            layers_state.push({
-              name: layer_indexes[parseInt(idx, 10)], 
-              enabled: parseInt(enabled, 10) !== 0 ? true: false
-            });
-          }
           return {
-            zoom : parseInt(tk[0], 10),
-            lat: parseFloat(tk[1]),
-            lon: parseFloat(tk[2]),
-            layers: layers_state
+            categories: categories,
+            apes: apes,
+            species: species,
+            region: region,
+            countries: countries,
+            resoDetails: resoDetails,
+            bioDetails: bioDetails,
+            uncertDetails: uncertDetails,
+            sizeDetails: sizeDetails
           };
        },
 

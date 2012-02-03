@@ -54,6 +54,9 @@ App.views.CountriesFilterEdit = Backbone.View.extend({
       this.countries.each(function(country) {
         if(_.map(selected_regions, function(region){return region.get('id')}).indexOf(country.get('region_id')) === -1){
             country.set({hidden: true});
+            country.set({selected: false});
+        } else{
+            country.set({hidden: false});
           }
       });
       this.render();

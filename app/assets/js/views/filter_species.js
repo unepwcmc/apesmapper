@@ -56,6 +56,9 @@ App.views.SpeciesFilterEdit = Backbone.View.extend({
       this.species.each(function(species) {
         if(_.map(selected_apes, function(ape){return ape.get('id')}).indexOf(species.get('ape_id')) === -1){
             species.set({hidden: true});
+            species.set({selected: false});
+          } else {
+            species.set({hidden: false});
           }
       });
       this.render();
