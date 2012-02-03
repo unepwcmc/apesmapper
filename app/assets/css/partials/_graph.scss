@@ -25,6 +25,29 @@ div#results_container {
   border-left: 1px solid #CCC;
   float:left;
 
+
+  div#table_header {
+    background-image: url(/img/matt_black.412998.png);
+    overflow:hidden;
+    border-top: 1px solid #555;
+    padding: 5px;
+
+    h3{
+      color: white;
+      float:left;
+      margin: 4px 0;
+    }
+    a {
+      float:right;
+      margin-top: 2px;
+      margin-left: 5px;
+      padding: 5px;
+      color:white;
+      @include border-radius(4px);
+      @include background-image(linear-gradient(#FFBB00, #AD4308));
+    }
+  }
+
   table#results-table {
     display: block;
     width: 659px;
