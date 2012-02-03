@@ -144,14 +144,14 @@ class ApesMapper < Sinatra::Base
 
     headers "Content-Disposition" => "attachment;filename=download.csv", "Content-Type" => "application/octet-stream"
 
-    url = URI.escape 'http://carbon-tool.cartodb.com/api/v1/sql?q=SELECT * FROM species_ials LIMIT 2'
+    url = URI.escape "http://carbon-tool.cartodb.com/api/v1/sql?q=#{params[:q]}"
     uri = URI.parse url
     res = Net::HTTP.get_response(uri)
     body = JSON.parse(res.body)
 
-    result = ""
+    result = "cartodb_id,the_geom,area_km,biodiversity_score,pressure_score,response_score,site,species,species_site,state_score,uncertainity\n"
     body['rows'].each do |row|
-      result << "#{row['area_km']},#{row['biodiversity_score']},#{row['pressure_score']},#{row['response_score']},#{row['site']}\n"
+      result << "#{row['cartodb_id']},#{row['the_geom']},#{row['area_km']},#{row['biodiversity_score']},#{row['pressure_score']},#{row['response_score']},#{row['site']},#{row['species']},#{row['species_site']},#{row['state_score']},#{row['uncertainity']}\n"
     end
     result
   end
