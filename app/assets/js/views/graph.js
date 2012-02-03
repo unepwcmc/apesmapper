@@ -15,7 +15,7 @@ App.views.Graph = Backbone.View.extend({
   createGraph: function(data) {
     // Create the graph
     this.bubbleSize = 60;
-    this.max_area_km = data.rows[0].max_area_km;
+    this.max_area_km = $.parseJSON(data).rows[0].max_area_km;
     this.bubbleChart = new Chart.Bubble('graph', {
       width: 659,
       height: 580,
