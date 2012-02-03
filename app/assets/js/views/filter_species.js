@@ -52,13 +52,13 @@ App.views.SpeciesFilterEdit = Backbone.View.extend({
       this.bus.trigger('show_species_selector');
     },
     filterByApe: function() {
-      var selected_apes = this.apes.selected();
+      var selected_apes = _.map(this.apes.selected(), function(ape){return ape.get('id')});
       this.species.each(function(species) {
-        if(_.map(selected_apes, function(ape){return ape.get('id')}).indexOf(species.get('ape_id')) === -1){
+        if(_.include(selected_apes, species.get('ape_id'))){
+            species.set({hidden: false});
+          } else {
             species.set({hidden: true});
             species.set({selected: false});
-          } else {
-            species.set({hidden: false});
           }
       });
       this.render();

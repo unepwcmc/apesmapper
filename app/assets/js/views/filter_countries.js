@@ -50,13 +50,13 @@ App.views.CountriesFilterEdit = Backbone.View.extend({
         this.el.slideUp();
     },
     filterByRegion: function() {
-      var selected_regions = this.regions.selected();
+      var selected_regions = _.map(this.regions.selected(), function(region){return region.get('id')});
       this.countries.each(function(country) {
-        if(_.map(selected_regions, function(region){return region.get('id')}).indexOf(country.get('region_id')) === -1){
+        if(_.include(selected_regions, country.get('region_id'))){
+            country.set({hidden: false});
+        } else{
             country.set({hidden: true});
             country.set({selected: false});
-        } else{
-            country.set({hidden: false});
           }
       });
       this.render();

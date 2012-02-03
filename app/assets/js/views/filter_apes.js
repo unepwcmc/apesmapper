@@ -47,13 +47,13 @@ App.views.ApesFilterEdit = Backbone.View.extend({
       this.hide();
     },
     filterByCategory: function() {
-      var selected_categories = this.categories.selected();
+      var selected_categories = _.map(this.categories.selected(), function(category){return category.get('id')});
       this.apes.each(function(ape) {
-        if(_.map(selected_categories, function(category){return category.get('id')}).indexOf(ape.get('category_id')) === -1){
-            ape.set({hidden: true});
-            ape.set({selected: false});
-        } else{
+        if(_.include(selected_categories, ape.get('category_id'))){
           ape.set({hidden: false});
+        } else{
+          ape.set({hidden: true});
+          ape.set({selected: false});
         }
       });
       this.render();
