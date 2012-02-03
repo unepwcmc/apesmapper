@@ -20,6 +20,10 @@ App.modules.Regions = function(app) {
         url: 'json/regions.json',
         selected: function() {
             return this.filter(function(region){ return region.get('selected'); });
+        },
+        toUrl: function() {
+          var selected_ids = this.selected().map(function(region){ return region.get('id').toString();});
+          return _.size(selected_ids) > 0 ? selected_ids.join(",") : "0";
         }
     });
 

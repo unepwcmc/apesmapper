@@ -98,24 +98,31 @@ App.modules.Carbon = function(app) {
 
         _state_url: function() {
             var self = this;
-            if(self.work_id === undefined) return;
-            var center = self.map.map.get_center();
-            var zoom = self.map.map.get_zoom();
+            //if(self.work_id === undefined) return;
+            //var center = self.map.map.get_center();
+            //var zoom = self.map.map.get_zoom();
+            //var data = [];
+            //data.push(zoom, center.lat(), center.lng());
+            //var map_pos = data.join(',');
+
+            //var layers = self.map.map.layers;
+            //var layer_data = [];
+            //var layer_indexes = _.pluck(app.config.MAP_LAYERS,'name');
+            //_(self.map.map.layers_order).each(function(name) {
+            //    var layer = layers[name];
+            //    var idx = _.indexOf(layer_indexes, name);
+            //    layer_data.push(idx);
+            //    layer_data.push(layer.enabled?1:0);
+            //});
+
+            //self.router.navigate('w/' + self.work_id + '/' + map_pos + '|' + layer_data.join(','));
             var data = [];
-            data.push(zoom, center.lat(), center.lng());
-            var map_pos = data.join(',');
-
-            var layers = self.map.map.layers;
-            var layer_data = [];
-            var layer_indexes = _.pluck(app.config.MAP_LAYERS,'name');
-            _(self.map.map.layers_order).each(function(name) {
-                var layer = layers[name];
-                var idx = _.indexOf(layer_indexes, name);
-                layer_data.push(idx);
-                layer_data.push(layer.enabled?1:0);
-            });
-
-            self.router.navigate('w/' + self.work_id + '/' + map_pos + '|' + layer_data.join(','));
+            data.push(this.categories.allCategories.toUrl());
+            data.push(this.apes.allApes.toUrl());
+            data.push(this.species.allSpecies.toUrl());
+            data.push(this.regions.allRegions.toUrl());
+            data.push(this.countries.allCountries.toUrl());
+            self.router.navigate('/' + data.join('|'));
         },
 
         set_state: function(st) {
