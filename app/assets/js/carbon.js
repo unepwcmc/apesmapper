@@ -100,11 +100,11 @@ App.modules.Carbon = function(app) {
             //this.router.navigate('w/work_test');
         },
         download: function() {
-          window.location.href = "/csv?" + this.species_ials.allSpeciesIals.url().split("?")[1];
+          window.location.href = "/csv?" + this.species_ials.allSpeciesIals.url().split("?")[1] + "&type=sites";
           return false;
         },
         download_table: function() {
-          window.location.href = "/csv?" + this.species_ials_table.allSpeciesIalsTable.url().split("?")[1];
+          window.location.href = "/csv?" + this.species_ials_table.allSpeciesIalsTable.url().split("?")[1] + "&type=species_occurrences";
           return false;
         },
         banner_animation: function() {

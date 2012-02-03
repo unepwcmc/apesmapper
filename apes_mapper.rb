@@ -142,7 +142,10 @@ class ApesMapper < Sinatra::Base
     require 'net/http'
     require 'uri'
 
-    headers "Content-Disposition" => "attachment;filename=download.csv", "Content-Type" => "application/octet-stream"
+    type = 'sites'
+    type = params[:type] if 'species_occurrences' == params[:type]
+    file_name = "ApesMapper_#{type}_#{Time.now.strftime("%y%m%d%H%M")}"
+    headers "Content-Disposition" => "attachment;filename=#{file_name}.csv", "Content-Type" => "application/octet-stream"
 
     url = URI.escape "http://carbon-tool.cartodb.com/api/v1/sql?q=#{params[:q]}"
     uri = URI.parse url
