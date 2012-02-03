@@ -151,7 +151,7 @@ App.modules.Carbon = function(app) {
           //});
           //self.map.layer_editor.sort_by(st.layers.reverse());
           //self.bus.emit('map:reorder_layers', _.pluck(st.layers, 'name'));
-          self.speciespecies.setSelectedFromIds(st.species);
+          self.species.setSelectedFromIds(st.species);
        },
 
        //State expected format:

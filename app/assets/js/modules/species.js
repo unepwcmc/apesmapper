@@ -30,6 +30,8 @@ App.modules.Species = function(app) {
         },
         visible: function() {
           return this.filter(function(species) { return species.get('hidden') == false; })
+        },
+        setSelectedFromIds: function(){
         }
     });
 
