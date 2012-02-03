@@ -38,7 +38,7 @@ App.modules.Carbon = function(app) {
         },
 
         run: function() {
-            _.bindAll(this, 'on_route_to', '_state_url','download');
+            _.bindAll(this, 'on_route_to', '_state_url', 'download', 'download_table');
             var self = this;
 
             // init Models
@@ -93,6 +93,7 @@ App.modules.Carbon = function(app) {
             this.bus.on('countries:change', this.species_ials_table.allSpeciesIalsTable.selectCountries);
 
             $("a#download_button").click(this.download);
+            $("a#download_table_button").click(this.download_table);
 
             // ready, launch
             Backbone.history.start();
@@ -100,6 +101,10 @@ App.modules.Carbon = function(app) {
         },
         download: function() {
           window.location.href = "/csv?" + this.species_ials.allSpeciesIals.url().split("?")[1];
+          return false;
+        },
+        download_table: function() {
+          window.location.href = "/csv?" + this.species_ials_table.allSpeciesIalsTable.url().split("?")[1];
           return false;
         },
         banner_animation: function() {

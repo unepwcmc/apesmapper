@@ -149,9 +149,9 @@ class ApesMapper < Sinatra::Base
     res = Net::HTTP.get_response(uri)
     body = JSON.parse(res.body)
 
-    result = ""
+    result = "cartodb_id,the_geom,area_km,biodiversity_score,pressure_score,response_score,site,species,species_site,state_score,uncertainity\n"
     body['rows'].each do |row|
-      result << "#{row['area_km']},#{row['biodiversity_score']},#{row['pressure_score']},#{row['response_score']},#{row['site']}\n"
+      result << "#{row['cartodb_id']},#{row['the_geom']},#{row['area_km']},#{row['biodiversity_score']},#{row['pressure_score']},#{row['response_score']},#{row['site']},#{row['species']},#{row['species_site']},#{row['state_score']},#{row['uncertainity']}\n"
     end
     result
   end
