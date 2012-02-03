@@ -20,6 +20,10 @@ App.modules.Categories = function(app) {
         url: 'json/categories.json',
         selected: function() {
             return this.filter(function(category){ return category.get('selected'); });
+        },
+        toUrl: function() {
+          var selected_ids = this.selected().map(function(category){ return category.get('id').toString();});
+          return _.size(selected_ids) > 0 ? selected_ids.join(",") : "0";
         }
     });
 

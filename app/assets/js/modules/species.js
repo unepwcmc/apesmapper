@@ -25,6 +25,10 @@ App.modules.Species = function(app) {
         selected: function() {
             return this.filter(function(species){ return species.get('selected'); });
         },
+        toUrl: function() {
+          var selected_ids = this.selected().map(function(species){ return species.get('id').toString();});
+          return _.size(selected_ids) > 0 ? selected_ids.join(",") : "0";
+        },
         filterByApe: function(ape_id){
           return this.ape_id == ape_id;
         },
