@@ -182,7 +182,6 @@ App.modules.Carbon = function(app) {
             if(jQuery.browser.msie === undefined) {
                 clearInterval(this.animation);
             }
-            // show the panel and set mode to adding polys
 
             app.Log.debug("route: work => ", work_id);
             this.bus.emit('work', work_id);
