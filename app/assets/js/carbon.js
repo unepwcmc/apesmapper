@@ -198,3 +198,21 @@ App.modules.Carbon = function(app) {
 
     });
 };
+
+jQuery(function($) {
+  $("#view-selector .graph").click(function(e) {
+    e.stopPropagation();
+    $("#results_container").scrollTop(0);
+    return false;
+  });
+  $("#view-selector .map").click(function(e) {
+    e.stopPropagation();
+    $("#results_container").scrollTop($("#results_container div.map_container").offset().top + $("#results_container").scrollTop() - $("#results_container").offset().top);
+    return false;
+  });
+  $("#view-selector .table").click(function(e) {
+    e.stopPropagation();
+    $("#results_container").scrollTop($("#results_container #table_header").offset().top + $("#results_container").scrollTop() - $("#results_container").offset().top);
+    return false;
+  });
+}(jQuery));
