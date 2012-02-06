@@ -40,7 +40,6 @@ App.modules.Carbon = function(app) {
             this.species = new app.Species();
             this.regions = new app.Regions();
             this.countries = new app.Countries();
-            this.sites = new app.Sites();
             this.species_ials = new app.SpeciesIals();
             this.map = new app.Map({bus:this.bus, species_ials: this.species_ials.allSpeciesIals}); // This actually contains the map view...
             this.species_ials_table = new app.SpeciesIalsTable();
@@ -54,9 +53,9 @@ App.modules.Carbon = function(app) {
 
             this.regionsFilterEdit = new App.views.RegionsFilterEdit({bus:this.bus, regions: this.regions.allRegions});
             this.countriesFilterEdit = new App.views.CountriesFilterEdit({bus:this.bus, countries: this.countries.allCountries, regions: this.regions.allRegions});
-            this.slideFilters = new App.views.SlideFilters({bus:this.bus, species: this.species.allSpecies, countries: this.countries.allCountries, sites: this.sites.allSites, species_ials: this.species_ials.allSpeciesIals, species_ials_table: this.species_ials_table.allSpeciesIalsTable});
+            this.slideFilters = new App.views.SlideFilters({bus:this.bus, species: this.species.allSpecies, countries: this.countries.allCountries, species_ials: this.species_ials.allSpeciesIals, species_ials_table: this.species_ials_table.allSpeciesIalsTable});
             this.graph = new App.views.Graph({species_ials: this.species_ials.allSpeciesIals});
-            this.resultTable = new App.views.ResultTable({sites: this.sites.allSites, species_ials_table: this.species_ials_table.allSpeciesIalsTable});
+            this.resultTable = new App.views.ResultTable({species_ials_table: this.species_ials_table.allSpeciesIalsTable});
             this.resultSummary = new App.views.ResultSummary({species_ials: this.species_ials.allSpeciesIals});
 
             // init routing and bind methods requiring this scope to routes
@@ -204,3 +203,21 @@ App.modules.Carbon = function(app) {
 
     });
 };
+
+jQuery(function($) {
+  $("#view-selector .graph").click(function(e) {
+    e.stopPropagation();
+    $("#results_container").scrollTop(0);
+    return false;
+  });
+  $("#view-selector .map").click(function(e) {
+    e.stopPropagation();
+    $("#results_container").scrollTop($("#results_container div.map_container").offset().top + $("#results_container").scrollTop() - $("#results_container").offset().top);
+    return false;
+  });
+  $("#view-selector .table").click(function(e) {
+    e.stopPropagation();
+    $("#results_container").scrollTop($("#results_container #table_header").offset().top + $("#results_container").scrollTop() - $("#results_container").offset().top);
+    return false;
+  });
+}(jQuery));

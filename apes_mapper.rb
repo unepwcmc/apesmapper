@@ -60,7 +60,6 @@ class ApesMapper < Sinatra::Base
       "/js/modules/categories.js",
       "/js/modules/regions.js",
       "/js/modules/countries.js",
-      "/js/modules/sites.js",
       "/js/modules/species_ials.js",
       "/js/modules/species_ials_table.js",
 

@@ -55,16 +55,6 @@
 .menu_subpage li a#report_activ{background:transparent url(/img/navigation/sub_report.png) no-repeat 2px 0px;}
 .menu_subpage li a.sub_wiki:hover{background:transparent url(/img/navigation/sub_wiki.png) no-repeat 2px 0px;}
 .menu_subpage li a#wiki_activ{background:transparent url(/img/navigation/sub_wiki.png) no-repeat 2px 0px;}
-ul.species_dropdown, ul.species_dropdown li, ul.species_dropdown ul{list-style:none;margin:0;padding:0;}
-ul.species_dropdown{position:relative;z-index:597;float:left;margin-left:15px;margin-top:20px;}
-ul.species_dropdown li{float:left;line-height:1.3em;vertical-align:middle;zoom:1;background-color:#E6E6E6;margin-left:15px;width:162px;height:232px;padding-left:10px;}
-ul.species_dropdown li a{color:#666666;line-height:145%;}
-ul.species_dropdown li img{margin-left:-10px;}
-ul.species_dropdown li span{color:#0071bc;}
-ul.species_dropdown li.hover, ul.species_dropdown li:hover{position:relative;z-index:599;cursor:default;}
-ul.species_dropdown ul{visibility:hidden;position:absolute;left:0;z-index:598;width:100%;}
-ul.species_dropdown ul li{float:none;margin:0;padding:0;width:auto;height:auto;background:transparent;margin-left:20px;list-style:disc;}
-ul.species_dropdown li:hover > ul{visibility:visible;}
 .species_navigation ul, .database_navigation ul{list-style:none;margin:0;padding:0;}
 .species_navigation li, .database_navigation li{display:inline;float:left;width:131px;height:45px;background:#e6e6e6 url(/img/navigation/species_bottom.png) no-repeat left bottom;margin:20px;padding:8px 0px 8px 4px;}
 .species_navigation li a, .database_navigation li a{display:block;width:132px;color:#4d4d4d;}
