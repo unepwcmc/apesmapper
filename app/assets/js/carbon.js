@@ -29,7 +29,7 @@ App.modules.Carbon = function(app) {
         },
 
         run: function() {
-            _.bindAll(this, 'on_route_to', '_state_url', 'download', 'download_table');
+            _.bindAll(this, 'on_route_to', '_state_url', 'download', 'download_table', 'build_state');
             var self = this;
 
             // init Models
@@ -96,6 +96,18 @@ App.modules.Carbon = function(app) {
           return false;
         },
 
+        build_state: function(state) {
+          var state = []
+          state.push(this.categories.allCategories.toUrl());
+          state.push(this.apes.allApes.toUrl());
+          state.push(this.species.allSpecies.toUrl());
+          state.push(this.regions.allRegions.toUrl());
+          state.push(this.countries.allCountries.toUrl());
+          state.push(this.slideFilters.toUrl());
+          state = _.flatten(state);
+          return state.join('|');
+        },
+
         _state_url: function() {
             var self = this;
             //if(self.work_id === undefined) return;
@@ -116,15 +128,7 @@ App.modules.Carbon = function(app) {
             //});
 
             //self.router.navigate('w/' + self.work_id + '/' + map_pos + '|' + layer_data.join(','));
-            var data = [];
-            data.push(this.categories.allCategories.toUrl());
-            data.push(this.apes.allApes.toUrl());
-            data.push(this.species.allSpecies.toUrl());
-            data.push(this.regions.allRegions.toUrl());
-            data.push(this.countries.allCountries.toUrl());
-            data.push(this.slideFilters.toUrl());
-            data = _.flatten(data);
-            self.router.navigate('/' + data.join('|'));
+            self.router.navigate('/' + this.build_state());
         },
 
         set_state: function(st) {
@@ -136,7 +140,12 @@ App.modules.Carbon = function(app) {
           //});
           //self.map.layer_editor.sort_by(st.layers.reverse());
           //self.bus.emit('map:reorder_layers', _.pluck(st.layers, 'name'));
-          self.species.setSelectedFromIds(st.species);
+          self.categories.allCategories.fromUrl(st.categories);
+          self.apes.allApes.fromUrl(st.apes);
+          self.species.allSpecies.fromUrl(st.species);
+          self.regions.allRegions.fromUrl(st.region);
+          self.countries.allCountries.fromUrl(st.countries);
+          self.slideFilters.fromUrl(st.resoDetails, st.bioDetails, st.uncertDetails, st.sizeDetails);
        },
 
        //State expected format:
@@ -176,16 +185,13 @@ App.modules.Carbon = function(app) {
           };
        },
 
-       on_route: function(work_id, state) {
-            this.work_id = work_id;
-            this.map.work_mode();
+       on_route: function(state) {
+            //this.map.work_mode();
             if(jQuery.browser.msie === undefined) {
                 clearInterval(this.animation);
             }
-            // show the panel and set mode to adding polys
 
-            app.Log.debug("route: work => ", work_id);
-            this.bus.emit('work', work_id);
+            app.Log.debug("route: work => ", state);
             if(state) {
               this.set_state(this.decode_state(state));
             }
