@@ -54,7 +54,6 @@
             height:26px;
             padding:0 0 0 4px;
             margin:0 4px 0 0;
-            @include background(no-repeat,0,-1337px);
             font:bold 11px "WhitneyBold","Myriad Pro";
             color:#66CCCC;
             text-decoration:none;
@@ -64,7 +63,6 @@
               width:auto;
               height:11px;
               padding:7px 8px 8px 4px;
-              @include background(no-repeat,right,-1337px);
             }
 
             &:hover {color:#3A7676}
@@ -205,7 +203,6 @@
             left:50%;
             margin:-39px 0 0 -158px;
             text-decoration:none;
-            @include background(no-repeat,0,-1181px);
             &:hover {background-position:0 -1259px; span {cursor:pointer} small {color:white;}}
 
             span {
@@ -336,17 +333,16 @@
                 font-size:0;
 
 
-                &.cbd {width:145px; height:48px; @include background(no-repeat,0,-1126px);}
-                &.lifeweb {width:121px; height:48px; @include background(no-repeat,-150px,-1127px);}
-                &.unep-wcmc {width:96px; height:49px; @include background(no-repeat,-375px,-1123px);}
-                &.vizzuality {width:89px; height:47px; @include background(no-repeat,-280px,-1126px);}
-                &.federal_agency {width:211px; height:92px; margin-left: -10px; @include background(no-repeat,left,-2312px);}
+                &.cbd {width:145px; height:48px;}
+                &.lifeweb {width:121px; height:48px;}
+                &.unep-wcmc {width:96px; height:49px;}
+                &.vizzuality {width:89px; height:47px;}
+                &.federal_agency {width:211px; height:92px; margin-left: -10px;}
                 &.nature {
                   float:left;
                   width:53px;
                   height:57px;
                   margin: -8px 0 0 12px;
-                  @include background(no-repeat,0,-1369px);
                   text-indent:-9999px;
                   line-height:0;
                   font-size:0;
@@ -374,7 +370,6 @@
             width:240px;
             height:57px;
             margin:15px 0 0;
-            @include background(no-repeat,0,-1369px);
             text-indent:-9999px;
             line-height:0;
             font-size:0;
