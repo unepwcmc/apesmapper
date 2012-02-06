@@ -21,7 +21,7 @@ App.modules.SpeciesIalsTable = function(app) {
         species_richness: null,
         proportion_threatened_species: null,
         carbon_storage: null,
-        uncertainity: null
+        uncertainty: null
       }
     },
     idAttribute: 'cartodb_id'
@@ -35,7 +35,7 @@ App.modules.SpeciesIalsTable = function(app) {
       this.size = {};
       this.response = {};
       this.biodiversity = {};
-      this.uncertainity = {};
+      this.uncertainty = {};
       this.countries = [];
       this.species = [];
     },
@@ -58,8 +58,8 @@ App.modules.SpeciesIalsTable = function(app) {
       if(typeof this.biodiversity.min !== undefined && this.biodiversity.max !== undefined) {
         params = params.concat("(biodiversity_score >= " + (this.biodiversity.min / 100) + " AND biodiversity_score <= " + (this.biodiversity.max / 100) + ")");
       }
-      if(typeof this.uncertainity.min !== undefined && this.uncertainity.max !== undefined) {
-        params = params.concat("(uncertainity >= " + (this.uncertainity.min / 100) + " AND uncertainity <= " + (this.uncertainity.max / 100) + ")");
+      if(typeof this.uncertainty.min !== undefined && this.uncertainty.max !== undefined) {
+        params = params.concat("(uncertainty >= " + (this.uncertainty.min / 100) + " AND uncertainty <= " + (this.uncertainty.max / 100) + ")");
       }
       if(this.countries.length > 0) {
         params = params.concat("(site IN (" + this.countries.join(",") + "))");
@@ -113,17 +113,17 @@ App.modules.SpeciesIalsTable = function(app) {
       this.biodiversity = {};
       this.fetch({add: false});
     },
-    filterByUncertainity: function(min, max) {
-      if(this.uncertainity.min === min && this.uncertainity.max === max) {
+    filterByUncertainty: function(min, max) {
+      if(this.uncertainty.min === min && this.uncertainty.max === max) {
         return false;
       }
 
-      this.uncertainity = {min: min, max: max};
+      this.uncertainty = {min: min, max: max};
       this.fetch({add: false});
       return true;
     },
-    resetUncertainity: function() {
-      this.uncertainity = {};
+    resetUncertainty: function() {
+      this.uncertainty = {};
       this.fetch({add: false});
     },
     selectCountries: function(countries) {

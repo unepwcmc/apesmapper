@@ -24,7 +24,7 @@ App.modules.Sites = function(app) {
         species_richness: null,
         proportion_threatened_species: null,
         carbon_storage: null,
-        uncertainity: null
+        uncertainty: null
       }
     },
     idAttribute: 'ial_id'
@@ -36,7 +36,7 @@ App.modules.Sites = function(app) {
       this.size = {};
       this.response = {};
       this.biodiversity = {};
-      this.uncertainity = {};
+      this.uncertainty = {};
     },
     parse: function(response) {
       // CartoDB returns results in rows field
@@ -103,17 +103,17 @@ App.modules.Sites = function(app) {
       this.biodiversity = {};
       this.fetch({add: false});
     },
-    filterByUncertainity: function(min, max) {
-      if(this.uncertainity.min === min && this.uncertainity.max === max) {
+    filterByuncertainty: function(min, max) {
+      if(this.uncertainty.min === min && this.uncertainty.max === max) {
         return false;
       }
 
-      this.uncertainity = {min: min, max: max};
+      this.uncertainty = {min: min, max: max};
       this.fetch({add: false});
       return true;
     },
-    resetUncertainity: function() {
-      this.uncertainity = {};
+    resetuncertainty: function() {
+      this.uncertainty = {};
       this.fetch({add: false});
     }
   });

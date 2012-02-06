@@ -10,7 +10,7 @@ App.modules.SpeciesIals = function(app) {
         pressure_score: null,
         response_score: 0,
         biodiversity_score: 0,
-        uncertainity_score: 0
+        uncertainty_score: 0
       };
     },
     idAttribute: 'cartodb_id'
@@ -24,7 +24,7 @@ App.modules.SpeciesIals = function(app) {
       this.size = {};
       this.response = {};
       this.biodiversity = {};
-      this.uncertainity = {};
+      this.uncertainty = {};
       this.filter_selected = 'response';
       this.countries = [];
       this.species = [];
@@ -42,7 +42,7 @@ App.modules.SpeciesIals = function(app) {
       selectSql = selectSql + " MIN(species_ials.biodiversity_score) as biodiversity_score,";
       selectSql = selectSql + " MIN(species_ials.pressure_score) as pressure_score,";
       selectSql = selectSql + " MIN(species_ials.response_score) as response_score,";
-      selectSql = selectSql + " MIN(species_ials.uncertainity) as uncertainity_score,";
+      selectSql = selectSql + " MIN(species_ials.uncertainty) as uncertainty_score,";
       selectSql = selectSql + " MAX(species_ials.area_km) as area_km,";
       selectSql = selectSql + " string_agg(species_ials.species, ', ') as species ";
       return selectSql;
@@ -60,8 +60,8 @@ App.modules.SpeciesIals = function(app) {
       if(typeof this.biodiversity.min !== undefined && this.biodiversity.max !== undefined) {
         params = params.concat("(species_ials.biodiversity_score >= " + (this.biodiversity.min / 100) + " AND species_ials.biodiversity_score <= " + (this.biodiversity.max / 100) + ")");
       }
-      if(typeof this.uncertainity.min !== undefined && this.uncertainity.max !== undefined) {
-        params = params.concat("(species_ials.uncertainity >= " + (this.uncertainity.min / 100) + " AND species_ials.uncertainity <= " + (this.uncertainity.max / 100) + ")");
+      if(typeof this.uncertainty.min !== undefined && this.uncertainty.max !== undefined) {
+        params = params.concat("(species_ials.uncertainty >= " + (this.uncertainty.min / 100) + " AND species_ials.uncertainty <= " + (this.uncertainty.max / 100) + ")");
       }
       if(this.countries.length > 0) {
         params = params.concat("(site IN (" + this.countries.join(",") + "))");
@@ -152,17 +152,17 @@ App.modules.SpeciesIals = function(app) {
       this.biodiversity = {};
       this.fetch({add: false});
     },
-    filterByUncertainity: function(min, max) {
-      if(this.uncertainity.min === min && this.uncertainity.max === max) {
+    filterByUncertainty: function(min, max) {
+      if(this.uncertainty.min === min && this.uncertainty.max === max) {
         return false;
       }
 
-      this.uncertainity = {min: min, max: max};
+      this.uncertainty = {min: min, max: max};
       this.fetch({add: false});
       return true;
     },
-    resetUncertainity: function() {
-      this.uncertainity = {};
+    resetUncertainty: function() {
+      this.uncertainty = {};
       this.fetch({add: false});
     },
     selectFilter: function(filter_selected) {

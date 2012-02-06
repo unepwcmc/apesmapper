@@ -20,7 +20,7 @@
     "species_richness": 36.00,
     "proportion_threatened_species": 44.44,
     "carbon_storage": 100.30,
-    "uncertainity": 0.30
+    "uncertainty": 0.30
   },
   {
     "id": 2,
@@ -43,7 +43,7 @@
     "species_richness": 36.00,
     "proportion_threatened_species": 44.44,
     "carbon_storage": 100.30,
-    "uncertainity": 0.30
+    "uncertainty": 0.30
   },
   {
     "id": 3,
@@ -66,7 +66,7 @@
     "species_richness": 36.00,
     "proportion_threatened_species": 44.44,
     "carbon_storage": 100.30,
-    "uncertainity": 0.30
+    "uncertainty": 0.30
   },
   {
     "id": 4,
@@ -89,6 +89,6 @@
     "species_richness": 36.00,
     "proportion_threatened_species": 44.44,
     "carbon_storage": 100.30,
-    "uncertainity": 0.30
+    "uncertainty": 0.30
   }
 ]
