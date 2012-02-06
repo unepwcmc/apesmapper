@@ -24,6 +24,8 @@ App.modules.Regions = function(app) {
         toUrl: function() {
           var selected_ids = this.selected().map(function(region){ return region.get('id').toString();});
           return _.size(selected_ids) > 0 ? selected_ids.join(",") : "0";
+        },
+        fromUrl: function(region_id) {
         }
     });
 

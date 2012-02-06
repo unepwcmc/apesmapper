@@ -24,6 +24,8 @@ App.modules.Categories = function(app) {
         toUrl: function() {
           var selected_ids = this.selected().map(function(category){ return category.get('id').toString();});
           return _.size(selected_ids) > 0 ? selected_ids.join(",") : "0";
+        },
+        fromUrl: function(categories_ids) {
         }
     });
 

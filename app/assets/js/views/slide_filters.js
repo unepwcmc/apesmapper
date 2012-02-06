@@ -37,17 +37,17 @@ App.views.SlideFilters = Backbone.View.extend({
   
   stop_slider: function(event, ui) {
     if(jQuery(event.target).hasClass("response")) {
-      this.species_ials.filterByResponse(ui.values[0], ui.values[1])
-      this.species_ials_table.filterByResponse(ui.values[0], ui.values[1])
+      this.species_ials.filterByResponse(ui.values[0], ui.values[1]);
+      this.species_ials_table.filterByResponse(ui.values[0], ui.values[1]);
     } else if(jQuery(event.target).hasClass("biodiversity")) {
-      this.species_ials.filterByBiodiversity(ui.values[0], ui.values[1])
-      this.species_ials_table.filterByBiodiversity(ui.values[0], ui.values[1])
+      this.species_ials.filterByBiodiversity(ui.values[0], ui.values[1]);
+      this.species_ials_table.filterByBiodiversity(ui.values[0], ui.values[1]);
     } else if(jQuery(event.target).hasClass("uncertainty")) {
-      this.species_ials.filterByUncertainty(ui.values[0], ui.values[1])
-      this.species_ials_table.filterByUncertainty(ui.values[0], ui.values[1])
+      this.species_ials.filterByUncertainty(ui.values[0], ui.values[1]);
+      this.species_ials_table.filterByUncertainty(ui.values[0], ui.values[1]);
     } else if(jQuery(event.target).hasClass("size")) {
-      this.species_ials.filterBySize(ui.values[0], ui.values[1])
-      this.species_ials_table.filterBySize(ui.values[0], ui.values[1])
+      this.species_ials.filterBySize(ui.values[0], ui.values[1]);
+      this.species_ials_table.filterBySize(ui.values[0], ui.values[1]);
     }
   },
 
@@ -94,5 +94,31 @@ App.views.SlideFilters = Backbone.View.extend({
     size_vals.push(values[0]);
     size_vals.push(values[1]);
     return [response_vals.join(","), biodiversity_vals.join(","), uncertainty_vals.join(","), size_vals.join(",")];
+  },
+  fromUrl: function(resoDetails, bioDetails, uncertDetails, sizeDetails){
+    var values = [];
+    values = resoDetails.split(',');
+    if(values[0] === "1"){
+      $("li.response").addClass("active").trigger('click');
+    } else {
+      $("li.response").removeClass("active");
+    }
+    $("#slide_filters ul.filters li.response div.filter-slider").slider("values", values.slice(1)).trigger('slidestop', {values: values.slice(1)}).trigger('slidestop', {values: values.slice(1)});
+    values = bioDetails.split(',');
+    if(values[0] === "1"){
+      $("li.biodiversity").addClass("active").trigger('click');
+    } else {
+      $("li.biodiversity").removeClass("active");
+    }
+    $("#slide_filters ul.filters li.biodiversity div.filter-slider").slider("values", values.slice(1)).trigger('slidestop', {values: values.slice(1)});
+    values = uncertDetails.split(',');
+    if(values[0] === "1"){
+      $("li.uncertainty").addClass("active").trigger('click');
+    } else {
+      $("li.uncertainty").removeClass("active");
+    }
+    $("#slide_filters ul.filters li.uncertainty div.filter-slider").slider("values", values.slice(1)).trigger('slidestop', {values: values.slice(1)});
+    values = sizeDetails.split(',');
+    $("#slide_filters ul.filters li div.filter-slider.size").slider("values", values).trigger('slidestop', {values: values});
   }
 });
