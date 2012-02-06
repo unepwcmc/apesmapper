@@ -7,9 +7,6 @@ App.views.ResultTable = Backbone.View.extend({
   initialize: function() {
     _.bindAll(this, 'render', 'addOne');
 
-    this.sites = this.options.sites;
-    this.sites.bind("all", this.render);
-
     this.species_ials_table = this.options.species_ials_table;
     this.species_ials_table.bind("all", this.render);
   },
