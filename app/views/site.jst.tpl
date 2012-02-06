@@ -15,4 +15,4 @@
 <td><%= species_richness %></td>
 <td><%= proportion_threatened_species %></td>
 <td><%= carbon_storage %></td>
-<td><%= uncertainity %></td>
+<td><%= uncertainty %></td>

@@ -55,8 +55,8 @@ App.views.EditSelectedSpeciesView = Backbone.View.extend({
       this.sites.filterByResponse(ui.values[0], ui.values[1])
     } else if(jQuery(event.target).hasClass("biodiversity")) {
       this.sites.filterByBiodiversity(ui.values[0], ui.values[1])
-    } else if(jQuery(event.target).hasClass("uncertainity")) {
-      this.sites.filterByUncertainity(ui.values[0], ui.values[1])
+    } else if(jQuery(event.target).hasClass("uncertainty")) {
+      this.sites.filterByUncertainty(ui.values[0], ui.values[1])
     } else if(jQuery(event.target).hasClass("size")) {
       this.sites.filterBySize(ui.values[0], ui.values[1])
     }

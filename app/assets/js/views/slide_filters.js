@@ -42,9 +42,9 @@ App.views.SlideFilters = Backbone.View.extend({
     } else if(jQuery(event.target).hasClass("biodiversity")) {
       this.species_ials.filterByBiodiversity(ui.values[0], ui.values[1])
       this.species_ials_table.filterByBiodiversity(ui.values[0], ui.values[1])
-    } else if(jQuery(event.target).hasClass("uncertainity")) {
-      this.species_ials.filterByUncertainity(ui.values[0], ui.values[1])
-      this.species_ials_table.filterByUncertainity(ui.values[0], ui.values[1])
+    } else if(jQuery(event.target).hasClass("uncertainty")) {
+      this.species_ials.filterByUncertainty(ui.values[0], ui.values[1])
+      this.species_ials_table.filterByUncertainty(ui.values[0], ui.values[1])
     } else if(jQuery(event.target).hasClass("size")) {
       this.species_ials.filterBySize(ui.values[0], ui.values[1])
       this.species_ials_table.filterBySize(ui.values[0], ui.values[1])
@@ -64,23 +64,35 @@ App.views.SlideFilters = Backbone.View.extend({
       jQuery(event.target).siblings('li').removeClass("active");
       jQuery(event.target).addClass("active");
 
-    } else if(jQuery(event.target).hasClass("uncertainity")) {
+    } else if(jQuery(event.target).hasClass("uncertainty")) {
 
-      this.species_ials.selectFilter("uncertainity")
+      this.species_ials.selectFilter("uncertainty")
       jQuery(event.target).siblings('li').removeClass("active");
       jQuery(event.target).addClass("active");
 
     }
   },
   toUrl: function(){
+    var values = [];
     var response_vals = [];
     response_vals.push($("li.response").hasClass("active") ? "1" : "0");
+    values = $("#slide_filters ul.filters li.response div.filter-slider").slider("values");
+    response_vals.push(values[0]);
+    response_vals.push(values[1]);
     var biodiversity_vals = [];
     biodiversity_vals.push($("li.biodiversity").hasClass("active") ? "1" : "0");
-    var uncertainity_vals = [];
-    uncertainity_vals.push($("li.uncertainity").hasClass("active") ? "1" : "0");
+    values = $("#slide_filters ul.filters li.biodiversity div.filter-slider").slider("values");
+    biodiversity_vals.push(values[0]);
+    biodiversity_vals.push(values[1]);
+    var uncertainty_vals = [];
+    uncertainty_vals.push($("li.uncertainty").hasClass("active") ? "1" : "0");
+    values = $("#slide_filters ul.filters li.uncertainty div.filter-slider").slider("values");
+    uncertainty_vals.push(values[0]);
+    uncertainty_vals.push(values[1]);
     var size_vals = [];
-    size_vals.push($("li.size").hasClass("active") ? "1" : "0");
-    return [response_vals.join(","), biodiversity_vals.join(","), uncertainity_vals.join(","), size_vals.join(",")];
+    values = $("#slide_filters ul.filters li div.filter-slider.size").slider("values");
+    size_vals.push(values[0]);
+    size_vals.push(values[1]);
+    return [response_vals.join(","), biodiversity_vals.join(","), uncertainty_vals.join(","), size_vals.join(",")];
   }
 });

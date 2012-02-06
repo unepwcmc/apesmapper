@@ -55,43 +55,6 @@
 .menu_subpage li a#report_activ{background:transparent url(/img/navigation/sub_report.png) no-repeat 2px 0px;}
 .menu_subpage li a.sub_wiki:hover{background:transparent url(/img/navigation/sub_wiki.png) no-repeat 2px 0px;}
 .menu_subpage li a#wiki_activ{background:transparent url(/img/navigation/sub_wiki.png) no-repeat 2px 0px;}
-.content_nav, .content_nav_g, .content_nav_y{position:relative;left:20px;float:left;width:250px;}
-.content_nav ul, .content_nav_g ul, .content_nav_y ul{list-style:none;margin:0;padding:0;width:230px;}
-.content_nav li, .content_nav_g li, .content_nav_y li{list-style:none;margin:0;background:#fff url(/img/navigation/divider.png) no-repeat -3px bottom;}
-.content_nav li a, .content_nav_g li a, .content_nav_y li a{padding-left:30px;color:#666666;font-size:11pt;display:block;width:200px;height:28px;padding-top:9px;}
-.content_nav li a.activ_nav{background:transparent url(/img/navigation/content_nav_hover.png) no-repeat 0px -41px;padding-top:8px;color:#fff;}
-.content_nav_g li a.activ_nav{background:transparent url(/img/navigation/content_nav_hover_g.png) no-repeat 0px -41px;padding-top:8px;color:#fff;}
-.content_nav_y li a.activ_nav{background:transparent url(/img/navigation/content_nav_hover_y.png) no-repeat 0px -41px;padding-top:8px;color:#fff;}
-.content_nav li a.activ_nav:hover{background:transparent url(/img/navigation/content_nav_hover.png) no-repeat 0px -41px;padding-top:8px;color:#fff;}
-.content_nav_g li a.activ_nav:hover{background:transparent url(/img/navigation/content_nav_hover_g.png) no-repeat 0px -41px;padding-top:8px;color:#fff;}
-.content_nav_y li a.activ_nav:hover{background:transparent url(/img/navigation/content_nav_hover_y.png) no-repeat 0px -41px;padding-top:8px;color:#fff;}
-.content_nav li a:hover{color:#666666;background:transparent url(/img/navigation/content_nav_hover.png) no-repeat 0px -3px;padding-top:9px;}
-.content_nav_g li a:hover{color:#666666;background:transparent url(/img/navigation/content_nav_hover_g.png) no-repeat 0px -3px;padding-top:9px;}
-.content_nav_y li a:hover{color:#666666;background:transparent url(/img/navigation/content_nav_hover_y.png) no-repeat 0px -3px;padding-top:9px;}
-.content_nav li:hover, .content_nav_g li:hover, .content_nav_y li:hover{color:#fff;}
-.content_nav li ul{background:#ebebeb;margin:0;width:210px;}
-.content_nav li li{width:210px;background:#ececec url(/img/navigation/sub_divider.png) no-repeat left bottom;}
-.content_nav li li a:hover{padding-top:10px;}
-.content_nav li li a.current{background:transparent url(/img/navigation/arrow_right.gif) no-repeat 13px 16px;color:#0071bc;}
-.content_nav li li a.current:hover{background:transparent url(/img/navigation/arrow_right.gif) no-repeat 13px 16px;color:#0071bc;}
-.content_nav li li a{color:#666;width:180px;height:auto;padding:10px 0px 10px 30px;background:transparent;}
-.content_nav li li li a{width:160px;}
-.content_nav li li li a:hover{background:transparent url(/img/navigation/content_nav_inner.png) no-repeat 0px -1px;}
-.content_nav li li li a.activ_inner_nav{background:transparent url(/img/navigation/content_nav_inner.png) no-repeat 0px -1px;}
-.content_nav li li a.last{background:#ececec url(/img/navigation/divider.png) no-repeat left bottom;}
-.content_nav li li a:hover{background:#ececec url(/img/navigation/sub_divider.png) no-repeat left bottom;color:#0071bc;}
-.content_nav li li a.last:hover{background:#ececec url(/img/navigation/divider.png) no-repeat left bottom;}
-.content_nav li li li{margin:0;padding:0;padding-left:20px;width:190px;}
-ul.species_dropdown, ul.species_dropdown li, ul.species_dropdown ul{list-style:none;margin:0;padding:0;}
-ul.species_dropdown{position:relative;z-index:597;float:left;margin-left:15px;margin-top:20px;}
-ul.species_dropdown li{float:left;line-height:1.3em;vertical-align:middle;zoom:1;background-color:#E6E6E6;margin-left:15px;width:162px;height:232px;padding-left:10px;}
-ul.species_dropdown li a{color:#666666;line-height:145%;}
-ul.species_dropdown li img{margin-left:-10px;}
-ul.species_dropdown li span{color:#0071bc;}
-ul.species_dropdown li.hover, ul.species_dropdown li:hover{position:relative;z-index:599;cursor:default;}
-ul.species_dropdown ul{visibility:hidden;position:absolute;left:0;z-index:598;width:100%;}
-ul.species_dropdown ul li{float:none;margin:0;padding:0;width:auto;height:auto;background:transparent;margin-left:20px;list-style:disc;}
-ul.species_dropdown li:hover > ul{visibility:visible;}
 .species_navigation ul, .database_navigation ul{list-style:none;margin:0;padding:0;}
 .species_navigation li, .database_navigation li{display:inline;float:left;width:131px;height:45px;background:#e6e6e6 url(/img/navigation/species_bottom.png) no-repeat left bottom;margin:20px;padding:8px 0px 8px 4px;}
 .species_navigation li a, .database_navigation li a{display:block;width:132px;color:#4d4d4d;}
