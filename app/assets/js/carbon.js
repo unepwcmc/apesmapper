@@ -144,11 +144,11 @@ App.modules.Carbon = function(app) {
           self.species.allSpecies.fromUrl(st.species);
           self.regions.allRegions.fromUrl(st.region);
           self.countries.allCountries.fromUrl(st.countries);
-          self.slideFilters.fromUrl(st.resoDetails, st.bioDetails, st.uncertDetails, st.sizeDetails);
+          self.slideFilters.fromUrl(st.resoDetails, st.bioDetails, st.sizeDetails);
        },
 
        //State expected format:
-       //#categories_ids|apes_ids|species_ids|region_id|countries_ids|ResoSelected,min,max|BioSelected,min,max|UncertSelected,min,max|SizeSelected,min,max
+       //#categories_ids|apes_ids|species_ids|region_id|countries_ids|ResoSelected,min,max|BioSelected,min,max|SizeSelected,min,max
        //categories_ids= comma spearated integers or -1
        //apes_ids= comma spearated integers or -1
        //species_ids= comma separated integers or -1
@@ -156,9 +156,8 @@ App.modules.Carbon = function(app) {
        //countries_ids= comma separated integers or -1
        //ResoSelected= 1 is selected, 0 is not selected - slider min-max
        //BioSelected= 1 is selected, 0 is not selected - slider min-max
-       //UncertSelected= 1 is selected, 0 is not selected - slider min-max
        //SizeSelected= 1 is selected, 0 is not selected - slider min-max
-       //Only one of Reso, Bio, Uncert, or Size can be selected at a time
+       //Only one of Reso, Bio, or Size can be selected at a time
        decode_state: function(state) {
           var states = state.split('|');
           var categories = states[0];
@@ -168,8 +167,7 @@ App.modules.Carbon = function(app) {
           var countries = states[4];
           var resoDetails = states[5];
           var bioDetails = states[6];
-          var uncertDetails = states[7];
-          var sizeDetails = states[8];
+          var sizeDetails = states[7];
 
           return {
             categories: categories,
@@ -179,7 +177,6 @@ App.modules.Carbon = function(app) {
             countries: countries,
             resoDetails: resoDetails,
             bioDetails: bioDetails,
-            uncertDetails: uncertDetails,
             sizeDetails: sizeDetails
           };
        },
