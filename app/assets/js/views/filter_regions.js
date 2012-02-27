@@ -15,7 +15,7 @@ App.views.RegionsFilterEdit = Backbone.View.extend({
         this.bus = this.options.bus;
         this.regions = this.options.regions;
         this.regions.bind('reset', this.render);
-        this.bus.on('show_regions_selector', this.show);
+        this.bus.on('show_regions_selector', this.next);
     },
 
     render: function() {
@@ -33,16 +33,16 @@ App.views.RegionsFilterEdit = Backbone.View.extend({
     },
 
     show: function() {
-        this.el.slideDown();
+      //this.el.slideDown();
     },
 
     hide: function() {
-        this.el.slideUp();
+      //this.el.slideUp();
     },
     next: function() {
       this.bus.emit('update_list_of_countries');
       this.bus.emit('show_countries_selector');
-      this.hide();
+      //this.hide();
     }
 });
 
