@@ -114,11 +114,6 @@ div#filter_pane {
         @include background-image(linear-gradient(left, #334433, #00FF00)); 
       }
     }
-    li.uncertainty {
-      .ui-widget-header {
-        @include background-image(linear-gradient(left, #333344, #0000FF)); 
-      }
-    }
 
     li.active {
       color:white;
