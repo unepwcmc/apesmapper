@@ -1,7 +1,7 @@
 <td><%= cartodb_id %></td>
 <td><%= name %></td>
-<td><%= area_km %></td>
-<td><%= state_score %></td>
+<td><%= area_km2 %></td>
+<td><%= habitat_score %></td>
 <td><%= mean_canopy_cover %></td>
 <td><%= pressure_score %></td>
 <td><%= mean_deforestation %></td>

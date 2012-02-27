@@ -5,8 +5,8 @@ App.modules.SpeciesIals = function(app) {
   var SpeciesIal = Backbone.Model.extend({
     defaults: function() {
       return {
-        area_km: null,
-        state_score: null,
+        area_km2: null,
+        habitat_score: null,
         pressure_score: null,
         response_score: 0,
         biodiversity_score: 0,
@@ -38,12 +38,12 @@ App.modules.SpeciesIals = function(app) {
     aggregateScoresSql: function() {
       // Returns the SQL from string to get the aggregated scores for the site_ials
       var selectSql = " MAX(species_ials.site) as ial_id,";
-      selectSql = selectSql + " MIN(species_ials.state_score) as state_score,";
+      selectSql = selectSql + " MIN(species_ials.habitat_score) as habitat_score,";
       selectSql = selectSql + " MIN(species_ials.biodiversity_score) as biodiversity_score,";
       selectSql = selectSql + " MIN(species_ials.pressure_score) as pressure_score,";
       selectSql = selectSql + " MIN(species_ials.response_score) as response_score,";
-      selectSql = selectSql + " MIN(species_ials.uncertainty) as uncertainty_score,";
-      selectSql = selectSql + " MAX(species_ials.area_km) as area_km,";
+      selectSql = selectSql + " MIN(species_ials.uncertainty_score) as uncertainty_score,";
+      selectSql = selectSql + " MAX(species_ials.area_km2) as area_km2,";
       selectSql = selectSql + " string_agg(species_ials.species, ', ') as species ";
       return selectSql;
     },
@@ -52,7 +52,7 @@ App.modules.SpeciesIals = function(app) {
       var params = [], conditionsSql = "";
 
       if(typeof this.size.min !== undefined && this.size.max !== undefined) {
-        params = params.concat("(species_ials.area_km >= " + this.size.min * 1000 + " AND species_ials.area_km <= " + this.size.max * 1000 + ")");
+        params = params.concat("(species_ials.area_km2 >= " + this.size.min * 1000 + " AND species_ials.area_km2 <= " + this.size.max * 1000 + ")");
       }
       if(typeof this.response.min !== undefined && this.response.max !== undefined) {
         params = params.concat("(species_ials.response_score >= " + (this.response.min / 100) + " AND species_ials.response_score <= " + (this.response.max / 100) + ")");
@@ -61,7 +61,7 @@ App.modules.SpeciesIals = function(app) {
         params = params.concat("(species_ials.biodiversity_score >= " + (this.biodiversity.min / 100) + " AND species_ials.biodiversity_score <= " + (this.biodiversity.max / 100) + ")");
       }
       if(typeof this.uncertainty.min !== undefined && this.uncertainty.max !== undefined) {
-        params = params.concat("(species_ials.uncertainty >= " + (this.uncertainty.min / 100) + " AND species_ials.uncertainty <= " + (this.uncertainty.max / 100) + ")");
+        params = params.concat("(species_ials.uncertainty_score >= " + (this.uncertainty.min / 100) + " AND species_ials.uncertainty_score <= " + (this.uncertainty.max / 100) + ")");
       }
       if(this.countries.length > 0) {
         params = params.concat("(site IN (" + this.countries.join(",") + "))");

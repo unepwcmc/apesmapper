@@ -42,6 +42,7 @@ class ApesMapper < Sinatra::Base
     # The second parameter defines where the compressed version will be served.
     # (Note: that parameter is optional, AssetPack will figure it out.)
     js :main_app, '/js/main_app.js', [
+      '/js/moochart-0.1b1.js',
       '/js/libs/jquery.mousewheel.js',
       '/js/libs/jquery.jscrollpane.js',
       '/js/libs/underscore-min.js',

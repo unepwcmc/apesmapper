@@ -6,8 +6,8 @@ App.modules.SpeciesIalsTable = function(app) {
     defaults: function() {
       return {
         name: null,
-        area_km: null,
-        state_score: null,
+        area_km2: null,
+        habitat_score: null,
         mean_canopy_cover: null,
         pressure_score: null,
         mean_deforestation: null,
@@ -22,7 +22,7 @@ App.modules.SpeciesIalsTable = function(app) {
         proportion_threatened_species: null,
         carbon_storage: null,
         uncertainty: null
-      }
+      };
     },
     idAttribute: 'cartodb_id'
   });
@@ -50,7 +50,7 @@ App.modules.SpeciesIalsTable = function(app) {
         params = [];
 
       if(typeof this.size.min !== undefined && this.size.max !== undefined) {
-        params = params.concat("(area_km >= " + this.size.min * 1000 + " AND area_km <= " + this.size.max * 1000 + ")");
+        params = params.concat("(area_km2 >= " + this.size.min * 1000 + " AND area_km2 <= " + this.size.max * 1000 + ")");
       }
       if(typeof this.response.min !== undefined && this.response.max !== undefined) {
         params = params.concat("(response_score >= " + (this.response.min / 100) + " AND response_score <= " + (this.response.max / 100) + ")");
@@ -59,7 +59,7 @@ App.modules.SpeciesIalsTable = function(app) {
         params = params.concat("(biodiversity_score >= " + (this.biodiversity.min / 100) + " AND biodiversity_score <= " + (this.biodiversity.max / 100) + ")");
       }
       if(typeof this.uncertainty.min !== undefined && this.uncertainty.max !== undefined) {
-        params = params.concat("(uncertainty >= " + (this.uncertainty.min / 100) + " AND uncertainty <= " + (this.uncertainty.max / 100) + ")");
+        params = params.concat("(uncertainty_score >= " + (this.uncertainty.min / 100) + " AND uncertainty_score <= " + (this.uncertainty.max / 100) + ")");
       }
       if(this.countries.length > 0) {
         params = params.concat("(site IN (" + this.countries.join(",") + "))");

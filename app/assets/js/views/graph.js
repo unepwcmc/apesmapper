@@ -10,12 +10,12 @@ App.views.Graph = Backbone.View.extend({
     this.species_ials = this.options.species_ials;
     this.species_ials.bind("all", this.render);
 
-    $.getJSON('http://carbon-tool.cartodb.com/api/v1/sql?q=SELECT MAX(area_km) AS max_area_km FROM species_ials', this.createGraph);
+    $.getJSON('http://carbon-tool.cartodb.com/api/v1/sql?q=SELECT MAX(area_km2) AS max_area_km2 FROM species_ials', this.createGraph);
   },
   createGraph: function(data) {
     // Create the graph
     this.bubbleSize = 60;
-    this.max_area_km = data.rows[0].max_area_km;
+    this.max_area_km2 = data.rows[0].max_area_km2;
     this.bubbleChart = new Chart.Bubble('graph', {
       width: 659,
       height: 580,
@@ -43,7 +43,7 @@ App.views.Graph = Backbone.View.extend({
       tooltip = 'Uncertainty: ' + species_ial.get('uncertainty_score');
     }
 
-    this.bubbleChart.addBubble(species_ial.get('state_score')*100, species_ial.get('pressure_score')*100, species_ial.get('area_km')/this.max_area_km*this.bubbleSize, color, tooltip);
+    this.bubbleChart.addBubble(species_ial.get('habitat_score')*100, species_ial.get('pressure_score')*100, species_ial.get('area_km2')/this.max_area_km2*this.bubbleSize, color, tooltip);
   },
 
   render: function() {
