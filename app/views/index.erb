@@ -31,7 +31,6 @@
 
   <!-- CSS: implied media="all" -->
   <%= css :application %>
-  <link rel="stylesheet" href="css/jquery.jscrollpane.css">
 
   <!-- Uncomment if you are specifically targeting less enabled mobile browsers
   <link rel="stylesheet" media="handheld" href="css/handheld.css?v=2">  -->
@@ -43,197 +42,179 @@
   <script src="js/mootools-1.2.5-core-nc.js" type="text/javascript" charset="utf-8"></script>
 </head>
 
-<body class="tool ">
-
-  <div id="wrapper">
-    <header id="head" class='horizontal_box_shadow'>
-      <div class="head_nav">
-        <ul>
-          <li><a href="/about" title="">about</a></li>
-          <li><a href="/contact" title="">contact</a></li>
-          <li><a href="#" title="">language</a></li>
-        </ul>
-      </div>
-    </header>
-    <div class="menu_subpage">
-      <ul>
-        <li><a class="sub_portal" id="portal_activ" href="#">Portal</a>
-        <ul>
-          <li><a class="por" href="portal/species">Species</a></li>
-          <li><a class="por" href="portal/topic">Topic</a></li>
-          <li><a class="por" href="portal/geography">Geography</a></li>
-          <li><a class="por" href="portal/tools">Tools</a></li>
-        </ul>
-        </li>
-        <li><a class="sub_data" href="#">Database</a>
-        <ul>
-          <li><a class="dat" href="database/archiveTable">Data Archive</a></li>
-          <li><a class="dat" href="database/literature">Literature</a></li>
-          <li><a class="dat" href="database/policy">Policy</a></li>
-          <li><a class="dat" href="database/surveyGuidelines">Survey Guidelines</a></li>
-        </ul>
-        </li>
-        <li><a class="sub_report" href="#">Report</a>
-        <ul>
-          <li><a class="rep" href="report/annual">Annual Report</a></li>
-          <li><a class="rep" href="report/archive">Archive</a></li>
-        </ul>
-        </li>
-        <li><a class="sub_wiki" href="http://apes.eva.mpg.de/apeswiki/index.php/Main_Page" target="_blank">Wiki</a></li>
-      </ul>
-    </div>
-
-    <div id="main" role="main" class='horizontal_box_shadow'>
-
-        <div id='filter_pane'>
-            <ul class='filters' id='species-countries-selected'>
-                Loading...
-            </ul>
-
-            <div id="categories_filter_edit" class='filter_editor'>
-                <h2>Select categories</h2>
-                <div class="selector" id='categories_selector'>Loading categories...</div>
-                <button id='next-categories-selection'>Next</button>
-                <button id='finish-categories-edit'>Done</button>
-            </div>
-
-            <div id="apes_filter_edit" class='filter_editor'>
-                <h2>Select Apes</h2>
-                <div class="selector" id='apes_selector'>Loading Apes...</div>
-                <button id='next-apes-selection'>Next</button>
-                <button id='finish-apes-edit'>Done</button>
-            </div>
-
-            <div id="species_filter_edit" class='filter_editor'>
-                <h2>Select species</h2>
-                <div class="selector" id='species_selector'>Loading species...</div>
-                <button id='finish-species-edit'>Done</button>
-            </div>
-
-            <div id="regions_filter_edit" class='filter_editor'>
-                <h2>Select Regions</h2>
-                <div class="selector" id='regions_selector'>Loading regions...</div>
-                <button id='next-regions-selection'>Next</button>
-                <button id='finish-regions-edit'>Done</button>
-            </div>
-
-            <div id="countries_filter_edit" class='filter_editor'>
-                <h2>Select Countries</h2>
-                <div class="selector" id='countries_selector'>Loading countries...</div>
-                <button id='finish-countries-edit'>Done</button>
-            </div>
-
-            <div id="slide_filters">
-                <ul class='filters'>
-                    <li class="response active">Reso. <div class='min-value response'>0</div> <div class='filter-slider response'></div> <div class='max-value response'>100</div> </li>
-                    <li class='biodiversity'>Biodiv. <div class='min-value biodiversity'>0</div> <div class='filter-slider biodiversity'></div> <div class='max-value biodiversity'>100</div> </li>
-                </ul>
-                <ul class='filters'>
-                    <li>Size <div class='min-value size'>0</div> <div class='filter-slider size'></div> <div class='max-value size'>100</div> </li>
-                </ul>
-            </div>
-            <div id='result-area'>
-                <div class='clear'>
-                  <span id='result-strip'>...</span>
-                  <div id='view-selector'>
-                      <a class="graph" href='#graph'>Graph</a>
-                      <a class="map" href='#main_map'>Map</a>
-                      <a class="table" href='#results-table'>Table</a>
+<body>
+<div class="container">
+  <div id="sidebar">
+    <h1>LOREM IPSUM DOLOR</h1>
+    <p>Lorem ipsjm dolor sit amet. consectetur adipi-scing elrt. Pellentesque eros augue, ultrices quis</p>
+    <div class="form-box first-box">
+      <form action="#" class="select-form">
+        <fieldset>
+          <div class="slide-block first">
+            <div class="holder">
+              <div class="frame">
+                <div class="content">
+                  <div class="title">
+                    <a href="#" class="open-close"><span>Done</span><em>Edit</em></a>
+                    <strong>SPECIES: </strong>
+                    <span class="selected"><a href="#"><span class="count">0</span> selected</a></span>
+                  </div>
+                  <div class="block" style="display: none; ">
+                    <div class="block-holder">
+                      <strong class="heading">Select categories</strong>
+                      <div class="box">
+                        <div class="row">
+                          <a href="#" class="show">show</a>
+                          <input id="check-other" class="check" type="checkbox">
+                          <label for="check-other">- OTHER APES</label>
+                        </div>
+                        <div class="row">
+                          <a href="#" class="show">show</a>
+                          <input id="check-great" class="check" type="checkbox">
+                          <label for="check-great">- GREAT APES</label>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <a href="#share" class="share_button"><span><strong>SHARE</strong> THIS REPORT</span></a>
+              </div>
             </div>
-        </div>
-
-        <div id='results_container'>
-            <div id='graph'></div>
-            <div class="map_container" id="main_map">
-                <div id="map" class="map"></div>
-                <div class="zoom_control">
-                  <a href="#zoom_in" class="zoom_in">zoom_in</a>
-                  <a href="#zoom_out" class="zoom_out">zoom_out</a>
-                </div>
-                <div class="crosshair">
-                    <img src="/img/icons/crosshair_map.png" />
-                </div>
-                <div class="tiles_info"><span></span></div>
-                <div class="layers">
-                    <a href="#view" class="view"><span>VIEWING <b class="layer_number">3 LAYERS</b></span></a>
-                    <div class="show">
-                        <span class="top"></span>
-                        <ul class="dropdown">
-                            <a class="expand" href="#expand">expand</a>
-                        </ul>
+          </div>
+          <div class="slide-block last inactive">
+            <div class="holder">
+              <div class="frame">
+                <div class="content">
+                  <div class="title">
+                    <a href="#" class="open-close"><span>Done</span><em>Edit</em></a>
+                    <strong>COUNTRIES: </strong>
+                    <span class="selected"><a href="#"><span class="count">0</span> selected</a></span>
+                  </div>
+                  <div class="block" style="display: none; ">
+                    <div class="block-holder">
+                      <strong class="heading">Select categories</strong>
+                      <div class="box">
+                        <div class="row">
+                          <a href="#" class="show">show</a>
+                          <input id="check-africa" class="check" type="checkbox">
+                          <label for="check-africa">- AFRICA</label>
+                        </div>
+                        <div class="row">
+                          <a href="#" class="show">show</a>
+                          <input id="check-asia" class="check" type="checkbox">
+                          <label for="check-asia">- ASIA</label>
+                        </div>
+                        <div class="row">
+                          <a href="#" class="show">show</a>
+                          <input id="check-europe" class="check" type="checkbox">
+                          <label for="check-europe">- EUROPE</label>
+                        </div>
+                      </div>
                     </div>
+                  </div>
                 </div>
-
-                <div class="search">
-                  <h1>search</h1>
-                  <input type='text' placeholder='............................' />
-                  <a href="#search">&nbsp;&nbsp;</a>
-                </div>
-
-
-                <a class="cartodb_logo" href="http://cartodb.com"></a>
+              </div>
             </div>
-                
-            <div id='table_header'>
-                <h3>Species Occurrences:</h3>
-                <a href="#download" id="download_button" class="share_button"><span>Download sites table</span></a>
-                <a href="#download" id="download_table_button" class="share_button"><span>Download this table</span></a>
-            </div>
-            <table id="results-table">
-                <thead>
-                    <tr>
-                      <th>IAL_ ID</th>
-                      <th>IAL_NAME</th>
-                      <th>Area (KM<sup>2</sup>)</th>
-                      <th>State</th>
-                      <th>Mean Canopy Cover</th>
-                      <th>Pressure</th>
-                      <th>Mean Deforestation (%)</th>
-                      <th>Mean Population Count</th>
-                      <th>Population Change (%)</th>
-                      <th>Mean Human Influence Index</th>
-                      <th>Response</th>
-                      <th>Protected Area (%)</th>
-                      <th>Mean Protection Category</th>
-                      <th>Biodiversity</th>
-                      <th>Species Richness</th>
-                      <th>Proportion Threatened Species (%)</th>
-                      <th>Carbon Storage/KM2</th>
-                      <th>Uncertainty</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
+            <div class="mask"></div>
+          </div>
+          <div class="btn-reset">
+            <input type="reset" value="Reset fields">
+          </div>
+        </fieldset>
+      </form>
     </div>
-
-    <div id="sponsors" class='horizontal_box_shadow'>
-      <ul style="padding-left:40px;">
-        <li><a href="#" style="margin-left:0px;" title=""><img src="/img/sponsors/arcus.gif" alt="" style="height:80px;width:80px;"/></a></li>
-        <li><a href="#" title=""><img src="/img/sponsors/unep.gif" alt="" style="height:80px;width:80px;" /></a></li>
-        <li><a href="#" title=""><img src="/img/sponsors/wcmc.gif" alt="" style="height:80px;width:80px;" /></a></li>
-        <li><a href="#" title=""><img src="/img/sponsors/wild.gif" alt="" style="height:80px;width:80px;" /></a></li>
-        <li><a href="#" title=""><img src="/img/sponsors/esri.gif" alt="" style="height:80px;width:80px;" /></a></li>
-        <li><a href="#" title=""><img src="/img/sponsors/wwf.gif" alt="" style="height:80px;width:80px;" /></a></li>
-        <li><a href="#" title=""><img src="/img/sponsors/iucn.gif" alt="" style="height:80px;width:80px;" /></a></li>
-        <li><a href="#" title=""><img src="/img/sponsors/jane.gif" alt="" style="height:80px;width:110px;" /></a></li>
-        <li><a href="#" title=""><img src="/img/sponsors/mpg.gif" alt="" style="height:80px;width:80px;" /></a></li>
+    <div class="form-box">
+      <form action="#" class="range-form">
+        <fieldset>
+          <div class="slide-block">
+            <div class="holder">
+              <div class="frame">
+                <div class="content">
+                  <label for="amount">ResPONSE</label>
+                  <div class="range">
+                    <input class="text" type="text" value="12" id="amount">
+                    <div class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
+                      <div class="ui-slider-range ui-widget-header"></div>
+                      <a href="#" class="ui-slider-handle ui-state-default ui-corner-all"></a>
+                      <a href="#" class="right ui-slider-handle ui-state-default ui-corner-all"></a>
+                    </div>
+                    <input class="text" type="text" value="100">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slide-block style2">
+            <div class="holder">
+              <div class="frame">
+                <div class="content">
+                  <label for="amount2">Biodiversity</label>
+                  <div class="range">
+                    <input class="text" type="text" value="0" id="amount2">
+                    <div class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
+                      <div class="ui-slider-range ui-widget-header"></div>
+                      <a href="#" class="ui-slider-handle ui-state-default ui-corner-all"></a>
+                      <a href="#" class="right ui-slider-handle ui-state-default ui-corner-all"></a>
+                    </div>
+                    <input class="text" type="text" value="75">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slide-block style3">
+            <div class="holder">
+              <div class="frame">
+                <div class="content">
+                  <label for="amount3">IAS Area</label>
+                  <div class="range">
+                    <input class="text" type="text" value="0" id="amount3">
+                    <div class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
+                      <div class="ui-slider-range ui-widget-header"></div>
+                      <a href="#" class="ui-slider-handle ui-state-default ui-corner-all"></a>
+                      <a href="#" class="right ui-slider-handle ui-state-default ui-corner-all"></a>
+                    </div>
+                    <input class="text" type="text" value="100">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="btn-reset">
+            <input type="reset" value="Reset fields">
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <div class="filter-buttons">
+      <strong>Filter by:</strong>
+      <ul>
+        <li><a href="#" class="active">Protected Areas</a></li>
+        <li><a href="#">Priority Areas</a></li>
+        <li><a href="#">Landscapes</a></li>
       </ul>
     </div>
-
-    <footer id="footer">
-      <img src="/img/footer/footer-logo.png" style="float:left; height:83;width:232;" alt="Logo-Footer" />
-      <ul class="footer_nav">
-        <li><a class="contact" href="/partners" title="">Partners</a></li>
-        <li><a class="imprint" href="#" title="">Philosophy</a></li>
-        <li><a class="faq" href="#" title="">FAQ</a></li>
-        <li><a class="support" href="#" title="">Support A.P.E.S.</a></li>
+    <div class="help-box">
+      <span>Help</span>
+      <a href="#" class="help">?</a>
+    </div>
+    <div class="share-box">
+      <a href="#" class="share">share this report</a>
+      <div class="heading"><strong>12</strong> sites</div>
+    </div>
+  </div>
+  <div id="content">
+    <div class="view-panel">
+      <span>View:</span>
+      <ul>
+        <li class="active"><a href="#">GRAPH </a><span></span></li>
+        <li><a href="#">MAP</a><span></span></li>
+        <li><a href="#">TABLE</a><span></span></li>
       </ul>
-    </footer>
-  </div> <!--! end of #container -->
+    </div>
+    <div class="image">
+      <img src="/img/img1.jpg" width="651" height="486" alt="image description">
+    </div>
+  </div>
 
   <!-- JavaScript at the bottom for fast page loading -->
 
@@ -299,6 +280,6 @@
     g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
     s.parentNode.insertBefore(g,s)}(document,"script"));
    </script>-->
-
+</div>
 </body>
 </html>
