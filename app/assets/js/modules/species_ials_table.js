@@ -35,7 +35,6 @@ App.modules.SpeciesIalsTable = function(app) {
       this.size = {};
       this.response = {};
       this.biodiversity = {};
-      this.uncertainty = {};
       this.countries = [];
       this.species = [];
     },
@@ -57,9 +56,6 @@ App.modules.SpeciesIalsTable = function(app) {
       }
       if(typeof this.biodiversity.min !== undefined && this.biodiversity.max !== undefined) {
         params = params.concat("(biodiversity_score >= " + (this.biodiversity.min / 100) + " AND biodiversity_score <= " + (this.biodiversity.max / 100) + ")");
-      }
-      if(typeof this.uncertainty.min !== undefined && this.uncertainty.max !== undefined) {
-        params = params.concat("(uncertainty_score >= " + (this.uncertainty.min / 100) + " AND uncertainty_score <= " + (this.uncertainty.max / 100) + ")");
       }
       if(this.countries.length > 0) {
         params = params.concat("(site IN (" + this.countries.join(",") + "))");
@@ -111,19 +107,6 @@ App.modules.SpeciesIalsTable = function(app) {
     },
     resetBiodiversity: function() {
       this.biodiversity = {};
-      this.fetch({add: false});
-    },
-    filterByUncertainty: function(min, max) {
-      if(this.uncertainty.min === min && this.uncertainty.max === max) {
-        return false;
-      }
-
-      this.uncertainty = {min: min, max: max};
-      this.fetch({add: false});
-      return true;
-    },
-    resetUncertainty: function() {
-      this.uncertainty = {};
       this.fetch({add: false});
     },
     selectCountries: function(countries) {

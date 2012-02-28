@@ -42,9 +42,6 @@ App.views.SlideFilters = Backbone.View.extend({
     } else if(jQuery(event.target).hasClass("biodiversity")) {
       this.species_ials.filterByBiodiversity(ui.values[0], ui.values[1]);
       this.species_ials_table.filterByBiodiversity(ui.values[0], ui.values[1]);
-    } else if(jQuery(event.target).hasClass("uncertainty")) {
-      this.species_ials.filterByUncertainty(ui.values[0], ui.values[1]);
-      this.species_ials_table.filterByUncertainty(ui.values[0], ui.values[1]);
     } else if(jQuery(event.target).hasClass("size")) {
       this.species_ials.filterBySize(ui.values[0], ui.values[1]);
       this.species_ials_table.filterBySize(ui.values[0], ui.values[1]);
@@ -54,19 +51,13 @@ App.views.SlideFilters = Backbone.View.extend({
   select_filter: function(event) {
     if(jQuery(event.target).hasClass("response")) {
 
-      this.species_ials.selectFilter("response")
+      this.species_ials.selectFilter("response");
       jQuery(event.target).siblings('li').removeClass("active");
       jQuery(event.target).addClass("active");
 
     } else if(jQuery(event.target).hasClass("biodiversity")) {
 
-      this.species_ials.selectFilter("biodiversity")
-      jQuery(event.target).siblings('li').removeClass("active");
-      jQuery(event.target).addClass("active");
-
-    } else if(jQuery(event.target).hasClass("uncertainty")) {
-
-      this.species_ials.selectFilter("uncertainty")
+      this.species_ials.selectFilter("biodiversity");
       jQuery(event.target).siblings('li').removeClass("active");
       jQuery(event.target).addClass("active");
 
@@ -84,18 +75,13 @@ App.views.SlideFilters = Backbone.View.extend({
     values = $("#slide_filters ul.filters li.biodiversity div.filter-slider").slider("values");
     biodiversity_vals.push(values[0]);
     biodiversity_vals.push(values[1]);
-    var uncertainty_vals = [];
-    uncertainty_vals.push($("li.uncertainty").hasClass("active") ? "1" : "0");
-    values = $("#slide_filters ul.filters li.uncertainty div.filter-slider").slider("values");
-    uncertainty_vals.push(values[0]);
-    uncertainty_vals.push(values[1]);
     var size_vals = [];
     values = $("#slide_filters ul.filters li div.filter-slider.size").slider("values");
     size_vals.push(values[0]);
     size_vals.push(values[1]);
-    return [response_vals.join(","), biodiversity_vals.join(","), uncertainty_vals.join(","), size_vals.join(",")];
+    return [response_vals.join(","), biodiversity_vals.join(","), size_vals.join(",")];
   },
-  fromUrl: function(resoDetails, bioDetails, uncertDetails, sizeDetails){
+  fromUrl: function(resoDetails, bioDetails, sizeDetails){
     var values = [];
     values = resoDetails.split(',');
     if(values[0] === "1"){
@@ -111,13 +97,6 @@ App.views.SlideFilters = Backbone.View.extend({
       $("li.biodiversity").removeClass("active");
     }
     $("#slide_filters ul.filters li.biodiversity div.filter-slider").slider("values", values.slice(1)).trigger('slidestop', {values: values.slice(1)});
-    values = uncertDetails.split(',');
-    if(values[0] === "1"){
-      $("li.uncertainty").addClass("active").trigger('click');
-    } else {
-      $("li.uncertainty").removeClass("active");
-    }
-    $("#slide_filters ul.filters li.uncertainty div.filter-slider").slider("values", values.slice(1)).trigger('slidestop', {values: values.slice(1)});
     values = sizeDetails.split(',');
     $("#slide_filters ul.filters li div.filter-slider.size").slider("values", values).trigger('slidestop', {values: values});
   }

@@ -39,9 +39,6 @@ App.views.Graph = Backbone.View.extend({
     } else if(this.species_ials.filter_selected === "biodiversity") {
       color = "#00" + this.color(species_ial, 'biodiversity_score') + "00";
       tooltip = 'Biodiversity: ' + species_ial.get('biodiversity_score');
-    } else if(this.species_ials.filter_selected === "uncertainty") {
-      color = "#0000" + this.color(species_ial, 'uncertainty_score');
-      tooltip = 'Uncertainty: ' + species_ial.get('uncertainty_score');
     }
 
     this.bubbleChart.addBubble(species_ial.get('habitat_score')*100, species_ial.get('pressure_score')*100, species_ial.get('area_km2')/this.max_area_km2*this.bubbleSize, color, tooltip);
