@@ -41,8 +41,8 @@ App.modules.SpeciesIals = function(app) {
       selectSql = selectSql + " species_ials.biodiversity_score as biodiversity_score,";
       selectSql = selectSql + " species_ials.pressure_score as pressure_score,";
       selectSql = selectSql + " species_ials.response_score response_score,";
-      selectSql = selectSql + " MIN(species_ials.uncertainty_score) as uncertainty_score,";
-      selectSql = selectSql + " MAX(species_ials.area_km2) as area_km2,";
+      selectSql = selectSql + " species_ials.uncertainty_score as uncertainty_score,";
+      selectSql = selectSql + " species_ials.area_km2 as area_km2,";
       selectSql = selectSql + " species_ials.species as species ";
       return selectSql;
     },
@@ -100,6 +100,15 @@ App.modules.SpeciesIals = function(app) {
       sqlQuery = sqlQuery + this.filterConditionsSql();
 
       sqlQuery = sqlQuery + " GROUP BY ials.the_geom_webmercator, ials.cartodb_id";
+
+      return sqlQuery;
+    },
+    ialsJoinAndFilterConditions: function() {
+      // returns the join and conditions SQL
+      var sqlQuery = "";
+      sqlQuery = sqlQuery + " INNER JOIN species_ials ON ials.ial_id = species_ials.site";
+
+      sqlQuery = sqlQuery + this.filterConditionsSql();
 
       return sqlQuery;
     },

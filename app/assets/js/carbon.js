@@ -55,7 +55,7 @@ App.modules.Carbon = function(app) {
             this.countriesFilterEdit = new App.views.CountriesFilterEdit({bus:this.bus, countries: this.countries.allCountries, regions: this.regions.allRegions});
             this.slideFilters = new App.views.SlideFilters({bus:this.bus, species: this.species.allSpecies, countries: this.countries.allCountries, species_ials: this.species_ials.allSpeciesIals, species_ials_table: this.species_ials_table.allSpeciesIalsTable});
             this.graph = new App.views.Graph({species_ials: this.species_ials.allSpeciesIals});
-            this.resultTable = new App.views.ResultTable({species_ials_table: this.species_ials_table.allSpeciesIalsTable});
+            this.resultTable = new App.views.ResultTable({species_ials: this.species_ials.allSpeciesIals});
             this.resultSummary = new App.views.ResultSummary({species_ials: this.species_ials.allSpeciesIals});
 
             // init routing and bind methods requiring this scope to routes
