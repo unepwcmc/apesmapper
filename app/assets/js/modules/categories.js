@@ -33,7 +33,7 @@ App.modules.Categories = function(app) {
         init: function() {
             // Initialise the categories collections
             this.allCategories = new AllCategories();
-            this.allCategories.fetch();
+            //this.allCategories.fetch();
         }
     });
 };

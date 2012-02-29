@@ -33,7 +33,7 @@ App.modules.Regions = function(app) {
         init: function() {
             // Initialise the regions collections
             this.allRegions = new AllRegions();
-            this.allRegions.fetch();
+            //this.allRegions.fetch();
         }
     });
 }

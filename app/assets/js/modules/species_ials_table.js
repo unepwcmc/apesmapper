@@ -125,7 +125,7 @@ App.modules.SpeciesIalsTable = function(app) {
     init: function() {
       // Initialise the sites collections
       this.allSpeciesIalsTable = new AllSpeciesIalsTable();
-      this.allSpeciesIalsTable.fetch();
+      //this.allSpeciesIalsTable.fetch();
     }
   });
 }
