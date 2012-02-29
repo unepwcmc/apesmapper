@@ -43,7 +43,7 @@ App.modules.Log = function(app) {
             jQuery.each(jQuery.browser, function(i, val) {
                 binfo.push(i + ":" + val);
             });
-            jQuery.post('/api/v0/error',binfo.join(',') + "=>" + Array.prototype.slice.call(arguments).join(''));
+            //jQuery.post('/api/v0/error',binfo.join(',') + "=>" + Array.prototype.slice.call(arguments).join(''));
         }
     };
 };

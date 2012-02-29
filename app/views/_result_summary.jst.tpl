@@ -1,1 +1,1 @@
-<span id='result-count'><%= result_count %></span> site<%= plural %>
+<strong><%= result_count %></strong> site<%= plural %>

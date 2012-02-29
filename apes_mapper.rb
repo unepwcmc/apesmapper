@@ -78,13 +78,12 @@ class ApesMapper < Sinatra::Base
       "/js/views/graph.js",
       "/js/views/result_summary.js",
       "/js/views/table.js",
-      '/js/carbon.js'
+      '/js/carbon.js',
+      '/js/jquery.main.js'
     ]
 
     css :application, [
-      '/css/jquery-ui-1.8.17.custom.css',
-      '/css/cartodb.css',
-      '/css/style.css'
+      '/css/all.css'
     ]
 
     js_compression  :uglify      # Optional

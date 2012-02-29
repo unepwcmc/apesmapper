@@ -22,7 +22,7 @@ App.views.EditSelectedSpeciesView = Backbone.View.extend({
     this.countries.bind("change", this.render);
 
     // Sliders
-    jQuery("div.filter-slider").slider({
+    jQuery("div.ui-slider").slider({
       range: true,
       min: 0,
       max: 100,

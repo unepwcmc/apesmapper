@@ -3,7 +3,7 @@
  * Currently this purely involves printing the number of results
  */
 App.views.ResultSummary = Backbone.View.extend({
-  el: 'span#result-strip',
+  el: '#result-strip',
   template: JST['_result_summary'],
 
   initialize: function() {

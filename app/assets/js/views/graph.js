@@ -18,8 +18,8 @@ App.views.Graph = Backbone.View.extend({
     this.bubbleSize = 60;
     this.max_area_km2 = data.rows[0].max_area_km2;
     this.bubbleChart = new Chart.Bubble('graph', {
-      width: 659,
-      height: 580,
+      width: 651,
+      height: 486,
       lineColor: '#3f3f3f',
       zmin: 0, zmax: 100,
       bubbleSize: this.bubbleSize
