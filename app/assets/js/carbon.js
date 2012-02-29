@@ -91,7 +91,7 @@ App.modules.Carbon = function(app) {
         },
         download_table: function() {
           alert("This doesn't work yet, sorry!");
-          window.location.href = "/csv?" + this.species_ials_table.allSpeciesIalsTable.url().split("?")[1] + "&type=species_occurrences";
+          window.location.href = "/csv?" + this.species_ials_table.allSpeciesIals.speciesOccurrenceQuery() + "&type=species_occurrences";
           return false;
         },
 

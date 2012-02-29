@@ -93,6 +93,13 @@ App.modules.SpeciesIals = function(app) {
       sqlQuery = sqlQuery + this.aggregateFromSql();
       return sqlQuery;
     },
+    speciesOccurrenceQuery: function() {
+      // Build the SQL query to get the species occurrences for the download
+      var sqlQuery = "SELECT ";
+      sqlQuery = sqlQuery + this.aggregateSelectSql();
+      sqlQuery = sqlQuery + this.aggregateFromSql();
+      return sqlQuery;
+    },
     geoQuery: function() {
       // returns the SQL query to be used for the maps
       var sqlQuery = "SELECT ";
