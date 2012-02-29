@@ -18,7 +18,6 @@ App.views.ResultSummary = Backbone.View.extend({
       result_count: this.species_ials.models.length,
       plural: this.species_ials.models.length === 1 ? '' : 's'
     });
-    console.log(renderedContent);
     jQuery(this.el).html(renderedContent);
   }
 });

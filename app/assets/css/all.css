@@ -4,6 +4,9 @@ body {
 	font:12px/14px Arial, Helvetica, sans-serif;
 	background:#fff;
 }
+.hide {
+  display: none;
+}
 img {border-style:none;}
 a {
 	color:#ccc;
@@ -605,3 +608,19 @@ q:after {content:''}
 .sub-nav .link2{background:url(/img/bg-link2.gif) no-repeat 0 100%;}
 .sub-nav .link3{background:url(/img/bg-link3.gif) no-repeat 0 100%;}
 .sub-nav .link4{background:url(/img/bg-link4.gif) no-repeat 0 100%;}
+
+#main_map {
+  width: 651px;
+  height: 486px;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+#table {
+  width: 651px;
+  height: 486px;
+  overflow: scroll;
+}

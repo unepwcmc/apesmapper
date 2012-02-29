@@ -2,6 +2,22 @@
 jQuery(function(){
 	initOpenClose();
 	initDropDisable();
+
+  $('.view-panel a').click(function(e) {
+    e.preventDefault();
+
+    $('#graph, #main_map, #table').addClass('hide');
+    if($(this).parent().hasClass('graph')) {
+      $('#graph').removeClass('hide');
+    } else if($(this).parent().hasClass('map')) {
+      $('#main_map').removeClass('hide');
+    } else {
+      $('#table').removeClass('hide');
+    }
+
+    $(this).parent().siblings().removeClass('active');
+    $(this).parent().addClass('active');
+  });
 });
 
 // open-close init
