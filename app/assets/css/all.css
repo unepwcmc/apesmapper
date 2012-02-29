@@ -333,6 +333,9 @@ q:after {content:''}
 	color:#333;
 	font:11px/23px Arial, Helvetica, sans-serif;
 }
+.range .ui-slider + .text {
+  margin-left: 5px;
+}
 .ui-slider{
 	float:left;
 	position:relative;
@@ -340,7 +343,7 @@ q:after {content:''}
 }
 .ui-widget-content{
 	background:url(/img/slider-range.png) no-repeat;
-	width:152px;
+	width:150px;
 	height:23px;
 }
 .ui-slider-horizontal .ui-slider-range {
@@ -364,10 +367,12 @@ q:after {content:''}
 	top:-4px;
 	left:-5px;
 }
-.ui-slider .right{
-	right:-5px;
-	left:auto;
-	background:url(/img/slider-handle.png) no-repeat 100% -73px;
+.ui-slider .ui-slider-handle {
+  margin-left: -5px;
+  outline: none;
+}
+.ui-slider .ui-slider-handle + .ui-slider-handle {
+  background:url(/img/slider-handle.png) no-repeat 100% -73px;
 }
 /*filter-buttons*/
 .filter-buttons{

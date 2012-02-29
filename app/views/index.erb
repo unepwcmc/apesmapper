@@ -129,15 +129,11 @@
             <div class="holder">
               <div class="frame">
                 <div class="content">
-                  <label for="amount">ResPONSE</label>
-                  <div class="range">
-                    <input class="text" type="text" value="12" id="amount">
-                    <div class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
-                      <div class="ui-slider-range ui-widget-header"></div>
-                      <a href="#" class="ui-slider-handle ui-state-default ui-corner-all"></a>
-                      <a href="#" class="right ui-slider-handle ui-state-default ui-corner-all"></a>
-                    </div>
-                    <input class="text" type="text" value="100">
+                  <label for="amount">Response</label>
+                  <div class="range response">
+                    <input class="text min-value" type="text" value="0">
+                    <div class="ui-slider"></div>
+                    <input class="text max-value" type="text" value="100">
                   </div>
                 </div>
               </div>
@@ -148,14 +144,10 @@
               <div class="frame">
                 <div class="content">
                   <label for="amount2">Biodiversity</label>
-                  <div class="range">
-                    <input class="text" type="text" value="0" id="amount2">
-                    <div class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
-                      <div class="ui-slider-range ui-widget-header"></div>
-                      <a href="#" class="ui-slider-handle ui-state-default ui-corner-all"></a>
-                      <a href="#" class="right ui-slider-handle ui-state-default ui-corner-all"></a>
-                    </div>
-                    <input class="text" type="text" value="75">
+                  <div class="range biodiversity">
+                    <input class="text min-value" type="text" value="0">
+                    <div class="ui-slider"></div>
+                    <input class="text max-value" type="text" value="100">
                   </div>
                 </div>
               </div>
@@ -166,14 +158,10 @@
               <div class="frame">
                 <div class="content">
                   <label for="amount3">IAS Area</label>
-                  <div class="range">
-                    <input class="text" type="text" value="0" id="amount3">
-                    <div class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
-                      <div class="ui-slider-range ui-widget-header"></div>
-                      <a href="#" class="ui-slider-handle ui-state-default ui-corner-all"></a>
-                      <a href="#" class="right ui-slider-handle ui-state-default ui-corner-all"></a>
-                    </div>
-                    <input class="text" type="text" value="100">
+                  <div class="range size">
+                    <input class="text min-value" type="text" value="0">
+                    <div class="ui-slider"></div>
+                    <input class="text max-value" type="text" value="100">
                   </div>
                 </div>
               </div>
@@ -199,7 +187,7 @@
     </div>
     <div class="share-box">
       <a href="#" class="share">share this report</a>
-      <div class="heading"><strong>12</strong> sites</div>
+      <div id="result-strip" class="heading"></div>
     </div>
   </div>
   <div id="content">
@@ -213,6 +201,10 @@
     </div>
     <div class="image">
       <img src="/img/img1.jpg" width="651" height="486" alt="image description">
+    </div>
+    <div id="graph"></div>
+    <div class="map_container" id="main_map">
+      <div id="map"></div>
     </div>
   </div>
 

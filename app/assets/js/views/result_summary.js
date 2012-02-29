@@ -3,7 +3,7 @@
  * Currently this purely involves printing the number of results
  */
 App.views.ResultSummary = Backbone.View.extend({
-  el: 'span#result-strip',
+  el: '#result-strip',
   template: JST['_result_summary'],
 
   initialize: function() {
@@ -18,6 +18,7 @@ App.views.ResultSummary = Backbone.View.extend({
       result_count: this.species_ials.models.length,
       plural: this.species_ials.models.length === 1 ? '' : 's'
     });
+    console.log(renderedContent);
     jQuery(this.el).html(renderedContent);
   }
 });
