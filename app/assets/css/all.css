@@ -137,11 +137,10 @@ q:after {content:''}
 }
 /*container*/
 .container{
-	background: url(/img/bg-sidebar.gif) repeat-y;
-	overflow:hidden;
 }
 /*sidebar*/
 #sidebar{
+	overflow:hidden;
 	float:left;
 	width:244px;
 	background:#c3c9ce;
@@ -149,6 +148,10 @@ q:after {content:''}
 	padding:16px 12px 0;
 	font-size:11px;
 	line-height:13px;
+
+        -moz-box-shadow:    0px 0px 11px 6px #AAA;
+        -webkit-box-shadow: 0px 0px 11px 6px #AAA;
+        box-shadow:         0px 0px 11px 6px #AAA;
 }
 #sidebar h1{
 	color:#fff;
@@ -464,7 +467,7 @@ q:after {content:''}
 /*content*/
 #content{
 	width:650px;
-	margin-left: 270px;
+	margin-left: 229px;
 	padding:7px 0 0 40px;
 }
 /*view-panel*/
@@ -478,7 +481,7 @@ q:after {content:''}
 	display:inline-block;
 	vertical-align:top;
 	padding:3px 3px 3px 8px;
-	margin:0 0 34px -40px;
+        z-index: 1;
 }
 *+html .view-panel{display:inline;}
 .view-panel:after{
@@ -611,7 +614,7 @@ q:after {content:''}
 
 #main_map {
   width: 651px;
-  height: 486px;
+  height: 538px;
 }
 
 #map {
@@ -621,6 +624,6 @@ q:after {content:''}
 
 #table {
   width: 651px;
-  height: 486px;
+  height: 538px;
   overflow: scroll;
 }
