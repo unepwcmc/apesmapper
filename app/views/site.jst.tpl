@@ -8,5 +8,5 @@
 <td><%= biodiversity_score %></td>
 <td><%= 'TO DO' %></td>
 <td><%= species %></td>
-<td><%= 'TO DO' %></td>
+<td><%= taxon_site_overlap %></td>
 <td><%= uncertainty_score %></td>
