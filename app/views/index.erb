@@ -194,17 +194,41 @@
     <div class="view-panel">
       <span>View:</span>
       <ul>
-        <li class="active"><a href="#">GRAPH </a><span></span></li>
-        <li><a href="#">MAP</a><span></span></li>
-        <li><a href="#">TABLE</a><span></span></li>
+        <li class="graph active"><a href="#">GRAPH</a><span></span></li>
+        <li class="map"><a href="#">MAP</a><span></span></li>
+        <li class="table"><a href="#">TABLE</a><span></span></li>
       </ul>
     </div>
-    <div class="image">
-      <img src="/img/img1.jpg" width="651" height="486" alt="image description">
-    </div>
     <div id="graph"></div>
-    <div class="map_container" id="main_map">
+    <div id="main_map" class="map_container hide">
       <div id="map"></div>
+    </div>
+    <div id="table" class="hide">
+      <table id="results-table">
+        <thead>
+          <tr>
+            <th>IAL_ ID</th>
+            <th>IAL_NAME</th>
+            <th>Area (KM<sup>2</sup>)</th>
+            <th>State</th>
+            <th>Mean Canopy Cover</th>
+            <th>Pressure</th>
+            <th>Mean Deforestation (%)</th>
+            <th>Mean Population Count</th>
+            <th>Population Change (%)</th>
+            <th>Mean Human Influence Index</th>
+            <th>Response</th>
+            <th>Protected Area (%)</th>
+            <th>Mean Protection Category</th>
+            <th>Biodiversity</th>
+            <th>Species Richness</th>
+            <th>Proportion Threatened Species (%)</th>
+            <th>Carbon Storage/KM2</th>
+            <th>Uncertainty</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
     </div>
   </div>
   <div id="landing" title="Welcome">

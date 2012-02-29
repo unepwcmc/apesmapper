@@ -2,6 +2,30 @@
 jQuery(function(){
 	initOpenClose();
 	initDropDisable();
+
+  $('.view-panel a').click(function(e) {
+    e.preventDefault();
+
+    $('#graph, #main_map, #table').addClass('hide');
+    if($(this).parent().hasClass('graph')) {
+      $('#graph').removeClass('hide');
+    } else if($(this).parent().hasClass('map')) {
+      $('#main_map').removeClass('hide');
+    } else {
+      $('#table').removeClass('hide');
+    }
+
+    $(this).parent().siblings().removeClass('active');
+    $(this).parent().addClass('active');
+  });
+
+  $('.range input').change(function() {
+    $(this).parent('.range').find('.ui-slider').slider('values', [$(this).parent('.range').find('.min-value').val(), $(this).parent('.range').find('.max-value').val()]).trigger('slidestop', {values: [$(this).parent('.range').find('.min-value').val(), $(this).parent('.range').find('.max-value').val()]});
+  });
+
+  $('form.range-form').bind('reset', function() {
+    $(this).find('input').change();
+  });
 });
 
 // open-close init
