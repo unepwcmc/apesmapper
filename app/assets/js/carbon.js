@@ -42,7 +42,6 @@ App.modules.Carbon = function(app) {
             this.countries = new app.Countries();
             this.species_ials = new app.SpeciesIals();
             this.map = new app.Map({bus:this.bus, species_ials: this.species_ials.allSpeciesIals}); // This actually contains the map view...
-            this.species_ials_table = new app.SpeciesIalsTable();
 
             // init Views
             this.selectedFilterView = new App.views.SelectedSpeciesCountries({bus:this.bus, species: this.species.allSpecies, countries: this.countries.allCountries});
@@ -53,7 +52,7 @@ App.modules.Carbon = function(app) {
 
             this.regionsFilterEdit = new App.views.RegionsFilterEdit({bus:this.bus, regions: this.regions.allRegions});
             this.countriesFilterEdit = new App.views.CountriesFilterEdit({bus:this.bus, countries: this.countries.allCountries, regions: this.regions.allRegions});
-            this.slideFilters = new App.views.SlideFilters({bus:this.bus, species: this.species.allSpecies, countries: this.countries.allCountries, species_ials: this.species_ials.allSpeciesIals, species_ials_table: this.species_ials_table.allSpeciesIalsTable});
+            this.slideFilters = new App.views.SlideFilters({bus:this.bus, species: this.species.allSpecies, countries: this.countries.allCountries, species_ials: this.species_ials.allSpeciesIals});
             this.graph = new App.views.Graph({species_ials: this.species_ials.allSpeciesIals});
             this.resultTable = new App.views.ResultTable({species_ials: this.species_ials.allSpeciesIals});
             this.resultSummary = new App.views.ResultSummary({species_ials: this.species_ials.allSpeciesIals});
@@ -91,6 +90,7 @@ App.modules.Carbon = function(app) {
           return false;
         },
         download_table: function() {
+          alert("This doesn't work yet, sorry!");
           window.location.href = "/csv?" + this.species_ials_table.allSpeciesIalsTable.url().split("?")[1] + "&type=species_occurrences";
           return false;
         },
