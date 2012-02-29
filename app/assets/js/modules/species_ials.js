@@ -73,7 +73,7 @@ App.modules.SpeciesIals = function(app) {
 
       return conditionsSql;
     },
-    aggregateSubSelectFromSql: function() {
+    aggregateFromSql: function() {
       // Get the species_ial with the maximum pressure and use that to filter the site values
       var sql =  "FROM";
       sql = sql + "  (SELECT MAX(pressure_score) AS max_pressure, site FROM species_ials ";
@@ -89,7 +89,7 @@ App.modules.SpeciesIals = function(app) {
       // Build the SQL query to filter species_ials
       var sqlQuery = "SELECT ";
       sqlQuery = sqlQuery + this.aggregateSelectSql();
-      sqlQuery = sqlQuery + this.aggregateSubSelectFromSql();
+      sqlQuery = sqlQuery + this.aggregateFromSql();
       return sqlQuery;
     },
     geoQuery: function() {

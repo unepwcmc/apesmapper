@@ -7,6 +7,6 @@
 <td><%= response_score %></td>
 <td><%= biodiversity_score %></td>
 <td><%= 'TO DO' %></td>
-<td><%= 'TO DO' %></td>
+<td><%= species %></td>
 <td><%= 'TO DO' %></td>
 <td><%= uncertainty_score %></td>
