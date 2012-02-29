@@ -1,6 +1,6 @@
 <td><%= ial_id %></td>
 <td><%= name %></td>
-<td><%= 'TO DO' %></td>
+<td><%= category %></td>
 <td><%= area_km2 %></td>
 <td><%= pressure_score %></td>
 <td><%= habitat_score %></td>

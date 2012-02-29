@@ -43,7 +43,8 @@ App.modules.SpeciesIals = function(app) {
       selectSql = selectSql + " species_ials.response_score response_score,";
       selectSql = selectSql + " species_ials.uncertainty_score as uncertainty_score,";
       selectSql = selectSql + " species_ials.area_km2 as area_km2,";
-      selectSql = selectSql + " species_ials.species as species ";
+      selectSql = selectSql + " species_ials.species as species, ";
+      selectSql = selectSql + " ials.category as category ";
       return selectSql;
     },
     filterConditionsSql: function (){
@@ -79,8 +80,9 @@ App.modules.SpeciesIals = function(app) {
       sql = sql + this.filterConditionsSql();
       sql = sql + "    GROUP BY site) AS max_values,";
       sql = sql + "  species_ials ";
+      sql = sql + " INNER JOIN ials ON ials.ial_id = species_ials.site ";
       sql = sql + "WHERE";
-      sql = sql + "  (max_pressure = species_ials.pressure_score AND max_values.site = species_ials.site) ";
+      sql = sql + "  (max_values.max_pressure = species_ials.pressure_score AND max_values.site = species_ials.site) ";
       return sql;
     },
     selectQuery: function() {
