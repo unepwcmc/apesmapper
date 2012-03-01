@@ -34,16 +34,18 @@ App.modules.SpeciesIals = function(app) {
       response = response.rows;
       return Backbone.Collection.prototype.parse.call(this, response);
     },
-    aggregateScoresSql: function() {
+    aggregateSelectSql: function() {
       // Returns the SQL from string to get the aggregated scores for the site_ials
-      var selectSql = " MAX(species_ials.site) as ial_id,";
-      selectSql = selectSql + " MIN(species_ials.habitat_score) as habitat_score,";
-      selectSql = selectSql + " MIN(species_ials.biodiversity_score) as biodiversity_score,";
-      selectSql = selectSql + " MIN(species_ials.pressure_score) as pressure_score,";
-      selectSql = selectSql + " MIN(species_ials.response_score) as response_score,";
-      selectSql = selectSql + " MIN(species_ials.uncertainty_score) as uncertainty_score,";
-      selectSql = selectSql + " MAX(species_ials.area_km2) as area_km2,";
-      selectSql = selectSql + " string_agg(species_ials.species, ', ') as species ";
+      var selectSql = " species_ials.site ial_id,";
+      selectSql = selectSql + " species_ials.habitat_score as habitat_score,";
+      selectSql = selectSql + " species_ials.biodiversity_score as biodiversity_score,";
+      selectSql = selectSql + " species_ials.pressure_score as pressure_score,";
+      selectSql = selectSql + " species_ials.response_score response_score,";
+      selectSql = selectSql + " species_ials.uncertainty_score as uncertainty_score,";
+      selectSql = selectSql + " species_ials.area_km2 as area_km2,";
+      selectSql = selectSql + " species_ials.species as species, ";
+      selectSql = selectSql + " species_ials.taxon_site_overlap as taxon_site_overlap, ";
+      selectSql = selectSql + " ials.category as category ";
       return selectSql;
     },
     filterConditionsSql: function (){
@@ -72,15 +74,30 @@ App.modules.SpeciesIals = function(app) {
 
       return conditionsSql;
     },
+    aggregateFromSql: function() {
+      // Get the species_ial with the maximum pressure and use that to filter the site values
+      var sql =  "FROM";
+      sql = sql + "  (SELECT MAX(pressure_score) AS max_pressure, site FROM species_ials ";
+      sql = sql + this.filterConditionsSql();
+      sql = sql + "    GROUP BY site) AS max_values,";
+      sql = sql + "  species_ials ";
+      sql = sql + " INNER JOIN ials ON ials.ial_id = species_ials.site ";
+      sql = sql + "WHERE";
+      sql = sql + "  (max_values.max_pressure = species_ials.pressure_score AND max_values.site = species_ials.site) ";
+      return sql;
+    },
     selectQuery: function() {
       // Build the SQL query to filter species_ials
       var sqlQuery = "SELECT ";
-      sqlQuery = sqlQuery + this.aggregateScoresSql();
-      sqlQuery = sqlQuery + " FROM species_ials";
-      
-      sqlQuery = sqlQuery + this.filterConditionsSql();
-
-      sqlQuery = sqlQuery + " GROUP BY species_ials.site";
+      sqlQuery = sqlQuery + this.aggregateSelectSql();
+      sqlQuery = sqlQuery + this.aggregateFromSql();
+      return sqlQuery;
+    },
+    speciesOccurrenceQuery: function() {
+      // Build the SQL query to get the species occurrences for the download
+      var sqlQuery = "SELECT ";
+      sqlQuery = sqlQuery + this.aggregateSelectSql();
+      sqlQuery = sqlQuery + this.aggregateFromSql();
       return sqlQuery;
     },
     geoQuery: function() {

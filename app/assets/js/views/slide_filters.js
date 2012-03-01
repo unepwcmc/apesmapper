@@ -17,7 +17,6 @@ App.views.SlideFilters = Backbone.View.extend({
     this.countries = this.options.countries;
     this.sites = this.options.sites;
     this.species_ials = this.options.species_ials;
-    this.species_ials_table = this.options.species_ials_table;
     this.bus.on('save_filter:click', this.render);
 
     // Sliders
@@ -38,19 +37,16 @@ App.views.SlideFilters = Backbone.View.extend({
   stop_slider: function(event, ui) {
     if(jQuery(event.target).parents('.range').hasClass("response")) {
       this.species_ials.filterByResponse(ui.values[0], ui.values[1]);
-      this.species_ials_table.filterByResponse(ui.values[0], ui.values[1]);
 
       $(".range-form .response .min-value").val(ui.values[0]);
       $(".range-form .response .max-value").val(ui.values[1]);
     } else if(jQuery(event.target).parents('.range').hasClass("biodiversity")) {
       this.species_ials.filterByBiodiversity(ui.values[0], ui.values[1]);
-      this.species_ials_table.filterByBiodiversity(ui.values[0], ui.values[1]);
 
       $(".range-form .biodiversity .min-value").val(ui.values[0]);
       $(".range-form .biodiversity .max-value").val(ui.values[1]);
     } else if(jQuery(event.target).parents('.range').hasClass("size")) {
       this.species_ials.filterBySize(ui.values[0], ui.values[1]);
-      this.species_ials_table.filterBySize(ui.values[0], ui.values[1]);
 
       $(".range-form .size .min-value").val(ui.values[0]);
       $(".range-form .size .max-value").val(ui.values[1]);

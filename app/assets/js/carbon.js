@@ -42,7 +42,6 @@ App.modules.Carbon = function(app) {
             this.countries = new app.Countries();
             this.species_ials = new app.SpeciesIals();
             this.map = new app.Map({bus:this.bus, species_ials: this.species_ials.allSpeciesIals}); // This actually contains the map view...
-            this.species_ials_table = new app.SpeciesIalsTable();
 
             // init Views
             this.selectedFilterView = new App.views.SelectedSpeciesCountries({bus:this.bus, species: this.species.allSpecies, countries: this.countries.allCountries});
@@ -53,9 +52,9 @@ App.modules.Carbon = function(app) {
 
             this.regionsFilterEdit = new App.views.RegionsFilterEdit({bus:this.bus, regions: this.regions.allRegions});
             this.countriesFilterEdit = new App.views.CountriesFilterEdit({bus:this.bus, countries: this.countries.allCountries, regions: this.regions.allRegions});
-            this.slideFilters = new App.views.SlideFilters({bus:this.bus, species: this.species.allSpecies, countries: this.countries.allCountries, species_ials: this.species_ials.allSpeciesIals, species_ials_table: this.species_ials_table.allSpeciesIalsTable});
+            this.slideFilters = new App.views.SlideFilters({bus:this.bus, species: this.species.allSpecies, countries: this.countries.allCountries, species_ials: this.species_ials.allSpeciesIals});
             this.graph = new App.views.Graph({species_ials: this.species_ials.allSpeciesIals});
-            this.resultTable = new App.views.ResultTable({species_ials_table: this.species_ials_table.allSpeciesIalsTable});
+            this.resultTable = new App.views.ResultTable({species_ials: this.species_ials.allSpeciesIals});
             this.resultSummary = new App.views.ResultSummary({species_ials: this.species_ials.allSpeciesIals});
 
             // init routing and bind methods requiring this scope to routes
@@ -74,10 +73,8 @@ App.modules.Carbon = function(app) {
             this.bus.on('map:reorder_layers', this.state_url);
 
             this.bus.on('species:change', this.species_ials.allSpeciesIals.selectSpecies);
-            this.bus.on('species:change', this.species_ials_table.allSpeciesIalsTable.selectSpecies);
 
             this.bus.on('countries:change', this.species_ials.allSpeciesIals.selectCountries);
-            this.bus.on('countries:change', this.species_ials_table.allSpeciesIalsTable.selectCountries);
 
             $("a#download_button").click(this.download);
             $("a#download_table_button").click(this.download_table);
@@ -91,7 +88,8 @@ App.modules.Carbon = function(app) {
           return false;
         },
         download_table: function() {
-          window.location.href = "/csv?" + this.species_ials_table.allSpeciesIalsTable.url().split("?")[1] + "&type=species_occurrences";
+          alert("This doesn't work yet, sorry!");
+          window.location.href = "/csv?" + this.species_ials_table.allSpeciesIals.speciesOccurrenceQuery() + "&type=species_occurrences";
           return false;
         },
 

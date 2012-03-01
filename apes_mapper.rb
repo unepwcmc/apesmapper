@@ -62,7 +62,6 @@ class ApesMapper < Sinatra::Base
       "/js/modules/regions.js",
       "/js/modules/countries.js",
       "/js/modules/species_ials.js",
-      "/js/modules/species_ials_table.js",
 
       "/js/views/projector.js",
       "/js/views/map.js",
@@ -143,9 +142,9 @@ class ApesMapper < Sinatra::Base
     res = Net::HTTP.get_response(uri)
     body = JSON.parse(res.body)
 
-    result = "cartodb_id,the_geom,area_km,biodiversity_score,pressure_score,response_score,site,species,species_site,state_score,uncertainty\n"
+    result = "cartodb_id,the_geom,area_km,biodiversity_score,pressure_score,response_score,site,species,species_site,habitat_score,uncertainty\n"
     body['rows'].each do |row|
-      result << "#{row['cartodb_id']},#{row['the_geom']},#{row['area_km']},#{row['biodiversity_score']},#{row['pressure_score']},#{row['response_score']},#{row['site']},#{row['species']},#{row['species_site']},#{row['state_score']},#{row['uncertainty']}\n"
+      result << "#{row['cartodb_id']},#{row['the_geom']},#{row['area_km']},#{row['biodiversity_score']},#{row['pressure_score']},#{row['response_score']},#{row['site']},#{row['species']},#{row['species_site']},#{row['habitat_score']},#{row['uncertainty']}\n"
     end
     result
   end
