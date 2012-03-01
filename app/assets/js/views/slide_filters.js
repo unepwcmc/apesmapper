@@ -6,7 +6,7 @@ App.views.SlideFilters = Backbone.View.extend({
 
   events: {
     'slidestop .ui-slider': 'stop_slider',
-    'click .slide-block': 'select_filter'
+    'click .content a.btn': 'select_filter'
   },
 
   initialize: function() {
@@ -54,19 +54,22 @@ App.views.SlideFilters = Backbone.View.extend({
   },
 
   select_filter: function(event) {
-    if(jQuery(event.target).hasClass("response")) {
+    if(jQuery(event.target).next().hasClass("response")) {
 
       this.species_ials.selectFilter("response");
       jQuery(event.target).siblings('li').removeClass("active");
       jQuery(event.target).addClass("active");
 
-    } else if(jQuery(event.target).hasClass("biodiversity")) {
+    } else if(jQuery(event.target).next().hasClass("biodiversity")) {
 
       this.species_ials.selectFilter("biodiversity");
       jQuery(event.target).siblings('li').removeClass("active");
       jQuery(event.target).addClass("active");
 
     }
+    // Update active button classes
+    $(this.el).find('.content .btn').removeClass('active');
+    jQuery(event.target).addClass('active');
   },
   toUrl: function(){
     var values = [];
