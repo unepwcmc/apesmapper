@@ -1,0 +1,67 @@
+[
+  {
+    "id": 1,
+    "region_id": 2,
+    "name": "China"
+  },
+  {
+    "id": 2,
+    "region_id": 2,
+    "name": "Malaysia"
+  },
+  {
+    "id": 3,
+    "region_id": 2,
+    "name": "Thailand"
+  },
+  {
+    "id": 4,
+    "region_id": 2,
+    "name": "Myanmar"
+  },
+  {
+    "id": 5,
+    "region_id": 2,
+    "name": "Lao People's Democratic Republic"
+  },
+  {
+    "id": 6,
+    "region_id": 2,
+    "name": "Indonesia"
+  },
+  {
+    "id": 7,
+    "region_id": 2,
+    "name": "Brunei Darussalam"
+  },
+  {
+    "id": 8,
+    "region_id": 2,
+    "name": "Arunachal pradesh"
+  },
+  {
+    "id": 9,
+    "region_id": 2,
+    "name": "India"
+  },
+  {
+    "id": 10,
+    "region_id": 2,
+    "name": "Viet Nam"
+  },
+  {
+    "id": 11,
+    "region_id": 2,
+    "name": "Cambodia"
+  },
+  {
+    "id": 31,
+    "region_id": 2,
+    "name": "Bangladesh"
+  },
+  {
+    "id": 32,
+    "region_id": 2,
+    "name": "Bhutan"
+  }
+]

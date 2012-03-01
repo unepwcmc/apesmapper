@@ -1,0 +1,67 @@
+[
+  {
+    "id": 28,
+    "ape_id": 3,
+    "region_id": 1,
+    "country_id": "12,13,14,15,16,17,18",
+    "taxa_scientific_name":"Gorilla gorilla ssp. gorilla",
+    "taxa_common_name":"Western lowland gorilla"
+  },
+  {
+    "id": 29,
+    "ape_id": 3,
+    "region_id": 1,
+    "country_id": "14,19",
+    "taxa_scientific_name":"Gorilla gorilla ssp. diehli",
+    "taxa_common_name":"Cross River gorilla"
+  },
+  {
+    "id": 30,
+    "ape_id": 3,
+    "region_id": 1,
+    "country_id": "15,20,21",
+    "taxa_scientific_name":"Gorilla beringei",
+    "taxa_common_name":"Eastern gorilla"
+  },
+  {
+    "id": 31,
+    "ape_id": 4,
+    "region_id": 1,
+    "country_id": "22,23,24,25,26,27,28,33,34",
+    "taxa_scientific_name":"Pan troglodytes ssp. verus",
+    "taxa_common_name":"Western chimpanzee"
+  },
+  {
+    "id": 32,
+    "ape_id": 4,
+    "region_id": 1,
+    "country_id": "14,19",
+    "taxa_scientific_name":"Pan troglodytes ssp. ellioti",
+    "taxa_common_name":"Nigerian-Cameroon chimpanzee"
+  },
+  {
+    "id": 33,
+    "ape_id": 4,
+    "region_id": 1,
+    "country_id": "12,13,14,15,16,17,18",
+    "taxa_scientific_name":"Pan troglodytes troglodytes",
+    "taxa_common_name":"Central chimpanzee"
+  },
+  {
+    "id": 34,
+    "ape_id": 4,
+    "region_id": 1,
+    "country_id": "12,15,16,20,21,29,30,35",
+    "taxa_scientific_name":"Pan troglodytes ssp. schweinfurthii",
+    "taxa_common_name":"Eastern chimpanzee"
+  },
+  {
+    "id": 35,
+    "ape_id": 5,
+    "region_id": 1,
+    "country_id": "15,16",
+    "taxa_scientific_name":"Pan paniscus",
+    "taxa_common_name":"Bonobo"
+  }
+]
+

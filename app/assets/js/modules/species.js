@@ -21,7 +21,9 @@ App.modules.Species = function(app) {
 
     var AllSpecies = Backbone.Collection.extend({
         model: Species,
-        url: 'json/species_t.json',
+        url: function() {
+          return 'json/regions/' + this.region_id + '/species.json';
+        },
         selected: function() {
             return this.filter(function(species){ return species.get('selected'); });
         },

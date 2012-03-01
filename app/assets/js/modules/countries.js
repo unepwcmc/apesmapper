@@ -18,7 +18,9 @@ App.modules.Countries = function(app) {
 
     var AllCountries = Backbone.Collection.extend({
         model: Country,
-        url: 'json/countries.json',
+        url: function() {
+          return 'json/regions/' + this.region_id + '/countries.json';
+        },
         selected: function() {
             return this.filter(function(country){ return country.get('selected'); });
         },
@@ -26,13 +28,8 @@ App.modules.Countries = function(app) {
           var selected_ids = this.selected().map(function(country){ return country.get('id').toString();});
           return _.size(selected_ids) > 0 ? selected_ids.join(",") : "0";
         },
-        fromUrl: function(countries_ids) {
-        },
-        filterByRegion: function(region_id){
-          return this.filter(function(country){ return country.get('region_id') == region_id;})
-        },
         visible: function() {
-          return this.filter(function(country) { return country.get('hidden') == false; })
+          return this.filter(function(country) { return country.get('hidden') === false; });
         }
     });
 

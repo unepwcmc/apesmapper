@@ -86,15 +86,14 @@ App.modules.Carbon = function(app) {
             //this.router.navigate('w/work_test');
         },
         landingInput: function(event){
+          var region_id = $(event.currentTarget).attr("id").replace("select_region_","");
           $("#landing").dialog("close");
-          var that = this;
-          this.regions.allRegions.fetch({success: function(){
-              var region_id = $(event.currentTarget).attr("id").replace("select_region_","");
-              that.regions.allRegions.get(region_id).toggle();
-            }, error: function(){
-              alert("fail, I did");
-            }
-          });
+
+          this.countries.allCountries.region_id = region_id;
+          this.countries.allCountries.fetch();
+
+          this.species.allSpecies.region_id = region_id;
+          this.species.allSpecies.fetch();
         },
         download: function() {
           window.location.href = "/csv?" + this.species_ials.allSpeciesIals.url().split("?")[1] + "&type=sites";
