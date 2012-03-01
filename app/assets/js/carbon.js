@@ -29,7 +29,7 @@ App.modules.Carbon = function(app) {
         },
 
         run: function() {
-            _.bindAll(this, 'on_route_to', '_state_url', 'download', 'download_table', 'build_state');
+            _.bindAll(this, 'on_route_to', '_state_url', 'download', 'download_table', 'build_state', 'landingInput');
             var self = this;
 
             // init Models
@@ -79,9 +79,22 @@ App.modules.Carbon = function(app) {
             $("a#download_button").click(this.download);
             $("a#download_table_button").click(this.download_table);
 
+            $("button.select_region").click(this.landingInput);
+
             // ready, launch
             Backbone.history.start();
             //this.router.navigate('w/work_test');
+        },
+        landingInput: function(event){
+          $("#landing").dialog("close");
+          var that = this;
+          this.regions.allRegions.fetch({success: function(){
+              var region_id = $(event.currentTarget).attr("id").replace("select_region_","");
+              that.regions.allRegions.get(region_id).toggle();
+            }, error: function(){
+              alert("fail, I did");
+            }
+          });
         },
         download: function() {
           window.location.href = "/csv?" + this.species_ials.allSpeciesIals.url().split("?")[1] + "&type=sites";
