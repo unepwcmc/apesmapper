@@ -34,6 +34,12 @@ App.modules.Species = function(app) {
         filterByApe: function(ape_id){
           return this.ape_id == ape_id;
         },
+        filterByRegion: function(region_id){
+          return this.filter(function(species){return species.get('region_id') == region_id;})
+        },
+        filterByCountry: function(country_id){
+          return this.filter(function(species){return _.include(species.get("country_id").split(','), country_id);})
+        },
         visible: function() {
           return this.filter(function(species) { return species.get('hidden') == false; })
         },
