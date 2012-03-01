@@ -45,6 +45,7 @@ App.modules.SpeciesIals = function(app) {
       selectSql = selectSql + " species_ials.area_km2 as area_km2,";
       selectSql = selectSql + " species_ials.species as species, ";
       selectSql = selectSql + " species_ials.taxon_site_overlap as taxon_site_overlap, ";
+      selectSql = selectSql + " ials.name as name, ";
       selectSql = selectSql + " ials.category as category ";
       return selectSql;
     },

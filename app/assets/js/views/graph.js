@@ -55,10 +55,14 @@ App.views.Graph = Backbone.View.extend({
 
     if(this.species_ials.filter_selected === "response") {
       color = this.color(maxResponseColor, minResponseColor, species_ial.get('response_score'));
-      tooltip = 'Response: ' + species_ial.get('response_score');
+      tooltip = 'IAL: ' + species_ial.get('ial_id') + '-' + species_ial.get('name') + '<br/>';
+      tooltip = tooltip + 'Response: ' + species_ial.get('response_score') + '<br/>';
+      tooltip = tooltip + 'Biodiversity: ' + species_ial.get('biodiversity_score') + '<br/>';
     } else if(this.species_ials.filter_selected === "biodiversity") {
       color = this.color(maxBiodiversityColor, minBiodiversityColor, species_ial.get('biodiversity_score'));
-      tooltip = 'Biodiversity: ' + species_ial.get('biodiversity_score');
+      tooltip = 'IAL: ' + species_ial.get('ial_id') + '-' + species_ial.get('name') + '<br/>';
+      tooltip = tooltip + 'Response: ' + species_ial.get('response_score') + '<br/>';
+      tooltip = tooltip + 'Biodiversity: ' + species_ial.get('biodiversity_score') + '<br/>';
     }
 
     this.bubbleChart.addBubble(species_ial.get('habitat_score')*100, species_ial.get('pressure_score')*100, species_ial.get('area_km2')/this.max_area_km2*this.bubbleSize, color, tooltip);
