@@ -691,6 +691,27 @@ div.ui-dialog.ui-widget.ui-widget-content {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0693d0', endColorstr='#0f538c',GradientType=0 ); /* IE6-9 */
 }
 
+.btn:hover {
+  background: #0693d0;
+  text-decoration:none;
+}
+
 .btn.active {
-  background: #0693d0; /* Old browsers */
+  background: #0693d0;
+}
+
+.range-form .btn {
+  float:right;
+  padding: 2px 3px;
+  margin-top: -2px;
+  margin-right: -11px;
+
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-bottom-left-radius: 3px;
+
+  display:inline;
+}
+.range-form .btn.active {
+  display:none;
 }
