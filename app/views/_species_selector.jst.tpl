@@ -1,5 +1,5 @@
-<!-- Species enable/disable input -->
-<label for="<%= the_type %>_<%= id %>" class='select_option'>
-  <div><%= name %></div>
-  <input name="<%= the_type %>" type="checkbox" <% if(selected){%> checked='true' <%}%> value="<%= id %>" id="<%= the_type %>_<%= id %>">
-</label>
+<% if(show_next) { %>
+<a href="#" class="show">show</a>
+<% } %>
+<input id="<%= the_type %>_<%= id %>" class="check" type="checkbox" value="<%= id %>" <% if(selected) { %> checked="checked" <% } %>>
+<label for="<%= the_type %>_<%= id %>">- <%= name %></label>

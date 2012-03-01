@@ -108,7 +108,6 @@ jQuery.fn.OpenClose = function(_options){
 						});
 					}
 				}
-				return false;
 			});
 			if(_holder.hasClass(_activeClass)) _slider.show();
 			else _slider.hide();

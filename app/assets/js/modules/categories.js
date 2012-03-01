@@ -6,7 +6,8 @@ App.modules.Categories = function(app) {
         defaults: function() {
             return {
               selected:  false,
-              the_type: "category"
+              the_type: "category",
+              show_next: true
             };
         },
         toggle: function() {

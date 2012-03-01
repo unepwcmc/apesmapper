@@ -3,10 +3,10 @@
  */
 App.views.SpeciesFilterEdit = Backbone.View.extend({
 
-    el: jQuery('#species_filter_edit'),
+    el: jQuery('#categories_filter_edit'),
 
     events: {
-        'click #finish-species-edit': 'hide'
+      'click .open-close': 'hide'
     },
 
     initialize: function() {
@@ -23,7 +23,7 @@ App.views.SpeciesFilterEdit = Backbone.View.extend({
 
     render: function() {
         // get the object to load the species views into
-        var $container = this.$('div#species_selector');
+        var $container = $('div#species_selector');
         $container.empty();
         // Create a species view inside $container for each species
         this.species.visible().each(function(species) {
@@ -35,18 +35,19 @@ App.views.SpeciesFilterEdit = Backbone.View.extend({
         return this;
     },
     show: function() {
-        this.el.slideDown();
+      $('div#species_selector').removeClass('hide')
     },
     hide: function() {
       var species = [];
 
-      _.each($(this.el).find("input[name=species]:checked"), function(s) {
+      _.each($(this.el).find("#species_selector input:checked"), function(s) {
         species.push($(s).val());
       });
 
       this.bus.emit('species:change', species);
 
-      this.el.slideUp();
+      $('div#species_selector').addClass('hide');
+      $('#categories_filter_edit span.selected').html('<a href="#"><span class="count">' + species.length + '</span> selected</a>')
     },
     next: function() {
       this.bus.trigger('show_species_selector');
@@ -70,6 +71,7 @@ App.views.SpeciesFilterEdit = Backbone.View.extend({
  */
 App.views.SpeciesSelector = Backbone.View.extend({
     template: JST['_species_selector'],
+    className: 'row',
     initialize: function() {
         _.bindAll(this, 'render', 'toggleSelected');
     },

@@ -7,7 +7,8 @@ App.modules.Apes = function(app) {
             return {
               selected:  false,
               the_type: "ape",
-              hidden: false
+              hidden: false,
+              show_next: true
             };
         },
         toggle: function() {
