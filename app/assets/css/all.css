@@ -720,3 +720,9 @@ div#landing p.instructions{
 .range-form .btn.active {
   display:none;
 }
+#countries_selector, #categories_selector, #apes_selector, #species_selector {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  max-height: 190px;
+
+}
