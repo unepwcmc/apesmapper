@@ -11,8 +11,6 @@ jQuery(function(){
       $('#graph').removeClass('hide');
     } else if($(this).parent().hasClass('map')) {
       $('#main_map').removeClass('hide');
-      $('#main_map').css('position', 'relative');
-      $('#main_map').css('left', '0');
     } else {
       $('#table').removeClass('hide');
     }
