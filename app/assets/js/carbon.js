@@ -189,7 +189,7 @@ App.modules.Carbon = function(app) {
             if(state) {
               this.set_state(this.decode_state(state));
             }
-        },
+       },
 
         on_route_to: function(route) {
             app.Log.debug("route => ", route);
