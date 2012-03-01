@@ -1,14 +1,213 @@
 [
   {
-    "ape_id": 1,
     "id": 1,
-    "name": "Hylobates lar ssp. lar (Malaysian lar)"
+    "ape_id": 1,
+    "taxa_scientific_name":"Hylobates lar ssp. lar",
+    "taxa_common_name":"Malaysian lar"
   },
   {
-    "ape_id": 2,
     "id": 2,
-    "name": "Pan troglodytes ssp. schweinfurthii (Eastern chimpanzee)"
+    "ape_id": 1,
+    "taxa_scientific_name":"Hylobates lar ssp. entelloides",
+    "taxa_common_name":"Central lar"
+  },
+  {
+    "id": 3,
+    "ape_id": 1,
+    "taxa_scientific_name":"Hylobates lar ssp. carpenteri",
+    "taxa_common_name":"Carpenter's lar"
+  },
+  {
+    "id": 4,
+    "ape_id": 1,
+    "taxa_scientific_name":"Hylobates lar ssp. yunnanensis",
+    "taxa_common_name":"Yunnan lar"
+  },
+  {
+    "id": 5,
+    "ape_id": 1,
+    "taxa_scientific_name":"Hylobates lar ssp. vestitus",
+    "taxa_common_name":"Sumatran lar"
+  },
+  {
+    "id": 6,
+    "ape_id": 1,
+    "taxa_scientific_name":"Hylobates agilis",
+    "taxa_common_name":"Agile gibbon, Black-handed gibbon"
+  },
+  {
+    "id": 7,
+    "ape_id": 1,
+    "taxa_scientific_name":"Hylobates muelleri ssp. funereus",
+    "taxa_common_name":"Northern gray gibbon"
+  },
+  {
+    "id": 8,
+    "ape_id": 1,
+    "taxa_scientific_name":"Hylobates muelleri ssp. abbotti",
+    "taxa_common_name":"Abbott's gray gibbon"
+  },
+  {
+    "id": 9,
+    "ape_id": 1,
+    "taxa_scientific_name":"Hylobates muelleri ssp. muelleri",
+    "taxa_common_name":"Southern gray gibbon"
+  },
+  {
+    "id": 10,
+    "ape_id": 1,
+    "taxa_scientific_name":"Hylobates moloch",
+    "taxa_common_name":"Silvery gibbon"
+  },
+  {
+    "id": 11,
+    "ape_id": 1,
+    "taxa_scientific_name":"Hylobates pileatus",
+    "taxa_common_name":"Pileated gibbon, capped gibbon"
+  },
+  {
+    "id": 12,
+    "ape_id": 1,
+    "taxa_scientific_name":"Hylobates albibarbis",
+    "taxa_common_name":"Bornean agile gibbon"
+  },
+  {
+    "id": 13,
+    "ape_id": 1,
+    "taxa_scientific_name":"Hylobates klossii",
+    "taxa_common_name":"Kloss's gibbon, Mentawai gibbon, Bilou"
+  },
+  {
+    "id": 14,
+    "ape_id": 1,
+    "taxa_scientific_name":"Hoolock hoolock",
+    "taxa_common_name":"Western hoolock gibbon"
+  },
+  {
+    "id": 15,
+    "ape_id": 1,
+    "taxa_scientific_name":"Hoolock leuconedys",
+    "taxa_common_name":"Eastern hoolock gibbon"
+  },
+  {
+    "id": 16,
+    "ape_id": 1,
+    "taxa_scientific_name":"Symphalangus syndactylus",
+    "taxa_common_name":"Siamang"
+  },
+  {
+    "id": 17,
+    "ape_id": 1,
+    "taxa_scientific_name":"Nomascus concolor ssp. lu",
+    "taxa_common_name":"Laotian black crested gibbon"
+  },
+  {
+    "id": 18,
+    "ape_id": 1,
+    "taxa_scientific_name":"Nomascus concolor ssp. concolor",
+    "taxa_common_name":"Tonkin blackcrested gibbon"
+  },
+  {
+    "id": 19,
+    "ape_id": 1,
+    "taxa_scientific_name":"Nomascus concolor ssp. furvogaster",
+    "taxa_common_name":"West Yunnan black crested gibbon"
+  },
+  {
+    "id": 20,
+    "ape_id": 1,
+    "taxa_scientific_name":"Nomascus concolor ssp. jingdongensis",
+    "taxa_common_name":"Central Yunnan black crested gibbon"
+  },
+  {
+    "id": 21,
+    "ape_id": 1,
+    "taxa_scientific_name":"Nomascus nasutus",
+    "taxa_common_name":"Eastern black crested gibbon"
+  },
+  {
+    "id": 22,
+    "ape_id": 1,
+    "taxa_scientific_name":"Nomascus leucogenys",
+    "taxa_common_name":"White-cheeked crested gibbon"
+  },
+  {
+    "id": 23,
+    "ape_id": 1,
+    "taxa_scientific_name":"Nomascus siki",
+    "taxa_common_name":"Souhtern white-cheecked gibbon"
+  },
+  {
+    "id": 24,
+    "ape_id": 1,
+    "taxa_scientific_name":"Nomascus hainanus",
+    "taxa_common_name":"Hainan black crested gibbon"
+  },
+  {
+    "id": 25,
+    "ape_id": 1,
+    "taxa_scientific_name":"Nomascus gabriellae",
+    "taxa_common_name":"Yellow-cheeked gibbon"
+  },
+  {
+    "id": 26,
+    "ape_id": 2,
+    "taxa_scientific_name":"Pongo pygmaeus",
+    "taxa_common_name":"Bornean orangutan"
+  },
+  {
+    "id": 27,
+    "ape_id": 2,
+    "taxa_scientific_name":"Pongo abelii",
+    "taxa_common_name":"Sumatran orangutan"
+  },
+  {
+    "id": 28,
+    "ape_id": 3,
+    "taxa_scientific_name":"Gorilla gorilla ssp. gorilla",
+    "taxa_common_name":"Western lowland gorilla"
+  },
+  {
+    "id": 29,
+    "ape_id": 3,
+    "taxa_scientific_name":"Gorilla gorilla ssp. diehli",
+    "taxa_common_name":"Cross River gorilla"
+  },
+  {
+    "id": 30,
+    "ape_id": 3,
+    "taxa_scientific_name":"Gorilla beringei",
+    "taxa_common_name":"Eastern gorilla"
+  },
+  {
+    "id": 31,
+    "ape_id": 4,
+    "taxa_scientific_name":"Pan troglodytes ssp. verus",
+    "taxa_common_name":"Western chimpanzee"
+  },
+  {
+    "id": 32,
+    "ape_id": 4,
+    "taxa_scientific_name":"Pan troglodytes ssp. ellioti",
+    "taxa_common_name":"Nigerian-Cameroon chimpanzee"
+  },
+  {
+    "id": 33,
+    "ape_id": 4,
+    "taxa_scientific_name":"Pan troglodytes troglodytes",
+    "taxa_common_name":"Central chimpanzee"
+  },
+  {
+    "id": 34,
+    "ape_id": 4,
+    "taxa_scientific_name":"Pan troglodytes ssp. schweinfurthii",
+    "taxa_common_name":"Eastern chimpanzee"
+  },
+  {
+    "id": 35,
+    "ape_id": 5,
+    "taxa_scientific_name":"Pan paniscus",
+    "taxa_common_name":"Bonobo"
   }
 ]
-
 

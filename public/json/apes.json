@@ -2,12 +2,37 @@
   {
     "category_id": 1,
     "id": 1,
+    "region_id": 2,
+    "country_id": "1,2,3,4,5,6,7,8,9,10,11,31,32",
     "name": "Gibbon"
   },
   {
     "category_id": 2,
     "id": 2,
+    "region_id": 2,
+    "country_id": "2,6",
+    "name": "Orangutan"
+  },
+  {
+    "category_id": 2,
+    "id": 3,
+    "region_id": 1,
+    "country_id": "12,13,14,15,16,17,18,19,20,21",
+    "name": "Gorilla"
+  },
+  {
+    "category_id": 2,
+    "id": 4,
+    "region_id": 1,
+    "country_id": "12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,33,34,35",
     "name": "Chimpanzee"
+  },
+  {
+    "category_id": 2,
+    "id": 5,
+    "region_id": 1,
+    "country_id": "15,16",
+    "name": "Bonobo"
   }
 ]
 
