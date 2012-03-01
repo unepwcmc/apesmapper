@@ -521,7 +521,7 @@ q:after {content:''}
 	background:#186fb1;
 }
 .view-panel ul li:hover span,
-.view-panel ul .active span{display:block;}
+.view-panel ul .active span{display:block;z-index:1;}
 /*image*/
 #content .image{overflow:hidden;}
 #content .image img{vertical-align:top;}
