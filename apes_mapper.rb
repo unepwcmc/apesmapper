@@ -47,7 +47,7 @@ class ApesMapper < Sinatra::Base
       '/js/libs/jquery.jscrollpane.js',
       '/js/libs/underscore-min.js',
       '/js/libs/class.js',
-      '/js/libs/backbone-min.js',
+      '/js/libs/backbone.js',
       '/js/libs/wax.g.js',
       '/js/libs/cartodb-gmapsv3.js',
 

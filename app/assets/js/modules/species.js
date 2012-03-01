@@ -7,7 +7,8 @@ App.modules.Species = function(app) {
             return {
               selected:  false,
               the_type: "species",
-              hidden: false
+              hidden: false,
+              show_next: false
             };
         },
         toggle: function() {
@@ -57,7 +58,7 @@ App.modules.Species = function(app) {
         init: function() {
             // Initialise the species collections
             this.allSpecies = new AllSpecies();
-            //this.allSpecies.fetch();
+            this.allSpecies.fetch();
         }
     });
 };

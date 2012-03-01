@@ -7,7 +7,8 @@ App.views.CategoriesFilterEdit = Backbone.View.extend({
 
     events: {
         'click #finish-categories-edit': 'hide',
-        'click #next-categories-selection': 'next'
+        'click .open-close': 'openClose',
+        'click #categories_selector .show': 'next'
     },
 
     initialize: function() {
@@ -21,7 +22,7 @@ App.views.CategoriesFilterEdit = Backbone.View.extend({
 
     render: function() {
         // get the object to load the categories views into
-        var $container = this.$('div#categories_selector');
+        var $container = $('div#categories_selector');
         $container.empty();
         // Create a categories view inside $categories for each categories
         this.categories.each(function(categories) {
@@ -34,15 +35,20 @@ App.views.CategoriesFilterEdit = Backbone.View.extend({
     },
 
     show: function() {
-        this.el.slideDown();
+      $('div#categories_selector').removeClass('hide')
     },
     hide: function() {
-      this.el.slideUp();
+      $('div#categories_selector').addClass('hide')
     },
     next: function() {
       this.bus.emit('update_list_of_apes');
       this.bus.emit('show_apes_selector');
       this.hide();
+    },
+    openClose: function(ev) {
+      ev.preventDefault();
+      $('div#categories_selector').siblings().addClass('hide');
+      this.show();
     }
 });
 
@@ -51,6 +57,7 @@ App.views.CategoriesFilterEdit = Backbone.View.extend({
  */
 App.views.CategoriesSelector = Backbone.View.extend({
     template: JST['_species_selector'],
+    className: 'row',
     initialize: function() {
         _.bindAll(this, 'render', 'toggleSelected');
     },

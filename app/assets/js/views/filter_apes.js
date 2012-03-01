@@ -3,11 +3,11 @@
  */
 App.views.ApesFilterEdit = Backbone.View.extend({
 
-    el: jQuery('#apes_filter_edit'),
+    el: jQuery('#categories_filter_edit'),
 
     events: {
         'click #finish-apes-edit': 'hide',
-        'click #next-apes-selection': 'next'
+        'click #apes_selector .show': 'next'
     },
 
     initialize: function() {
@@ -24,7 +24,7 @@ App.views.ApesFilterEdit = Backbone.View.extend({
 
     render: function() {
         // get the object to load the species views into
-        var $container = this.$('div#apes_selector');
+        var $container = $('div#apes_selector');
         $container.empty();
         // Create a apes view inside $container for each ape
         this.apes.visible().each(function(apes) {
@@ -36,10 +36,10 @@ App.views.ApesFilterEdit = Backbone.View.extend({
         return this;
     },
     show: function() {
-        this.el.slideDown();
+      $('div#apes_selector').removeClass('hide');
     },
     hide: function() {
-      this.el.slideUp();
+      $('div#apes_selector').addClass('hide');
     },
     next: function() {
       this.bus.emit('update_list_of_species');
@@ -65,6 +65,7 @@ App.views.ApesFilterEdit = Backbone.View.extend({
  */
 App.views.ApesSelector = Backbone.View.extend({
     template: JST['_species_selector'],
+    className: 'row',
     initialize: function() {
         _.bindAll(this, 'render', 'toggleSelected');
     },

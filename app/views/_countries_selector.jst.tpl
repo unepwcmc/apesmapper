@@ -1,5 +1,2 @@
-<!-- Countries enable/disable input -->
-<label for="country_select_<%= id %>" class="select_option">
-  <div><%= name %></div>
-  <input name="<%= the_type %>" type="checkbox" <% if(selected) { %> checked="checked"<% } %> value="<%= id %>" id="<%= the_type %>_<%= id %>">
-</label>
+<input id="<%= the_type %>_<%= id %>" class="check" type="checkbox" value="<%= id %>" <% if(selected) { %> checked="checked" <% } %>>
+<label for="<%= the_type %>_<%= id %>">- <%= name %></label>
