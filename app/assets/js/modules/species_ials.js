@@ -84,6 +84,13 @@ App.modules.SpeciesIals = function(app) {
       sql = sql + " INNER JOIN ials ON ials.ial_id = species_ials.site ";
       sql = sql + "WHERE";
       sql = sql + "  (max_values.max_pressure = species_ials.pressure_score AND max_values.site = species_ials.site) ";
+      if($("a.filter_by.active").length > 0){
+        sql = sql + " AND species_ials.category IN (";
+       $("a.filter_by.active").each(function(){
+         sql = sql + "'" + $(this).text() + "'";
+       });
+       sql = sql + ")";
+      }
       return sql;
     },
     selectQuery: function() {
