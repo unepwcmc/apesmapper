@@ -41,9 +41,10 @@ App.modules.Carbon = function(app) {
             this.regions = new app.Regions();
             this.countries = new app.Countries();
             this.species_ials = new app.SpeciesIals();
-            this.map = new app.Map({bus:this.bus, species_ials: this.species_ials.allSpeciesIals}); // This actually contains the map view...
+
 
             // init Views
+            this.map = new app.Map({bus:this.bus, species_ials: this.species_ials.allSpeciesIals}); // This actually contains the map view...
             this.selectedFilterView = new App.views.SelectedSpeciesCountries({bus:this.bus, species: this.species.allSpecies, countries: this.countries.allCountries});
 
             this.categoriesFilterEdit = new App.views.CategoriesFilterEdit({bus:this.bus, categories: this.categories.allCategories});
@@ -90,10 +91,18 @@ App.modules.Carbon = function(app) {
           $("#landing").dialog("close");
 
           this.countries.allCountries.region_id = region_id;
+          this.species.allSpecies.region_id = region_id;
+
+          this.fetchEverything();
+        },
+        fetchEverything: function() {
+          //Fetches all our collections
+          this.species.allSpecies.fetch();
           this.countries.allCountries.fetch();
 
-          this.species.allSpecies.region_id = region_id;
-          this.species.allSpecies.fetch();
+          this.species_ials.allSpeciesIals.fetch();
+          this.categories.allCategories.fetch();
+          this.apes.allApes.fetch();
         },
         download: function() {
           window.location.href = "/csv?" + this.species_ials.allSpeciesIals.url().split("?")[1] + "&type=sites";

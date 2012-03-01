@@ -37,7 +37,6 @@ App.modules.Countries = function(app) {
         init: function() {
             // Initialise the countries collections
             this.allCountries = new AllCountries();
-            //this.allCountries.fetch();
         }
     });
 }

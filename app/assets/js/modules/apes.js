@@ -46,7 +46,6 @@ App.modules.Apes = function(app) {
         init: function() {
             // Initialise the apes collections
             this.allApes = new AllApes();
-            //this.allApes.fetch();
         }
     });
 };

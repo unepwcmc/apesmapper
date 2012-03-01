@@ -191,7 +191,6 @@ App.modules.SpeciesIals = function(app) {
     init: function() {
       // Initialise the sites collections
       this.allSpeciesIals = new AllSpeciesIals();
-      //this.allSpeciesIals.fetch();
     }
   });
 }
