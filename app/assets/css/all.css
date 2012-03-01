@@ -627,3 +627,18 @@ q:after {content:''}
   height: 538px;
   overflow: scroll;
 }
+
+div.ui-dialog.ui-widget.ui-widget-content {
+  background: none repeat scroll 0 0 #EEEEEE;
+  border: 1px solid #333333;
+  border-radius: 10px 10px 10px 10px;
+  display: block;
+  height: 500px;
+  left: 473px;
+  outline: 0 none;
+  padding: 10px;
+  position: relative;
+  top: -349px;
+  width: 500px;
+  z-index: 1002;
+}
