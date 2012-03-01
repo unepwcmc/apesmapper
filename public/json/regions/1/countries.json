@@ -1,67 +1,112 @@
 [
   {
-    "id": 1,
-    "region_id": 2,
-    "name": "China"
+    "id": 12,
+    "region_id": 1,
+    "name": "Central African Republic"
   },
   {
-    "id": 2,
-    "region_id": 2,
-    "name": "Malaysia"
+    "id": 13,
+    "region_id": 1,
+    "name": "Angola"
   },
   {
-    "id": 3,
-    "region_id": 2,
-    "name": "Thailand"
+    "id": 14,
+    "region_id": 1,
+    "name": "Cameroon"
   },
   {
-    "id": 4,
-    "region_id": 2,
-    "name": "Myanmar"
+    "id": 15,
+    "region_id": 1,
+    "name": "Democratic Republic of the Congo"
   },
   {
-    "id": 5,
-    "region_id": 2,
-    "name": "Lao People's Democratic Republic"
+    "id": 16,
+    "region_id": 1,
+    "name": "Congo"
   },
   {
-    "id": 6,
-    "region_id": 2,
-    "name": "Indonesia"
+    "id": 17,
+    "region_id": 1,
+    "name": "Gabon"
   },
   {
-    "id": 7,
-    "region_id": 2,
-    "name": "Brunei Darussalam"
+    "id": 18,
+    "region_id": 1,
+    "name": "Equatorial Guinea"
   },
   {
-    "id": 8,
-    "region_id": 2,
-    "name": "Arunachal pradesh"
+    "id": 19,
+    "region_id": 1,
+    "name": "Nigeria"
   },
   {
-    "id": 9,
-    "region_id": 2,
-    "name": "India"
+    "id": 20,
+    "region_id": 1,
+    "name": "Rwanda"
   },
   {
-    "id": 10,
-    "region_id": 2,
-    "name": "Viet Nam"
+    "id": 21,
+    "region_id": 1,
+    "name": "Uganda"
   },
   {
-    "id": 11,
-    "region_id": 2,
-    "name": "Cambodia"
+    "id": 22,
+    "region_id": 1,
+    "name": "Guinea-Bissau"
   },
   {
-    "id": 31,
-    "region_id": 2,
-    "name": "Bangladesh"
+    "id": 23,
+    "region_id": 1,
+    "name": "Liberia"
   },
   {
-    "id": 32,
-    "region_id": 2,
-    "name": "Bhutan"
+    "id": 24,
+    "region_id": 1,
+    "name": "Mali"
+  },
+  {
+    "id": 25,
+    "region_id": 1,
+    "name": "Burkina Faso"
+  },
+  {
+    "id": 26,
+    "region_id": 1,
+    "name": "Cote d'Ivoire"
+  },
+  {
+    "id": 27,
+    "region_id": 1,
+    "name": "Senegal"
+  },
+  {
+    "id": 28,
+    "region_id": 1,
+    "name": "Sierra Leon"
+  },
+  {
+    "id": 29,
+    "region_id": 1,
+    "name": "Burundi"
+  },
+  {
+    "id": 30,
+    "region_id": 1,
+    "name": "United Republic of Tanzania"
+  },
+  {
+    "id": 33,
+    "region_id": 1,
+    "name": "Ghana"
+  },
+  {
+    "id": 34,
+    "region_id": 1,
+    "name": "Guinea"
+  },
+  {
+    "id": 35,
+    "region_id": 1,
+    "name": "Sudan"
   }
 ]
