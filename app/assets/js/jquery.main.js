@@ -28,6 +28,11 @@ jQuery(function(){
   $('form.range-form').bind('reset', function() {
     $(this).find('input').change();
   });
+
+  $("a.filter_by").click(function(){
+    $(this).toggleClass('active');
+    window.carbon.species_ials.allSpeciesIals.fetch();
+  });
 });
 
 // open-close init
@@ -110,7 +115,6 @@ jQuery.fn.OpenClose = function(_options){
 						});
 					}
 				}
-				return false;
 			});
 			if(_holder.hasClass(_activeClass)) _slider.show();
 			else _slider.hide();

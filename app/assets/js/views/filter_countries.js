@@ -41,13 +41,19 @@ App.views.CountriesFilterEdit = Backbone.View.extend({
     hide: function() {
         var countries = [];
 
-        _.each($(this.el).find("input[name=countries]:checked"), function(country) {
+        _.each($(this.el).find("#countries_selector input:checked"), function(country) {
           countries.push($(country).val());
         });
 
+        if(countries.length == 0) {
+          _.each($(this.el).find("#countries_selector input"), function(country) {
+            countries.push($(country).val());
+          });
+        }
+
         this.bus.emit('countries:change', countries);
 
-        this.el.slideUp();
+        $('#countries_filter_edit span.selected').html('<a href="#"><span class="count">' + countries.length + '</span> selected</a>')
     },
     filterByRegion: function() {
       var selected_regions = _.map(this.regions.selected(), function(region){return region.get('id')});
@@ -68,6 +74,7 @@ App.views.CountriesFilterEdit = Backbone.View.extend({
  */
 App.views.CountriesSelector = Backbone.View.extend({
     template: JST['_countries_selector'],
+    className: 'row',
     initialize: function() {
         _.bindAll(this, 'render', 'toggleSelected');
     },

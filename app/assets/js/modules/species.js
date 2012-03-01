@@ -7,7 +7,8 @@ App.modules.Species = function(app) {
             return {
               selected:  false,
               the_type: "species",
-              hidden: false
+              hidden: false,
+              show_next: false
             };
         },
         toggle: function() {
