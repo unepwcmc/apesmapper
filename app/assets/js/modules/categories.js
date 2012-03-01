@@ -26,6 +26,12 @@ App.modules.Categories = function(app) {
           var selected_ids = this.selected().map(function(category){ return category.get('id').toString();});
           return _.size(selected_ids) > 0 ? selected_ids.join(",") : "0";
         },
+        filterByRegion: function(region_id){
+          return this.filter(function(category){return category.get('region_id') == region_id;})
+        },
+        filterByCountry: function(country_id){
+          return this.filter(function(category){return _.include(category.get("country_id").split(','), country_id);})
+        },
         fromUrl: function(categories_ids) {
         }
     });
@@ -34,7 +40,7 @@ App.modules.Categories = function(app) {
         init: function() {
             // Initialise the categories collections
             this.allCategories = new AllCategories();
-            this.allCategories.fetch();
+            //this.allCategories.fetch();
         }
     });
 };

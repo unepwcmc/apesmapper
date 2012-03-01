@@ -20,7 +20,7 @@ App.views.Graph = Backbone.View.extend({
     this.bubbleChart = new Chart.Bubble('graph', {
       width: 651,
       height: 538,
-      lineColor: '#3f3f3f',
+      lineColor: '#000',
       zmin: 0, zmax: 100,
       bubbleSize: this.bubbleSize
     });
@@ -31,13 +31,33 @@ App.views.Graph = Backbone.View.extend({
   },
 
   addOne: function(species_ial) {
-    var color = "#000000", tooltip = '';
+    var color = 'rgb(0,0,0)', tooltip = '';
+    var maxResponseColor = {
+      red:101,
+      green:160,
+      blue:207
+    };
+    var minResponseColor = {
+      red:54,
+      green:85,
+      blue:110
+    };
+    var maxBiodiversityColor = {
+      red:227,
+      green:137,
+      blue:59
+    };
+    var minBiodiversityColor = {
+      red:135,
+      green:74,
+      blue:19
+    };
 
     if(this.species_ials.filter_selected === "response") {
-      color = "#" + this.color(species_ial, 'response_score') + "0000";
+      color = this.color(maxResponseColor, minResponseColor, species_ial.get('response_score'));
       tooltip = 'Response: ' + species_ial.get('response_score');
     } else if(this.species_ials.filter_selected === "biodiversity") {
-      color = "#00" + this.color(species_ial, 'biodiversity_score') + "00";
+      color = this.color(maxBiodiversityColor, minBiodiversityColor, species_ial.get('biodiversity_score'));
       tooltip = 'Biodiversity: ' + species_ial.get('biodiversity_score');
     }
 
@@ -54,11 +74,23 @@ App.views.Graph = Backbone.View.extend({
     return this;
   },
   
-  color: function(species_ial, property) {
-    var color = Math.round(species_ial.get(property) * 255).toString(16);
-    while(color.length < 2) {
-      color = '0' + color;
-    }
+  // Calculates a color gradient from the origin color to black based on a number
+  color: function(maxValues, minValues, gradient) {
+    var color = 'rgb(';
+
+    var redRange = maxValues.red - minValues.red;
+    var redValue = Math.round(redRange*gradient) + minValues.red;
+    color = color + redValue + ',';
+
+    var greenRange = maxValues.green - minValues.green;
+    var greenValue = Math.round(greenRange*gradient) + minValues.green;
+    color = color + greenValue + ',';
+
+    var blueRange = maxValues.blue - minValues.blue;
+    var blueValue = Math.round(blueRange*gradient) + minValues.blue;
+    color = color + blueValue ;
+
+    color = color + ')';
     return color;
   }
 });
