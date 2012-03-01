@@ -31,6 +31,12 @@ App.modules.Apes = function(app) {
         filterByCategory: function(category_id){
           return this.filter(function(ape){ return ape.get('category_id') == category_id;})
         },
+        filterByRegion: function(region_id){
+          return this.filter(function(ape){return ape.get('region_id') == region_id;})
+        },
+        filterByCountry: function(country_id){
+          return this.filter(function(ape){return _.include(ape.get("country_id").split(','), country_id);})
+        },
         visible: function() {
           return this.filter(function(ape) { return ape.get('hidden') == false; })
         }
