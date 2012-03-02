@@ -51,7 +51,10 @@ App.modules.SpeciesIals = function(app) {
     },
     filterConditionsSql: function (){
       // Where clause based on the current filtering
-      var params = [], sqlFragment = '', conditionsSql = "", countries;
+      var params = [], sqlFragment = '', conditionsSql = "", countries, joinSql = "";
+
+      // Add join to filter by country
+      joinSql = " INNER JOIN countries_ials ON species_ials.site = countries_ials.ial_id ";
 
       if(typeof this.size.min !== undefined && this.size.max !== undefined) {
         params = params.concat("(species_ials.area_km2 >= " + this.size.min * 1000 + " AND species_ials.area_km2 <= " + this.size.max * 1000 + ")");
@@ -86,7 +89,7 @@ App.modules.SpeciesIals = function(app) {
       }
 
       if(params.length > 0) {
-        conditionsSql = " WHERE " + params.join(" AND ");
+        conditionsSql = joinSql + " WHERE " + params.join(" AND ");
       }
 
       return conditionsSql;
