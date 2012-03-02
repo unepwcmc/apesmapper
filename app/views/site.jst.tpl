@@ -2,11 +2,11 @@
 <td><%= name %></td>
 <td><%= category %></td>
 <td><%= area_km2 %></td>
-<td><%= pressure_score %></td>
-<td><%= habitat_score %></td>
-<td><%= response_score %></td>
-<td><%= biodiversity_score %></td>
+<td><%= Math.round(pressure_score*100)/100 %></td>
+<td><%= Math.round(habitat_score*100)/100 %></td>
+<td><%= Math.round(response_score*100)/100 %></td>
+<td><%= Math.round(biodiversity_score*100)/100 %></td>
 <td><%= 'TO DO' %></td>
 <td><%= species %></td>
-<td><%= taxon_site_overlap %></td>
-<td><%= uncertainty_score %></td>
+<td><%= Math.round(taxon_site_overlap*100)/100 %></td>
+<td><%= Math.round(uncertainty_score*100)/100 %></td>
