@@ -20,10 +20,11 @@ App.views.Graph = Backbone.View.extend({
     this.bubbleChart = new Chart.Bubble('graph', {
       width: 651,
       height: 538,
-      lineColor: '#000',
+      lineColor: 'rgba(0,0,0,0)',
       zmin: 0, zmax: 100,
       bubbleSize: this.bubbleSize
     });
+    $('#graph canvas').css('background', "url('/img/graph.jpg') no-repeat 13px 51px");
     this.render();
   },
   addAll: function() {
