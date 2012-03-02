@@ -3,6 +3,7 @@ body {
 	color:#4d4d4d;
 	font:12px/14px Arial, Helvetica, sans-serif;
 	background:#fff;
+  overflow:hidden;
 }
 .hide {
   display: none;

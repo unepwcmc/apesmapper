@@ -77,10 +77,11 @@ App.modules.SpeciesIals = function(app) {
       // Add active filters (This should really have a view and not query the DOM...)
       if($("a.filter_by.active").length > 0){
         sqlFragment = "(species_ials.category IN (";
+        var fragments = [];
         $("a.filter_by.active").each(function(){
-          sqlFragment = sqlFragment + "'" + $(this).text() + "'";
+          fragments.push( "'" + $(this).text() + "'");
         });
-        sqlFragment = sqlFragment + "))";
+        sqlFragment = sqlFragment + fragments.join(',') + "))";
         params = params.concat(sqlFragment);
       }
 
