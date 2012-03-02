@@ -364,11 +364,12 @@ q:after {content:''}
 	top: 0;
 	background:url(/img/slider-range-act.png) no-repeat;
 }
-.range-form .style2 .ui-slider-horizontal .ui-slider-range{background:url(/img/slider-range-act2.png) no-repeat;}
-.range-form .style3 .ui-slider-horizontal .ui-slider-range{background:url(/img/slider-range-act3.png) no-repeat;}
+.range-form .style2 .ui-slider-horizontal .ui-slider-range{background:url(/img/slider-range-act2.png) no-repeat; background-position: 100% 0%;}
+.range-form .style3 .ui-slider-horizontal .ui-slider-range{background:url(/img/slider-range-act3.png) no-repeat; background-position: 100% 0%;}
 .ui-slider .ui-slider-range {
 	position: absolute;
 	z-index: 1;
+  background-position: 100% 0%;
 }
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
 	position:absolute;
