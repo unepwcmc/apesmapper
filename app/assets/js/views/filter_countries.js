@@ -6,16 +6,17 @@ App.views.CountriesFilterEdit = Backbone.View.extend({
     el: jQuery('#countries_filter_edit'),
 
     events: {
-        'click #finish-countries-edit': 'hide'
+        'click #finish-countries-edit': 'updateCountries'
     },
 
     initialize: function() {
-        _.bindAll(this, 'render', 'show', 'hide', 'filterByRegion');
+        _.bindAll(this, 'render', 'show', 'updateCountries', 'filterByRegion');
         this.bus = this.options.bus;
         this.regions = this.options.regions;
         this.countries = this.options.countries;
 
         this.countries.bind('reset', this.render);
+        this.countries.bind('reset', this.updateCountries);
         this.bus.on('show_countries_selector', this.show);
         this.bus.on('update_list_of_countries', this.filterByRegion);
     },
@@ -38,14 +39,16 @@ App.views.CountriesFilterEdit = Backbone.View.extend({
         this.el.slideDown();
     },
 
-    hide: function() {
+    updateCountries: function() {
+        // Get the selected countries from the view, close the panel and 
+        // fire the 'countries:change' event with the user selection
         var countries = [];
 
         _.each($(this.el).find("#countries_selector input:checked"), function(country) {
           countries.push($(country).val());
         });
 
-        if(countries.length == 0) {
+        if(countries.length === 0) {
           _.each($(this.el).find("#countries_selector input"), function(country) {
             countries.push($(country).val());
           });
@@ -53,8 +56,9 @@ App.views.CountriesFilterEdit = Backbone.View.extend({
 
         this.bus.emit('countries:change', countries);
 
-        $('#countries_filter_edit span.selected').html('<a href="#"><span class="count">' + countries.length + '</span> selected</a>')
+        $('#countries_filter_edit span.selected').html('<a href="#"><span class="count">' + countries.length + '</span> selected</a>');
     },
+
     filterByRegion: function() {
       var selected_regions = _.map(this.regions.selected(), function(region){return region.get('id')});
       this.countries.each(function(country) {

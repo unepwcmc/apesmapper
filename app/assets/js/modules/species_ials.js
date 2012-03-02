@@ -51,7 +51,7 @@ App.modules.SpeciesIals = function(app) {
     },
     filterConditionsSql: function (){
       // Where clause based on the current filtering
-      var params = [], conditionsSql = "";
+      var params = [], sqlFragment = '', conditionsSql = "", countries;
 
       if(typeof this.size.min !== undefined && this.size.max !== undefined) {
         params = params.concat("(species_ials.area_km2 >= " + this.size.min * 1000 + " AND species_ials.area_km2 <= " + this.size.max * 1000 + ")");
@@ -62,11 +62,26 @@ App.modules.SpeciesIals = function(app) {
       if(typeof this.biodiversity.min !== undefined && this.biodiversity.max !== undefined) {
         params = params.concat("(species_ials.biodiversity_score >= " + (this.biodiversity.min / 100) + " AND species_ials.biodiversity_score <= " + (this.biodiversity.max / 100) + ")");
       }
-      if(this.countries.length > 0) {
-        params = params.concat("(site IN (" + this.countries.join(",") + "))");
+
+      countries = this.countries;
+      if(countries.length === 0) {
+        // If no countries are selected, return nothing
+        countries = [-1];
       }
+      params = params.concat("(site IN (" + countries.join(",") + "))");
+
       if(this.species.length > 0) {
         params = params.concat("(species IN ('" + this.species.join("','") + "'))");
+      }
+
+      // Add active filters (This should really have a view and not query the DOM...)
+      if($("a.filter_by.active").length > 0){
+        sqlFragment = "(species_ials.category IN (";
+        $("a.filter_by.active").each(function(){
+          sqlFragment = sqlFragment + "'" + $(this).text() + "'";
+        });
+        sqlFragment = sqlFragment + "))";
+        params = params.concat(sqlFragment);
       }
 
       if(params.length > 0) {
@@ -85,13 +100,6 @@ App.modules.SpeciesIals = function(app) {
       sql = sql + " INNER JOIN ials ON ials.ial_id = species_ials.site ";
       sql = sql + "WHERE";
       sql = sql + "  (max_values.max_pressure = species_ials.pressure_score AND max_values.site = species_ials.site) ";
-      if($("a.filter_by.active").length > 0){
-        sql = sql + " AND species_ials.category IN (";
-       $("a.filter_by.active").each(function(){
-         sql = sql + "'" + $(this).text() + "'";
-       });
-       sql = sql + ")";
-      }
       return sql;
     },
     selectQuery: function() {

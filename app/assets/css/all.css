@@ -7,6 +7,11 @@ body {
 .hide {
   display: none;
 }
+#main_map.hide {
+  display: inline;
+  position: absolute;
+  left: -1000px;
+}
 img {border-style:none;}
 a {
 	color:#ccc;

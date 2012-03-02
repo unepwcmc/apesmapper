@@ -68,10 +68,10 @@ App.modules.Carbon = function(app) {
               app.Error.show(error);
             });
 
-            this.state_url = _.debounce(this._state_url, 200);
-            this.map.map.bind('center_changed', this.state_url);
-            this.map.map.bind('zoom_changed', this.state_url);
-            this.bus.on('map:reorder_layers', this.state_url);
+            //this.state_url = _.debounce(this._state_url, 200);
+            //this.map.map.bind('center_changed', this.state_url);
+            //this.map.map.bind('zoom_changed', this.state_url);
+            //this.bus.on('map:reorder_layers', this.state_url);
 
             this.bus.on('species:change', this.species_ials.allSpeciesIals.selectSpecies);
 
@@ -114,8 +114,8 @@ App.modules.Carbon = function(app) {
           return false;
         },
 
-        build_state: function(state) {
-          var state = []
+        build_state: function() {
+          var state = [];
           state.push(this.categories.allCategories.toUrl());
           state.push(this.apes.allApes.toUrl());
           state.push(this.species.allSpecies.toUrl());
@@ -146,7 +146,7 @@ App.modules.Carbon = function(app) {
             //});
 
             //self.router.navigate('w/' + self.work_id + '/' + map_pos + '|' + layer_data.join(','));
-            self.router.navigate('/' + this.build_state());
+            //self.router.navigate('/' + this.build_state());
         },
 
         set_state: function(st) {
@@ -207,9 +207,11 @@ App.modules.Carbon = function(app) {
             }
 
             app.Log.debug("route: work => ", state);
+            /** not for now
             if(state) {
               this.set_state(this.decode_state(state));
             }
+            */
        },
 
         on_route_to: function(route) {
