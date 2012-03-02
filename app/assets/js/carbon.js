@@ -47,8 +47,8 @@ App.modules.Carbon = function(app) {
             this.map = new app.Map({bus:this.bus, species_ials: this.species_ials.allSpeciesIals}); // This actually contains the map view...
             this.selectedFilterView = new App.views.SelectedSpeciesCountries({bus:this.bus, species: this.species.allSpecies, countries: this.countries.allCountries});
 
-            this.categoriesFilterEdit = new App.views.CategoriesFilterEdit({bus:this.bus, categories: this.categories.allCategories});
-            this.apesFilterEdit = new App.views.ApesFilterEdit({bus:this.bus, categories: this.categories.allCategories, apes: this.apes.allApes});
+            this.categoriesFilterEdit = new App.views.CategoriesFilterEdit({bus:this.bus, categories: this.categories.allCategories, apes: this.apes.allApes, species: this.species.allSpecies});
+            this.apesFilterEdit = new App.views.ApesFilterEdit({bus:this.bus, categories: this.categories.allCategories, apes: this.apes.allApes, species: this.species.allSpecies});
             this.speciesFilterEdit = new App.views.SpeciesFilterEdit({bus:this.bus, species: this.species.allSpecies, categories: this.categories.allCategories, apes: this.apes.allApes});
 
             this.regionsFilterEdit = new App.views.RegionsFilterEdit({bus:this.bus, regions: this.regions.allRegions});

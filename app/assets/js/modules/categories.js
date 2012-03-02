@@ -7,7 +7,8 @@ App.modules.Categories = function(app) {
             return {
               selected:  false,
               the_type: "category",
-              show_next: true
+              show_next: true,
+              taxa_common_name: null
             };
         },
         toggle: function() {

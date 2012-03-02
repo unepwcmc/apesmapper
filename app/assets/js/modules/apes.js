@@ -8,7 +8,8 @@ App.modules.Apes = function(app) {
               selected:  false,
               the_type: "ape",
               hidden: false,
-              show_next: true
+              show_next: true,
+              taxa_common_name: null
             };
         },
         toggle: function() {

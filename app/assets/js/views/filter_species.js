@@ -38,16 +38,16 @@ App.views.SpeciesFilterEdit = Backbone.View.extend({
       $('div#species_selector').removeClass('hide')
     },
     hide: function() {
-      var species = [];
+      var species_arr = [];
 
       _.each($(this.el).find("#species_selector input:checked"), function(s) {
-        species.push($(s).val());
+        species_arr.push($(s).val());
       });
 
-      this.bus.emit('species:change', species);
+      this.bus.emit('species:change', species_arr);
 
       $('div#species_selector').addClass('hide');
-      $('#categories_filter_edit span.selected').html('<a href="#"><span class="count">' + species.length + '</span> selected</a>')
+      $('#categories_filter_edit span.selected').html('<a href="#"><span class="count">' + this.species.selected().length + '</span> selected</a>')
     },
     next: function() {
       this.bus.trigger('show_species_selector');
@@ -56,13 +56,13 @@ App.views.SpeciesFilterEdit = Backbone.View.extend({
       var selected_apes = _.map(this.apes.selected(), function(ape){return ape.get('id')});
       this.species.each(function(species) {
         if(_.include(selected_apes, species.get('ape_id'))){
-            species.set({hidden: false});
+            species.set({selected: true});
           } else {
-            species.set({hidden: true});
             species.set({selected: false});
           }
       });
       this.render();
+      $('#categories_filter_edit span.selected').html('<a href="#"><span class="count">' + this.species.selected().length + '</span> selected</a>')
     }
 });
 

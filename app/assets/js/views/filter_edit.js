@@ -15,6 +15,8 @@ App.views.CategoriesFilterEdit = Backbone.View.extend({
         _.bindAll(this, 'render', 'show', 'hide');
         this.bus = this.options.bus;
         this.categories = this.options.categories;
+        this.apes = this.options.apes;
+        this.species = this.options.species;
 
         this.categories.bind('reset', this.render);
         this.bus.on('show_categories_editor', this.show);
@@ -22,12 +24,13 @@ App.views.CategoriesFilterEdit = Backbone.View.extend({
 
     render: function() {
         // get the object to load the categories views into
-        var $container = $('div#categories_selector');
+        var $container = $('div#categories_selector'), _that = this;
         $container.empty();
         // Create a categories view inside $categories for each categories
         this.categories.each(function(categories) {
             var view = new App.views.CategoriesSelector({
-                model: categories
+                model: categories,
+                bus: _that.bus
             });
             $container.append(view.render().el);
         });
@@ -40,9 +43,25 @@ App.views.CategoriesFilterEdit = Backbone.View.extend({
     hide: function() {
       $('div#categories_selector').addClass('hide')
     },
-    next: function() {
-      this.bus.emit('update_list_of_apes');
+    next: function(ev) {
+      this.apes.each(function(ape) {
+        if(ape.get('category_id') == $(ev.target).next('input').val()) {
+          ape.set({hidden: false});
+        } else {
+          ape.set({hidden: true});
+        }
+      });
+
+      this.species.each(function(sp) {
+        if(sp.get('category_id') == $(ev.target).next('input').val()) {
+          sp.set({hidden: false});
+        } else {
+          sp.set({hidden: true});
+        }
+      });
+
       this.bus.emit('show_apes_selector');
+      this.bus.emit('render_apes');
       this.hide();
     },
     openClose: function(ev) {
@@ -58,7 +77,8 @@ App.views.CategoriesFilterEdit = Backbone.View.extend({
 App.views.CategoriesSelector = Backbone.View.extend({
     template: JST['_species_selector'],
     className: 'row',
-    initialize: function() {
+    initialize: function(obj) {
+        this.bus = obj.bus;
         _.bindAll(this, 'render', 'toggleSelected');
     },
     events: {
@@ -72,5 +92,7 @@ App.views.CategoriesSelector = Backbone.View.extend({
     },
     toggleSelected: function() {
       this.model.toggle();
+      this.bus.emit('update_list_of_apes');
+      this.bus.emit('update_list_of_species');
     }
 });
