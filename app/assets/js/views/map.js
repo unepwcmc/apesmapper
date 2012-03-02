@@ -83,7 +83,7 @@ App.views.MapView = Backbone.View.extend({
             infowindow: true,
             auto_bound: true
         });
-        var name = 'IALs';
+        var name = 'IAS';
         // Add this layer to the list
         this.layers[name] = {
            layer: this.species_ials_layer.params.layer,
