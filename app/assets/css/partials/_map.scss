@@ -118,10 +118,10 @@
    }
 
   .layers {
-    float:left;
+    //float:right;
     position: relative;
-    top: -646px;
-    right: -286px;
+    //top: -646px;
+    //right: -286px;
     z-index:100;
 
     a.view {
@@ -150,7 +150,7 @@
       }
     }
 
-    div.show {
+    div.show_layer {
       position:absolute;
       top:21px;
       right:0;
@@ -176,7 +176,7 @@
 
         &:last-child {
           border:none;
-          @include border-bottom-radius(4px);
+          //@include border-bottom-radius(4px);
         }
 
         li {
@@ -267,7 +267,7 @@
         }
       }
 
-      .show {
+      .show_layer {
         display: block;
       }
     }
