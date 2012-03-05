@@ -206,10 +206,60 @@ App.modules.SpeciesIals = function(app) {
     }
   });
 
+  var SpeciesIalsMinMax = Backbone.Model.extend({
+    defaults: function() {
+      return {
+        region: null,
+        min_area: null,
+        max_area: null,
+      };
+    }
+  });
+
+  var AllSpeciesIalsMinMax = Backbone.Collection.extend({
+    model: SpeciesIalsMinMax,
+    initialize: function() {
+      this.region_id = null;
+      this.currentMin = 0;
+      this.currentMax = 0;
+    },
+    url: function() {
+      // cartoDB query used by fetch
+      return "https://carbon-tool.cartodb.com/api/v1/sql?q=" + this.selectQuery();
+    },
+    parse: function(response) {
+      // CartoDB returns results in rows field
+      response || (response = {});
+      response = response.rows;
+      var region = (this.region_id == 1 ? 'Africa' : 'Asia');
+      var regionMinMax = _.find(response, function(record){
+      	if (record['region'] == region){
+      	  return true;
+      	}
+      });
+      this.currentMin = regionMinMax['min_area'];
+      this.currentMax = regionMinMax['max_area'];	
+      return Backbone.Collection.prototype.parse.call(this, response);
+    },
+    selectQuery: function() {
+      var sqlQuery = "SELECT region, MIN(area_km2) AS min_area, MAX(area_km2) AS max_area";
+      sqlQuery = sqlQuery + " FROM species_ials GROUP BY region";
+      return sqlQuery;
+    },
+    getCurrentMin: function(){
+    	return this.currentMin;
+    },
+    getCurrentMax: function(){
+    	return this.currentMax;
+    },
+    idAttribute: 'cartodb_id'
+  });
+
   app.SpeciesIals = Class.extend({
     init: function() {
       // Initialise the sites collections
       this.allSpeciesIals = new AllSpeciesIals();
+      this.allSpeciesIalsMinMax = new AllSpeciesIalsMinMax();
     }
   });
 }
