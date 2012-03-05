@@ -53,7 +53,7 @@ App.modules.Carbon = function(app) {
 
             this.regionsFilterEdit = new App.views.RegionsFilterEdit({bus:this.bus, regions: this.regions.allRegions});
             this.countriesFilterEdit = new App.views.CountriesFilterEdit({bus:this.bus, countries: this.countries.allCountries, regions: this.regions.allRegions});
-            this.slideFilters = new App.views.SlideFilters({bus:this.bus, species: this.species.allSpecies, countries: this.countries.allCountries, species_ials: this.species_ials.allSpeciesIals});
+            this.slideFilters = new App.views.SlideFilters({bus:this.bus, species: this.species.allSpecies, countries: this.countries.allCountries, species_ials: this.species_ials.allSpeciesIals, species_ials_min_max: this.species_ials.allSpeciesIalsMinMax});
             this.graph = new App.views.Graph({species_ials: this.species_ials.allSpeciesIals});
             this.resultTable = new App.views.ResultTable({species_ials: this.species_ials.allSpeciesIals});
             this.resultSummary = new App.views.ResultSummary({species_ials: this.species_ials.allSpeciesIals});
@@ -92,6 +92,7 @@ App.modules.Carbon = function(app) {
 
           this.countries.allCountries.region_id = region_id;
           this.species.allSpecies.region_id = region_id;
+          this.species_ials.allSpeciesIalsMinMax.region_id = region_id;
 
           this.fetchEverything();
         },
@@ -101,6 +102,11 @@ App.modules.Carbon = function(app) {
           this.countries.allCountries.fetch();
 
           this.species_ials.allSpeciesIals.fetch();
+          this.species_ials.allSpeciesIalsMinMax.fetch({
+          	success: function(collection, response){
+              app.bus.emit('update_area_slider');
+            }
+          });
           this.categories.allCategories.fetch();
           this.apes.allApes.fetch();
         },

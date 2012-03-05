@@ -10,14 +10,16 @@ App.views.SlideFilters = Backbone.View.extend({
   },
 
   initialize: function() {
-    _.bindAll(this, 'render', 'stop_slider');
+    _.bindAll(this, 'render', 'stop_slider', 'update_area_slider');
 
     this.bus = this.options.bus;
     this.species = this.options.species;
     this.countries = this.options.countries;
     this.sites = this.options.sites;
     this.species_ials = this.options.species_ials;
+    this.species_ials_min_max = this.options.species_ials_min_max;
     this.bus.on('save_filter:click', this.render);
+    this.bus.on('update_area_slider', this.update_area_slider);
 
     // Sliders
     jQuery("div.ui-slider").slider({
@@ -26,9 +28,18 @@ App.views.SlideFilters = Backbone.View.extend({
       max: 100,
       values: [0, 100],
       slide: function(event, ui) {
-        jQuery(event.target).find('.ui-slider-range').css('background-position', '-' + Math.round(ui.values[0]*1.5) + 'px 0px');
+        jQuery(event.target).find('.ui-slider-range').css('background-position', '-' + Math.round((ui.values[0]-ui.min)*1.5) + 'px 0px');
       }
     });
+  },
+
+  update_area_slider: function(){
+    var minArea = this.species_ials_min_max.getCurrentMin();
+    var maxArea = this.species_ials_min_max.getCurrentMax();
+    $('#area_slider').slider('option', 'min', minArea);
+    $('#area_slider').slider('option', 'max', maxArea);
+    $(".range-form .size .min-value").val(minArea);
+    $(".range-form .size .max-value").val(maxArea);
   },
 
   enable_select: function() {
