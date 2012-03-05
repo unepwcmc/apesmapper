@@ -132,6 +132,8 @@
       padding:0 0 0 15px;
       @include background(no-repeat,0,-1035px);
       text-decoration:none;
+      position: absolute;
+      right: 0;
 
       span {
         float:left;
