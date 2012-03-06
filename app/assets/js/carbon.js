@@ -105,7 +105,7 @@ App.modules.Carbon = function(app) {
           this.species_ials.allSpeciesIals.fetch();
           this.species_ials.allSpeciesIalsMinMax.fetch({
           	success: function(collection, response){
-              app.bus.emit('update_area_slider');
+              app.bus.emit('update_sliders_bounds');
             }
           });
           this.categories.allCategories.fetch();
