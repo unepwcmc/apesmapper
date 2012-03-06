@@ -10,7 +10,7 @@ App.views.SlideFilters = Backbone.View.extend({
   },
 
   initialize: function() {
-    _.bindAll(this, 'render', 'stop_slider', 'update_area_slider');
+    _.bindAll(this, 'render', 'stop_slider', 'update_sliders_bounds');
 
     this.bus = this.options.bus;
     this.species = this.options.species;
@@ -19,7 +19,7 @@ App.views.SlideFilters = Backbone.View.extend({
     this.species_ials = this.options.species_ials;
     this.species_ials_min_max = this.options.species_ials_min_max;
     this.bus.on('save_filter:click', this.render);
-    this.bus.on('update_area_slider', this.update_area_slider);
+    this.bus.on('update_sliders_bounds', this.update_sliders_bounds);
 
     // Sliders
     jQuery("div.ui-slider").slider({
@@ -34,9 +34,26 @@ App.views.SlideFilters = Backbone.View.extend({
     });
   },
 
-  update_area_slider: function(){
-    var minArea = this.species_ials_min_max.getCurrentMin();
-    var maxArea = this.species_ials_min_max.getCurrentMax();
+  update_sliders_bounds: function(){
+    //response slider
+    var minResponse = this.species_ials_min_max.minResponse;
+    var maxResponse = this.species_ials_min_max.maxResponse;
+    $('.response div.ui-slider').slider('option', 'min', minResponse);
+    $('.response div.ui-slider').slider('option', 'max', maxResponse);
+    $(".range-form .response .min-value").val(minResponse);
+    $(".range-form .response .max-value").val(maxResponse);
+
+    //biodiversity slider
+    var minBiodiversity = this.species_ials_min_max.minBiodiversity;
+    var maxBiodiversity = this.species_ials_min_max.maxBiodiversity;
+    $('.biodiversity div.ui-slider').slider('option', 'min', minBiodiversity);
+    $('.biodiversity div.ui-slider').slider('option', 'max', maxBiodiversity);
+    $(".range-form .biodiversity .min-value").val(minBiodiversity);
+    $(".range-form .biodiversity .max-value").val(maxBiodiversity);
+
+    //areas slider
+    var minArea = this.species_ials_min_max.minArea;
+    var maxArea = this.species_ials_min_max.maxArea;
     $('#area_slider').slider('option', 'min', minArea);
     $('#area_slider').slider('option', 'max', maxArea);
     $(".range-form .size .min-value").val(minArea);

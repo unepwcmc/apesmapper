@@ -60,10 +60,10 @@ App.modules.SpeciesIals = function(app) {
         params = params.concat("(species_ials.area_km2 >= " + this.size.min * 1000 + " AND species_ials.area_km2 <= " + this.size.max * 1000 + ")");
       }
       if(typeof this.response.min !== undefined && this.response.max !== undefined) {
-        params = params.concat("(species_ials.response_score >= " + (this.response.min / 100) + " AND species_ials.response_score <= " + (this.response.max / 100) + ")");
+        params = params.concat("(species_ials.response_score >= " + this.response.min + " AND species_ials.response_score <= " + this.response.max + ")");
       }
       if(typeof this.biodiversity.min !== undefined && this.biodiversity.max !== undefined) {
-        params = params.concat("(species_ials.biodiversity_score >= " + (this.biodiversity.min / 100) + " AND species_ials.biodiversity_score <= " + (this.biodiversity.max / 100) + ")");
+        params = params.concat("(species_ials.biodiversity_score >= " + this.biodiversity.min + " AND species_ials.biodiversity_score <= " + this.biodiversity.max + ")");
       }
 
       countries = this.countries;
@@ -220,8 +220,8 @@ App.modules.SpeciesIals = function(app) {
     model: SpeciesIalsMinMax,
     initialize: function() {
       this.region_id = null;
-      this.currentMin = 0;
-      this.currentMax = 0;
+      this.minArea = 0;
+      this.maxArea = 0;
     },
     url: function() {
       // cartoDB query used by fetch
@@ -237,20 +237,22 @@ App.modules.SpeciesIals = function(app) {
       	  return true;
       	}
       });
-      this.currentMin = regionMinMax['min_area'];
-      this.currentMax = regionMinMax['max_area'];	
+
+      this.minResponse = regionMinMax['min_response'];
+      this.maxResponse = regionMinMax['max_response'];	
+      this.minBiodiversity = regionMinMax['min_biodiversity'];
+      this.maxBiodiversity = regionMinMax['max_biodiversity'];	
+      this.minArea = regionMinMax['min_area'];
+      this.maxArea = regionMinMax['max_area'];	
+
       return Backbone.Collection.prototype.parse.call(this, response);
     },
     selectQuery: function() {
-      var sqlQuery = "SELECT region, MIN(area_km2) AS min_area, MAX(area_km2) AS max_area";
+      var sqlQuery = "SELECT region, MIN(area_km2) AS min_area, MAX(area_km2) AS max_area, ";
+      sqlQuery = sqlQuery + " MIN(response_score) AS min_response, MAX(response_score) AS max_response, ";
+      sqlQuery = sqlQuery + " MIN(biodiversity_score) AS min_biodiversity, MAX(biodiversity_score) AS max_biodiversity ";
       sqlQuery = sqlQuery + " FROM species_ials GROUP BY region";
       return sqlQuery;
-    },
-    getCurrentMin: function(){
-    	return this.currentMin;
-    },
-    getCurrentMax: function(){
-    	return this.currentMax;
     },
     idAttribute: 'cartodb_id'
   });
