@@ -93,6 +93,7 @@ App.modules.Carbon = function(app) {
           this.countries.allCountries.region_id = region_id;
           this.species.allSpecies.region_id = region_id;
           this.species_ials.allSpeciesIalsMinMax.region_id = region_id;
+          this.apes.allApes.region_id = region_id;
 
           this.fetchEverything();
         },

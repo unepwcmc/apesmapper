@@ -9,7 +9,8 @@ App.modules.Apes = function(app) {
               the_type: "ape",
               hidden: false,
               show_next: true,
-              taxa_common_name: null
+              taxa_common_name: null,
+              region_id: null
             };
         },
         toggle: function() {
@@ -22,7 +23,7 @@ App.modules.Apes = function(app) {
         model: Ape,
         url: 'json/apes.json',
         selected: function() {
-            return this.filter(function(ape){ return ape.get('selected'); });
+            return this.filter(function(ape){ return ((ape.get('region_id') == parseInt(ape.collection.region_id)) && ape.get('selected')); });
         },
         toUrl: function() {
           var selected_ids = this.selected().map(function(ape){ return ape.get('id').toString();});
@@ -40,7 +41,7 @@ App.modules.Apes = function(app) {
           return this.filter(function(ape){return _.include(ape.get("country_id").split(','), country_id);})
         },
         visible: function() {
-          return this.filter(function(ape) { return ape.get('hidden') == false; })
+          return this.filter(function(ape) { return ((ape.get('region_id') == parseInt(ape.collection.region_id)) && ape.get('hidden') == false); })
         }
     });
 
