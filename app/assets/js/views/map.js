@@ -80,10 +80,9 @@ App.views.MapView = Backbone.View.extend({
             query: this.species_ials.geoQuery(),
             bounds_filter_query: this.species_ials.ialsJoinAndFilterConditions(),
             map_style: true,
-            //infowindow: true,
-            infowindow: "SELECT cartodb_id, the_geom_webmercator, name FROM {{table_name}} WHERE cartodb_id={{feature}}",
+            infowindow: "SELECT cartodb_id,the_geom_webmercator,name FROM {{table_name}} WHERE cartodb_id={{feature}}",
             auto_bound: true,
-            debug: true
+            debug: false
         });
 
         var name = 'IAS';
