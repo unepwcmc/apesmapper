@@ -737,4 +737,5 @@ div#landing p.instructions{
 @mixin background($lr,$tb,$r) {
   background:url('/img/sprite.png') $lr $tb $r;
 }
-@import 'partials/map'
+@import 'partials/map';
+@import 'partials/cartodb';
