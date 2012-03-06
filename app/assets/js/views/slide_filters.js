@@ -25,8 +25,9 @@ App.views.SlideFilters = Backbone.View.extend({
     jQuery("div.ui-slider").slider({
       range: true,
       min: 0,
-      max: 100,
-      values: [0, 100],
+      max: 1,
+      values: [0, 1],
+      step: 0.01,
       slide: function(event, ui) {
         jQuery(event.target).find('.ui-slider-range').css('background-position', '-' + Math.round((ui.values[0]-ui.min)*1.5) + 'px 0px');
       }
