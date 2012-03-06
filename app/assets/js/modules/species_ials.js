@@ -71,7 +71,7 @@ App.modules.SpeciesIals = function(app) {
         // If no countries are selected, return nothing
         countries = [-1];
       }
-      params = params.concat("(site IN (" + countries.join(",") + "))");
+      params = params.concat("(countries_ials.country_id IN (" + countries.join(",") + "))");
 
       if(this.species.length > 0) {
         params = params.concat("(species IN ('" + this.species.join("','") + "'))");
