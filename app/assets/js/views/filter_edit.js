@@ -8,6 +8,7 @@ App.views.CategoriesFilterEdit = Backbone.View.extend({
     events: {
         'click #finish-categories-edit': 'hide',
         'click .open-close': 'openClose',
+        'click .back-button': 'back',
         'click #categories_selector .show': 'next'
     },
 
@@ -60,6 +61,8 @@ App.views.CategoriesFilterEdit = Backbone.View.extend({
         }
       });
 
+      $('#categories_filter_edit .back-button').removeClass('hide');
+
       this.bus.emit('show_apes_selector');
       this.bus.emit('render_apes');
       this.hide();
@@ -67,7 +70,13 @@ App.views.CategoriesFilterEdit = Backbone.View.extend({
     openClose: function(ev) {
       ev.preventDefault();
       $('div#categories_selector').siblings().addClass('hide');
+      $('#categories_filter_edit .back-button').addClass('hide');
       this.show();
+    },
+    back: function(ev) {
+      ev.preventDefault();
+      $('div#categories_selector').removeClass('hide').siblings().addClass('hide');
+      $('#categories_filter_edit .back-button').addClass('hide');
     }
 });
 
