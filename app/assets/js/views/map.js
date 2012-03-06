@@ -80,9 +80,11 @@ App.views.MapView = Backbone.View.extend({
             query: this.species_ials.geoQuery(),
             bounds_filter_query: this.species_ials.ialsJoinAndFilterConditions(),
             map_style: true,
-            infowindow: true,
-            auto_bound: true
+            infowindow: "SELECT cartodb_id,the_geom_webmercator,name FROM {{table_name}} WHERE cartodb_id={{feature}}",
+            auto_bound: true,
+            debug: false
         });
+
         var name = 'IAS';
         // Add this layer to the list
         this.layers[name] = {
@@ -91,6 +93,7 @@ App.views.MapView = Backbone.View.extend({
            enabled: true,
            name: name
         };
+
         // ensure this is first in the layer list
         if (typeof(this.layers_order[0]) === 'undefined' || this.layers_order[0] !== name){
           this.layers_order.unshift(name);
