@@ -124,7 +124,7 @@ App.modules.Carbon = function(app) {
         download_table: function() {
           // Build the download parameters needed
           var downloadParams = this.species_ials.allSpeciesIals.filterParams();
-          downloadParams.q = this.species_ials.allSpeciesIals.selectQuery();
+          downloadParams.q = this.species_ials.allSpeciesIals.speciesOccurrenceQuery();
 
           // Send the params as a post
           this.formPost( "/species_ials_csv", downloadParams);

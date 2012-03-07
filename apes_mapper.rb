@@ -175,6 +175,7 @@ class ApesMapper < Sinatra::Base
     url = URI.escape "http://carbon-tool.cartodb.com/api/v1/sql?q=#{params[:q]}"
     uri = URI.parse url
     res = Net::HTTP.get_response(uri)
+    puts uri
     body = JSON.parse(res.body)
 
     # Build the title string, with the users filter values in
