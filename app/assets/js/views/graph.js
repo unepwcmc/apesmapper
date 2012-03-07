@@ -8,6 +8,7 @@ App.views.Graph = Backbone.View.extend({
     _.bindAll(this, 'render', 'addOne', 'color', 'createGraph');
 
     this.species_ials = this.options.species_ials;
+    this.species_ials_min_max = this.options.species_ials_min_max;
     this.species_ials.bind("all", this.render);
 
     // We need to know the max area to scale the graph sizes correctly
@@ -34,33 +35,35 @@ App.views.Graph = Backbone.View.extend({
   addOne: function(species_ial) {
     var color = 'rgb(0,0,0)', tooltip = '';
     var maxResponseColor = {
-      red:101,
-      green:160,
-      blue:207
+      red:117,
+      green:4,
+      blue:12
     };
     var minResponseColor = {
-      red:54,
-      green:85,
-      blue:110
+      red:248,
+      green:240,
+      blue:145
     };
     var maxBiodiversityColor = {
-      red:227,
-      green:137,
-      blue:59
+      red:41,
+      green:40,
+      blue:164
     };
     var minBiodiversityColor = {
-      red:135,
-      green:74,
-      blue:19
+      red:94,
+      green:174,
+      blue:100
     };
 
     if(this.species_ials.filter_selected === "response") {
-      color = this.color(maxResponseColor, minResponseColor, species_ial.get('response_score'));
+      this_score = (1-0)/(this.species_ials_min_max.maxResponse-this.species_ials_min_max.minResponse)*species_ial.get('response_score')+0;
+      color = this.color(maxResponseColor, minResponseColor, this_score);
       tooltip = 'IAS: ' + species_ial.get('ial_id') + '-' + species_ial.get('name') + '<br/>';
       tooltip = tooltip + 'Response: ' + species_ial.get('response_score') + '<br/>';
       tooltip = tooltip + 'Biodiversity: ' + species_ial.get('biodiversity_score') + '<br/>';
     } else if(this.species_ials.filter_selected === "biodiversity") {
-      color = this.color(maxBiodiversityColor, minBiodiversityColor, species_ial.get('biodiversity_score'));
+      this_score = (1-0)/(this.species_ials_min_max.maxBiodiversity-this.species_ials_min_max.minBiodiversity)*species_ial.get('biodiversity_score')+0;
+      color = this.color(maxBiodiversityColor, minBiodiversityColor, this_score);
       tooltip = 'IAS: ' + species_ial.get('ial_id') + '-' + species_ial.get('name') + '<br/>';
       tooltip = tooltip + 'Response: ' + species_ial.get('response_score') + '<br/>';
       tooltip = tooltip + 'Biodiversity: ' + species_ial.get('biodiversity_score') + '<br/>';

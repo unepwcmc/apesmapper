@@ -54,7 +54,7 @@ App.modules.Carbon = function(app) {
             this.regionsFilterEdit = new App.views.RegionsFilterEdit({bus:this.bus, regions: this.regions.allRegions});
             this.countriesFilterEdit = new App.views.CountriesFilterEdit({bus:this.bus, countries: this.countries.allCountries, regions: this.regions.allRegions});
             this.slideFilters = new App.views.SlideFilters({bus:this.bus, species: this.species.allSpecies, countries: this.countries.allCountries, species_ials: this.species_ials.allSpeciesIals, species_ials_min_max: this.species_ials.allSpeciesIalsMinMax});
-            this.graph = new App.views.Graph({species_ials: this.species_ials.allSpeciesIals});
+            this.graph = new App.views.Graph({species_ials: this.species_ials.allSpeciesIals, species_ials_min_max: this.species_ials.allSpeciesIalsMinMax});
             this.resultTable = new App.views.ResultTable({species_ials: this.species_ials.allSpeciesIals});
             this.resultSummary = new App.views.ResultSummary({species_ials: this.species_ials.allSpeciesIals});
 
