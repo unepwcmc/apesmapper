@@ -22,6 +22,7 @@ App.views.SlideFilters = Backbone.View.extend({
     this.bus.on('update_sliders_bounds', this.update_sliders_bounds);
 
     // Sliders
+    var _that = this;
     jQuery("div.ui-slider").slider({
       range: true,
       min: 0,
@@ -29,8 +30,14 @@ App.views.SlideFilters = Backbone.View.extend({
       values: [0, 1],
       step: 0.01,
       slide: function(event, ui) {
-        if(jQuery(event.target).parents('.size').length === 0){
-          jQuery(event.target).find('.ui-slider-range').css('background-position', '-' + Math.round((ui.values[0])*1.5) + 'px 0px');
+        if(jQuery(event.target).parents('.size').length === 0) {
+          var new_percentage;
+          if(jQuery(event.target).parents('.biodiversity').length > 0) {
+            new_percentage = (ui.values[0]-_that.species_ials_min_max.minBiodiversity)/(_that.species_ials_min_max.maxBiodiversity-_that.species_ials_min_max.minBiodiversity);
+          } else {
+            new_percentage = (ui.values[0]-_that.species_ials_min_max.minResponse)/(_that.species_ials_min_max.maxResponse-_that.species_ials_min_max.minResponse);
+          }
+          jQuery(event.target).find('.ui-slider-range').css('background-position', '-' + Math.round(new_percentage*150) + 'px 0px');
         }
       }
     });
