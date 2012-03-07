@@ -36,7 +36,7 @@ App.modules.SpeciesIals = function(app) {
     },
     aggregateSelectSql: function() {
       // Returns the SQL from string to get the aggregated scores for the site_ials
-      var selectSql = " species_ials.site ial_id,";
+      var selectSql = " species_ials.site as ial_id,";
       selectSql = selectSql + " species_ials.habitat_score as habitat_score,";
       selectSql = selectSql + " species_ials.biodiversity_score as biodiversity_score,";
       selectSql = selectSql + " species_ials.pressure_score as pressure_score,";
@@ -115,9 +115,33 @@ App.modules.SpeciesIals = function(app) {
     },
     speciesOccurrenceQuery: function() {
       // Build the SQL query to get the species occurrences for the download
-      var sqlQuery = "SELECT ";
-      sqlQuery = sqlQuery + this.aggregateSelectSql();
-      sqlQuery = sqlQuery + this.aggregateFromSql();
+      var sqlQuery = "SELECT DISTINCT";
+      sqlQuery = sqlQuery + " species_ials.site as ial_id, ";
+      sqlQuery = sqlQuery + " ials.name as name, ";
+      sqlQuery = sqlQuery + " ials.category as category, ";
+      sqlQuery = sqlQuery + " species_ials.area_km2 as area_km2,";
+      sqlQuery = sqlQuery + " species_ials.species as taxon,";
+      sqlQuery = sqlQuery + " species_ials.taxon_site_overlap as taxon_site_overlap, ";
+      sqlQuery = sqlQuery + " species_ials.pressure_score as pressure_score,";
+      sqlQuery = sqlQuery + " species_ials.main_pressure as main_pressure,";
+      sqlQuery = sqlQuery + " species_ials.habitat_score as habitat_score,";
+      sqlQuery = sqlQuery + " species_ials.response_score response_score,";
+      sqlQuery = sqlQuery + " species_ials.biodiversity_score as biodiversity_score,";
+      sqlQuery = sqlQuery + " species_ials.uncertainty_score as uncertainty_score,";
+      sqlQuery = sqlQuery + " species_ials.habitat_suitability_score_2000 as habitat_suitability,";
+      sqlQuery = sqlQuery + " species_ials.mean_forest_cover_2005 as mean_forest_cover,";
+      sqlQuery = sqlQuery + " species_ials.mean_deforestation_2000__2005 as mean_deforestation,";
+      sqlQuery = sqlQuery + " species_ials.mean_human_influence_index_2000 as mean_human_influence_index,";
+      sqlQuery = sqlQuery + " species_ials.mean_population_count_2000 as mean_population_count,";
+      sqlQuery = sqlQuery + " species_ials.mean_population_change_1990__2000 as mean_population_change,";
+      sqlQuery = sqlQuery + " species_ials.protection_extent as protection_extent,";
+      sqlQuery = sqlQuery + " species_ials.maximum_species_richness_msr as maximum_species_richness_msr,";
+      sqlQuery = sqlQuery + " species_ials.proportion_msr_threatened as proportion_msr_threatened,";
+      sqlQuery = sqlQuery + " species_ials.mean_carbon_stock as mean_carbon_stock,";
+      sqlQuery = sqlQuery + " species_ials.additional_information as additional_information ";
+      sqlQuery = sqlQuery + " FROM species_ials ";
+      sqlQuery = sqlQuery + " INNER JOIN ials ON ials.ial_id = species_ials.site";
+      sqlQuery = sqlQuery + this.filterConditionsSql();
       return sqlQuery;
     },
     geoQuery: function() {
