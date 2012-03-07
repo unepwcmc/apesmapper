@@ -128,7 +128,7 @@ class ApesMapper < Sinatra::Base
     erb :ie6
   end
 
-  get '/csv' do
+  post '/csv' do
     require 'net/http'
     require 'uri'
 
