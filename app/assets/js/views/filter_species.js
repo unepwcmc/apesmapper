@@ -47,7 +47,11 @@ App.views.SpeciesFilterEdit = Backbone.View.extend({
       this.bus.emit('species:change', species_arr);
 
       $('div#species_selector').addClass('hide');
-      $('#categories_filter_edit span.selected').html('<a href="#"><span class="count">' + this.species.selected().length + '</span> selected</a>')
+      if(this.species.selected().length === 0) {
+        $('#categories_filter_edit span.selected').html('<a href="#"><span class="count">' + this.species.length + '</span> selected</a>')
+      } else {
+        $('#categories_filter_edit span.selected').html('<a href="#"><span class="count">' + this.species.selected().length + '</span> selected</a>')
+      }
     },
     next: function() {
       this.bus.trigger('show_species_selector');
@@ -62,7 +66,11 @@ App.views.SpeciesFilterEdit = Backbone.View.extend({
           }
       });
       this.render();
-      $('#categories_filter_edit span.selected').html('<a href="#"><span class="count">' + this.species.selected().length + '</span> selected</a>')
+      if(this.species.selected().length === 0) {
+        $('#categories_filter_edit span.selected').html('<a href="#"><span class="count">' + this.species.length + '</span> selected</a>')
+      } else {
+        $('#categories_filter_edit span.selected').html('<a href="#"><span class="count">' + this.species.selected().length + '</span> selected</a>')
+      }
     }
 });
 
