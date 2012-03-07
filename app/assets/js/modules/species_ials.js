@@ -115,7 +115,7 @@ App.modules.SpeciesIals = function(app) {
     },
     speciesOccurrenceQuery: function() {
       // Build the SQL query to get the species occurrences for the download
-      var sqlQuery = "SELECT ";
+      var sqlQuery = "SELECT DISTINCT";
       sqlQuery = sqlQuery + " species_ials.site as ial_id, ";
       sqlQuery = sqlQuery + " ials.name as name, ";
       sqlQuery = sqlQuery + " ials.category as category, ";
