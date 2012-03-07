@@ -688,6 +688,39 @@ div.ui-dialog.ui-widget.ui-widget-content {
   outline: 0 none;
   padding: 20px;
 }
+
+div.ui-dialog.ui-widget.ui-widget-content.help-box-dialog {
+  background: none repeat scroll 0 0 #ffffff;
+}
+
+.help-box-dialog div.ui-dialog-titlebar a.ui-dialog-titlebar-close{
+  float: right;
+}
+
+div#help-box {
+  background: none repeat scroll 0 0 #ffffff;
+  color: #686E74;
+  overflow: auto;
+  height: 538px;
+  width: 651px;
+}
+
+#ui-dialog-title-help-box {
+  color: #686E74;
+}
+
+div#help-box div h1{
+  font-size: 14px;
+}
+
+div#help-box div span{
+  font-weight: bold;
+}
+
+div#help-box span.alert{
+  color: #ff5400;
+}
+
 div#landing{
   background-image: none;
 }
