@@ -57,7 +57,7 @@ App.modules.SpeciesIals = function(app) {
       joinSql = " INNER JOIN countries_ials ON species_ials.site = countries_ials.ial_id ";
 
       if(typeof this.size.min !== undefined && this.size.max !== undefined) {
-        params = params.concat("(species_ials.area_km2 >= " + this.size.min * 1000 + " AND species_ials.area_km2 <= " + this.size.max * 1000 + ")");
+        params = params.concat("(species_ials.area_km2 >= " + this.size.min + " AND species_ials.area_km2 <= " + this.size.max + ")");
       }
       if(typeof this.response.min !== undefined && this.response.max !== undefined) {
         params = params.concat("(species_ials.response_score >= " + this.response.min + " AND species_ials.response_score <= " + this.response.max + ")");
