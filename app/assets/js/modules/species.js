@@ -8,7 +8,8 @@ App.modules.Species = function(app) {
               selected:  false,
               the_type: "species",
               hidden: false,
-              show_next: false
+              show_next: false,
+              code: null
             };
         },
         toggle: function() {

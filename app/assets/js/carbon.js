@@ -29,7 +29,7 @@ App.modules.Carbon = function(app) {
         },
 
         run: function() {
-            _.bindAll(this, 'on_route_to', '_state_url', 'download', 'download_table', 'build_state', 'landingInput');
+            _.bindAll(this, 'on_route_to', '_state_url', 'download', 'download_table', 'show_help_box', 'build_state', 'landingInput');
             var self = this;
 
             // init Models
@@ -54,7 +54,7 @@ App.modules.Carbon = function(app) {
             this.regionsFilterEdit = new App.views.RegionsFilterEdit({bus:this.bus, regions: this.regions.allRegions});
             this.countriesFilterEdit = new App.views.CountriesFilterEdit({bus:this.bus, countries: this.countries.allCountries, regions: this.regions.allRegions});
             this.slideFilters = new App.views.SlideFilters({bus:this.bus, species: this.species.allSpecies, countries: this.countries.allCountries, species_ials: this.species_ials.allSpeciesIals, species_ials_min_max: this.species_ials.allSpeciesIalsMinMax});
-            this.graph = new App.views.Graph({species_ials: this.species_ials.allSpeciesIals});
+            this.graph = new App.views.Graph({species_ials: this.species_ials.allSpeciesIals, species_ials_min_max: this.species_ials.allSpeciesIalsMinMax});
             this.resultTable = new App.views.ResultTable({species_ials: this.species_ials.allSpeciesIals});
             this.resultSummary = new App.views.ResultSummary({species_ials: this.species_ials.allSpeciesIals});
 
@@ -79,7 +79,8 @@ App.modules.Carbon = function(app) {
 
             $("a#download_button").click(this.download);
             $("a#download_table_button").click(this.download_table);
-
+            $(".help-box a.help").click(this.show_help_box);
+            $(".help-box span").click(this.show_help_box);
             $("button.select_region").click(this.landingInput);
 
             // ready, launch
@@ -127,6 +128,10 @@ App.modules.Carbon = function(app) {
 
           // Send the params as a post
           this.formPost( "/species_ials_csv", downloadParams);
+          return false;
+        },
+        show_help_box: function() {
+          $("#help-box").dialog('open');
           return false;
         },
         formPost: function(url, params) {
