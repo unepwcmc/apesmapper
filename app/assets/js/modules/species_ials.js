@@ -203,6 +203,19 @@ App.modules.SpeciesIals = function(app) {
       this.species = species;
       this.fetch({add: false});
       return true;
+    },
+    filterParams: function() {
+      // Returns the filter parameters in a JS object
+      return {
+        sizeMin: this.size.min,
+        sizeMax: this.size.max,
+        responseMin: this.response.min,
+        responseMax: this.biodiversity.max,
+        biodiversityMin: this.response.min,
+        biodiversityMax: this.biodiversity.max,
+        countries: this.countries,
+        species: this.species
+      };
     }
   });
 

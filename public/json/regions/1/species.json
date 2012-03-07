@@ -5,7 +5,8 @@
     "region_id": 1,
     "country_id": "12,13,14,15,16,17,18",
     "taxa_scientific_name":"Gorilla gorilla ssp. gorilla",
-    "taxa_common_name":"Western lowland gorilla"
+    "taxa_common_name":"Western lowland gorilla",
+    "code":"ggg"
   },
   {
     "id": 29,
@@ -13,7 +14,8 @@
     "region_id": 1,
     "country_id": "14,19",
     "taxa_scientific_name":"Gorilla gorilla ssp. diehli",
-    "taxa_common_name":"Cross River gorilla"
+    "taxa_common_name":"Cross River gorilla",
+    "code":"ggd"
   },
   {
     "id": 30,
@@ -21,7 +23,8 @@
     "region_id": 1,
     "country_id": "15,20,21",
     "taxa_scientific_name":"Gorilla beringei",
-    "taxa_common_name":"Eastern gorilla"
+    "taxa_common_name":"Eastern gorilla",
+    "code":"gb"
   },
   {
     "id": 31,
@@ -29,7 +32,8 @@
     "region_id": 1,
     "country_id": "22,23,24,25,26,27,28,33,34",
     "taxa_scientific_name":"Pan troglodytes ssp. verus",
-    "taxa_common_name":"Western chimpanzee"
+    "taxa_common_name":"Western chimpanzee",
+    "code":"ptv"
   },
   {
     "id": 32,
@@ -37,7 +41,8 @@
     "region_id": 1,
     "country_id": "14,19",
     "taxa_scientific_name":"Pan troglodytes ssp. ellioti",
-    "taxa_common_name":"Nigerian-Cameroon chimpanzee"
+    "taxa_common_name":"Nigerian-Cameroon chimpanzee",
+    "code":"pte"
   },
   {
     "id": 33,
@@ -45,7 +50,8 @@
     "region_id": 1,
     "country_id": "12,13,14,15,16,17,18",
     "taxa_scientific_name":"Pan troglodytes troglodytes",
-    "taxa_common_name":"Central chimpanzee"
+    "taxa_common_name":"Central chimpanzee",
+    "code":"ptt"
   },
   {
     "id": 34,
@@ -53,7 +59,8 @@
     "region_id": 1,
     "country_id": "12,15,16,20,21,29,30,35",
     "taxa_scientific_name":"Pan troglodytes ssp. schweinfurthii",
-    "taxa_common_name":"Eastern chimpanzee"
+    "taxa_common_name":"Eastern chimpanzee",
+    "code":"pts"
   },
   {
     "id": 35,
@@ -61,7 +68,8 @@
     "region_id": 1,
     "country_id": "15,16",
     "taxa_scientific_name":"Pan paniscus",
-    "taxa_common_name":"Bonobo"
+    "taxa_common_name":"Bonobo",
+    "code":"pp"
   }
 ]
 

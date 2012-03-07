@@ -5,7 +5,8 @@
     "region_id": 2,
     "country_id": "2,3",
     "taxa_scientific_name":"Hylobates lar ssp. lar",
-    "taxa_common_name":"Malaysian lar"
+    "taxa_common_name":"Malaysian lar",
+    "code":"hll"
   },
   {
     "id": 2,
@@ -13,7 +14,8 @@
     "region_id": 2,
     "country_id": "3,4",
     "taxa_scientific_name":"Hylobates lar ssp. entelloides",
-    "taxa_common_name":"Central lar"
+    "taxa_common_name":"Central lar",
+    "code":"hle"
   },
   {
     "id": 3,
@@ -21,7 +23,8 @@
     "region_id": 2,
     "country_id": "1,3,4,5",
     "taxa_scientific_name":"Hylobates lar ssp. carpenteri",
-    "taxa_common_name":"Carpenter's lar"
+    "taxa_common_name":"Carpenter's lar",
+    "code":"hlc"
   },
   {
     "id": 4,
@@ -29,7 +32,8 @@
     "region_id": 2,
     "country_id": "1,4",
     "taxa_scientific_name":"Hylobates lar ssp. yunnanensis",
-    "taxa_common_name":"Yunnan lar"
+    "taxa_common_name":"Yunnan lar",
+    "code":"hly"
   },
   {
     "id": 5,
@@ -37,7 +41,8 @@
     "region_id": 2,
     "country_id": "6",
     "taxa_scientific_name":"Hylobates lar ssp. vestitus",
-    "taxa_common_name":"Sumatran lar"
+    "taxa_common_name":"Sumatran lar",
+    "code":"hlv"
   },
   {
     "id": 6,
@@ -45,7 +50,8 @@
     "region_id": 2,
     "country_id": "2,3,6",
     "taxa_scientific_name":"Hylobates agilis",
-    "taxa_common_name":"Agile gibbon, Black-handed gibbon"
+    "taxa_common_name":"Agile gibbon, Black-handed gibbon",
+    "code":"ha"
   },
   {
     "id": 7,
@@ -53,7 +59,8 @@
     "region_id": 2,
     "country_id": "2,6,7",
     "taxa_scientific_name":"Hylobates muelleri ssp. funereus",
-    "taxa_common_name":"Northern gray gibbon"
+    "taxa_common_name":"Northern gray gibbon",
+    "code":"hmf"
   },
   {
     "id": 8,
@@ -61,7 +68,8 @@
     "region_id": 2,
     "country_id": "2,6",
     "taxa_scientific_name":"Hylobates muelleri ssp. abbotti",
-    "taxa_common_name":"Abbott's gray gibbon"
+    "taxa_common_name":"Abbott's gray gibbon",
+    "code":"hma"
   },
   {
     "id": 9,
@@ -69,7 +77,8 @@
     "region_id": 2,
     "country_id": "6",
     "taxa_scientific_name":"Hylobates muelleri ssp. muelleri",
-    "taxa_common_name":"Southern gray gibbon"
+    "taxa_common_name":"Southern gray gibbon",
+    "code":"hmm"
   },
   {
     "id": 10,
@@ -77,7 +86,8 @@
     "region_id": 2,
     "country_id": "6",
     "taxa_scientific_name":"Hylobates moloch",
-    "taxa_common_name":"Silvery gibbon"
+    "taxa_common_name":"Silvery gibbon",
+    "code":"hmo"
   },
   {
     "id": 11,
@@ -85,7 +95,8 @@
     "region_id": 2,
     "country_id": "3,5,11",
     "taxa_scientific_name":"Hylobates pileatus",
-    "taxa_common_name":"Pileated gibbon, capped gibbon"
+    "taxa_common_name":"Pileated gibbon, capped gibbon",
+    "code":"hp"
   },
   {
     "id": 12,
@@ -93,7 +104,8 @@
     "region_id": 2,
     "country_id": "6",
     "taxa_scientific_name":"Hylobates albibarbis",
-    "taxa_common_name":"Bornean agile gibbon"
+    "taxa_common_name":"Bornean agile gibbon",
+    "code":"hal"
   },
   {
     "id": 13,
@@ -101,7 +113,8 @@
     "region_id": 2,
     "country_id": "6",
     "taxa_scientific_name":"Hylobates klossii",
-    "taxa_common_name":"Kloss's gibbon, Mentawai gibbon, Bilou"
+    "taxa_common_name":"Kloss's gibbon, Mentawai gibbon, Bilou",
+    "code":"hk"
   },
   {
     "id": 14,
@@ -109,7 +122,8 @@
     "region_id": 2,
     "country_id": "1,4,8,9,31,32",
     "taxa_scientific_name":"Hoolock hoolock",
-    "taxa_common_name":"Western hoolock gibbon"
+    "taxa_common_name":"Western hoolock gibbon",
+    "code":"hh"
   },
   {
     "id": 15,
@@ -117,7 +131,8 @@
     "region_id": 2,
     "country_id": "1,3,4,8,9",
     "taxa_scientific_name":"Hoolock leuconedys",
-    "taxa_common_name":"Eastern hoolock gibbon"
+    "taxa_common_name":"Eastern hoolock gibbon",
+    "code":"hle"
   },
   {
     "id": 16,
@@ -125,7 +140,8 @@
     "region_id": 2,
     "country_id": "2,3,6",
     "taxa_scientific_name":"Symphalangus syndactylus",
-    "taxa_common_name":"Siamang"
+    "taxa_common_name":"Siamang",
+    "code":"ss"
   },
   {
     "id": 17,
@@ -133,7 +149,8 @@
     "region_id": 2,
     "country_id": "5",
     "taxa_scientific_name":"Nomascus concolor ssp. lu",
-    "taxa_common_name":"Laotian black crested gibbon"
+    "taxa_common_name":"Laotian black crested gibbon",
+    "code":"ncl"
   },
   {
     "id": 18,
@@ -141,7 +158,8 @@
     "region_id": 2,
     "country_id": "6",
     "taxa_scientific_name":"Nomascus concolor ssp. concolor",
-    "taxa_common_name":"Tonkin blackcrested gibbon"
+    "taxa_common_name":"Tonkin blackcrested gibbon",
+    "code":"ncc"
   },
   {
     "id": 19,
@@ -149,7 +167,8 @@
     "region_id": 2,
     "country_id": "1",
     "taxa_scientific_name":"Nomascus concolor ssp. furvogaster",
-    "taxa_common_name":"West Yunnan black crested gibbon"
+    "taxa_common_name":"West Yunnan black crested gibbon",
+    "code":"ncf"
   },
   {
     "id": 20,
@@ -157,7 +176,8 @@
     "region_id": 2,
     "country_id": "1",
     "taxa_scientific_name":"Nomascus concolor ssp. jingdongensis",
-    "taxa_common_name":"Central Yunnan black crested gibbon"
+    "taxa_common_name":"Central Yunnan black crested gibbon",
+    "code":"ncj"
   },
   {
     "id": 21,
@@ -165,7 +185,8 @@
     "region_id": 2,
     "country_id": "1,10",
     "taxa_scientific_name":"Nomascus nasutus",
-    "taxa_common_name":"Eastern black crested gibbon"
+    "taxa_common_name":"Eastern black crested gibbon",
+    "code":"nn"
   },
   {
     "id": 22,
@@ -173,7 +194,8 @@
     "region_id": 2,
     "country_id": "1,4,5,10",
     "taxa_scientific_name":"Nomascus leucogenys",
-    "taxa_common_name":"White-cheeked crested gibbon"
+    "taxa_common_name":"White-cheeked crested gibbon",
+    "code":"nl"
   },
   {
     "id": 23,
@@ -181,7 +203,8 @@
     "region_id": 2,
     "country_id": "5,10",
     "taxa_scientific_name":"Nomascus siki",
-    "taxa_common_name":"Souhtern white-cheecked gibbon"
+    "taxa_common_name":"Souhtern white-cheecked gibbon",
+    "code":"ns"
   },
   {
     "id": 24,
@@ -189,7 +212,8 @@
     "region_id": 2,
     "country_id": "1",
     "taxa_scientific_name":"Nomascus hainanus",
-    "taxa_common_name":"Hainan black crested gibbon"
+    "taxa_common_name":"Hainan black crested gibbon",
+    "code":"nh"
   },
   {
     "id": 25,
@@ -197,7 +221,8 @@
     "region_id": 2,
     "country_id": "3,5,10,11",
     "taxa_scientific_name":"Nomascus gabriellae",
-    "taxa_common_name":"Yellow-cheeked gibbon"
+    "taxa_common_name":"Yellow-cheeked gibbon",
+    "code":"ng"
   },
   {
     "id": 26,
@@ -205,7 +230,8 @@
     "region_id": 2,
     "country_id": "2,6",
     "taxa_scientific_name":"Pongo pygmaeus",
-    "taxa_common_name":"Bornean orangutan"
+    "taxa_common_name":"Bornean orangutan",
+    "code":"ppy"
   },
   {
     "id": 27,
@@ -213,7 +239,7 @@
     "region_id": 2,
     "country_id": "6",
     "taxa_scientific_name":"Pongo abelii",
-    "taxa_common_name":"Sumatran orangutan"
+    "taxa_common_name":"Sumatran orangutan",
+    "code":"pa"
   }
 ]
-

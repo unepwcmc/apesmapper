@@ -54,7 +54,7 @@ App.modules.Carbon = function(app) {
             this.regionsFilterEdit = new App.views.RegionsFilterEdit({bus:this.bus, regions: this.regions.allRegions});
             this.countriesFilterEdit = new App.views.CountriesFilterEdit({bus:this.bus, countries: this.countries.allCountries, regions: this.regions.allRegions});
             this.slideFilters = new App.views.SlideFilters({bus:this.bus, species: this.species.allSpecies, countries: this.countries.allCountries, species_ials: this.species_ials.allSpeciesIals, species_ials_min_max: this.species_ials.allSpeciesIalsMinMax});
-            this.graph = new App.views.Graph({species_ials: this.species_ials.allSpeciesIals});
+            this.graph = new App.views.Graph({species_ials: this.species_ials.allSpeciesIals, species_ials_min_max: this.species_ials.allSpeciesIalsMinMax});
             this.resultTable = new App.views.ResultTable({species_ials: this.species_ials.allSpeciesIals});
             this.resultSummary = new App.views.ResultSummary({species_ials: this.species_ials.allSpeciesIals});
 
@@ -113,7 +113,13 @@ App.modules.Carbon = function(app) {
           this.apes.allApes.fetch();
         },
         download: function() {
-          window.location.href = "/csv?" + this.species_ials.allSpeciesIals.url().split("?")[1] + "&type=sites";
+          // Build the download parameters needed
+          var downloadParams = this.species_ials.allSpeciesIals.filterParams();
+          downloadParams.q = this.species_ials.allSpeciesIals.url().split("?q=")[1];
+          downloadParams.type = "sites";
+
+          // Send the params as a post
+          this.formPost( "/csv", downloadParams);
           return false;
         },
         download_table: function() {
@@ -124,6 +130,22 @@ App.modules.Carbon = function(app) {
         show_help_box: function() {
           $("#help-box").dialog('open');
           return false;
+        },
+        formPost: function(url, params) {
+          // Creates a form for the given url and parameters, then posts it
+          var temp=document.createElement("form");
+          temp.action=url;
+          temp.method="POST";
+          temp.style.display="none";
+          for(var x in params) {
+            var opt=document.createElement("textarea");
+            opt.name=x;
+            opt.value=params[x];
+            temp.appendChild(opt);
+          }
+          document.body.appendChild(temp);
+          temp.submit();
+          return temp;
         },
         build_state: function() {
           var state = [];
