@@ -29,7 +29,7 @@ App.modules.Carbon = function(app) {
         },
 
         run: function() {
-            _.bindAll(this, 'on_route_to', '_state_url', 'download', 'download_table', 'build_state', 'landingInput');
+            _.bindAll(this, 'on_route_to', '_state_url', 'download', 'download_table', 'show_help_box', 'build_state', 'landingInput');
             var self = this;
 
             // init Models
@@ -79,7 +79,8 @@ App.modules.Carbon = function(app) {
 
             $("a#download_button").click(this.download);
             $("a#download_table_button").click(this.download_table);
-
+            $(".help-box a.help").click(this.show_help_box);
+            $(".help-box span").click(this.show_help_box);
             $("button.select_region").click(this.landingInput);
 
             // ready, launch
@@ -124,6 +125,10 @@ App.modules.Carbon = function(app) {
         download_table: function() {
           alert("This doesn't work yet, sorry!");
           window.location.href = "/csv?" + this.species_ials_table.allSpeciesIals.speciesOccurrenceQuery() + "&type=species_occurrences";
+          return false;
+        },
+        show_help_box: function() {
+          $("#help-box").dialog('open');
           return false;
         },
         formPost: function(url, params) {
