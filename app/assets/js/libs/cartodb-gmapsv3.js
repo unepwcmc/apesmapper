@@ -61,9 +61,11 @@ var CartoDB = CartoDB || {};
 
       // Zoom to cartodb geometries
       function autoBound(params) {
+        var extentQuery = 'select ST_Extent(' + params.table_name + '.the_geom) from '+ params.table_name + ' ' + params.bounds_filter_query;
+
         // Zoom to your geometries
         $.ajax({
-          url:'http://'+params.user_name+'.cartodb.com/api/v1/sql/?q='+escape('select ST_Extent(the_geom) from '+ params.table_name),
+          url:'http://'+params.user_name+'.cartodb.com/api/v1/sql/?q='+escape(extentQuery),
           dataType: 'jsonp',
           timeout: 2000,
           callbackParameter: 'callback',
