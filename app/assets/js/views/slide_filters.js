@@ -29,7 +29,9 @@ App.views.SlideFilters = Backbone.View.extend({
       values: [0, 1],
       step: 0.01,
       slide: function(event, ui) {
-        jQuery(event.target).find('.ui-slider-range').css('background-position', '-' + Math.round((ui.values[0]-ui.min)*1.5) + 'px 0px');
+        if(jQuery(event.target).parents('.size').length === 0){
+          jQuery(event.target).find('.ui-slider-range').css('background-position', '-' + Math.round((ui.values[0])*1.5) + 'px 0px');
+        }
       }
     });
   },
