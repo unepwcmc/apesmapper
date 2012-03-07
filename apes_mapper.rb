@@ -132,9 +132,7 @@ class ApesMapper < Sinatra::Base
     require 'net/http'
     require 'uri'
 
-    type = 'sites'
-    type = params[:type] if 'species_occurrences' == params[:type]
-    file_name = "ApesMapper_#{type}_#{Time.now.strftime("%y%m%d%H%M")}"
+    file_name = "ApesMapper_sites_#{Time.now.strftime("%y%m%d%H%M")}"
     headers "Content-Disposition" => "attachment;filename=#{file_name}.csv", "Content-Type" => "application/octet-stream"
 
     url = URI.escape "http://carbon-tool.cartodb.com/api/v1/sql?q=#{params[:q]}"
@@ -162,7 +160,41 @@ class ApesMapper < Sinatra::Base
     result = titles
     body['rows'].each do |row|
       result << "#{row['ial_id']},#{row['name']},#{row['category']},#{row['area_km2']},#{row['pressure_score']},#{row['habitat_score']},#{row['response_score']},#{row['biodiversity_score']}, -,#{row['species']},#{row['taxon_site_overlap']},#{row['uncertainty_score']}\n"
-      #result << "#{row['ial_id']},#{row['response_score']},#{row['biodiversity_score']},#{row['area_km2']},#{row['pressure_score']},#{row['site']},#{row['species']},#{row['species_site']},#{row['habitat_score']},#{row['uncertainty']}\n"
+    end
+    result
+  end
+
+  post '/species_ials_csv' do
+    require 'net/http'
+    require 'uri'
+
+    file_name = "ApesMapper_species_occurences_#{Time.now.strftime("%y%m%d%H%M")}"
+    headers "Content-Disposition" => "attachment;filename=#{file_name}.csv", "Content-Type" => "application/octet-stream"
+
+    url = URI.escape "http://carbon-tool.cartodb.com/api/v1/sql?q=#{params[:q]}"
+    uri = URI.parse url
+    res = Net::HTTP.get_response(uri)
+    body = JSON.parse(res.body)
+
+    # Build the title string, with the users filter values in
+    titles = "IAS ID, Name, Category"
+
+    titles << ", Area KM2 "
+    titles << "(#{params[:sizeMin]} - #{params[:sizeMax]})" unless [params[:sizeMin],params[:sizeMax]].include?('undefined')
+
+    titles << ", Pressure, Habitat" 
+
+    titles << ", Response "
+    titles << "(#{params[:responseMin]} - #{params[:responseMax]})" unless [params[:responseMin],params[:responseMax]].include?('undefined')
+
+    titles << ", Biodiversity "
+    titles << "(#{params[:biodiversityMin]} - #{params[:biodiversityMax]})" unless [params[:biodiversityMin],params[:biodiversityMax]].include?('undefined')
+
+    titles << ", Analysis Taxa Present, Driving Taxon, Taxon-Site Overlap, Uncertainty\n"
+
+    result = titles
+    body['rows'].each do |row|
+      result << "#{row['ial_id']},#{row['name']},#{row['category']},#{row['area_km2']},#{row['pressure_score']},#{row['habitat_score']},#{row['response_score']},#{row['biodiversity_score']}, -,#{row['species']},#{row['taxon_site_overlap']},#{row['uncertainty_score']}\n"
     end
     result
   end

@@ -114,16 +114,19 @@ App.modules.Carbon = function(app) {
         download: function() {
           // Build the download parameters needed
           var downloadParams = this.species_ials.allSpeciesIals.filterParams();
-          downloadParams.q = this.species_ials.allSpeciesIals.url().split("?q=")[1];
-          downloadParams.type = "sites";
+          downloadParams.q = this.species_ials.allSpeciesIals.selectQuery();
 
           // Send the params as a post
           this.formPost( "/csv", downloadParams);
           return false;
         },
         download_table: function() {
-          alert("This doesn't work yet, sorry!");
-          window.location.href = "/csv?" + this.species_ials_table.allSpeciesIals.speciesOccurrenceQuery() + "&type=species_occurrences";
+          // Build the download parameters needed
+          var downloadParams = this.species_ials.allSpeciesIals.filterParams();
+          downloadParams.q = this.species_ials.allSpeciesIals.selectQuery();
+
+          // Send the params as a post
+          this.formPost( "/species_ials_csv", downloadParams);
           return false;
         },
         formPost: function(url, params) {
