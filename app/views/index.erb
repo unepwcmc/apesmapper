@@ -161,6 +161,9 @@
     <div class="help-box">
       <span>Help</span>
       <a href="#" class="help">?</a>
+      <div id="help-box" class="hide">
+        <%= erb :_help_box_text %>
+      </div>
     </div>
     <div class="share-box">
       <!--
@@ -289,6 +292,20 @@
           autoOpen: (window.location.hash.length == 0),
           closeText: ''
       });}, 1000);
+      //initialize help box
+      var viewPortWidth = 651;
+      var viewPortHeight = 538;
+      $("#help-box").dialog({
+        dialogClass: 'help-box-dialog',
+        position: [272,0],
+        width: viewPortWidth,
+        //maxWidth: viewPortWidth,
+        height: viewPortHeight,
+        //maxHeight: viewPortHeight,
+        resizable: false,
+        title: 'Some help coming up here',//TODO
+        autoOpen: false
+      });
       });
   </script>
 
