@@ -10,7 +10,8 @@ App.modules.Apes = function(app) {
               hidden: false,
               show_next: true,
               taxa_common_name: null,
-              region_id: null
+              region_id: null,
+              code: null
             };
         },
         toggle: function() {

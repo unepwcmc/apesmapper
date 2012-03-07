@@ -8,7 +8,8 @@ App.modules.Categories = function(app) {
               selected:  false,
               the_type: "category",
               show_next: true,
-              taxa_common_name: null
+              taxa_common_name: null,
+              code: null
             };
         },
         toggle: function() {

@@ -40,8 +40,8 @@ App.views.SpeciesFilterEdit = Backbone.View.extend({
     hide: function() {
       var species_arr = [];
 
-      _.each($(this.el).find("#species_selector input:checked"), function(s) {
-        species_arr.push($(s).val());
+      _.each(this.species.selected(), function(s) {
+        species_arr.push(s.get('code'));
       });
 
       this.bus.emit('species:change', species_arr);
