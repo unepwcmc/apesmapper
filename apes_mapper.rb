@@ -101,6 +101,7 @@ class ApesMapper < Sinatra::Base
   end
 
   set :views, Proc.new{ File.join(root, 'app', 'views') }
+  set :protection, :except => :frame_options
   enable :logging, :dump_errors, :raise_errors
   enable :show_exceptions if development?
 
