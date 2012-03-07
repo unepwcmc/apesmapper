@@ -142,20 +142,27 @@ class ApesMapper < Sinatra::Base
     res = Net::HTTP.get_response(uri)
     body = JSON.parse(res.body)
 
-    titles = "cartodb_id"
-    titles << ",response_score "
-    titles << "(#{params[:responseMin]} - #{params[:responseMax]})" unless [params[:responseMin],params[:responseMax]].include?('undefined')
+    # Build the title string, with the users filter values in
+    titles = "IAS ID, Name, Category"
 
-    titles << ",biodiversity_score "
-    titles << "(#{params[:biodiversityMin]} - #{params[:biodiversityMax]})" unless [params[:biodiversityMin],params[:biodiversityMax]].include?('undefined')
-
-    titles << ",area_km "
+    titles << ", Area KM2 "
     titles << "(#{params[:sizeMin]} - #{params[:sizeMax]})" unless [params[:sizeMin],params[:sizeMax]].include?('undefined')
 
-    titles << ",pressure_score,site,species,species_site,habitat_score,uncertainty\n"
+    titles << ", Pressure, Habitat" 
+
+    titles << ", Response "
+    titles << "(#{params[:responseMin]} - #{params[:responseMax]})" unless [params[:responseMin],params[:responseMax]].include?('undefined')
+
+
+    titles << ", Biodiversity "
+    titles << "(#{params[:biodiversityMin]} - #{params[:biodiversityMax]})" unless [params[:biodiversityMin],params[:biodiversityMax]].include?('undefined')
+
+    titles << ", Analysis Taxa Present, Driving Taxon, Taxon-Site Overlap, Uncertainty\n"
+
     result = titles
     body['rows'].each do |row|
-      result << "#{row['cartodb_id']},#{row['response_score']},#{row['biodiversity_score']},#{row['area_km']},#{row['pressure_score']},#{row['site']},#{row['species']},#{row['species_site']},#{row['habitat_score']},#{row['uncertainty']}\n"
+      result << "#{row['ial_id']},#{row['name']},#{row['category']},#{row['area_km2']},#{row['pressure_score']},#{row['habitat_score']},#{row['response_score']},#{row['biodiversity_score']}, -,#{row['species']},#{row['taxon_site_overlap']},#{row['uncertainty_score']}\n"
+      #result << "#{row['ial_id']},#{row['response_score']},#{row['biodiversity_score']},#{row['area_km2']},#{row['pressure_score']},#{row['site']},#{row['species']},#{row['species_site']},#{row['habitat_score']},#{row['uncertainty']}\n"
     end
     result
   end
