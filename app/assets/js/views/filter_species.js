@@ -40,14 +40,18 @@ App.views.SpeciesFilterEdit = Backbone.View.extend({
     hide: function() {
       var species_arr = [];
 
-      _.each($(this.el).find("#species_selector input:checked"), function(s) {
-        species_arr.push($(s).val());
+      _.each(this.species.selected(), function(s) {
+        species_arr.push(s.get('code'));
       });
 
       this.bus.emit('species:change', species_arr);
 
       $('div#species_selector').addClass('hide');
-      $('#categories_filter_edit span.selected').html('<a href="#"><span class="count">' + this.species.selected().length + '</span> selected</a>')
+      if(this.species.selected().length === 0) {
+        $('#categories_filter_edit span.selected').html('<a href="#"><span class="count">' + this.species.length + '</span> selected</a>')
+      } else {
+        $('#categories_filter_edit span.selected').html('<a href="#"><span class="count">' + this.species.selected().length + '</span> selected</a>')
+      }
     },
     next: function() {
       this.bus.trigger('show_species_selector');
@@ -62,7 +66,11 @@ App.views.SpeciesFilterEdit = Backbone.View.extend({
           }
       });
       this.render();
-      $('#categories_filter_edit span.selected').html('<a href="#"><span class="count">' + this.species.selected().length + '</span> selected</a>')
+      if(this.species.selected().length === 0) {
+        $('#categories_filter_edit span.selected').html('<a href="#"><span class="count">' + this.species.length + '</span> selected</a>')
+      } else {
+        $('#categories_filter_edit span.selected').html('<a href="#"><span class="count">' + this.species.selected().length + '</span> selected</a>')
+      }
     }
 });
 
