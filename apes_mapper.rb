@@ -142,9 +142,20 @@ class ApesMapper < Sinatra::Base
     res = Net::HTTP.get_response(uri)
     body = JSON.parse(res.body)
 
-    result = "cartodb_id,the_geom,area_km,biodiversity_score,pressure_score,response_score,site,species,species_site,habitat_score,uncertainty\n"
+    titles = "cartodb_id"
+    titles << ",response_score "
+    titles << "(#{params[:responseMin]} - #{params[:responseMax]})" unless [params[:responseMin],params[:responseMax]].include?('undefined')
+
+    titles << ",biodiversity_score "
+    titles << "(#{params[:biodiversityMin]} - #{params[:biodiversityMax]})" unless [params[:biodiversityMin],params[:biodiversityMax]].include?('undefined')
+
+    titles << ",area_km "
+    titles << "(#{params[:sizeMin]} - #{params[:sizeMax]})" unless [params[:sizeMin],params[:sizeMax]].include?('undefined')
+
+    titles << ",pressure_score,site,species,species_site,habitat_score,uncertainty\n"
+    result = titles
     body['rows'].each do |row|
-      result << "#{row['cartodb_id']},#{row['the_geom']},#{row['area_km']},#{row['biodiversity_score']},#{row['pressure_score']},#{row['response_score']},#{row['site']},#{row['species']},#{row['species_site']},#{row['habitat_score']},#{row['uncertainty']}\n"
+      result << "#{row['cartodb_id']},#{row['response_score']},#{row['biodiversity_score']},#{row['area_km']},#{row['pressure_score']},#{row['site']},#{row['species']},#{row['species_site']},#{row['habitat_score']},#{row['uncertainty']}\n"
     end
     result
   end

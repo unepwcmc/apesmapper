@@ -112,10 +112,13 @@ App.modules.Carbon = function(app) {
           this.apes.allApes.fetch();
         },
         download: function() {
-          this.formPost( "/csv", {
-            q: this.species_ials.allSpeciesIals.url().split("?q=")[1],
-            type: "sites"
-          });
+          // Build the download parameters needed
+          var downloadParams = this.species_ials.allSpeciesIals.filterParams();
+          downloadParams.q = this.species_ials.allSpeciesIals.url().split("?q=")[1];
+          downloadParams.type = "sites";
+
+          // Send the params as a post
+          this.formPost( "/csv", downloadParams);
           return false;
         },
         download_table: function() {
