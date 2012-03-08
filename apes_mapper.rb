@@ -196,7 +196,7 @@ class ApesMapper < Sinatra::Base
 
     result = titles
     body['rows'].each do |row|
-      result << "#{row['ial_id']}, #{row['name']}, #{row['category']}, #{row['area_km2']}, #{row['taxon']}, #{row['taxon_site_overlap']}, #{row['pressure_score']}, #{row['main_pressure']}, #{row['habitat_score']}, #{row['response_score']}, #{row['biodiversity_score']}, #{row['uncertainty_score']}, #{row['habitat_suitability']}, #{row['mean_forest_cover']}, #{row['mean_deforestation']}, #{row['mean_human_influence_index']}, #{row['mean_population_count']}, #{row['mean_population_change']}, #{row['protection_extent']}, #{row['maximum_species_richness_msr']}, #{row['proportion_msr_threatened']}, #{row['mean_carbon_stock']}, #{row['additional_information']}\n"
+      result << "#{row['ial_id']}, #{row['name'].gsub(/,/,'')}, #{row['category']}, #{row['area_km2']}, #{row['taxon']}, #{row['taxon_site_overlap']}, #{row['pressure_score']}, #{row['main_pressure']}, #{row['habitat_score']}, #{row['response_score']}, #{row['biodiversity_score']}, #{row['uncertainty_score']}, #{row['habitat_suitability']}, #{row['mean_forest_cover']}, #{row['mean_deforestation']}, #{row['mean_human_influence_index']}, #{row['mean_population_count']}, #{row['mean_population_change']}, #{row['protection_extent']}, #{row['maximum_species_richness_msr']}, #{row['proportion_msr_threatened']}, #{row['mean_carbon_stock']}, #{row['additional_information']}\n"
     end
     result
   end
