@@ -45,14 +45,14 @@ App.views.Graph = Backbone.View.extend({
       blue:145
     };
     var maxBiodiversityColor = {
-      red:41,
-      green:40,
-      blue:164
+      red:27,
+      green:39,
+      blue:169
     };
     var minBiodiversityColor = {
-      red:94,
-      green:174,
-      blue:100
+      red:100,
+      green:176,
+      blue:93
     };
 
     if(this.species_ials.filter_selected === "response") {

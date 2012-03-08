@@ -165,6 +165,7 @@ q:after {content:''}
 	font-size:18px;
 	line-height:20px;
 	text-transform:uppercase;
+        margin-bottom: 10px;
 }
 #sidebar p{margin:0 0 16px;}
 /*form-box*/
@@ -399,7 +400,7 @@ q:after {content:''}
 .filter-buttons{
 	overflow:hidden;
 	line-height:16px;
-	margin:-3px 0 9px;
+	margin:-3px 0 42px;
 }
 .filter-buttons strong{
 	display:block;
@@ -417,7 +418,7 @@ q:after {content:''}
 	color:#686e74;
 	display:block;
 	background:#fff;
-	padding:2px 5px 3px;
+	padding:2px 3px 3px;
 }
 .filter-buttons ul a:hover,
 .filter-buttons ul .active{
@@ -427,27 +428,42 @@ q:after {content:''}
 }
 /*help-box*/
 .help-box{
-	background:url(/img/bg-help-box.gif) no-repeat;
-	width:143px;
-	height:27px;
-	margin:0 0 0 -4px;
-	padding:15px;
-}
-.help-box span{
-	background:url(/img/arrow4.gif) no-repeat 0 50%;
-	color:#0071bc;
-	font-size:12px;
-	line-height:25px;
-	float:left;
-	padding:0 10px 0 15px;
-}
-.help-box .help{
-	display:block;
-	text-indent:-9999px;
-	overflow:hidden;
-	background:url(/img/help.png) no-repeat;
-	width:26px;
-	height:26px;
+  background:url(/img/bg-help-box.gif) no-repeat;
+  width:100%;
+  height:27px;
+  margin:0 0 0 -4px;
+  padding:15px;
+
+  span{
+    background:url(/img/arrow4.gif) no-repeat 0 50%;
+    color:#0071bc;
+    font-size:12px;
+    line-height:25px;
+    float:left;
+    padding:0 10px 0 15px;
+  }
+  .help{
+    display:block;
+    float:left;
+    text-indent:-9999px;
+    overflow:hidden;
+    background:url(/img/help.png) no-repeat;
+    width:26px;
+    height:26px;
+  }
+
+  #methodology-links {
+    margin: 0 0 0 125px;
+    position:relative;
+    top: -5px;
+    list-style-image: url('/img/pdf_icon.png');
+    
+    a {
+      position:relative;
+      top: -3px;
+      color: #0071BC;
+    }
+  }
 }
 /*share-box*/
 .share-box{
