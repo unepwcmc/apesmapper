@@ -87,6 +87,12 @@ App.views.CategoriesFilterEdit = Backbone.View.extend({
       this.species.each(function(species) {
         species.set({selected: false});
       });
+      
+      var species_arr = [];
+      _.each(this.species.selected(), function(s) {
+        species_arr.push(s.get('code'));
+      });
+      this.bus.emit('species:change', species_arr);
 
       $('#categories_filter_edit span.selected').html('<a href="#"><span class="count">' + this.species.length + '</span> selected</a>')
     }
