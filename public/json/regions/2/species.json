@@ -87,7 +87,7 @@
     "country_id": "6",
     "taxa_scientific_name":"Hylobates moloch",
     "taxa_common_name":"Silvery gibbon",
-    "code":"hmo"
+    "code":"hm"
   },
   {
     "id": 11,
@@ -132,7 +132,7 @@
     "country_id": "1,3,4,8,9",
     "taxa_scientific_name":"Hoolock leuconedys",
     "taxa_common_name":"Eastern hoolock gibbon",
-    "code":"hle"
+    "code":"hl"
   },
   {
     "id": 16,

@@ -17,7 +17,7 @@
        Remove this if you use the .htaccess -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>A.P.E.S.</title>
+  <title>A.P.E.S. Dashboard</title>
   <meta name="description" content="">
   <meta name="author" content="">
 
@@ -45,8 +45,7 @@
 <body>
 <div class="container">
   <div id="sidebar">
-    <h1>LOREM IPSUM DOLOR</h1>
-    <p>Lorem ipsjm dolor sit amet. consectetur adipi-scing elrt. Pellentesque eros augue, ultrices quis</p>
+    <h1>A.P.E.S. Dashboard <span class="beta">beta</span></h1>
     <div class="form-box first-box">
       <form action="#" class="select-form">
         <fieldset>
@@ -155,7 +154,7 @@
       <strong>Filter by:</strong>
       <ul>
         <li><a href="#" class="filter_by">Protected Areas</a></li>
-        <li><a href="#" class="filter_by">Priority Areas</a></li>
+        <li><a href="#" class="filter_by">Action Plan Site</a></li>
         <li><a href="#" class="filter_by">Landscapes</a></li>
       </ul>
     </div>
@@ -165,6 +164,10 @@
       <div id="help-box" class="hide">
         <%= erb :_help_box_text %>
       </div>
+      <ul id='methodology-links'>
+        <li><a href="#">Methodology</a></li>
+        <li><a href="#">Tutorial</a></li>
+      </ul>
     </div>
     <div class="share-box">
       <!--
@@ -227,7 +230,7 @@
     </div>
   </div>
   <div id="landing" class="hide">
-    <h2>Welcome to the A.P.E.S. Dashboard</h2>
+    <h2>Welcome to the A.P.E.S. Dashboard <span class="beta">beta</span></h2>
     <%= erb :_landing_text%>
 
       <p class="instructions">Select a region to get started:</p>
