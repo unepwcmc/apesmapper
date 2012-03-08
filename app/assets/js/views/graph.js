@@ -45,9 +45,9 @@ App.views.Graph = Backbone.View.extend({
       blue:145
     };
     var maxBiodiversityColor = {
-      red:27,
-      green:39,
-      blue:169
+      red:0,
+      green:18,
+      blue:47
     };
     var minBiodiversityColor = {
       red:100,
