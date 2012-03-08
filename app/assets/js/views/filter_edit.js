@@ -8,6 +8,7 @@ App.views.CategoriesFilterEdit = Backbone.View.extend({
     events: {
         'click #finish-categories-edit': 'hide',
         'click .open-close': 'openClose',
+        'click .clear_all': 'clearAll',
         'click .back-button': 'back',
         'click #categories_selector .show': 'next'
     },
@@ -69,14 +70,25 @@ App.views.CategoriesFilterEdit = Backbone.View.extend({
     },
     openClose: function(ev) {
       ev.preventDefault();
-      $('div#categories_selector').siblings().addClass('hide');
-      $('#categories_filter_edit .back-button').addClass('hide');
-      this.show();
+      if(!$(ev.target).parents('.slide-block').hasClass('active')) {
+        $('div#categories_selector').siblings().addClass('hide');
+        $('#categories_filter_edit .back-button').addClass('hide');
+        this.show();
+      }
     },
     back: function(ev) {
       ev.preventDefault();
-      $('div#categories_selector').removeClass('hide').siblings().addClass('hide');
-      $('#categories_filter_edit .back-button').addClass('hide');
+      $('div#categories_selector').parent().children('.box').not('.hide').addClass('hide').prev('.box').removeClass('hide');
+      if($('div#categories_selector').parent().children('.box').not('.hide').prev('.box').length === 0) {
+        $('#categories_filter_edit .back-button').addClass('hide');
+      }
+    },
+    clearAll: function() {
+      this.species.each(function(species) {
+        species.set({selected: false});
+      });
+
+      $('#categories_filter_edit span.selected').html('<a href="#"><span class="count">' + this.species.length + '</span> selected</a>')
     }
 });
 
@@ -84,24 +96,22 @@ App.views.CategoriesFilterEdit = Backbone.View.extend({
  * Categories selection view
  */
 App.views.CategoriesSelector = Backbone.View.extend({
-    template: JST['_species_selector'],
-    className: 'row',
-    initialize: function(obj) {
-        this.bus = obj.bus;
-        _.bindAll(this, 'render', 'toggleSelected');
-    },
-    events: {
-      'click input': 'toggleSelected'
-    },
-    render: function( event ){
-        // render the template
-        var renderedContent = this.template(this.model.toJSON());
-        jQuery(this.el).html(renderedContent);
-        return this;
-    },
-    toggleSelected: function() {
-      this.model.toggle();
-      this.bus.emit('update_list_of_apes');
-      this.bus.emit('update_list_of_species');
-    }
+  template: JST['_species_selector'],
+  className: 'row',
+  initialize: function(obj) {
+      this.bus = obj.bus;
+      _.bindAll(this, 'render', 'toggleSelected');
+  },
+  events: {
+    'click .select_all': 'toggleSelected'
+  },
+  render: function() {
+    // render the template
+    var renderedContent = this.template(this.model.toJSON());
+    jQuery(this.el).html(renderedContent);
+    return this;
+  },
+  toggleSelected: function() {
+    this.bus.emit('select_all_by_category', this.model.get('id'));
+  }
 });

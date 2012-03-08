@@ -5,7 +5,7 @@ App.modules.Species = function(app) {
     var Species = Backbone.Model.extend({
         defaults: function() {
             return {
-              selected:  false,
+              selected:  true,
               the_type: "species",
               hidden: false,
               show_next: false,
@@ -33,7 +33,7 @@ App.modules.Species = function(app) {
           var selected_ids = this.selected().map(function(species){ return species.get('id').toString();});
           return _.size(selected_ids) > 0 ? selected_ids.join(",") : "0";
         },
-        fromUrl: function(species_ids) {
+        fromUrl: function() {
         },
         filterByApe: function(ape_id){
           return this.ape_id == ape_id;
@@ -49,7 +49,7 @@ App.modules.Species = function(app) {
         },
         setSelectedFromIds: function(species_ids){
           species_array = species_ids.split(',');
-          this.species.each(function(species_ids){
+          this.species.each(function() {
             if(_.include(species_array, this.get('id'))){
               this.set({'selected': true})
             }

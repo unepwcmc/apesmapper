@@ -30,11 +30,11 @@ App.views.ApesFilterEdit = Backbone.View.extend({
         $container.empty();
         // Create a apes view inside $container for each ape
         this.apes.visible().each(function(apes) {
-            var view = new App.views.ApesSelector({
-                model: apes,
-                bus: _that.bus
-            });
-            $container.append(view.render().el);
+          var view = new App.views.ApesSelector({
+              model: apes,
+              bus: _that.bus
+          });
+          $container.append(view.render().el);
         });
         return this;
     },
@@ -53,7 +53,7 @@ App.views.ApesFilterEdit = Backbone.View.extend({
         }
       });
 
-      this.bus.emit('update_list_of_species');
+      this.bus.emit('rerender_list_of_species');
       this.bus.trigger('show_species_selector');
       this.hide();
     },
@@ -75,24 +75,23 @@ App.views.ApesFilterEdit = Backbone.View.extend({
  * Apes selection view
  */
 App.views.ApesSelector = Backbone.View.extend({
-    template: JST['_species_selector'],
-    className: 'row',
-    initialize: function(obj) {
-      this.bus = obj.bus;
-      _.bindAll(this, 'render', 'toggleSelected');
-    },
-    events: {
-      'click input': 'toggleSelected'
-    },
-    render: function( event ){
-        // render the template
-        var renderedContent = this.template(this.model.toJSON());
-        jQuery(this.el).html(renderedContent);
-        return this;
-    },
-    toggleSelected: function() {
-      this.model.toggle();
-      this.bus.emit('update_list_of_species');
-    }
+  template: JST['_species_selector'],
+  className: 'row',
+  initialize: function(obj) {
+    this.bus = obj.bus;
+    _.bindAll(this, 'render', 'toggleSelected');
+  },
+  events: {
+    'click .select_all': 'toggleSelected'
+  },
+  render: function( event ){
+    // render the template
+    var renderedContent = this.template(this.model.toJSON());
+    jQuery(this.el).html(renderedContent);
+    return this;
+  },
+  toggleSelected: function() {
+    this.model.toggle();
+    this.bus.emit('select_all_by_ape', this.model.get('id'));
+  }
 });
-
