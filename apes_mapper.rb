@@ -42,7 +42,7 @@ class ApesMapper < Sinatra::Base
     # The second parameter defines where the compressed version will be served.
     # (Note: that parameter is optional, AssetPack will figure it out.)
     js :main_app, '/js/main_app.js', [
-      '/js/moochart-0.1b1.js',
+      '/js/libs/moochart-0.1b1-nc.js',
       '/js/libs/jquery.mousewheel.js',
       '/js/libs/jquery.jscrollpane.js',
       '/js/libs/underscore-min.js',
@@ -199,6 +199,17 @@ class ApesMapper < Sinatra::Base
       result << "#{row['ial_id']}, #{row['name'].gsub(/,/,'')}, #{row['category']}, #{row['area_km2']}, #{row['taxon']}, #{row['taxon_site_overlap']}, #{row['pressure_score']}, #{row['main_pressure']}, #{row['habitat_score']}, #{row['response_score']}, #{row['biodiversity_score']}, #{row['uncertainty_score']}, #{row['habitat_suitability']}, #{row['mean_forest_cover']}, #{row['mean_deforestation']}, #{row['mean_human_influence_index']}, #{row['mean_population_count']}, #{row['mean_population_change']}, #{row['protection_extent']}, #{row['maximum_species_richness_msr']}, #{row['proportion_msr_threatened']}, #{row['mean_carbon_stock']}, #{row['additional_information']}\n"
     end
     result
+  end
+
+  get '/carto_proxy' do
+    require 'net/http'
+    require 'uri'
+
+    url = URI.escape "http://carbon-tool.cartodb.com/api/v1/sql?q=#{params[:q]}"
+    uri = URI.parse url
+
+    res = Net::HTTP.get_response(uri)
+    res.body
   end
 
   before '/api/v0/work/:work_hash' do
