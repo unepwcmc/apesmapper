@@ -168,7 +168,7 @@ App.modules.SpeciesIals = function(app) {
     },
     url: function() {
       // cartoDB query used by fetch
-      return "https://carbon-tool.cartodb.com/api/v1/sql?q=" + this.selectQuery();
+      return "/carto_proxy?q=" + this.selectQuery();
     },
     filterBySize: function(min, max) {
       if(this.size.min === min && this.size.max === max) {
@@ -262,7 +262,7 @@ App.modules.SpeciesIals = function(app) {
     },
     url: function() {
       // cartoDB query used by fetch
-      return "https://carbon-tool.cartodb.com/api/v1/sql?q=" + this.selectQuery();
+      return "/carto_proxy?q=" + this.selectQuery();
     },
     parse: function(response) {
       // CartoDB returns results in rows field

@@ -12,7 +12,7 @@ App.views.Graph = Backbone.View.extend({
     this.species_ials.bind("all", this.render);
 
     // We need to know the max area to scale the graph sizes correctly
-    $.getJSON('http://carbon-tool.cartodb.com/api/v1/sql?q=SELECT MAX(area_km2) AS max_area_km2 FROM species_ials', this.createGraph);
+    $.getJSON('/carto_proxy?q=SELECT MAX(area_km2) AS max_area_km2 FROM species_ials', this.createGraph);
   },
   createGraph: function(data) {
     // Create the graph
