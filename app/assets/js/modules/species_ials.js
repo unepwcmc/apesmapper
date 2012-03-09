@@ -98,7 +98,7 @@ App.modules.SpeciesIals = function(app) {
     aggregateFromSql: function() {
       // Get the species_ial with the maximum pressure and use that to filter the site values
       var sql =  "FROM";
-      sql = sql + "  (SELECT MAX(pressure_score) AS max_pressure, string_agg(DISTINCT species, ', ') as species_present, site FROM species_ials ";
+      sql = sql + "  (SELECT MAX(pressure_score) AS max_pressure, string_agg(DISTINCT species, ' ') as species_present, site FROM species_ials ";
       sql = sql + this.filterConditionsSql();
       sql = sql + "    GROUP BY site) AS max_values,";
       sql = sql + "  species_ials ";
