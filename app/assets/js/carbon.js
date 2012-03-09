@@ -100,7 +100,37 @@ App.modules.Carbon = function(app) {
         },
         fetchEverything: function() {
           //Fetches all our collections
-          this.species.allSpecies.fetch();
+          var _that = this;
+          this.categories.allCategories.fetch({
+            success: function(categories) {
+              _that.apes.allApes.fetch({
+                success: function(apes) {
+                  _that.species.allSpecies.fetch({
+                    success: function(species) {
+                      categories.each(function(category) {
+                        var apes_num = 0, species_num = 0;
+                        apes.each(function(ape) {
+                          if(ape.get('category_id') == category.get('id')) {
+                            apes_num = apes_num + 1;
+                            species.each(function(species) {
+                              if(ape.get('id') == species.get('ape_id')) {
+                                species_num = species_num + 1;
+                              }
+                            });
+                          }
+                        });
+                        if(apes_num === 0 || species_num === 0) {
+                          category.attributes.hidden = true;
+                        }
+                      });
+                      categories.trigger('fetch');
+                    }
+                  });
+                }
+              });
+            }
+          });
+
           this.countries.allCountries.fetch();
 
           this.species_ials.allSpeciesIals.fetch();
@@ -109,8 +139,6 @@ App.modules.Carbon = function(app) {
               app.bus.emit('update_sliders_bounds');
             }
           });
-          this.categories.allCategories.fetch();
-          this.apes.allApes.fetch();
         },
         download: function() {
           // Build the download parameters needed
