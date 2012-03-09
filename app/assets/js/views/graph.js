@@ -58,17 +58,13 @@ App.views.Graph = Backbone.View.extend({
     if(this.species_ials.filter_selected === "response") {
       this_score = (1-0)/(this.species_ials_min_max.maxResponse-this.species_ials_min_max.minResponse)*species_ial.get('response_score')+0;
       color = this.color(maxResponseColor, minResponseColor, this_score);
-      tooltip = 'IAS: ' + species_ial.get('ial_id') + '-' + species_ial.get('name') + '<br/>';
-      tooltip = tooltip + 'Response: ' + Math.round(species_ial.get('response_score')*100)/100 + '<br/>';
-      tooltip = tooltip + 'Biodiversity: ' + Math.round(species_ial.get('biodiversity_score')*100)/100 + '<br/>';
     } else if(this.species_ials.filter_selected === "biodiversity") {
       this_score = (1-0)/(this.species_ials_min_max.maxBiodiversity-this.species_ials_min_max.minBiodiversity)*species_ial.get('biodiversity_score')+0;
       color = this.color(maxBiodiversityColor, minBiodiversityColor, this_score);
-      tooltip = 'IAS: ' + species_ial.get('ial_id') + '-' + species_ial.get('name') + '<br/>';
-      tooltip = tooltip + 'Response: ' + Math.round(species_ial.get('response_score')*100)/100 + '<br/>';
-      tooltip = tooltip + 'Biodiversity: ' + Math.round(species_ial.get('biodiversity_score')*100)/100 + '<br/>';
     }
-
+    tooltip = 'IAS: ' + species_ial.get('ial_id') + '-' + species_ial.get('name') + '<br/>';
+    tooltip = tooltip + 'Response: ' + this.species_ials.roundUp2dp(species_ial.get('response_score')) + '<br/>';
+    tooltip = tooltip + 'Biodiversity: ' + this.species_ials.roundUp2dp(species_ial.get('biodiversity_score')) + '<br/>';
     this.bubbleChart.addBubble(species_ial.get('habitat_score')*100, species_ial.get('pressure_score')*100, species_ial.get('area_km2')/this.max_area_km2*this.bubbleSize, color, tooltip);
   },
 
