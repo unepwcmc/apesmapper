@@ -56,7 +56,7 @@ Chart.Bubble = new Class({
 		
 		this.canvas = new Element('canvas');
 		this.canvas.adopt(new Element('div', {
-			'text': 'Your browser does not support , please upgrade to IE9, Google Chrome or Mozilla Firefox',
+			'text': 'Graph could not be created, this is probably due to drawing bug in this version of Internet Explorer 8. Please upgrade to IE9 or switch to Google Chrome or Mozilla Firefox',
 			'styles': {
 				'text-align': 'center',
 				'background-color': '#8b2e19',
