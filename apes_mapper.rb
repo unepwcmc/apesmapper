@@ -160,7 +160,7 @@ class ApesMapper < Sinatra::Base
 
     result = titles
     body['rows'].each do |row|
-      result << "#{row['ial_id']},#{row['name']},#{row['category']},#{row['area_km2']},#{row['pressure_score']},#{row['habitat_score']},#{row['response_score']},#{row['biodiversity_score']}, -,#{row['species']},#{row['taxon_site_overlap']},#{row['uncertainty_score']}\n"
+      result << "#{row['ial_id']},#{row['name'].gsub(/,/,'')},#{row['category']},#{row['area_km2']},#{row['pressure_score']},#{row['habitat_score']},#{row['response_score']},#{row['biodiversity_score']}, -,#{row['species']},#{row['taxon_site_overlap']},#{row['uncertainty_score']}\n"
     end
     result
   end
