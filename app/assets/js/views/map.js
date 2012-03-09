@@ -52,23 +52,8 @@ App.views.MapView = Backbone.View.extend({
         this.projector = new Projector(this.map);
         this.projector.draw = this.ready;
         this.signals_on = true;
-        this.map.setOptions({'styles':[ { featureType: "water", stylers: [ { hue: "#00eeff" }, { saturation: -44 }, { lightness: 40 } ] },{ featureType: "road", stylers: [ { saturation: -81 }, { visibility: "simplified" }, { lightness: 50 } ] },{ featureType: "road", elementType: "labels", stylers: [ { visibility: "off" } ] },{ featureType: "poi.business", stylers: [ { visibility: "off" } ] },{ featureType: "poi.school", elementType: "labels", stylers: [ { visibility: "off" } ] },{ featureType: "poi.medical", stylers: [ { visibility: "off" } ] },{ featureType: "administrative.neighborhood", stylers: [ { visibility: "off" } ] },{ featureType: "administrative.land_parcel", stylers: [ { visibility: "off" } ] },
-        { featureType: "administrative.locality", stylers: [ { visibility: "on" } ] },
-        {
-            featureType: "poi.park",
-            stylers: [
-              { visibility: "off" }
-            ]
-          },
-          {
-              featureType: "poi.attraction",
-              stylers: [
-                { visibility: "off" }
-              ]
-            }
-            
-         ]
-        });
+        this.map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
+        this.map.setOptions({'styles':[ ]});
     },
 
     addCartoDbResultsLayer: function() {
@@ -79,7 +64,7 @@ App.views.MapView = Backbone.View.extend({
             table_name: 'ials',
             query: this.species_ials.geoQuery(),
             bounds_filter_query: this.species_ials.ialsJoinAndFilterConditions(),
-            map_style: true,
+            map_style: false,
             infowindow: "SELECT cartodb_id,the_geom_webmercator,ial_id AS IAL_ID,name FROM {{table_name}} WHERE cartodb_id={{feature}}",
             auto_bound: true,
             debug: false
