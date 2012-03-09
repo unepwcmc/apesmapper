@@ -240,7 +240,13 @@ App.modules.SpeciesIals = function(app) {
         countries: this.countries,
         species: this.species
       };
-    }
+    },
+    roundUp2dp: function(float_number){
+      return (Math.ceil(parseFloat(float_number)*100)/100).toFixed(2);
+    },
+    roundDown2dp: function(float_number){
+      return (Math.floor(parseFloat(float_number)*100)/100).toFixed(2);
+    },
   });
 
   var SpeciesIalsMinMax = Backbone.Model.extend({
