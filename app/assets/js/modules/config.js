@@ -8,47 +8,47 @@ App.modules.Config = function(app) {
         LOCAL_STORAGE: false,
         MAX_POLYGON_AREA: 8000000*1000*1000,// #8.000.000km^2
         MAP_LAYERS: [{
-            name: 'carbon stock',
-            opacity: 1.0,
-            url: 'http://ec2-46-137-148-168.eu-west-1.compute.amazonaws.com/ArcGIS/rest/services/apesmapper/carbon_stock/MapServer/tile/{Z}/{Y}/{X}',
-            enabled: false
-          }, {
-            name: 'deforestation',
-            opacity: 1.0,
-            url: 'http://ec2-46-137-148-168.eu-west-1.compute.amazonaws.com/ArcGIS/rest/services/apesmapper/deforestation/MapServer/tile/{Z}/{Y}/{X}',
-            enabled: false
-          }, {
-            name: 'eoo asia',
-            opacity: 1.0,
-            url: 'http://ec2-46-137-148-168.eu-west-1.compute.amazonaws.com/ArcGIS/rest/services/apesmapper/eoo_asia/MapServer/tile/{Z}/{Y}/{X}',
-            enabled: false
-          }, {
-            name: 'eoos africa',
+            name: 'Taxa Extent of Occurrence: Africa',
             opacity: 1.0,
             url: 'http://ec2-46-137-148-168.eu-west-1.compute.amazonaws.com/ArcGIS/rest/services/apesmapper/eoos_africa/MapServer/tile/{Z}/{Y}/{X}',
             enabled: false
           }, {
-            name: 'forest_cover',
+            name: 'Taxa Extent of Occurrence: Asia',
             opacity: 1.0,
-            url: 'http://ec2-46-137-148-168.eu-west-1.compute.amazonaws.com/ArcGIS/rest/services/apesmapper/forest_cover/MapServer/tile/{Z}/{Y}/{X}',
+            url: 'http://ec2-46-137-148-168.eu-west-1.compute.amazonaws.com/ArcGIS/rest/services/apesmapper/eoo_asia/MapServer/tile/{Z}/{Y}/{X}',
             enabled: false
           }, {
-            name: 'human influence index',
+            name: 'Deforestation (%)',
+            opacity: 1.0,
+            url: 'http://ec2-46-137-148-168.eu-west-1.compute.amazonaws.com/ArcGIS/rest/services/apesmapper/deforestation/MapServer/tile/{Z}/{Y}/{X}',
+            enabled: false
+          }, {
+            name: 'Human Influence Index',
             opacity: 1.0,
             url: 'http://ec2-46-137-148-168.eu-west-1.compute.amazonaws.com/ArcGIS/rest/services/apesmapper/human_influence_index/MapServer/tile/{Z}/{Y}/{X}',
             enabled: false
           }, {
-            name: 'population change',
+            name: 'Population Change (%)',
             opacity: 1.0,
             url: 'http://ec2-46-137-148-168.eu-west-1.compute.amazonaws.com/ArcGIS/rest/services/apesmapper/population_change/MapServer/tile/{Z}/{Y}/{X}',
             enabled: false
           }, {
-            name: 'population count',
+            name: 'Population Count',
             opacity: 1.0,
             url: 'http://ec2-46-137-148-168.eu-west-1.compute.amazonaws.com/ArcGIS/rest/services/apesmapper/population_count/MapServer/tile/{Z}/{Y}/{X}',
             enabled: false
           }, {
-            name: 'spp richness',
+            name: 'Forest Cover (%)',
+            opacity: 1.0,
+            url: 'http://ec2-46-137-148-168.eu-west-1.compute.amazonaws.com/ArcGIS/rest/services/apesmapper/forest_cover/MapServer/tile/{Z}/{Y}/{X}',
+            enabled: false
+          }, {
+            name: 'Carbon Stocks (tonnes/ha)',
+            opacity: 1.0,
+            url: 'http://ec2-46-137-148-168.eu-west-1.compute.amazonaws.com/ArcGIS/rest/services/apesmapper/carbon_stock/MapServer/tile/{Z}/{Y}/{X}',
+            enabled: false
+          }, {
+            name: 'Species Richness',
             opacity: 1.0,
             url: 'http://ec2-46-137-148-168.eu-west-1.compute.amazonaws.com/ArcGIS/rest/services/apesmapper/spp_richness/MapServer/tile/{Z}/{Y}/{X}',
             enabled: false
