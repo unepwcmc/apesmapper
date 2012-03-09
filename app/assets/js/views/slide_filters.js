@@ -10,7 +10,7 @@ App.views.SlideFilters = Backbone.View.extend({
   },
 
   initialize: function() {
-    _.bindAll(this, 'render', 'stop_slider', 'update_sliders_bounds');
+    _.bindAll(this, 'render', 'stop_slider', 'update_sliders_bounds', 'roundDown2dp', 'roundUp2dp');
 
     this.bus = this.options.bus;
     this.species = this.options.species;
@@ -57,8 +57,8 @@ App.views.SlideFilters = Backbone.View.extend({
     var maxBiodiversity = this.species_ials_min_max.maxBiodiversity;
     $('.biodiversity div.ui-slider').slider('option', 'min', minBiodiversity);
     $('.biodiversity div.ui-slider').slider('option', 'max', maxBiodiversity);
-    $(".range-form .biodiversity .min-value").val(minBiodiversity);
-    $(".range-form .biodiversity .max-value").val(maxBiodiversity);
+    $(".range-form .biodiversity .min-value").val(this.roundDown2dp(minBiodiversity));
+    $(".range-form .biodiversity .max-value").val(this.roundUp2dp(maxBiodiversity));
 
     //areas slider
     var minArea = this.species_ials_min_max.minArea;
@@ -84,8 +84,8 @@ App.views.SlideFilters = Backbone.View.extend({
     } else if(jQuery(event.target).parents('.range').hasClass("biodiversity")) {
       this.species_ials.filterByBiodiversity(ui.values[0], ui.values[1]);
 
-      $(".range-form .biodiversity .min-value").val(ui.values[0]);
-      $(".range-form .biodiversity .max-value").val(ui.values[1]);
+      $(".range-form .biodiversity .min-value").val(this.roundDown2dp(ui.values[0]));
+      $(".range-form .biodiversity .max-value").val(this.roundUp2dp(ui.values[1]));
     } else if(jQuery(event.target).parents('.range').hasClass("size")) {
       this.species_ials.filterBySize(ui.values[0], ui.values[1]);
 
@@ -154,5 +154,11 @@ App.views.SlideFilters = Backbone.View.extend({
     $(".range-form .size .ui-slider").slider("values", values).trigger('slidestop', {values: values});
     $(".range-form .size .min-value").html(values[0]);
     $(".range-form .size .max-value").html(values[1]);
-  }
+  },
+  roundUp2dp: function(float_number){
+    return (Math.ceil(parseFloat(float_number)*100)/100).toFixed(2);
+  },
+  roundDown2dp: function(float_number){
+    return (Math.floor(parseFloat(float_number)*100)/100).toFixed(2);
+  },
 });
