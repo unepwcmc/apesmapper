@@ -201,6 +201,17 @@ class ApesMapper < Sinatra::Base
     result
   end
 
+  get '/carto_proxy' do
+    require 'net/http'
+    require 'uri'
+
+    url = URI.escape "http://carbon-tool.cartodb.com/api/v1/sql?q=#{params[:q]}"
+    uri = URI.parse url
+
+    res = Net::HTTP.get_response(uri)
+    res.body
+  end
+
   before '/api/v0/work/:work_hash' do
     content_type "application/json"
     if params[:work_hash] && params[:work_hash] != "undefined"
