@@ -234,8 +234,8 @@ App.modules.SpeciesIals = function(app) {
         sizeMin: this.size.min,
         sizeMax: this.size.max,
         responseMin: this.response.min,
-        responseMax: this.biodiversity.max,
-        biodiversityMin: this.response.min,
+        responseMax: this.response.max,
+        biodiversityMin: this.biodiversity.min,
         biodiversityMax: this.biodiversity.max,
         countries: this.countries,
         species: this.species

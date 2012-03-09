@@ -144,7 +144,7 @@ class ApesMapper < Sinatra::Base
     # Build the title string, with the users filter values in
     titles = "IAS ID, Name, Category"
 
-    titles << ", Area KM2 "
+    titles << ", Area (km2) "
     titles << "(#{params[:sizeMin]} - #{params[:sizeMax]})" unless [params[:sizeMin],params[:sizeMax]].include?('undefined')
 
     titles << ", Pressure, Habitat" 
@@ -179,10 +179,10 @@ class ApesMapper < Sinatra::Base
     body = JSON.parse(res.body)
 
     # Build the title string, with the users filter values in
-    titles = "IAS ID, Name, Category, Area (km2), Taxon, Taxon-Site Overlap (%)" 
-
-    titles << ", Pressure score "
+    titles = "IAS ID, Name, Category, Area (km2) "
     titles << "(#{params[:sizeMin]} - #{params[:sizeMax]})" unless [params[:sizeMin],params[:sizeMax]].include?('undefined')
+
+    titles << ", Taxon, Taxon-Site Overlap (%), Pressure score "
 
     titles << ", Main Pressure, Habitat score"
 
