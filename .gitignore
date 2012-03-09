@@ -56,3 +56,5 @@ app/carbontool.db
 production
 env
 
+# Thin
+path/
