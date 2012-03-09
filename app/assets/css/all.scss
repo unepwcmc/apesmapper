@@ -236,7 +236,7 @@ q:after {content:''}
 	line-height:24px;
 }
 .slide-block.inactive .title{color:#616467;}
-.slide-block .selected a{color:#39617e;}
+.slide-block .selected a, .select_all{color:#39617e;}
 .slide-block.inactive .selected a{color:#7e95a6;}
 /*open-close*/
 .open-close{
