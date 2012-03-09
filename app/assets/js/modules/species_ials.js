@@ -45,6 +45,7 @@ App.modules.SpeciesIals = function(app) {
       selectSql = selectSql + " species_ials.area_km2 as area_km2,";
       selectSql = selectSql + " species_ials.species as species, ";
       selectSql = selectSql + " species_ials.taxon_site_overlap as taxon_site_overlap, ";
+      selectSql = selectSql + " max_values.species_present as species_present, ";
       selectSql = selectSql + " ials.name as name, ";
       selectSql = selectSql + " ials.category as category ";
       return selectSql;
@@ -97,7 +98,7 @@ App.modules.SpeciesIals = function(app) {
     aggregateFromSql: function() {
       // Get the species_ial with the maximum pressure and use that to filter the site values
       var sql =  "FROM";
-      sql = sql + "  (SELECT MAX(pressure_score) AS max_pressure, site FROM species_ials ";
+      sql = sql + "  (SELECT MAX(pressure_score) AS max_pressure, string_agg(DISTINCT species, ', ') as species_present, site FROM species_ials ";
       sql = sql + this.filterConditionsSql();
       sql = sql + "    GROUP BY site) AS max_values,";
       sql = sql + "  species_ials ";

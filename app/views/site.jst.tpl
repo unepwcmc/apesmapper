@@ -6,7 +6,7 @@
 <td><%= Math.round(habitat_score*100)/100 %></td>
 <td><%= Math.round(response_score*100)/100 %></td>
 <td><%= Math.round(biodiversity_score*100)/100 %></td>
-<td><%= '-' %></td>
+<td><%= species_present %></td>
 <td><%= species %></td>
 <td><%= Math.round(taxon_site_overlap*100)/100 %></td>
 <td><%= Math.round(uncertainty_score*100)/100 %></td>
