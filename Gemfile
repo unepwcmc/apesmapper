@@ -19,6 +19,7 @@ gem 'sass'
 gem 'sinatra-assetpack', :require => 'sinatra/assetpack', :git => 'git://github.com/rstacruz/sinatra-assetpack.git'
 
 group :development, :test do
+  gem 'thin'
   gem 'capistrano'
   gem 'capistrano-ext'
   gem 'brightbox'

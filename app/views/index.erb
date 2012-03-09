@@ -131,7 +131,7 @@
             <div class="holder">
               <div class="frame">
                 <div class="content">
-                  <label for="amount3">IAS Area</label>
+                  <label for="amount3">Site Area (km2)</label>
                   <div class="range size">
                     <input class="text min-value" type="text" value="0">
                     <div class="ui-slider" id="area_slider"></div>
@@ -261,7 +261,11 @@
 
   <!-- end scripts-->
   <script>
+
+    //Setup jQuery
+    jQuery.support.cors = true;
     jQuery.noConflict();
+
     mooTools = $; // Store mooTools
     function init() {
       // use timeout trick to avoid jquery catch the exceptions thrown
