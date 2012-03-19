@@ -22,9 +22,9 @@
     "ape_id": 3,
     "region_id": 1,
     "country_id": "15,20,21",
-    "taxa_scientific_name":"Gorilla beringei",
-    "taxa_common_name":"Eastern gorilla",
-    "code":"gb"
+    "taxa_scientific_name":"Gorilla beringei ssp. beringei",
+    "taxa_common_name":"Mountain gorilla",
+    "code":"gbb"
   },
   {
     "id": 31,
@@ -70,6 +70,15 @@
     "taxa_scientific_name":"Pan paniscus",
     "taxa_common_name":"Bonobo",
     "code":"pp"
+  },
+  {
+    "id": 36,
+    "ape_id": 3,
+    "region_id": 1,
+    "country_id": "15",
+    "taxa_scientific_name":"Gorilla beringei ssp. graueri",
+    "taxa_common_name":"Eastern lowland gorilla",
+    "code":"gbg"
   }
 ]
 
