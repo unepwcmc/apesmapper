@@ -156,7 +156,7 @@ class ApesMapper < Sinatra::Base
     titles << ", Biodiversity "
     titles << "(#{params[:biodiversityMin]} - #{params[:biodiversityMax]})" unless [params[:biodiversityMin],params[:biodiversityMax]].include?('undefined')
 
-    titles << ", Analysis Taxa Present, Driving Taxon, Taxon-Site Overlap, Uncertainty\n"
+    titles << ", Analysis Taxa Present, Score Determining Taxon, Taxon-Site Overlap, Uncertainty\n"
 
     result = titles
     body['rows'].each do |row|
