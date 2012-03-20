@@ -133,7 +133,7 @@ class ApesMapper < Sinatra::Base
     require 'net/http'
     require 'uri'
 
-    file_name = "ApesMapper_sites_#{Time.now.strftime("%y%m%d%H%M")}"
+    file_name = "ApesDashboard_sites_#{Time.now.strftime("%y%m%d%H%M")}"
     headers "Content-Disposition" => "attachment;filename=#{file_name}.csv", "Content-Type" => "application/octet-stream"
 
     url = URI.escape "http://carbon-tool.cartodb.com/api/v1/sql?q=#{params[:q]}"
@@ -169,7 +169,7 @@ class ApesMapper < Sinatra::Base
     require 'net/http'
     require 'uri'
 
-    file_name = "ApesMapper_species_occurences_#{Time.now.strftime("%y%m%d%H%M")}"
+    file_name = "ApesDashboard_species_occurences_#{Time.now.strftime("%y%m%d%H%M")}"
     headers "Content-Disposition" => "attachment;filename=#{file_name}.csv", "Content-Type" => "application/octet-stream"
 
     url = URI.escape "http://carbon-tool.cartodb.com/api/v1/sql?q=#{params[:q]}"
