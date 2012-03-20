@@ -166,11 +166,11 @@
       ul {
         float:right;
         width: 212px;
-        padding: 0 6px 6px;
-        margin:0;
+        padding: 0;
+        margin:0 6px;
         list-style: none;
         text-align: left;
-        @include background(no-repeat,right, bottom);
+        background-color: white;
 
         &:last-child {
           border:none;
