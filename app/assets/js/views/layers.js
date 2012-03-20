@@ -6,10 +6,15 @@ var Layer = Backbone.View.extend({
     tagName: 'li',
     
     LEGENDS: {
-        'carbon': 'layer_carbon_legend.png',
-        'carbon sequestration': 'layer_carbon_seq_legend.png',
-        'restoration potential': 'layer_res_pot_legend.png',
-        'forest status': 'layer_forest_status_legend.png'
+        'Taxa Extent of Occurrence: Africa': 'layer_eoo_africa_legend.png',
+        'Taxa Extent of Occurrence: Asia': 'layer_eoo_asia_legend.png',
+        'Deforestation (%)': 'layer_deforestation_legend.png',
+        'Human Influence Index': 'layer_human_influence_index_legend.png',
+        'Population Change (%)': 'layer_population_change_legend.png',
+        'Population Count': 'layer_population_cover_legend.png',
+        'Forest Cover (%)': 'layer_forest_cover_legend.png',
+        'Carbon Stocks (tonnes/ha)': 'layer_carbon_stocks_legend.png',
+        'Species Richness': 'layer_species_richness_legend.png'
     },
 
     events: {
