@@ -129,6 +129,11 @@ class ApesMapper < Sinatra::Base
     erb :ie6
   end
 
+
+  get '/methodology' do
+    redirect 'http://dl.dropbox.com/u/59789652/APES_Dashboard_METHOD.pdf'
+  end
+
   post '/csv' do
     require 'net/http'
     require 'uri'
@@ -140,6 +145,8 @@ class ApesMapper < Sinatra::Base
     uri = URI.parse url
     res = Net::HTTP.get_response(uri)
     body = JSON.parse(res.body)
+
+    result = "This data is downloaded from the A.P.E.S. Dashboard. Please see http://apesmapper.unepwcmc-005.vm.brightbox.net/methodology for full terms and conditions of use.\n"
 
     # Build the title string, with the users filter values in
     titles = "IAS ID, Name, Category"
@@ -158,7 +165,7 @@ class ApesMapper < Sinatra::Base
 
     titles << ", Analysis Taxa Present, Score Determining Taxon, Taxon-Site Overlap (%), Uncertainty\n"
 
-    result = titles
+    result << titles
     body['rows'].each do |row|
       result << "#{row['ial_id']},#{row['name'].gsub(/,/,'')},#{row['category']},#{row['area_km2']},#{row['pressure_score']},#{row['habitat_score']},#{row['response_score']},#{row['biodiversity_score']}, #{row['species_present']},#{row['species']},#{row['taxon_site_overlap']},#{row['uncertainty_score']}\n"
     end
@@ -178,6 +185,8 @@ class ApesMapper < Sinatra::Base
     puts uri
     body = JSON.parse(res.body)
 
+    result = "This data is downloaded from the A.P.E.S. Dashboard. Please see http://apesmapper.unepwcmc-005.vm.brightbox.net/methodology for full terms and conditions of use.\n"
+
     # Build the title string, with the users filter values in
     titles = "IAS ID, Name, Category, Area (km2) "
     titles << "(#{params[:sizeMin]} - #{params[:sizeMax]})" unless [params[:sizeMin],params[:sizeMax]].include?('undefined')
@@ -194,7 +203,7 @@ class ApesMapper < Sinatra::Base
 
     titles << ", Uncertainity  score, Habitat Suitability (2000) Score, Mean Forest Cover (2005) (%), Mean Deforestation (2000 - 2005) (%), Mean Human Influence Index, Mean Population Count (2000), Mean Population Change (1990 - 2000) (%), Protection Extent (%), Maximum Species Richness (MSR), Proportion MSR Threatened (%), Mean Carbon Stock (tonnes/ha), Site Additional Information\n"
 
-    result = titles
+    result << titles
     body['rows'].each do |row|
       result << "#{row['ial_id']}, #{row['name'].gsub(/,/,'')}, #{row['category']}, #{row['area_km2']}, #{row['taxon']}, #{row['taxon_site_overlap']}, #{row['pressure_score']}, #{row['main_pressure']}, #{row['habitat_score']}, #{row['response_score']}, #{row['biodiversity_score']}, #{row['uncertainty_score']}, #{row['habitat_suitability']}, #{row['mean_forest_cover']}, #{row['mean_deforestation']}, #{row['mean_human_influence_index']}, #{row['mean_population_count']}, #{row['mean_population_change']}, #{row['protection_extent']}, #{row['maximum_species_richness_msr']}, #{row['proportion_msr_threatened']}, #{row['mean_carbon_stock']}, #{row['additional_information']}\n"
     end
