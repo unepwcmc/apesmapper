@@ -11,7 +11,7 @@ var Layer = Backbone.View.extend({
         'Deforestation (%)': 'layer_deforestation_legend.png',
         'Human Influence Index': 'layer_human_influence_index_legend.png',
         'Population Change (%)': 'layer_population_change_legend.png',
-        'Population Count': 'layer_population_cover_legend.png',
+        'Population Count': 'layer_population_count_legend.png',
         'Forest Cover (%)': 'layer_forest_cover_legend.png',
         'Carbon Stocks (tonnes/ha)': 'layer_carbon_stocks_legend.png',
         'Species Richness': 'layer_species_richness_legend.png'
