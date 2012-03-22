@@ -838,3 +838,12 @@ position: absolute;
     text-decoration: underscore;
   }
 }
+
+#taxon-table {
+  th {
+    background-color: #CCC;
+  }
+  tr:nth-child(even) {
+    background-color: #EEE;
+  }
+}
