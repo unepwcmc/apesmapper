@@ -65,7 +65,7 @@ App.views.MapView = Backbone.View.extend({
             query: this.species_ials.geoQuery(),
             bounds_filter_query: this.species_ials.ialsJoinAndFilterConditions(),
             map_style: false,
-            infowindow: "SELECT cartodb_id,the_geom_webmercator,ial_id AS IAL_ID,name FROM {{table_name}} WHERE cartodb_id={{feature}}",
+            infowindow: "SELECT cartodb_id,the_geom_webmercator,ial_id AS IAS_ID,name FROM {{table_name}} WHERE cartodb_id={{feature}}",
             auto_bound: true,
             debug: false
         });
