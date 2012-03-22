@@ -76,7 +76,7 @@ App.modules.SpeciesIals = function(app) {
 
       if(this.species.length > 0) {
         params = params.concat("(species IN ('" + this.species.join("','") + "'))");
-      }
+      } 
 
       // Add active filters (This should really have a view and not query the DOM...)
       if($("a.filter_by.active").length > 0){
