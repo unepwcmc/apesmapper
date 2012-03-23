@@ -106,7 +106,7 @@ class ApesMapper < Sinatra::Base
   enable :show_exceptions if development?
 
   get '/' do
-    erb :home
+    erb :index
   end
 
   get '/about' do
