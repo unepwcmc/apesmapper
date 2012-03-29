@@ -498,11 +498,20 @@ q:after {content:''}
 	overflow:hidden;
 	font-size:24px;
 	line-height:31px;
+        float:left;
 }
 .share-box strong{
 	font-size:29px;
 	line-height:31px;
 }
+#reset-analysis {
+    border: 1px solid black;
+    border-radius: 3px;
+    float:right;
+    padding: 3px;
+    margin-top: 6px;
+}
+
 /*content*/
 #content{
 	width:650px;
