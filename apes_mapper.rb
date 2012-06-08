@@ -146,7 +146,7 @@ class ApesMapper < Sinatra::Base
     res = Net::HTTP.get_response(uri)
     body = JSON.parse(res.body)
 
-    result = "This data is downloaded from the A.P.E.S. Dashboard. Please see http://apesportal.eva.mpg.de/portal/tools/dashboard/APES_Dashboard_Methodology.pdf for full terms and conditions of use.\n"
+    result = "This data is downloaded from the A.P.E.S. Dashboard. Please see http://apesportal.eva.mpg.de/status/tools/dashboard/APES_Dashboard_Methodology.pdf for full terms and conditions of use.\n"
 
     # Build the title string, with the users filter values in
     titles = "IAS ID, Name, Category"
@@ -185,7 +185,7 @@ class ApesMapper < Sinatra::Base
     puts uri
     body = JSON.parse(res.body)
 
-    result = "This data is downloaded from the A.P.E.S. Dashboard. Please see http://apesportal.eva.mpg.de/portal/tools/dashboard/APES_Dashboard_Methodology.pdf for full terms and conditions of use.\n"
+    result = "This data is downloaded from the A.P.E.S. Dashboard. Please see http://apesportal.eva.mpg.de/status/tools/dashboard/APES_Dashboard_Methodology.pdf for full terms and conditions of use.\n"
 
     # Build the title string, with the users filter values in
     titles = "IAS ID, Name, Category, Area (km2) "
