@@ -6,6 +6,11 @@ gem 'brightbox', '>=2.3.8'
 require 'brightbox/recipes'
 require 'brightbox/passenger'
 
+set :generate_webserver_config, false
+
+ssh_options[:forward_agent] = true
+
+
 # The name of your application.  Used for deployment directory and filenames
 # and Apache configs. Should be unique on the Brightbox
 set :application, "apesmapper"
@@ -25,6 +30,7 @@ set :scm, :git
 set :branch, "master"
 set :scm_username, "unepwcmc-read"
 set :git_enable_submodules, 1
+set :deploy_via, :remote_cache
 default_run_options[:pty] = true # Must be set for the password prompt from git to work
 
 ## Dependenciesg
