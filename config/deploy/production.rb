@@ -23,7 +23,7 @@ server {
   keepalive_timeout 5;
   root #{deploy_to}/current/public;
   passenger_enabled on;
-  rails_env staging;
+  rails_env production;
 
   add_header 'Access-Control-Allow-Origin' *;
   add_header 'Access-Control-Allow-Methods' "GET, POST, PUT, DELETE, OPTIONS";
