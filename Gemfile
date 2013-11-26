@@ -17,6 +17,7 @@ gem 'therubyracer'
 gem 'uglifier'
 gem 'sass'
 gem 'sinatra-assetpack', :require => 'sinatra/assetpack', :git => 'git://github.com/rstacruz/sinatra-assetpack.git'
+gem 'rvm-capistrano'
 
 group :development, :test do
   gem 'thin'
