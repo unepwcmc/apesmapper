@@ -20,7 +20,8 @@ gem 'rvm-capistrano'
 
 group :development, :test do
   gem 'thin'
-  gem 'capistrano'
-  gem 'capistrano-ext'
-  gem 'brightbox'
+  gem 'capistrano', '~> 3.4.0', require: false
+  gem 'capistrano-rvm',   '~> 0.1', require: false
+  gem 'capistrano-bundler', '~> 1.1', require: false
+  gem 'capistrano-passenger', '~> 0.1.1', require: false
 end
