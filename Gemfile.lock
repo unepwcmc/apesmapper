@@ -72,8 +72,8 @@ GEM
       rack
     rack-test (0.6.1)
       rack (>= 1.0)
-    rack_csrf (2.3.0)
-      rack (>= 0.9)
+    rack_csrf (2.5.0)
+      rack (>= 1.1.0)
     rake (10.4.2)
     rb-fsevent (0.9.6)
     rb-inotify (0.9.5)
