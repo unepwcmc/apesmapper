@@ -5,7 +5,7 @@ gem 'activerecord', '3.2.22'
 gem 'compass'
 gem 'sinatra-support'
 gem "html5-boilerplate"
-gem 'sinatra-activerecord', :require => "sinatra/base"
+gem 'sinatra-activerecord', '~> 2.0.9', :require => "sinatra/base"
 gem 'rack_csrf', :require => "rack/csrf"
 gem 'rake'
 gem 'sqlite3'
