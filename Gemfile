@@ -1,5 +1,4 @@
-source "http://gems.github.com"
-source :rubygems
+source 'http://rubygems.org'
 
 #gem 'sinatra', :require => "sinatra/base"
 gem 'activerecord'
