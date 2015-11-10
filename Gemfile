@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 #gem 'sinatra', :require => "sinatra/base"
-gem 'activerecord'
+gem 'activerecord', '3.2.22'
 gem 'compass'
 gem 'sinatra-support'
 gem "html5-boilerplate"
