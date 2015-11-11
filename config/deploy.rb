@@ -4,7 +4,7 @@ lock '3.4.0'
 
 set :application, 'apesmapper'
 set :repo_url, 'git@github.com:unepwcmc/apesmapper.git'
-set :branch, 'LinodeCap3Deploy'
+set :branch, 'master'
 
 set :deploy_user, 'wcmc'
 set :deploy_to, "/home/#{fetch(:deploy_user)}/#{fetch(:application)}"
